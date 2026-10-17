@@ -1,0 +1,61 @@
+{
+  "$comment": "Réglages de jeu publiés en base (configurables sans nouvelle version de l'application). Voir docs/DECISIONS.md.",
+  "rarities": [
+    { "rarity": "common", "rank": 1, "label": "Commune", "duplicateFragments": 5 },
+    { "rarity": "uncommon", "rank": 2, "label": "Peu commune", "duplicateFragments": 10 },
+    { "rarity": "rare", "rank": 3, "label": "Rare", "duplicateFragments": 25 },
+    { "rarity": "epic", "rank": 4, "label": "Épique", "duplicateFragments": 50 },
+    { "rarity": "legendary", "rank": 5, "label": "Légendaire", "duplicateFragments": 100 }
+  ],
+  "packs": [
+    {
+      "slug": "decouverte", "name": "Paquet Découverte", "position": 1,
+      "description": "Le paquet des premiers pas : des pays et leurs capitales.",
+      "cardsPerPack": 5, "categories": ["country", "capital"], "configurationVersion": 1,
+      "dropRates": { "common": 0.7, "uncommon": 0.3 }
+    },
+    {
+      "slug": "exploration", "name": "Paquet Exploration", "position": 2,
+      "description": "Le paquet standard : toutes les cartes du catalogue.",
+      "cardsPerPack": 5, "categories": null, "configurationVersion": 1,
+      "dropRates": { "common": 0.55, "uncommon": 0.27, "rare": 0.11, "epic": 0.06, "legendary": 0.01 }
+    },
+    {
+      "slug": "patrimoine", "name": "Paquet Thématique Patrimoine", "position": 3,
+      "description": "Monuments, paysages, cultures et lieux de mémoire du monde.",
+      "cardsPerPack": 5, "categories": ["monument", "geography", "culture", "history"], "configurationVersion": 1,
+      "dropRates": { "uncommon": 0.1, "rare": 0.5, "epic": 0.32, "legendary": 0.08 }
+    }
+  ],
+  "collections": [
+    { "slug": "pays-afrique", "title": "Pays d'Afrique", "description": "Les cartes Pays du continent africain.", "type": "geographic", "rule": { "category": "country", "continent": "africa" } },
+    { "slug": "pays-amerique-du-nord", "title": "Pays d'Amérique du Nord", "description": "Les cartes Pays d'Amérique du Nord et d'Amérique centrale.", "type": "geographic", "rule": { "category": "country", "continent": "north_america" } },
+    { "slug": "pays-amerique-du-sud", "title": "Pays d'Amérique du Sud", "description": "Les cartes Pays d'Amérique du Sud.", "type": "geographic", "rule": { "category": "country", "continent": "south_america" } },
+    { "slug": "pays-asie", "title": "Pays d'Asie", "description": "Les cartes Pays du continent asiatique.", "type": "geographic", "rule": { "category": "country", "continent": "asia" } },
+    { "slug": "pays-europe", "title": "Pays d'Europe", "description": "Les cartes Pays du continent européen.", "type": "geographic", "rule": { "category": "country", "continent": "europe" } },
+    { "slug": "pays-oceanie", "title": "Pays d'Océanie", "description": "Les cartes Pays d'Océanie.", "type": "geographic", "rule": { "category": "country", "continent": "oceania" } },
+    { "slug": "capitales-du-monde", "title": "Capitales du monde", "description": "Toutes les capitales du catalogue.", "type": "geographic", "rule": { "category": "capital" } },
+    { "slug": "patrimoine-bati", "title": "Patrimoine bâti", "description": "Monuments et sites construits par les sociétés humaines.", "type": "cultural", "rule": { "category": "monument" } },
+    { "slug": "paysages-remarquables", "title": "Paysages remarquables", "description": "Reliefs, côtes et milieux naturels d'exception.", "type": "thematic", "rule": { "category": "geography" } },
+    { "slug": "cultures-et-memoires", "title": "Cultures et mémoires", "description": "Langues, traditions et lieux de mémoire.", "type": "cultural", "rule": { "categories": ["culture", "history"] } }
+  ],
+  "objectives": [
+    { "slug": "premiers-pas", "title": "Premiers pas", "description": "Possède 10 cartes différentes.", "kind": "cards_owned", "target": 10, "rewardPack": "exploration", "rewardQuantity": 1 },
+    { "slug": "voyageur", "title": "Voyageur", "description": "Découvre 10 pays.", "kind": "countries_discovered", "target": 10, "rewardPack": "exploration", "rewardQuantity": 1 },
+    { "slug": "premiere-expedition", "title": "Première expédition", "description": "Termine une expédition.", "kind": "expeditions_completed", "target": 1, "rewardPack": "patrimoine", "rewardQuantity": 1 },
+    { "slug": "collectionneur", "title": "Collectionneur", "description": "Possède 30 cartes différentes.", "kind": "cards_owned", "target": 30, "rewardPack": "patrimoine", "rewardQuantity": 1 },
+    { "slug": "six-continents", "title": "Six continents", "description": "Découvre au moins un pays sur chaque continent.", "kind": "continents_discovered", "target": 6, "rewardPack": "patrimoine", "rewardQuantity": 1 },
+    { "slug": "explorateur-confirme", "title": "Explorateur confirmé", "description": "Termine 5 expéditions.", "kind": "expeditions_completed", "target": 5, "rewardPack": "exploration", "rewardQuantity": 2 },
+    { "slug": "grand-collectionneur", "title": "Grand collectionneur", "description": "Possède 60 cartes différentes.", "kind": "cards_owned", "target": 60, "rewardPack": "exploration", "rewardQuantity": 2 },
+    { "slug": "album-pays-europe", "title": "Album complet : Europe", "description": "Complète la collection Pays d'Europe.", "kind": "collection_completed", "collection": "pays-europe", "rewardPack": "patrimoine", "rewardQuantity": 1 },
+    { "slug": "album-pays-asie", "title": "Album complet : Asie", "description": "Complète la collection Pays d'Asie.", "kind": "collection_completed", "collection": "pays-asie", "rewardPack": "patrimoine", "rewardQuantity": 1 },
+    { "slug": "album-pays-afrique", "title": "Album complet : Afrique", "description": "Complète la collection Pays d'Afrique.", "kind": "collection_completed", "collection": "pays-afrique", "rewardPack": "patrimoine", "rewardQuantity": 1 },
+    { "slug": "album-capitales", "title": "Album complet : Capitales", "description": "Complète la collection Capitales du monde.", "kind": "collection_completed", "collection": "capitales-du-monde", "rewardPack": "exploration", "rewardQuantity": 2 }
+  ],
+  "expeditionReward": { "pack": "exploration", "quantity": 1 },
+  "settings": {
+    "starter_reward": { "value": { "pack_slug": "decouverte", "quantity": 2 }, "description": "Paquets offerts à la création du compte." },
+    "daily_reward": { "value": { "pack_slug": "exploration", "quantity": 1 }, "description": "Paquet quotidien facultatif (jour calendaire UTC, sans série)." },
+    "fragment_exchange": { "value": { "pack_slug": "exploration", "cost": 100 }, "description": "Coût en fragments d'un paquet obtenu par échange." }
+  }
+}

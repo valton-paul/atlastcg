@@ -1,0 +1,275 @@
+{
+  "$comment": "Catalogue éditorial Atlas. Statut de relecture : voir docs/CONTENT.md. Toute modification doit passer `npm run content:check`.",
+  "countries": [
+    {
+      "iso": "FR", "article": "la", "isoNumeric": "250", "name": "France", "capital": "Paris", "continent": "europe", "region": "Europe de l'Ouest",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Europe de l'Ouest ouvert sur la Manche, l'océan Atlantique et la mer Méditerranée.", "fact": "La France métropolitaine est souvent surnommée « l'Hexagone » en raison de sa forme.", "sources": ["Encyclopædia Britannica — France"] },
+        "capital": { "rarity": "common", "discovery": "Capitale de la France, traversée par la Seine.", "fact": "L'île de la Cité est le berceau historique de la ville.", "sources": ["Encyclopædia Britannica — Paris"] },
+        "heritage": { "slug": "tour-eiffel", "title": "Tour Eiffel", "subtitle": "Paris", "category": "monument", "rarity": "rare", "discovery": "Tour de fer construite par l'entreprise de Gustave Eiffel pour l'Exposition universelle de 1889.", "fact": "Haute d'environ 300 mètres à son inauguration, elle est restée la plus haute structure du monde jusqu'en 1930.", "sources": ["Société d'exploitation de la tour Eiffel — Histoire", "Encyclopædia Britannica — Eiffel Tower"] }
+      },
+      "expedition": { "quiz": { "prompt": "Pour quel événement la tour Eiffel a-t-elle été construite ?", "choices": ["L'Exposition universelle de 1889", "Les Jeux olympiques de 1924", "Le sacre de Napoléon Ier", "L'inauguration du métro de Paris"], "answer": 0, "explanation": "La tour a été construite pour l'Exposition universelle de 1889 à Paris." } }
+    },
+    {
+      "iso": "IT", "article": "l'", "isoNumeric": "380", "name": "Italie", "capital": "Rome", "continent": "europe", "region": "Europe du Sud",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Péninsule en forme de botte qui s'avance dans la mer Méditerranée.", "fact": "Le territoire italien entoure deux États indépendants : le Vatican et Saint-Marin.", "sources": ["CIA — The World Factbook : Italy"] },
+        "capital": { "rarity": "uncommon", "discovery": "Capitale de l'Italie, bâtie selon la tradition sur sept collines.", "fact": "La Cité du Vatican, plus petit État du monde, est enclavée dans Rome.", "sources": ["Encyclopædia Britannica — Rome"] },
+        "heritage": { "slug": "colisee", "title": "Colisée", "subtitle": "Rome", "category": "monument", "rarity": "epic", "discovery": "Amphithéâtre de la Rome antique, commencé sous Vespasien et inauguré par l'empereur Titus en 80 apr. J.-C.", "fact": "Il pouvait accueillir plusieurs dizaines de milliers de spectateurs.", "sources": ["UNESCO — Centre historique de Rome", "Encyclopædia Britannica — Colosseum"] }
+      },
+      "expedition": { "quiz": { "prompt": "Sous quel empereur le Colisée a-t-il été inauguré ?", "choices": ["Néron", "Titus", "Auguste", "Constantin"], "answer": 1, "explanation": "Commencé sous Vespasien, le Colisée a été inauguré par son fils Titus en 80 apr. J.-C." } }
+    },
+    {
+      "iso": "ES", "article": "l'", "isoNumeric": "724", "name": "Espagne", "capital": "Madrid", "continent": "europe", "region": "Europe du Sud",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays qui occupe la majeure partie de la péninsule Ibérique.", "fact": "L'Espagne comprend aussi les archipels des Baléares et des Canaries.", "sources": ["CIA — The World Factbook : Spain"] },
+        "capital": { "rarity": "common", "discovery": "Capitale de l'Espagne, située au centre de la péninsule Ibérique.", "fact": "Le roi Philippe II y installe la cour en 1561.", "sources": ["Encyclopædia Britannica — Madrid"] },
+        "heritage": { "slug": "sagrada-familia", "title": "Sagrada Família", "subtitle": "Barcelone", "category": "monument", "rarity": "rare", "discovery": "Basilique de Barcelone dont la construction a commencé en 1882 et à laquelle Antoni Gaudí a consacré la fin de sa vie.", "fact": "Sa façade de la Nativité et sa crypte font partie des œuvres de Gaudí inscrites au patrimoine mondial.", "sources": ["UNESCO — Œuvres d'Antoni Gaudí"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quel architecte est associé à la Sagrada Família ?", "choices": ["Le Corbusier", "Oscar Niemeyer", "Antoni Gaudí", "Frank Gehry"], "answer": 2, "explanation": "Antoni Gaudí a repris le projet en 1883 et y a travaillé jusqu'à sa mort en 1926." } }
+    },
+    {
+      "iso": "GR", "article": "la", "isoNumeric": "300", "name": "Grèce", "capital": "Athènes", "continent": "europe", "region": "Europe du Sud",
+      "cards": {
+        "country": { "rarity": "uncommon", "discovery": "Pays du sud-est de l'Europe formé d'une partie continentale et de milliers d'îles.", "fact": "Le mont Olympe, son plus haut sommet, était considéré comme la demeure des dieux dans la mythologie grecque.", "sources": ["Encyclopædia Britannica — Greece", "Encyclopædia Britannica — Mount Olympus"] },
+        "capital": { "rarity": "common", "discovery": "Capitale de la Grèce et l'une des plus anciennes villes d'Europe.", "fact": "Athènes a accueilli les premiers Jeux olympiques modernes en 1896.", "sources": ["Comité international olympique — Athènes 1896"] },
+        "heritage": { "slug": "acropole-athenes", "title": "Acropole d'Athènes", "subtitle": "Athènes", "category": "monument", "rarity": "epic", "discovery": "Colline fortifiée dominant Athènes, couronnée de temples du Ve siècle av. J.-C., dont le Parthénon.", "fact": "Le Parthénon était dédié à la déesse Athéna.", "sources": ["UNESCO — Acropole d'Athènes"] }
+      },
+      "expedition": { "quiz": { "prompt": "À quelle divinité le Parthénon est-il dédié ?", "choices": ["Zeus", "Poséidon", "Apollon", "Athéna"], "answer": 3, "explanation": "Le Parthénon, sur l'Acropole, était le temple d'Athéna, protectrice de la cité." } }
+    },
+    {
+      "iso": "DE", "article": "l'", "isoNumeric": "276", "name": "Allemagne", "capital": "Berlin", "continent": "europe", "region": "Europe de l'Ouest",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Europe centrale, le plus peuplé de l'Union européenne.", "fact": "L'Allemagne est un État fédéral composé de 16 Länder.", "sources": ["CIA — The World Factbook : Germany"] },
+        "capital": { "rarity": "common", "discovery": "Capitale de l'Allemagne réunifiée depuis 1990.", "fact": "Le mur de Berlin a divisé la ville de 1961 à 1989.", "sources": ["Encyclopædia Britannica — Berlin Wall"] },
+        "heritage": { "slug": "porte-de-brandebourg", "title": "Porte de Brandebourg", "subtitle": "Berlin", "category": "monument", "rarity": "rare", "discovery": "Porte monumentale néoclassique édifiée à Berlin entre 1788 et 1791.", "fact": "Longtemps située près du mur, elle est devenue un symbole de la réunification allemande.", "sources": ["Encyclopædia Britannica — Brandenburg Gate"] }
+      },
+      "expedition": { "quiz": { "prompt": "Que symbolise aujourd'hui la porte de Brandebourg ?", "choices": ["La réunification allemande", "La Révolution française", "La fondation de l'Union européenne", "Le traité de Versailles"], "answer": 0, "explanation": "Proche du tracé du mur, la porte a été rouverte en 1989 et symbolise la réunification." } }
+    },
+    {
+      "iso": "NO", "article": "la", "isoNumeric": "578", "name": "Norvège", "capital": "Oslo", "continent": "europe", "region": "Europe du Nord",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays nordique qui s'étire le long de la côte occidentale de la péninsule scandinave.", "fact": "Au nord du cercle polaire, le soleil ne se couche pas pendant une partie de l'été.", "sources": ["Encyclopædia Britannica — Norway"] },
+        "capital": { "rarity": "uncommon", "discovery": "Capitale de la Norvège, au fond de l'Oslofjord.", "fact": "Le prix Nobel de la paix y est remis chaque année.", "sources": ["The Nobel Prize — Nobel Peace Prize award ceremony"] },
+        "heritage": { "slug": "fjords-de-norvege", "title": "Fjords de l'Ouest norvégien", "subtitle": "Geirangerfjord et Nærøyfjord", "category": "geography", "rarity": "epic", "discovery": "Longues vallées marines aux parois abruptes, inscrites au patrimoine mondial en 2005.", "fact": "Les fjords sont d'anciennes vallées creusées par les glaciers puis envahies par la mer.", "sources": ["UNESCO — Fjords de l'Ouest de la Norvège"] }
+      },
+      "expedition": { "quiz": { "prompt": "Comment les fjords norvégiens se sont-ils formés ?", "choices": ["Par des éruptions volcaniques", "Par l'érosion des glaciers", "Par la chute de météorites", "Par des travaux humains"], "answer": 1, "explanation": "Les glaciers ont creusé de profondes vallées que la mer a envahies après leur retrait." } }
+    },
+    {
+      "iso": "IS", "article": "l'", "isoNumeric": "352", "name": "Islande", "capital": "Reykjavik", "continent": "europe", "region": "Europe du Nord",
+      "cards": {
+        "country": { "rarity": "uncommon", "discovery": "Île de l'Atlantique Nord située sur la dorsale médio-atlantique.", "fact": "L'activité volcanique et géothermique y est particulièrement intense.", "sources": ["Encyclopædia Britannica — Iceland"] },
+        "capital": { "rarity": "uncommon", "discovery": "Capitale de l'Islande, sur la côte sud-ouest de l'île.", "fact": "C'est la capitale d'État souverain la plus septentrionale du monde.", "sources": ["Encyclopædia Britannica — Reykjavík"] },
+        "heritage": { "slug": "geysir", "title": "Geysir", "subtitle": "Vallée de Haukadalur", "category": "geography", "rarity": "rare", "discovery": "Source chaude jaillissante du sud-ouest de l'Islande, au cœur d'un champ géothermique.", "fact": "Le mot « geyser » vient du nom de cette source.", "sources": ["Encyclopædia Britannica — Geysir"] }
+      },
+      "expedition": { "quiz": { "prompt": "D'où vient le mot « geyser » ?", "choices": ["D'un mot latin signifiant vapeur", "D'un volcan japonais", "D'une source jaillissante islandaise", "D'un explorateur norvégien"], "answer": 2, "explanation": "Le Geysir islandais a donné son nom à toutes les sources jaillissantes de ce type." } }
+    },
+    {
+      "iso": "JP", "article": "le", "isoNumeric": "392", "name": "Japon", "capital": "Tokyo", "continent": "asia", "region": "Asie de l'Est",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Archipel d'Asie de l'Est formé de quatre îles principales et de milliers d'îles plus petites.", "fact": "Les quatre îles principales sont Honshū, Hokkaidō, Kyūshū et Shikoku.", "sources": ["CIA — The World Factbook : Japan"] },
+        "capital": { "rarity": "common", "discovery": "Capitale du Japon, située sur l'île de Honshū.", "fact": "La ville s'appelait Edo avant d'être renommée Tokyo en 1868.", "sources": ["Encyclopædia Britannica — Tokyo"] },
+        "heritage": { "slug": "mont-fuji", "title": "Mont Fuji", "subtitle": "Honshū", "category": "culture", "rarity": "epic", "discovery": "Volcan culminant à 3 776 mètres, plus haut sommet du Japon.", "fact": "Il est inscrit au patrimoine mondial depuis 2013 comme lieu sacré et source d'inspiration artistique.", "sources": ["UNESCO — Fujisan, lieu sacré et source d'inspiration artistique"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quelle est l'altitude du mont Fuji ?", "choices": ["1 250 mètres", "3 776 mètres", "5 895 mètres", "8 849 mètres"], "answer": 1, "explanation": "Le mont Fuji culmine à 3 776 mètres ; 5 895 mètres est l'altitude du Kilimandjaro et 8 849 mètres celle de l'Everest." } }
+    },
+    {
+      "iso": "CN", "article": "la", "isoNumeric": "156", "name": "Chine", "capital": "Pékin", "continent": "asia", "region": "Asie de l'Est",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Asie de l'Est parmi les plus vastes du monde.", "fact": "Le Yangzi Jiang est le plus long fleuve d'Asie.", "sources": ["Encyclopædia Britannica — Yangtze River"] },
+        "capital": { "rarity": "common", "discovery": "Capitale de la Chine, dans le nord du pays.", "fact": "La Cité interdite fut le palais impérial des dynasties Ming et Qing.", "sources": ["UNESCO — Palais impériaux des dynasties Ming et Qing"] },
+        "heritage": { "slug": "grande-muraille", "title": "Grande Muraille", "subtitle": "Nord de la Chine", "category": "monument", "rarity": "legendary", "discovery": "Ensemble de fortifications construites et reconstruites pendant plus de deux millénaires pour protéger les frontières du nord.", "fact": "Contrairement à une idée répandue, elle n'est pas visible à l'œil nu depuis la Lune.", "sources": ["UNESCO — La Grande Muraille", "NASA — China's Wall Less Great in View from Space"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quel était le rôle principal de la Grande Muraille ?", "choices": ["Irriguer les cultures", "Défendre les frontières du nord", "Servir d'observatoire astronomique", "Délimiter les provinces"], "answer": 1, "explanation": "La muraille servait à protéger les territoires chinois des incursions venues du nord." } }
+    },
+    {
+      "iso": "IN", "article": "l'", "isoNumeric": "356", "name": "Inde", "capital": "New Delhi", "continent": "asia", "region": "Asie du Sud",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Asie du Sud qui occupe la majeure partie du sous-continent indien.", "fact": "La Constitution indienne reconnaît 22 langues dans sa huitième annexe.", "sources": ["Gouvernement de l'Inde — Constitution, huitième annexe"] },
+        "capital": { "rarity": "uncommon", "discovery": "Capitale de l'Inde, intégrée au territoire de Delhi.", "fact": "New Delhi a été inaugurée comme capitale en 1931.", "sources": ["Encyclopædia Britannica — New Delhi"] },
+        "heritage": { "slug": "taj-mahal", "title": "Taj Mahal", "subtitle": "Agra", "category": "monument", "rarity": "legendary", "discovery": "Mausolée de marbre blanc construit au XVIIe siècle sur ordre de l'empereur moghol Shah Jahan.", "fact": "Il a été édifié en mémoire de son épouse Mumtaz Mahal.", "sources": ["UNESCO — Taj Mahal"] }
+      },
+      "expedition": { "quiz": { "prompt": "Qui a fait construire le Taj Mahal ?", "choices": ["L'empereur Akbar", "L'empereur Ashoka", "L'empereur Shah Jahan", "Le roi Rajaraja"], "answer": 2, "explanation": "Shah Jahan a fait bâtir le Taj Mahal en mémoire de son épouse Mumtaz Mahal." } }
+    },
+    {
+      "iso": "KR", "article": "la", "isoNumeric": "410", "name": "Corée du Sud", "capital": "Séoul", "continent": "asia", "region": "Asie de l'Est",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Asie de l'Est occupant la moitié sud de la péninsule coréenne.", "fact": "Environ 70 % de son territoire est montagneux.", "sources": ["Encyclopædia Britannica — South Korea"] },
+        "capital": { "rarity": "common", "discovery": "Capitale de la Corée du Sud, traversée par le fleuve Han.", "fact": "Le palais Gyeongbokgung y a été construit en 1395.", "sources": ["Encyclopædia Britannica — Gyeongbok Palace"] },
+        "heritage": { "slug": "hangeul", "title": "Hangeul", "subtitle": "Alphabet coréen", "category": "culture", "rarity": "rare", "discovery": "Alphabet créé pour écrire la langue coréenne et promulgué en 1446 sous le roi Sejong le Grand.", "fact": "Il a été conçu pour être appris facilement par l'ensemble de la population.", "sources": ["UNESCO — Mémoire du monde : Hunminjeongeum Manuscript"] }
+      },
+      "expedition": { "quiz": { "prompt": "Sous quel roi l'alphabet hangeul a-t-il été promulgué ?", "choices": ["Sejong le Grand", "Taejo", "Gojong", "Gwanggaeto"], "answer": 0, "explanation": "Le hangeul a été promulgué en 1446 sous le règne de Sejong le Grand." } }
+    },
+    {
+      "iso": "VN", "article": "le", "isoNumeric": "704", "name": "Viêt Nam", "capital": "Hanoï", "continent": "asia", "region": "Asie du Sud-Est",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Asie du Sud-Est en forme de S, bordé par la mer de Chine méridionale.", "fact": "Le delta du Mékong, au sud, est une grande région rizicole.", "sources": ["Encyclopædia Britannica — Vietnam"] },
+        "capital": { "rarity": "common", "discovery": "Capitale du Viêt Nam, sur le fleuve Rouge.", "fact": "Hanoï a célébré le millénaire de sa fondation en 2010.", "sources": ["Encyclopædia Britannica — Hanoi"] },
+        "heritage": { "slug": "baie-ha-long", "title": "Baie d'Hạ Long", "subtitle": "Golfe du Tonkin", "category": "geography", "rarity": "epic", "discovery": "Baie parsemée de milliers d'îlots calcaires, inscrite au patrimoine mondial en 1994.", "fact": "Ses îlots et pitons ont été façonnés par l'érosion du calcaire pendant des millions d'années.", "sources": ["UNESCO — Baie d'Ha Long"] }
+      },
+      "expedition": { "quiz": { "prompt": "De quoi sont principalement composés les îlots de la baie d'Hạ Long ?", "choices": ["De granite", "De basalte volcanique", "De corail", "De calcaire"], "answer": 3, "explanation": "La baie est un paysage karstique : ses îlots sont en calcaire érodé." } }
+    },
+    {
+      "iso": "KH", "article": "le", "isoNumeric": "116", "name": "Cambodge", "capital": "Phnom Penh", "continent": "asia", "region": "Asie du Sud-Est",
+      "cards": {
+        "country": { "rarity": "uncommon", "discovery": "Pays d'Asie du Sud-Est traversé par le Mékong.", "fact": "Le Tonlé Sap est le plus grand lac d'eau douce d'Asie du Sud-Est.", "sources": ["UNESCO — Réserve de biosphère du Tonlé Sap"] },
+        "capital": { "rarity": "uncommon", "discovery": "Capitale du Cambodge, au confluent du Mékong et du Tonlé Sap.", "fact": "Selon la tradition, son nom évoque une colline (« phnom ») et une femme appelée Penh.", "sources": ["Encyclopædia Britannica — Phnom Penh"] },
+        "heritage": { "slug": "angkor", "title": "Angkor", "subtitle": "Siem Reap", "category": "monument", "rarity": "legendary", "discovery": "Site des capitales successives de l'Empire khmer, du IXe au XVe siècle, dont le temple d'Angkor Vat.", "fact": "Angkor Vat figure sur le drapeau national du Cambodge.", "sources": ["UNESCO — Angkor"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quel monument figure sur le drapeau du Cambodge ?", "choices": ["La pagode d'Argent", "Angkor Vat", "Borobudur", "Le Palais royal"], "answer": 1, "explanation": "La silhouette du temple d'Angkor Vat est représentée au centre du drapeau cambodgien." } }
+    },
+    {
+      "iso": "JO", "article": "la", "isoNumeric": "400", "name": "Jordanie", "capital": "Amman", "continent": "asia", "region": "Asie de l'Ouest",
+      "cards": {
+        "country": { "rarity": "uncommon", "discovery": "Pays du Proche-Orient bordé par la mer Morte.", "fact": "Les rives de la mer Morte sont le point le plus bas des terres émergées.", "sources": ["Encyclopædia Britannica — Dead Sea"] },
+        "capital": { "rarity": "common", "discovery": "Capitale de la Jordanie, bâtie à l'origine sur plusieurs collines.", "fact": "Dans l'Antiquité, la ville portait le nom de Philadelphie.", "sources": ["Encyclopædia Britannica — Amman"] },
+        "heritage": { "slug": "petra", "title": "Pétra", "subtitle": "Wadi Musa", "category": "monument", "rarity": "epic", "discovery": "Cité nabatéenne aux façades taillées dans le grès, inscrite au patrimoine mondial en 1985.", "fact": "Pétra était un carrefour des routes caravanières entre l'Arabie, l'Égypte et la Méditerranée.", "sources": ["UNESCO — Petra"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quel peuple a fait de Pétra sa capitale ?", "choices": ["Les Romains", "Les Phéniciens", "Les Nabatéens", "Les Ottomans"], "answer": 2, "explanation": "Pétra était la capitale du royaume nabatéen avant son annexion par Rome." } }
+    },
+    {
+      "iso": "TR", "article": "la", "isoNumeric": "792", "name": "Turquie", "capital": "Ankara", "continent": "asia", "region": "Asie de l'Ouest",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays situé à cheval entre l'Asie et l'Europe.", "fact": "Istanbul, sa plus grande ville, s'étend sur les deux rives du Bosphore.", "sources": ["Encyclopædia Britannica — Turkey"] },
+        "capital": { "rarity": "uncommon", "discovery": "Capitale de la Turquie, au cœur de l'Anatolie.", "fact": "Ankara est devenue la capitale en 1923, à la place d'Istanbul.", "sources": ["Encyclopædia Britannica — Ankara"] },
+        "heritage": { "slug": "sainte-sophie", "title": "Sainte-Sophie", "subtitle": "Istanbul", "category": "monument", "rarity": "epic", "discovery": "Édifice achevé en 537 sous l'empereur byzantin Justinien, célèbre pour sa vaste coupole.", "fact": "Elle fait partie des zones historiques d'Istanbul inscrites au patrimoine mondial.", "sources": ["UNESCO — Zones historiques d'Istanbul"] }
+      },
+      "expedition": { "quiz": { "prompt": "Sous quel empereur byzantin l'actuelle Sainte-Sophie a-t-elle été construite ?", "choices": ["Justinien", "Constantin", "Théodose", "Basile II"], "answer": 0, "explanation": "L'édifice actuel a été construit sous Justinien et achevé en 537." } }
+    },
+    {
+      "iso": "EG", "article": "l'", "isoNumeric": "818", "name": "Égypte", "capital": "Le Caire", "continent": "africa", "region": "Afrique du Nord",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Afrique du Nord-Est traversé par le Nil.", "fact": "La grande majorité de la population vit le long du Nil et dans son delta.", "sources": ["CIA — The World Factbook : Egypt"] },
+        "capital": { "rarity": "common", "discovery": "Capitale de l'Égypte, sur les rives du Nil.", "fact": "Le Caire historique est inscrit au patrimoine mondial depuis 1979.", "sources": ["UNESCO — Le Caire historique"] },
+        "heritage": { "slug": "pyramides-de-gizeh", "title": "Pyramides de Gizeh", "subtitle": "Gizeh", "category": "monument", "rarity": "legendary", "discovery": "Nécropole royale de l'Ancien Empire, dont la Grande Pyramide construite pour le pharaon Khéops.", "fact": "La Grande Pyramide est la seule des Sept Merveilles du monde antique encore debout.", "sources": ["UNESCO — Memphis et sa nécropole", "Encyclopædia Britannica — Pyramids of Giza"] }
+      },
+      "expedition": { "quiz": { "prompt": "Pour quel pharaon la Grande Pyramide de Gizeh a-t-elle été construite ?", "choices": ["Ramsès II", "Toutânkhamon", "Akhenaton", "Khéops"], "answer": 3, "explanation": "La Grande Pyramide est le tombeau du pharaon Khéops, de la IVe dynastie." } }
+    },
+    {
+      "iso": "MA", "article": "le", "isoNumeric": "504", "name": "Maroc", "capital": "Rabat", "continent": "africa", "region": "Afrique du Nord",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Afrique du Nord bordé par l'océan Atlantique et la mer Méditerranée.", "fact": "Les montagnes de l'Atlas traversent le pays.", "sources": ["Encyclopædia Britannica — Morocco"] },
+        "capital": { "rarity": "uncommon", "discovery": "Capitale du Maroc, sur la côte atlantique.", "fact": "Rabat est inscrite au patrimoine mondial depuis 2012.", "sources": ["UNESCO — Rabat, capitale moderne et ville historique"] },
+        "heritage": { "slug": "medina-de-fes", "title": "Médina de Fès", "subtitle": "Fès", "category": "monument", "rarity": "rare", "discovery": "Vieille ville de Fès, inscrite au patrimoine mondial en 1981.", "fact": "On y trouve la mosquée-université al-Qaraouiyine, fondée selon la tradition en 859.", "sources": ["UNESCO — Médina de Fès"] }
+      },
+      "expedition": { "quiz": { "prompt": "En quelle année la mosquée-université al-Qaraouiyine a-t-elle été fondée selon la tradition ?", "choices": ["859", "1200", "1453", "1789"], "answer": 0, "explanation": "La tradition fait remonter sa fondation à 859, par Fatima al-Fihri." } }
+    },
+    {
+      "iso": "SN", "article": "le", "isoNumeric": "686", "name": "Sénégal", "capital": "Dakar", "continent": "africa", "region": "Afrique de l'Ouest",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Afrique de l'Ouest ouvert sur l'océan Atlantique.", "fact": "Le fleuve Sénégal marque une partie de sa frontière nord.", "sources": ["Encyclopædia Britannica — Senegal"] },
+        "capital": { "rarity": "common", "discovery": "Capitale du Sénégal, sur la presqu'île du Cap-Vert.", "fact": "La pointe des Almadies, près de Dakar, est le point le plus occidental de l'Afrique continentale.", "sources": ["Encyclopædia Britannica — Dakar"] },
+        "heritage": { "slug": "ile-de-goree", "title": "Île de Gorée", "subtitle": "Dakar", "category": "history", "rarity": "rare", "discovery": "Petite île au large de Dakar, inscrite au patrimoine mondial en 1978.", "fact": "Elle est devenue un lieu de mémoire de la traite atlantique des esclaves.", "sources": ["UNESCO — Île de Gorée"] }
+      },
+      "expedition": { "quiz": { "prompt": "Que commémore aujourd'hui l'île de Gorée ?", "choices": ["L'indépendance du Sénégal", "La traite atlantique des esclaves", "La fondation de Dakar", "Les grandes explorations portugaises"], "answer": 1, "explanation": "Gorée est un lieu de mémoire de la traite atlantique, symbole de la souffrance des personnes déportées." } }
+    },
+    {
+      "iso": "ET", "article": "l'", "isoNumeric": "231", "name": "Éthiopie", "capital": "Addis-Abeba", "continent": "africa", "region": "Afrique de l'Est",
+      "cards": {
+        "country": { "rarity": "uncommon", "discovery": "Pays de la Corne de l'Afrique dominé par de hauts plateaux.", "fact": "L'Éthiopie utilise son propre calendrier, qui compte treize mois.", "sources": ["Encyclopædia Britannica — Ethiopian calendar"] },
+        "capital": { "rarity": "common", "discovery": "Capitale de l'Éthiopie et l'une des capitales les plus élevées du monde.", "fact": "La ville accueille le siège de l'Union africaine.", "sources": ["Union africaine — Siège"] },
+        "heritage": { "slug": "eglises-de-lalibela", "title": "Églises de Lalibela", "subtitle": "Amhara", "category": "monument", "rarity": "epic", "discovery": "Onze églises médiévales taillées directement dans la roche, inscrites au patrimoine mondial en 1978.", "fact": "Elles demeurent un lieu de pèlerinage pour les chrétiens orthodoxes éthiopiens.", "sources": ["UNESCO — Églises creusées dans le roc de Lalibela"] }
+      },
+      "expedition": { "quiz": { "prompt": "Comment les églises de Lalibela ont-elles été construites ?", "choices": ["En briques cuites", "En bois de cèdre", "Taillées directement dans la roche", "En pierres importées"], "answer": 2, "explanation": "Les églises ont été creusées et sculptées dans la roche volcanique, d'un seul bloc." } }
+    },
+    {
+      "iso": "TZ", "article": "la", "isoNumeric": "834", "name": "Tanzanie", "capital": "Dodoma", "continent": "africa", "region": "Afrique de l'Est",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Afrique de l'Est bordé par l'océan Indien.", "fact": "L'archipel de Zanzibar fait partie de la Tanzanie.", "sources": ["CIA — The World Factbook : Tanzania"] },
+        "capital": { "rarity": "uncommon", "discovery": "Capitale officielle de la Tanzanie, au centre du pays.", "fact": "Dar es Salaam, la plus grande ville, reste le principal centre économique.", "sources": ["Encyclopædia Britannica — Dodoma"] },
+        "heritage": { "slug": "kilimandjaro", "title": "Kilimandjaro", "subtitle": "Nord de la Tanzanie", "category": "geography", "rarity": "epic", "discovery": "Massif volcanique isolé qui culmine à 5 895 mètres.", "fact": "C'est le plus haut sommet d'Afrique.", "sources": ["UNESCO — Parc national du Kilimandjaro"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quel est le plus haut sommet d'Afrique ?", "choices": ["Le mont Kenya", "Le Ras Dashen", "Le mont Cameroun", "Le Kilimandjaro"], "answer": 3, "explanation": "Le Kilimandjaro, en Tanzanie, culmine à 5 895 mètres." } }
+    },
+    {
+      "iso": "ZA", "article": "l'", "isoNumeric": "710", "name": "Afrique du Sud", "capital": "Pretoria", "continent": "africa", "region": "Afrique australe",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays situé à la pointe sud du continent africain.", "fact": "Le pays reconnaît douze langues officielles, dont la langue des signes sud-africaine depuis 2023.", "sources": ["Gouvernement sud-africain — Constitution Eighteenth Amendment Act (2023)"] },
+        "capital": { "rarity": "uncommon", "discovery": "Siège du gouvernement de l'Afrique du Sud.", "fact": "Le pays compte trois capitales : Pretoria (exécutif), Le Cap (législatif) et Bloemfontein (judiciaire).", "sources": ["Gouvernement sud-africain — South Africa's provinces"] },
+        "heritage": { "slug": "robben-island", "title": "Robben Island", "subtitle": "Baie de la Table", "category": "history", "rarity": "rare", "discovery": "Île au large du Cap qui servit de prison politique, inscrite au patrimoine mondial en 1999.", "fact": "Nelson Mandela y a passé 18 de ses 27 années de détention.", "sources": ["UNESCO — Robben Island", "Nelson Mandela Foundation — Biographie"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quelle personnalité a été emprisonnée pendant 18 ans sur Robben Island ?", "choices": ["Desmond Tutu", "Nelson Mandela", "Steve Biko", "Thabo Mbeki"], "answer": 1, "explanation": "Nelson Mandela a passé 18 années sur Robben Island avant d'être transféré, puis libéré en 1990." } }
+    },
+    {
+      "iso": "CA", "article": "le", "isoNumeric": "124", "name": "Canada", "capital": "Ottawa", "continent": "north_america", "region": "Amérique septentrionale",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Deuxième plus grand pays du monde par la superficie.", "fact": "Le Canada possède le plus long littoral du monde.", "sources": ["CIA — The World Factbook : Canada"] },
+        "capital": { "rarity": "common", "discovery": "Capitale du Canada, en Ontario, à la frontière du Québec.", "fact": "Le canal Rideau, qui traverse la ville, est inscrit au patrimoine mondial depuis 2007.", "sources": ["UNESCO — Canal Rideau"] },
+        "heritage": { "slug": "bilinguisme-canadien", "title": "Bilinguisme canadien", "subtitle": "Langues officielles", "category": "culture", "rarity": "uncommon", "discovery": "Au niveau fédéral, le Canada reconnaît deux langues officielles : l'anglais et le français.", "fact": "La Loi sur les langues officielles a été adoptée en 1969.", "sources": ["Commissariat aux langues officielles du Canada"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quelles sont les langues officielles du Canada au niveau fédéral ?", "choices": ["L'anglais seulement", "L'anglais et le français", "Le français et l'inuktitut", "L'anglais et l'espagnol"], "answer": 1, "explanation": "L'anglais et le français sont les deux langues officielles fédérales depuis 1969." } }
+    },
+    {
+      "iso": "US", "article": "les", "isoNumeric": "840", "name": "États-Unis", "capital": "Washington", "continent": "north_america", "region": "Amérique septentrionale",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Amérique du Nord composé de 50 États.", "fact": "L'Alaska et Hawaï ne sont pas contigus aux 48 autres États.", "sources": ["CIA — The World Factbook : United States"] },
+        "capital": { "rarity": "common", "discovery": "Capitale fédérale des États-Unis, dans le district de Columbia.", "fact": "La ville porte le nom de George Washington, premier président du pays.", "sources": ["Encyclopædia Britannica — Washington, D.C."] },
+        "heritage": { "slug": "grand-canyon", "title": "Grand Canyon", "subtitle": "Arizona", "category": "geography", "rarity": "epic", "discovery": "Gorge spectaculaire creusée par le fleuve Colorado, inscrite au patrimoine mondial en 1979.", "fact": "Ses parois révèlent des couches rocheuses formées sur des centaines de millions d'années.", "sources": ["UNESCO — Parc national du Grand Canyon", "U.S. National Park Service — Grand Canyon"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quel cours d'eau a creusé le Grand Canyon ?", "choices": ["Le Mississippi", "Le Missouri", "Le Colorado", "Le Rio Grande"], "answer": 2, "explanation": "Le fleuve Colorado a creusé le canyon au fil de millions d'années." } }
+    },
+    {
+      "iso": "MX", "article": "le", "isoNumeric": "484", "name": "Mexique", "capital": "Mexico", "continent": "north_america", "region": "Amérique centrale",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays bordé par l'océan Pacifique et le golfe du Mexique.", "fact": "Le Mexique est le pays hispanophone le plus peuplé du monde.", "sources": ["Instituto Cervantes — El español: una lengua viva"] },
+        "capital": { "rarity": "common", "discovery": "Capitale du Mexique, bâtie sur le site de l'ancienne Tenochtitlan aztèque.", "fact": "La ville se situe à plus de 2 200 mètres d'altitude.", "sources": ["Encyclopædia Britannica — Mexico City"] },
+        "heritage": { "slug": "chichen-itza", "title": "Chichén Itzá", "subtitle": "Yucatán", "category": "monument", "rarity": "epic", "discovery": "Grande cité maya de la péninsule du Yucatán, inscrite au patrimoine mondial en 1988.", "fact": "Sa pyramide principale, El Castillo, est aussi appelée temple de Kukulcán.", "sources": ["UNESCO — Ville préhispanique de Chichen-Itza"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quelle civilisation a bâti Chichén Itzá ?", "choices": ["Les Mayas", "Les Aztèques", "Les Incas", "Les Olmèques"], "answer": 0, "explanation": "Chichén Itzá est une cité maya du Yucatán." } }
+    },
+    {
+      "iso": "BR", "article": "le", "isoNumeric": "076", "name": "Brésil", "capital": "Brasília", "continent": "south_america", "region": "Amérique du Sud",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Le plus grand pays d'Amérique du Sud.", "fact": "Le portugais y est la langue officielle.", "sources": ["CIA — The World Factbook : Brazil"] },
+        "capital": { "rarity": "uncommon", "discovery": "Capitale du Brésil depuis 1960, construite spécialement pour ce rôle.", "fact": "Son plan, conçu par Lúcio Costa, évoque la silhouette d'un avion ou d'un oiseau.", "sources": ["UNESCO — Brasilia"] },
+        "heritage": { "slug": "foret-amazonienne", "title": "Forêt amazonienne", "subtitle": "Bassin amazonien", "category": "geography", "rarity": "epic", "discovery": "Plus grande forêt tropicale du monde, dont environ 60 % se trouve au Brésil.", "fact": "Elle est traversée par l'Amazone et ses nombreux affluents.", "sources": ["Encyclopædia Britannica — Amazon Rainforest"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quel fleuve traverse la forêt amazonienne ?", "choices": ["Le Paraná", "L'Orénoque", "L'Amazone", "Le São Francisco"], "answer": 2, "explanation": "L'Amazone et ses affluents drainent l'ensemble du bassin amazonien." } }
+    },
+    {
+      "iso": "AR", "article": "l'", "isoNumeric": "032", "name": "Argentine", "capital": "Buenos Aires", "continent": "south_america", "region": "Amérique du Sud",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Amérique du Sud qui s'étend des Andes à l'océan Atlantique.", "fact": "L'Aconcagua, plus haut sommet des Amériques, se trouve en Argentine.", "sources": ["Encyclopædia Britannica — Aconcagua"] },
+        "capital": { "rarity": "common", "discovery": "Capitale de l'Argentine, sur le Río de la Plata.", "fact": "Ses habitants sont appelés les « porteños ».", "sources": ["Encyclopædia Britannica — Buenos Aires"] },
+        "heritage": { "slug": "tango", "title": "Tango", "subtitle": "Río de la Plata", "category": "culture", "rarity": "rare", "discovery": "Musique et danse nées dans la région du Río de la Plata, entre l'Argentine et l'Uruguay.", "fact": "Le tango est inscrit au patrimoine culturel immatériel de l'UNESCO depuis 2009.", "sources": ["UNESCO — Le tango"] }
+      },
+      "expedition": { "quiz": { "prompt": "Dans quelle région le tango est-il né ?", "choices": ["La Patagonie", "Le Río de la Plata", "La cordillère des Andes", "La Terre de Feu"], "answer": 1, "explanation": "Le tango est né dans les villes du Río de la Plata, notamment Buenos Aires et Montevideo." } }
+    },
+    {
+      "iso": "PE", "article": "le", "isoNumeric": "604", "name": "Pérou", "capital": "Lima", "continent": "south_america", "region": "Amérique du Sud",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Pays d'Amérique du Sud traversé par la cordillère des Andes.", "fact": "Le lac Titicaca est partagé avec la Bolivie.", "sources": ["Encyclopædia Britannica — Lake Titicaca"] },
+        "capital": { "rarity": "common", "discovery": "Capitale du Pérou, sur la côte pacifique.", "fact": "Lima a été fondée en 1535 par le conquistador Francisco Pizarro.", "sources": ["Encyclopædia Britannica — Lima"] },
+        "heritage": { "slug": "machu-picchu", "title": "Machu Picchu", "subtitle": "Cusco", "category": "monument", "rarity": "legendary", "discovery": "Citadelle inca du XVe siècle perchée dans les Andes, inscrite au patrimoine mondial en 1983.", "fact": "Le site domine la vallée de l'Urubamba à environ 2 400 mètres d'altitude.", "sources": ["UNESCO — Sanctuaire historique de Machu Picchu"] }
+      },
+      "expedition": { "quiz": { "prompt": "Quelle civilisation a bâti le Machu Picchu ?", "choices": ["Les Mayas", "Les Aztèques", "Les Olmèques", "Les Incas"], "answer": 3, "explanation": "Le Machu Picchu a été construit par les Incas au XVe siècle." } }
+    },
+    {
+      "iso": "CL", "article": "le", "isoNumeric": "152", "name": "Chili", "capital": "Santiago", "continent": "south_america", "region": "Amérique du Sud",
+      "cards": {
+        "country": { "rarity": "uncommon", "discovery": "Pays long et étroit entre la cordillère des Andes et l'océan Pacifique.", "fact": "Le désert d'Atacama, au nord, est l'un des plus arides du monde.", "sources": ["Encyclopædia Britannica — Atacama Desert"] },
+        "capital": { "rarity": "common", "discovery": "Capitale du Chili, au pied de la cordillère des Andes.", "fact": "Elle a été fondée en 1541 par Pedro de Valdivia.", "sources": ["Encyclopædia Britannica — Santiago"] },
+        "heritage": { "slug": "moai-rapa-nui", "title": "Moaï de Rapa Nui", "subtitle": "Île de Pâques", "category": "monument", "rarity": "epic", "discovery": "Statues monumentales sculptées par les habitants de Rapa Nui, l'île de Pâques.", "fact": "Le parc national de Rapa Nui est inscrit au patrimoine mondial depuis 1995.", "sources": ["UNESCO — Parc national de Rapa Nui"] }
+      },
+      "expedition": { "quiz": { "prompt": "Comment s'appellent les statues monumentales de l'île de Pâques ?", "choices": ["Les moaï", "Les menhirs", "Les totems", "Les inukshuks"], "answer": 0, "explanation": "Les moaï ont été sculptés par la population rapanui." } }
+    },
+    {
+      "iso": "AU", "article": "l'", "isoNumeric": "036", "name": "Australie", "capital": "Canberra", "continent": "oceania", "region": "Australie et Nouvelle-Zélande",
+      "cards": {
+        "country": { "rarity": "common", "discovery": "Vaste pays de l'hémisphère Sud, entre l'océan Indien et l'océan Pacifique.", "fact": "L'Australie est une fédération de six États et de plusieurs territoires.", "sources": ["CIA — The World Factbook : Australia"] },
+        "capital": { "rarity": "uncommon", "discovery": "Capitale de l'Australie, ville entièrement planifiée.", "fact": "Son emplacement a été choisi comme compromis entre Sydney et Melbourne.", "sources": ["Encyclopædia Britannica — Canberra"] },
+        "heritage": { "slug": "grande-barriere-de-corail", "title": "Grande Barrière de corail", "subtitle": "Queensland", "category": "geography", "rarity": "legendary", "discovery": "Plus grand ensemble de récifs coralliens du monde, au large du Queensland.", "fact": "Elle est inscrite au patrimoine mondial depuis 1981.", "sources": ["UNESCO — Grande Barrière"] }
+      },
+      "expedition": { "quiz": { "prompt": "Au large de quel État australien se trouve la Grande Barrière de corail ?", "choices": ["Victoria", "Tasmanie", "Australie-Occidentale", "Queensland"], "answer": 3, "explanation": "La Grande Barrière s'étend le long de la côte nord-est, au large du Queensland." } }
+    },
+    {
+      "iso": "NZ", "article": "la", "isoNumeric": "554", "name": "Nouvelle-Zélande", "capital": "Wellington", "continent": "oceania", "region": "Australie et Nouvelle-Zélande",
+      "cards": {
+        "country": { "rarity": "uncommon", "discovery": "Pays insulaire du Pacifique Sud composé de deux îles principales.", "fact": "En langue māori, le pays est appelé Aotearoa.", "sources": ["Encyclopædia Britannica — New Zealand"] },
+        "capital": { "rarity": "common", "discovery": "Capitale de la Nouvelle-Zélande, à la pointe sud de l'île du Nord.", "fact": "C'est la capitale d'État souverain la plus australe du monde.", "sources": ["Encyclopædia Britannica — Wellington"] },
+        "heritage": { "slug": "te-reo-maori", "title": "Te reo māori", "subtitle": "Langue māori", "category": "culture", "rarity": "rare", "discovery": "Langue du peuple māori, reconnue langue officielle de la Nouvelle-Zélande en 1987.", "fact": "Sa reconnaissance officielle découle de la loi sur la langue māori (Maori Language Act).", "sources": ["Te Taura Whiri i te Reo Māori — Commission de la langue māori"] }
+      },
+      "expedition": { "quiz": { "prompt": "En quelle année le te reo māori est-il devenu langue officielle ?", "choices": ["1840", "1907", "1987", "2015"], "answer": 2, "explanation": "Le Maori Language Act de 1987 a fait du te reo māori une langue officielle." } }
+    }
+  ]
+}
