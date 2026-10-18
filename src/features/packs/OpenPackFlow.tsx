@@ -30,7 +30,7 @@ import { AtlasCard } from '@/features/cards/AtlasCard';
 import type { Catalog } from '@/features/catalog/types';
 import { useOpenPack, type OpeningResult } from '@/features/packs/api';
 import { ParticleBurst, ScreenFlash, Shockwave } from '@/features/packs/effects';
-import { bestRarity, initialOpeningState, openingReducer, revealOrder } from '@/features/packs/opening-machine';
+import { initialOpeningState, openingReducer, revealOrder } from '@/features/packs/opening-machine';
 import { packTheme, PackVisual } from '@/features/packs/PackVisual';
 import { REVEAL_EFFECTS, RevealCard } from '@/features/packs/RevealCard';
 import { useCompleteOnboarding } from '@/features/player/api';
@@ -92,8 +92,10 @@ export function OpenPackFlow({
   const float = useSharedValue(0);
   const shake = useSharedValue(0);
   const burst = useSharedValue(0);
-  // Couleur de la meilleure rareté obtenue : l'éclatement du paquet annonce ce qui l'attend.
-  const [burstColor, setBurstColor] = useState<string | null>(null);
+  /** true le temps de l’éclatement (particules), sans spoiler de rareté. */
+  const [bursting, setBursting] = useState(false);
+  /** Horodatage avant lequel on refuse « carte suivante » (anti-spam). */
+  const revealUnlockAt = useRef(0);
   /** Fragments déjà convertis pendant cette ouverture (le solde de base vient du résultat serveur). */
   const [gainedFragments, setGainedFragments] = useState(0);
   const [fragmentGain, setFragmentGain] = useState<number | null>(null);
@@ -116,7 +118,7 @@ export function OpenPackFlow({
     if (state.phase !== 'sealed' && state.phase !== 'error') return;
     haptic('reveal');
     setOpeningSlug(inventorySlug);
-    setBurstColor(null);
+    setBursting(false);
     burst.set(0);
     dispatch({ type: 'OPEN' });
     startedAt.current = Date.now();
@@ -135,12 +137,14 @@ export function OpenPackFlow({
         const burstTimer = setTimeout(() => {
           cancelAnimation(shake);
           shake.set(withTiming(0, { duration: 80 }));
-          const best = bestRarity(result.cards, rank);
-          const bestRank = best ? rank(best) : 0;
-          haptic(bestRank >= 6 ? 'mythic' : bestRank >= 5 ? 'legendary' : bestRank >= 3 ? 'rare' : 'reveal');
-          setBurstColor(best ? rarityStyles[best].color : colors.gold);
+          // Haptique neutre : on ne spoile pas la meilleure rareté du tirage.
+          haptic('reveal');
+          setBursting(true);
           burst.set(withTiming(1, { duration: BURST_MS, easing: Easing.out(Easing.cubic) }));
-          const revealTimer = setTimeout(() => dispatch({ type: 'RESOLVED', result }), BURST_MS);
+          const revealTimer = setTimeout(() => {
+            setBursting(false);
+            dispatch({ type: 'RESOLVED', result });
+          }, BURST_MS);
           timers.current.push(revealTimer);
         }, charge);
         timers.current.push(burstTimer);
@@ -150,7 +154,7 @@ export function OpenPackFlow({
         shake.set(0);
         lift.set(0);
         burst.set(0);
-        setBurstColor(null);
+        setBursting(false);
         const appError = toAppError(error);
         haptic('error');
         dispatch({
@@ -197,10 +201,44 @@ export function OpenPackFlow({
   const current = state.phase === 'revealing' ? ordered[state.index] : undefined;
   const currentRank = current ? rank(current.rarity) : 0;
   const prestigeKind = currentRank >= 6 ? 'mythic' : currentRank >= 5 ? 'legendary' : null;
+  const isPrestigeReveal = prestigeKind !== null;
   const flashKey =
     state.phase === 'revealing' && state.flipped && prestigeKind && !reduceMotion
       ? `${current?.slot}-${state.index}`
       : null;
+
+  // Anti-spam : après retournement, on attend la fin de l’anim (prestige) ou un court dwell (autres).
+  useEffect(() => {
+    if (state.phase !== 'revealing' || !current) {
+      revealUnlockAt.current = 0;
+      return;
+    }
+    if (!state.flipped) {
+      revealUnlockAt.current = 0;
+      return;
+    }
+    const effect = REVEAL_EFFECTS[current.rarity as keyof typeof REVEAL_EFFECTS];
+    if (reduceMotion) {
+      revealUnlockAt.current = Date.now() + 180;
+      return;
+    }
+    // Prestige : hold + flip complets. Autres : dès que la face est visible (~mi-flip) + court dwell.
+    const lockMs = isPrestigeReveal
+      ? effect.suspend + effect.flip + 280
+      : Math.max(360, effect.suspend + effect.flip * 0.55 + 160);
+    revealUnlockAt.current = Date.now() + lockMs;
+  }, [state, current, isPrestigeReveal, reduceMotion]);
+
+  const onRevealStep = useCallback(() => {
+    if (state.phase !== 'revealing' || !current) return;
+    if (!state.flipped) {
+      dispatch({ type: 'FLIP' });
+      return;
+    }
+    if (Date.now() < revealUnlockAt.current) return;
+    dispatch({ type: 'NEXT' });
+  }, [state, current]);
+
   useEffect(() => {
     if (state.phase !== 'revealing' || !state.flipped || !current) return;
     haptic(currentRank >= 6 ? 'mythic' : currentRank >= 5 ? 'legendary' : currentRank >= 3 ? 'rare' : 'reveal');
@@ -251,16 +289,6 @@ export function OpenPackFlow({
       ],
     };
   });
-  const auraStyle = useAnimatedStyle(() => {
-    const b = burst.get();
-    // Pic d'éclat au milieu de l'éclatement ; opacité basse pour rester un halo.
-    const peak = b * (1 - b) * 4;
-    return {
-      opacity: lift.get() * 0.2 * (1 - b) + peak * 0.35,
-      transform: [{ scale: 0.75 + lift.get() * 0.25 + b * 0.85 }],
-    };
-  });
-
   if (data.status === 'loading') return <LoadingState />;
   if (data.status === 'error') return <ErrorState message={toAppError(data.error).message} onRetry={data.retry} />;
 
@@ -280,7 +308,7 @@ export function OpenPackFlow({
         <Text variant="overline" color={colors.textMuted} style={styles.topTitle} align="center">
           {packDef ? `Paquet ${packDef.name}` : 'Ouverture'}
         </Text>
-        {state.phase === 'revealing' ? (
+        {state.phase === 'revealing' && !isPrestigeReveal ? (
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Passer l’animation et voir toutes les cartes"
@@ -301,18 +329,17 @@ export function OpenPackFlow({
         <View style={styles.center}>
           {packSlug ? (
             <View style={styles.packStage}>
-              <Animated.View
-                pointerEvents="none"
-                style={[
-                  styles.packAura,
-                  { backgroundColor: burstColor ?? packTheme(packSlug).accent },
-                  auraStyle,
-                ]}
-              />
-              {burstColor ? (
+              {bursting ? (
                 <View pointerEvents="none" style={StyleSheet.absoluteFill}>
-                  <Shockwave color={burstColor} size={280} duration={BURST_MS} />
-                  <ParticleBurst count={22} color={burstColor} distance={160} duration={BURST_MS} gravity={18} />
+                  <Shockwave color={packTheme(packSlug).accent} size={280} duration={BURST_MS} />
+                  <ParticleBurst
+                    count={18}
+                    color={packTheme(packSlug).accent}
+                    secondary="#FFFFFF"
+                    distance={150}
+                    duration={BURST_MS}
+                    gravity={18}
+                  />
                 </View>
               ) : null}
               <Pressable
@@ -397,7 +424,7 @@ export function OpenPackFlow({
             fragments={current.fragments_awarded}
             flipped={state.flipped}
             reduceMotion={reduceMotion}
-            onPress={() => dispatch({ type: 'NEXT' })}
+            onPress={onRevealStep}
             onDuplicateConvert={(gained) => {
               setGainedFragments((n) => n + gained);
               setFragmentGain(gained);
@@ -424,7 +451,7 @@ export function OpenPackFlow({
                   ? 'Voir le récapitulatif'
                   : 'Carte suivante'
             }
-            onPress={() => dispatch({ type: 'NEXT' })}
+            onPress={onRevealStep}
             style={styles.wide}
           />
         </View>
@@ -710,14 +737,6 @@ const styles = StyleSheet.create({
   dots: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   dot: { width: 8, height: 8, borderRadius: 4 },
   packStage: { width: 300, height: 400, alignItems: 'center', justifyContent: 'center', overflow: 'visible' },
-  // Halo coloré sans ombre/elevation : sur Android, elevation + fond transparent
-  // dessinait un rectangle noir derrière le paquet.
-  packAura: {
-    position: 'absolute',
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-  },
   revealInfo: { minHeight: 24 },
   wide: { alignSelf: 'stretch' },
   summary: { padding: spacing.lg, gap: spacing.lg },

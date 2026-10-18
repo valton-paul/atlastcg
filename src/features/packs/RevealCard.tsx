@@ -287,6 +287,7 @@ export function RevealCard({
   const isLegendary = card.rarity === 'legendary';
   const isMythic = card.rarity === 'mythic';
   const isPrestige = isLegendary || isMythic;
+  const instantFlip = reduceMotion;
   const enter = useSharedValue(reduceMotion ? 1 : 0);
   const flip = useSharedValue(0);
   const glow = useSharedValue(0);
@@ -315,7 +316,7 @@ export function RevealCard({
 
   useEffect(() => {
     if (!flipped) return;
-    if (reduceMotion) {
+    if (instantFlip) {
       flip.set(1);
       glow.set(effect.halo);
       return;
@@ -359,7 +360,7 @@ export function RevealCard({
         ),
       );
     }
-  }, [flipped, reduceMotion, effect, flip, glow, shake, isMythic, isPrestige]);
+  }, [flipped, instantFlip, effect, flip, glow, shake, isMythic, isPrestige]);
 
   const containerStyle = useAnimatedStyle(() => ({
     opacity: Math.min(1, enter.get() * 1.5),
@@ -373,7 +374,7 @@ export function RevealCard({
     transform: [{ scale: 1 + Math.sin(flip.get() * Math.PI) * (isPrestige ? 0.12 : 0.06) }],
   }));
   const backStyle = useAnimatedStyle(() =>
-    reduceMotion
+    instantFlip
       ? { opacity: 1 - flip.get() }
       : {
           transform: [{ perspective: 1100 }, { rotateY: `${interpolate(flip.get(), [0, 1], [0, 180])}deg` }],
@@ -381,7 +382,7 @@ export function RevealCard({
         },
   );
   const frontStyle = useAnimatedStyle(() =>
-    reduceMotion
+    instantFlip
       ? { opacity: flip.get() }
       : {
           transform: [{ perspective: 1100 }, { rotateY: `${interpolate(flip.get(), [0, 1], [180, 360])}deg` }],
