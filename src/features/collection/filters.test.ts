@@ -1,3 +1,4 @@
+import { rarityStyles } from '@/design-system/tokens';
 import { makeCatalog, owned, ownedMap } from '@/test-utils/fixtures';
 
 import { DEFAULT_FILTERS, filterCards, normalizeSearch } from './filters';
@@ -35,9 +36,14 @@ describe('filterCards', () => {
     expect(normalizeSearch('  Éthiopie ')).toBe('ethiopie');
   });
 
-  it('trie par pays (pays puis capitale), par rareté ou par date', () => {
-    expect(slugs({ continent: 'europe' })).toEqual(['pays-fr', 'capitale-fr', 'mont-saint-michel']);
-    expect(slugs({ sort: 'rarity' })[0]).toBe('fuji');
+  it('trie par défaut de la plus rare à la plus commune', () => {
+    const ranks = filterCards(catalog, map, DEFAULT_FILTERS).map((c) => rarityStyles[c.rarity].rank);
+    expect(ranks).toEqual([...ranks].sort((a, b) => b - a));
+    expect(slugs({})[0]).toBe('fuji');
+  });
+
+  it('trie aussi par pays (pays puis capitale) ou par date', () => {
+    expect(slugs({ continent: 'europe', sort: 'country' })).toEqual(['pays-fr', 'capitale-fr', 'mont-saint-michel']);
     expect(slugs({ sort: 'recent', ownership: 'owned' })).toEqual(['fuji', 'pays-fr']);
   });
 });

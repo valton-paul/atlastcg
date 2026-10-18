@@ -39,8 +39,8 @@ const OWNERSHIP: OwnershipFilter[] = ['owned', 'new', 'duplicates', 'missing', '
 const COLLECTION_DEFAULTS: CardFilters = { ...DEFAULT_FILTERS, ownership: 'owned' };
 const RARITIES: Rarity[] = ['common', 'uncommon', 'rare', 'epic', 'legendary'];
 const SORTS: { key: SortOrder; label: string }[] = [
+  { key: 'rarity', label: 'Plus rares d’abord' },
   { key: 'country', label: 'Par pays' },
-  { key: 'rarity', label: 'Par rareté' },
   { key: 'recent', label: 'Récentes' },
 ];
 
@@ -70,7 +70,7 @@ export default function CollectionScreen() {
   const columns = width >= 1000 ? 6 : width >= 700 ? 4 : width >= 420 ? 3 : 2;
   const cardWidth = Math.floor((width - spacing.lg * 2 - spacing.md * (columns - 1)) / columns);
   const newIds = [...player.ownedCards.values()].filter((c) => !c.seen_at).map((c) => c.card_id);
-  const activeFilterCount = (filters.continent ? 1 : 0) + (filters.sort !== 'country' ? 1 : 0);
+  const activeFilterCount = (filters.continent ? 1 : 0) + (filters.sort !== DEFAULT_FILTERS.sort ? 1 : 0);
 
   const header = (
     <View style={styles.header}>

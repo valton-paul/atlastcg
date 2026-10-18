@@ -9,12 +9,10 @@ import { colors, spacing } from '@/design-system/tokens';
 import type { CountryState } from '@/features/collection/progress';
 
 import mapData from './data/world-map.json';
-import { clamp, clampTranslation, focusViewport, MAX_SCALE, MIN_SCALE } from './viewport';
+import { clamp, clampTranslation, focusViewport, geometry, MAX_SCALE, MIN_SCALE } from './viewport';
 
 type MapCountry = { id: string; name: string; d: string; cx: number; cy: number };
 const MAP = mapData as { width: number; height: number; countries: MapCountry[] };
-
-export const MAP_ASPECT = MAP.height / MAP.width;
 
 export const STATE_FILL: Record<CountryState, string> = {
   unknown: colors.map.unknown,
@@ -30,11 +28,15 @@ export function mapCountryByNumeric(isoNumeric: string): MapCountry | undefined 
 
 type Props = {
   width: number;
+  height: number;
   /** États indexés par code ISO numérique, uniquement pour les pays du catalogue. */
   states: ReadonlyMap<string, CountryState>;
   selected: string | null;
   onSelect: (isoNumeric: string) => void;
   reduceMotion: boolean;
+  /** Part du cadre recouverte par un panneau : le pays sélectionné est cadré dans la zone restante. */
+  insetRight?: number;
+  insetBottom?: number;
 };
 
 /** Symbole porté par chaque état, pour ne jamais dépendre de la seule couleur. */
@@ -118,9 +120,27 @@ const Countries = memo(function Countries({
   );
 });
 
-export function WorldMap({ width, states, selected, onSelect, reduceMotion }: Props) {
-  const height = Math.round(width * MAP_ASPECT);
-  const ratio = width / MAP.width;
+/** Zoom appliqué lors de la sélection d'un pays, pour qu'il soit lisible à côté du panneau. */
+const FOCUS_SCALE = 2.5;
+
+export function WorldMap({
+  width,
+  height,
+  states,
+  selected,
+  onSelect,
+  reduceMotion,
+  insetRight = 0,
+  insetBottom = 0,
+}: Props) {
+  // La carte est réduite pour tenir entière dans le cadre, puis centrée.
+  const ratio = Math.min(width / MAP.width, height / MAP.height);
+  const contentWidth = MAP.width * ratio;
+  const contentHeight = MAP.height * ratio;
+  const offsetX = (width - contentWidth) / 2;
+  const offsetY = (height - contentHeight) / 2;
+  const g = geometry(width, height, { contentWidth, contentHeight, insetRight, insetBottom });
+
   const scale = useSharedValue(1);
   const x = useSharedValue(0);
   const y = useSharedValue(0);
@@ -132,9 +152,9 @@ export function WorldMap({ width, states, selected, onSelect, reduceMotion }: Pr
       x.set(target.x);
       y.set(target.y);
     } else {
-      scale.set(withTiming(target.scale, { duration: 300 }));
-      x.set(withTiming(target.x, { duration: 300 }));
-      y.set(withTiming(target.y, { duration: 300 }));
+      scale.set(withTiming(target.scale, { duration: 350 }));
+      x.set(withTiming(target.x, { duration: 350 }));
+      y.set(withTiming(target.y, { duration: 350 }));
     }
   };
 
@@ -142,7 +162,12 @@ export function WorldMap({ width, states, selected, onSelect, reduceMotion }: Pr
     if (!selected) return;
     const country = mapCountryByNumeric(selected);
     if (!country) return;
-    const target = focusViewport(country.cx * ratio, country.cy * ratio, Math.max(scale.get(), 2.5), width, height);
+    const target = focusViewport(
+      offsetX + country.cx * ratio,
+      offsetY + country.cy * ratio,
+      Math.max(scale.get(), FOCUS_SCALE),
+      geometry(width, height, { contentWidth, contentHeight, insetRight, insetBottom }),
+    );
     if (reduceMotion) {
       scale.set(target.scale);
       x.set(target.x);
@@ -152,7 +177,22 @@ export function WorldMap({ width, states, selected, onSelect, reduceMotion }: Pr
       x.set(withTiming(target.x, { duration: 350 }));
       y.set(withTiming(target.y, { duration: 350 }));
     }
-  }, [selected, ratio, width, height, reduceMotion, scale, x, y]);
+  }, [
+    selected,
+    ratio,
+    offsetX,
+    offsetY,
+    width,
+    height,
+    contentWidth,
+    contentHeight,
+    insetRight,
+    insetBottom,
+    reduceMotion,
+    scale,
+    x,
+    y,
+  ]);
 
   const pinch = Gesture.Pinch()
     .onStart(() => {
@@ -164,8 +204,7 @@ export function WorldMap({ width, states, selected, onSelect, reduceMotion }: Pr
         s,
         (start.get().x * s) / start.get().scale,
         (start.get().y * s) / start.get().scale,
-        width,
-        height,
+        g,
       );
       scale.set(s);
       x.set(t.x);
@@ -178,13 +217,7 @@ export function WorldMap({ width, states, selected, onSelect, reduceMotion }: Pr
       start.set({ scale: scale.get(), x: x.get(), y: y.get() });
     })
     .onUpdate((e) => {
-      const t = clampTranslation(
-        scale.get(),
-        start.get().x + e.translationX,
-        start.get().y + e.translationY,
-        width,
-        height,
-      );
+      const t = clampTranslation(scale.get(), start.get().x + e.translationX, start.get().y + e.translationY, g);
       x.set(t.x);
       y.set(t.y);
     });
@@ -197,7 +230,7 @@ export function WorldMap({ width, states, selected, onSelect, reduceMotion }: Pr
 
   const zoomBy = (factor: number) => {
     const s = clamp(scale.get() * factor, MIN_SCALE, MAX_SCALE);
-    const t = clampTranslation(s, (x.get() * s) / scale.get(), (y.get() * s) / scale.get(), width, height);
+    const t = clampTranslation(s, (x.get() * s) / scale.get(), (y.get() * s) / scale.get(), g);
     animateTo({ scale: s, x: t.x, y: t.y });
   };
 
@@ -218,7 +251,7 @@ export function WorldMap({ width, states, selected, onSelect, reduceMotion }: Pr
           icon="recenter"
           label="Vue d’ensemble"
           tone="raised"
-          onPress={() => animateTo({ scale: 1, x: 0, y: 0 })}
+          onPress={() => animateTo({ scale: 1, ...clampTranslation(1, 0, 0, g) })}
         />
       </View>
     </View>
@@ -226,6 +259,6 @@ export function WorldMap({ width, states, selected, onSelect, reduceMotion }: Pr
 }
 
 const styles = StyleSheet.create({
-  frame: { overflow: 'hidden', backgroundColor: colors.nightDeep, borderRadius: 12 },
-  controls: { position: 'absolute', right: spacing.sm, top: spacing.sm, gap: spacing.xs },
+  frame: { overflow: 'hidden', backgroundColor: colors.nightDeep },
+  controls: { position: 'absolute', left: spacing.sm, top: spacing.sm, gap: spacing.xs },
 });

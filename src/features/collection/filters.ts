@@ -19,7 +19,7 @@ export const DEFAULT_FILTERS: CardFilters = {
   rarity: null,
   continent: null,
   query: '',
-  sort: 'country',
+  sort: 'rarity',
 };
 
 export const OWNERSHIP_LABELS: Record<OwnershipFilter, string> = {
