@@ -61,7 +61,14 @@ export function AtlasCard({
   const frame = locked ? colors.border : rarity.color;
   const compact = size === 'small';
   const content = (
-    <View style={[styles.card, { width, borderColor: frame }, compact && styles.cardSmall]}>
+    <View
+      style={[
+        styles.card,
+        { width, borderColor: frame },
+        !locked && rarity.rank >= 3 && { boxShadow: `0 0 ${rarity.rank * 5}px ${rarity.color}66` },
+        compact && styles.cardSmall,
+      ]}
+    >
       <View style={[styles.art, { height: width * 0.78 }]}>
         <CardArtwork
           category={card.category}

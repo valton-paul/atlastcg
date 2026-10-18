@@ -23,8 +23,8 @@ export const DEFAULT_FILTERS: CardFilters = {
 };
 
 export const OWNERSHIP_LABELS: Record<OwnershipFilter, string> = {
-  all: 'Toutes',
-  owned: 'Possédées',
+  all: 'Tout le catalogue',
+  owned: 'Mes cartes',
   missing: 'Manquantes',
   new: 'Nouvelles',
   duplicates: 'Doublons',

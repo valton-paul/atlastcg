@@ -35,7 +35,8 @@ import { errorMessage } from '@/lib/errors';
 
 type View_ = 'cards' | 'albums';
 
-const OWNERSHIP: OwnershipFilter[] = ['all', 'owned', 'missing', 'new', 'duplicates'];
+const OWNERSHIP: OwnershipFilter[] = ['owned', 'new', 'duplicates', 'missing', 'all'];
+const COLLECTION_DEFAULTS: CardFilters = { ...DEFAULT_FILTERS, ownership: 'owned' };
 const RARITIES: Rarity[] = ['common', 'uncommon', 'rare', 'epic', 'legendary'];
 const SORTS: { key: SortOrder; label: string }[] = [
   { key: 'country', label: 'Par pays' },
@@ -53,7 +54,7 @@ export default function CollectionScreen() {
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState<CardFilters>(() => ({
     ...DEFAULT_FILTERS,
-    ownership: OWNERSHIP.includes(params.filter as OwnershipFilter) ? (params.filter as OwnershipFilter) : 'all',
+    ownership: OWNERSHIP.includes(params.filter as OwnershipFilter) ? (params.filter as OwnershipFilter) : 'owned',
   }));
 
   const cards = useMemo(
@@ -66,21 +67,46 @@ export default function CollectionScreen() {
 
   const { catalog, player } = data;
   const stats = atlasStats(catalog, player.ownedCards, player.expeditions);
-  const columns = width >= 600 ? 5 : 3;
-  const cardWidth = Math.floor((width - spacing.lg * 2 - spacing.sm * (columns - 1)) / columns);
+  const columns = width >= 1000 ? 6 : width >= 700 ? 4 : width >= 420 ? 3 : 2;
+  const cardWidth = Math.floor((width - spacing.lg * 2 - spacing.md * (columns - 1)) / columns);
   const newIds = [...player.ownedCards.values()].filter((c) => !c.seen_at).map((c) => c.card_id);
-  const activeFilterCount =
-    (filters.rarity ? 1 : 0) + (filters.continent ? 1 : 0) + (filters.sort !== 'country' ? 1 : 0);
+  const activeFilterCount = (filters.continent ? 1 : 0) + (filters.sort !== 'country' ? 1 : 0);
 
   const header = (
     <View style={styles.header}>
-      <ProgressBar label="Cartes possédées" value={stats.cardsOwned} total={stats.cardsTotal} />
+      <View
+        style={styles.total}
+        accessible
+        accessibilityLabel={`${stats.cardsOwned} cartes collectionnées sur ${stats.cardsTotal}`}
+      >
+        <Text variant="hero">
+          <Text variant="hero" color={colors.gold}>
+            {stats.cardsOwned}
+          </Text>
+          <Text variant="hero" color={colors.textFaint}>
+            {' '}
+            / {stats.cardsTotal}
+          </Text>
+        </Text>
+        <Text variant="caption" color={colors.textMuted}>
+          cartes collectionnées · {stats.countriesDiscovered} pays sur {stats.countriesTotal}
+        </Text>
+        <ProgressBar value={stats.cardsOwned} total={stats.cardsTotal} tone="precious" showCount={false} />
+      </View>
       <View style={styles.segment} accessibilityRole="tablist">
         <Chip label="Cartes" selected={view === 'cards'} onPress={() => setView('cards')} />
         <Chip label="Albums" selected={view === 'albums'} onPress={() => setView('albums')} />
       </View>
       {view === 'cards' ? (
         <>
+          <TextField
+            label="Rechercher dans mes cartes"
+            value={filters.query}
+            onChangeText={(query) => setFilters((f) => ({ ...f, query }))}
+            placeholder="Titre, pays, catégorie…"
+            autoCorrect={false}
+            returnKeyType="search"
+          />
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
             {OWNERSHIP.map((o) => (
               <Chip
@@ -92,51 +118,38 @@ export default function CollectionScreen() {
               />
             ))}
           </ScrollView>
-          <View style={styles.row}>
-            <View style={styles.flex}>
-              <TextField
-                label="Rechercher dans mes cartes"
-                value={filters.query}
-                onChangeText={(query) => setFilters((f) => ({ ...f, query }))}
-                placeholder="Nom, pays…"
-                autoCorrect={false}
-                returnKeyType="search"
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
+            <Chip
+              label="Toutes raretés"
+              selected={!filters.rarity}
+              onPress={() => setFilters((f) => ({ ...f, rarity: null }))}
+            />
+            {RARITIES.map((r) => (
+              <Chip
+                key={r}
+                label={rarityStyles[r].label}
+                rarity={r}
+                selected={filters.rarity === r}
+                onPress={() => setFilters((f) => ({ ...f, rarity: f.rarity === r ? null : r }))}
               />
-            </View>
-          </View>
+            ))}
+          </ScrollView>
           <Button
             label={
               showFilters
                 ? 'Masquer les filtres'
                 : activeFilterCount
-                  ? `Filtres (${activeFilterCount})`
-                  : 'Plus de filtres'
+                  ? `Continent et tri (${activeFilterCount})`
+                  : 'Continent et tri'
             }
             variant="ghost"
             compact
             icon="filter"
             onPress={() => setShowFilters((v) => !v)}
+            style={styles.filtersToggle}
           />
           {showFilters ? (
             <Surface>
-              <Text variant="caption" color={colors.textMuted}>
-                Rareté
-              </Text>
-              <View style={styles.wrap}>
-                <Chip
-                  label="Toutes"
-                  selected={!filters.rarity}
-                  onPress={() => setFilters((f) => ({ ...f, rarity: null }))}
-                />
-                {RARITIES.map((r) => (
-                  <Chip
-                    key={r}
-                    label={rarityStyles[r].label}
-                    selected={filters.rarity === r}
-                    onPress={() => setFilters((f) => ({ ...f, rarity: f.rarity === r ? null : r }))}
-                  />
-                ))}
-              </View>
               <Text variant="caption" color={colors.textMuted}>
                 Continent
               </Text>
@@ -168,7 +181,7 @@ export default function CollectionScreen() {
                   />
                 ))}
               </View>
-              <Button label="Réinitialiser" variant="ghost" compact onPress={() => setFilters(DEFAULT_FILTERS)} />
+              <Button label="Réinitialiser" variant="ghost" compact onPress={() => setFilters(COLLECTION_DEFAULTS)} />
             </Surface>
           ) : null}
           {filters.ownership === 'new' && newIds.length > 0 ? (
@@ -219,7 +232,7 @@ export default function CollectionScreen() {
                 title="Aucune carte ne correspond"
                 message="Modifiez ou réinitialisez les filtres."
                 actionLabel="Réinitialiser"
-                onAction={() => setFilters(DEFAULT_FILTERS)}
+                onAction={() => setFilters(COLLECTION_DEFAULTS)}
               />
             )
           }
@@ -227,7 +240,7 @@ export default function CollectionScreen() {
             const owned = player.ownedCards.get(item.id);
             return (
               <AtlasCard
-                size="small"
+                size={cardWidth >= 150 ? 'medium' : 'small'}
                 width={cardWidth}
                 onPress={() => router.push(`/card/${item.slug}`)}
                 card={toCardData(catalog, item)}
@@ -268,11 +281,13 @@ export default function CollectionScreen() {
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.night },
   header: { gap: spacing.md, paddingBottom: spacing.md },
+  total: { gap: spacing.xs, paddingVertical: spacing.sm },
+  filtersToggle: { alignSelf: 'flex-start' },
   segment: { flexDirection: 'row', gap: spacing.sm },
   chips: { gap: spacing.sm },
   wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   row: { flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-end' },
   flex: { flex: 1 },
-  list: { paddingHorizontal: spacing.lg, paddingBottom: spacing.xxl, gap: spacing.sm },
-  columns: { gap: spacing.sm },
+  list: { paddingHorizontal: spacing.lg, paddingBottom: spacing.xxl, gap: spacing.md },
+  columns: { gap: spacing.md },
 });

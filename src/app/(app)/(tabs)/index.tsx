@@ -1,58 +1,85 @@
+import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
-import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { useEffect, useMemo, useState } from 'react';
+import { Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 
 import {
   Button,
+  Chip,
   colors,
   ErrorState,
-  Icon,
   InlineMessage,
   LoadingState,
-  ProgressBar,
-  SectionHeader,
+  radius,
   spacing,
   Surface,
   Text,
 } from '@/design-system';
-import { atlasStats, cardsOfCountry } from '@/features/collection/progress';
-import { isClaimable, nextObjective, useObjectives } from '@/features/objectives/api';
 import { useClaimDaily, useDailyStatus, useInterruptedOpenings } from '@/features/packs/api';
-import { PackVisual } from '@/features/packs/PackVisual';
+import { packTheme, PackVisual } from '@/features/packs/PackVisual';
+import { formatCountdown, useCountdown } from '@/features/packs/useCountdown';
 import { PlayerHeader } from '@/features/player/PlayerHeader';
 import { useAtlasData } from '@/features/player/useAtlasData';
 import { errorMessage } from '@/lib/errors';
 import { useHaptics } from '@/lib/haptics';
+import { usePreferences } from '@/lib/preferences';
+import { queryKeys } from '@/lib/query-client';
+
+const PACK_WIDTH = 190;
 
 export default function HomeScreen() {
   const data = useAtlasData();
   const router = useRouter();
-  const objectives = useObjectives(data.status === 'ready');
+  const queryClient = useQueryClient();
   const daily = useDailyStatus(data.status === 'ready');
   const claimDaily = useClaimDaily();
   const interrupted = useInterruptedOpenings(data.status === 'ready');
   const haptic = useHaptics();
+  const { reduceMotion } = usePreferences();
+  const [selectedPackId, setSelectedPackId] = useState<string | null>(null);
+
+  const nextDailyIn = useCountdown(daily.data && !daily.data.available ? daily.data.next_available_at : null);
+  const dailyReady = nextDailyIn === 0;
+  useEffect(() => {
+    if (dailyReady) void queryClient.invalidateQueries({ queryKey: [...queryKeys.player, 'daily'] });
+  }, [dailyReady, queryClient]);
+
+  const float = useSharedValue(0);
+  useEffect(() => {
+    if (reduceMotion) {
+      float.set(0);
+      return;
+    }
+    float.set(withRepeat(withTiming(1, { duration: 2600, easing: Easing.inOut(Easing.sin) }), -1, true));
+  }, [float, reduceMotion]);
+  const floatStyle = useAnimatedStyle(() => ({ transform: [{ translateY: -6 * float.get() }] }));
+
+  const groups = useMemo(() => {
+    if (data.status !== 'ready') return [];
+    const byPack = new Map<string, { packId: string; userPackIds: string[] }>();
+    for (const pack of data.player.packs) {
+      const group = byPack.get(pack.pack_id) ?? { packId: pack.pack_id, userPackIds: [] };
+      group.userPackIds.push(pack.id);
+      byPack.set(pack.pack_id, group);
+    }
+    return [...byPack.values()];
+  }, [data]);
 
   if (data.status === 'loading') return <LoadingState />;
-  if (data.status === 'error') {
-    return <ErrorState message={errorMessage(data.error)} onRetry={data.retry} />;
-  }
+  if (data.status === 'error') return <ErrorState message={errorMessage(data.error)} onRetry={data.retry} />;
 
   const { catalog, player } = data;
-  const stats = atlasStats(catalog, player.ownedCards, player.expeditions);
-  const firstPack = player.packs[0];
-  const firstPackDef = firstPack ? catalog.packsById.get(firstPack.pack_id) : undefined;
-  const objective = objectives.data ? nextObjective(objectives.data) : null;
+  const group = groups.find((g) => g.packId === selectedPackId) ?? groups[0];
+  const definition = group ? catalog.packsById.get(group.packId) : undefined;
+  const theme = packTheme(definition?.slug ?? '');
+  const total = player.packs.length;
 
-  const inProgress = catalog.expeditions.find((e) => player.expeditions.get(e.id)?.status === 'in_progress');
-  const suggestion = inProgress
-    ? null
-    : catalog.expeditions.find(
-        (e) =>
-          !player.expeditions.has(e.id) &&
-          cardsOfCountry(catalog, e.country_code).some((c) => player.ownedCards.has(c.id)),
-      );
-  const featuredExpedition = inProgress ?? suggestion;
-  const featuredCountry = featuredExpedition ? catalog.countriesByIso.get(featuredExpedition.country_code) : undefined;
+  function open() {
+    if (!group) return;
+    haptic('tap');
+    router.push(`/open/${group.userPackIds[0]}`);
+  }
 
   return (
     <View style={styles.root}>
@@ -60,7 +87,7 @@ export default function HomeScreen() {
         subtitle="Votre atlas"
         title={player.profile.display_name}
         fragments={player.fragments}
-        packCount={player.packs.length}
+        packCount={total}
       />
       <ScrollView
         contentContainerStyle={styles.content}
@@ -77,162 +104,145 @@ export default function HomeScreen() {
           </Surface>
         ) : null}
 
-        {firstPack && firstPackDef ? (
-          <Surface tone="raised" style={styles.packHero}>
-            <PackVisual slug={firstPackDef.slug} width={96} />
-            <View style={styles.packText}>
-              <Text variant="overline" color={colors.turquoise}>
-                {player.packs.length > 1 ? `${player.packs.length} paquets à ouvrir` : 'Un paquet vous attend'}
-              </Text>
-              <Text variant="heading">Paquet {firstPackDef.name}</Text>
-              <Text variant="caption" color={colors.textMuted}>
-                {firstPackDef.cards_per_pack} cartes à découvrir
-              </Text>
-              <Button
-                label="Ouvrir"
-                icon="sparkle"
-                compact
-                onPress={() => router.push(`/open/${firstPack.id}`)}
-                testID="home-open-pack"
-              />
-            </View>
-          </Surface>
-        ) : (
-          <Surface>
-            <Text variant="heading">Aucun paquet pour le moment</Text>
-            <Text color={colors.textMuted}>
-              Terminez une expédition, atteignez un objectif ou récupérez le paquet du jour pour continuer votre
-              collection.
-            </Text>
-          </Surface>
-        )}
+        <View style={styles.hero}>
+          <Text variant="hero" align="center" accessibilityRole="header">
+            Ouvrir un paquet
+          </Text>
+          <Text color={colors.textMuted} align="center">
+            {definition
+              ? `Découvrez ${definition.cards_per_pack} nouvelles cartes du monde`
+              : 'Plus aucun paquet à ouvrir pour le moment'}
+          </Text>
+          <Button label="Comment ça marche ?" variant="ghost" compact onPress={() => router.push('/packs')} />
+        </View>
 
-        {daily.data ? (
-          <Surface tone={daily.data.available ? 'explore' : 'panel'} style={styles.row}>
-            <Icon name="calendar" color={daily.data.available ? colors.turquoise : colors.textMuted} />
-            <View style={styles.flex}>
-              <Text variant="bodyStrong">Paquet du jour</Text>
-              <Text variant="caption" color={colors.textMuted}>
-                {daily.data.available
-                  ? 'Un paquet Exploration offert, sans obligation de revenir chaque jour.'
-                  : 'Déjà récupéré aujourd’hui. Le prochain sera disponible demain.'}
-              </Text>
-            </View>
-            {daily.data.available ? (
-              <Button
-                label="Récupérer"
-                compact
-                loading={claimDaily.isPending}
-                onPress={() =>
-                  claimDaily.mutate(undefined, {
-                    onSuccess: (r) => r.granted && haptic('success'),
-                  })
-                }
-              />
-            ) : null}
-          </Surface>
+        {groups.length > 1 ? (
+          <View style={styles.packChoices} accessibilityRole="tablist">
+            {groups.map((g) => {
+              const def = catalog.packsById.get(g.packId);
+              return (
+                <Chip
+                  key={g.packId}
+                  label={def?.name ?? 'Paquet'}
+                  count={g.userPackIds.length}
+                  selected={g.packId === group?.packId}
+                  onPress={() => setSelectedPackId(g.packId)}
+                />
+              );
+            })}
+          </View>
         ) : null}
+
+        <Pressable
+          onPress={open}
+          disabled={!group}
+          accessibilityRole="button"
+          accessibilityLabel={definition ? `Ouvrir le paquet ${definition.name}` : 'Aucun paquet disponible'}
+          accessibilityState={{ disabled: !group }}
+          style={styles.packArea}
+          testID="home-pack"
+        >
+          <Animated.View style={[styles.packFloat, floatStyle]}>
+            <View
+              style={[
+                styles.packGlow,
+                { boxShadow: group ? `0 0 48px 8px ${theme.accent}55` : 'none' },
+                !group && styles.packEmpty,
+              ]}
+            >
+              <PackVisual slug={definition?.slug ?? 'decouverte'} width={PACK_WIDTH} />
+            </View>
+          </Animated.View>
+          {definition ? (
+            <Text variant="subheading" color={theme.accent} align="center">
+              Paquet {definition.name}
+            </Text>
+          ) : null}
+        </Pressable>
+
+        <Button
+          label={group ? 'Ouvrir' : 'Aucun paquet'}
+          icon="sparkle"
+          onPress={open}
+          disabled={!group}
+          style={styles.openButton}
+          testID="home-open-pack"
+        />
+
+        <View style={styles.counter} accessible accessibilityLabel={counterLabel(total, daily.data, nextDailyIn)}>
+          <Text variant="title" align="center">
+            {total}
+            <Text variant="title" color={colors.textMuted}>
+              {' '}
+              paquet{total > 1 ? 's' : ''}
+            </Text>
+          </Text>
+          <Text variant="caption" color={colors.textMuted} align="center">
+            disponible{total > 1 ? 's' : ''}
+          </Text>
+          {daily.data?.available ? (
+            <Button
+              label="Récupérer le paquet du jour"
+              variant="secondary"
+              compact
+              icon="calendar"
+              loading={claimDaily.isPending}
+              onPress={() => claimDaily.mutate(undefined, { onSuccess: (r) => r.granted && haptic('success') })}
+            />
+          ) : nextDailyIn !== null ? (
+            <Text variant="caption" color={colors.textMuted} align="center">
+              Prochain paquet dans{' '}
+              <Text variant="caption" color={colors.turquoise}>
+                {formatCountdown(nextDailyIn)}
+              </Text>
+            </Text>
+          ) : null}
+        </View>
         {claimDaily.isError ? <InlineMessage tone="error" message={errorMessage(claimDaily.error)} /> : null}
 
-        <SectionHeader
-          title="Progression"
-          actionLabel="Voir la collection"
-          onAction={() => router.push('/collection')}
-        />
-        <Surface>
-          <ProgressBar label="Cartes découvertes" value={stats.cardsOwned} total={stats.cardsTotal} />
-          <ProgressBar label="Pays découverts" value={stats.countriesDiscovered} total={stats.countriesTotal} />
-          {stats.newCards > 0 ? (
-            <Button
-              label={
-                stats.newCards > 1 ? `${stats.newCards} nouvelles cartes à consulter` : '1 nouvelle carte à consulter'
-              }
-              variant="ghost"
-              compact
-              onPress={() => router.push({ pathname: '/collection', params: { filter: 'new' } })}
-            />
-          ) : null}
-        </Surface>
-
-        <SectionHeader title="Expédition" actionLabel="Carte du monde" onAction={() => router.push('/world')} />
-        {featuredExpedition && featuredCountry ? (
-          <Surface
-            tone="explore"
-            onPress={() => router.push(`/expedition/${featuredExpedition.slug}`)}
-            accessibilityLabel={`${inProgress ? 'Reprendre' : 'Commencer'} l’expédition ${featuredExpedition.title}`}
-          >
-            <Text variant="overline" color={colors.turquoise}>
-              {inProgress ? 'En cours' : 'Disponible'} · {featuredCountry.name}
-            </Text>
-            <Text variant="heading">{featuredExpedition.title}</Text>
-            {inProgress ? (
-              <ProgressBar
-                value={player.completedSteps.get(featuredExpedition.id) ?? 0}
-                total={player.stepTotals.get(featuredExpedition.id) ?? 1}
-                label="Étapes terminées"
-              />
-            ) : (
-              <Text variant="caption" color={colors.textMuted}>
-                {featuredExpedition.summary}
-              </Text>
-            )}
-          </Surface>
-        ) : (
-          <Surface>
-            <Text color={colors.textMuted}>
-              {stats.cardsOwned === 0
-                ? 'Ouvrez votre premier paquet : chaque pays découvert débloque une expédition.'
-                : 'Toutes les expéditions disponibles sont terminées. Découvrez de nouveaux pays pour en débloquer d’autres.'}
-            </Text>
-          </Surface>
-        )}
-
-        <SectionHeader
-          title="Prochain objectif"
-          actionLabel="Tous les objectifs"
-          onAction={() => router.push('/objectives')}
-        />
-        {objectives.isPending ? (
-          <Surface>
-            <Text color={colors.textMuted}>Chargement des objectifs…</Text>
-          </Surface>
-        ) : objective ? (
-          <Surface tone={isClaimable(objective) ? 'precious' : 'panel'} onPress={() => router.push('/objectives')}>
-            <Text variant="bodyStrong">{objective.title}</Text>
-            <Text variant="caption" color={colors.textMuted}>
-              {objective.description}
-            </Text>
-            <ProgressBar
-              value={Math.min(objective.progress, objective.target)}
-              total={objective.target}
-              tone={isClaimable(objective) ? 'precious' : 'explore'}
-            />
-            {isClaimable(objective) ? (
-              <Text variant="caption" color={colors.gold}>
-                Récompense prête : {objective.reward.quantity} paquet{objective.reward.quantity > 1 ? 's' : ''}{' '}
-                {objective.reward.pack_name}
-              </Text>
-            ) : null}
-          </Surface>
-        ) : (
-          <Surface>
-            <Text color={colors.textMuted}>
-              {objectives.isError
-                ? errorMessage(objectives.error)
-                : 'Tous les objectifs actuels sont accomplis. Bravo !'}
-            </Text>
-          </Surface>
-        )}
+        {!group ? (
+          <Text variant="caption" color={colors.textMuted} align="center" style={styles.hint}>
+            Terminez une expédition ou atteignez un objectif pour gagner d’autres paquets.
+          </Text>
+        ) : null}
+        <View style={styles.links}>
+          <Button label="Objectifs" variant="ghost" compact icon="trophy" onPress={() => router.push('/objectives')} />
+          <Button label="Expéditions" variant="ghost" compact icon="compass" onPress={() => router.push('/world')} />
+        </View>
       </ScrollView>
     </View>
   );
 }
 
+function counterLabel(total: number, daily: { available: boolean } | undefined, nextDailyIn: number | null): string {
+  const packs = `${total} paquet${total > 1 ? 's' : ''} disponible${total > 1 ? 's' : ''}`;
+  if (daily?.available) return `${packs}. Le paquet du jour est disponible.`;
+  if (nextDailyIn !== null) return `${packs}. Prochain paquet dans ${formatCountdown(nextDailyIn)}.`;
+  return packs;
+}
+
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.night },
-  content: { paddingHorizontal: spacing.lg, paddingBottom: spacing.xxl, gap: spacing.lg },
-  packHero: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
-  packText: { flex: 1, gap: spacing.xs, alignItems: 'flex-start' },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  flex: { flex: 1, gap: 2 },
+  content: { paddingHorizontal: spacing.lg, paddingBottom: spacing.xxl, gap: spacing.lg, alignItems: 'stretch' },
+  hero: { alignItems: 'center', gap: spacing.xs, marginTop: spacing.md },
+  packChoices: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: spacing.sm },
+  packArea: { alignItems: 'center', gap: spacing.md, paddingVertical: spacing.lg },
+  packFloat: { alignItems: 'center' },
+  packGlow: { borderRadius: radius.lg },
+  packEmpty: { opacity: 0.35 },
+  openButton: { alignSelf: 'center', minWidth: 200 },
+  counter: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    gap: spacing.xs,
+    minWidth: 220,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.xl,
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.ink,
+  },
+  hint: { maxWidth: 320, alignSelf: 'center' },
+  links: { flexDirection: 'row', justifyContent: 'center', gap: spacing.md },
 });
