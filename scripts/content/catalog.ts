@@ -364,7 +364,7 @@ export function parseCatalog(
 
   if (!packSlugs.has(game.expeditionReward.pack))
     issues.push({ path: 'game.expeditionReward', message: 'paquet de récompense inconnu' });
-  for (const key of ['starter_reward', 'daily_reward', 'fragment_exchange']) {
+  for (const key of ['starter_reward', 'timed_packs', 'fragment_exchange']) {
     const setting = game.settings[key];
     if (!setting) {
       issues.push({ path: `game.settings.${key}`, message: 'réglage obligatoire manquant' });
@@ -373,6 +373,14 @@ export function parseCatalog(
     const packSlug = setting.value.pack_slug;
     if (typeof packSlug !== 'string' || !packSlugs.has(packSlug))
       issues.push({ path: `game.settings.${key}`, message: 'paquet inconnu' });
+  }
+  const timed = game.settings.timed_packs?.value;
+  if (timed) {
+    const { interval_seconds: interval, max_stored: max } = timed;
+    if (typeof interval !== 'number' || !Number.isInteger(interval) || interval < 60)
+      issues.push({ path: 'game.settings.timed_packs', message: 'interval_seconds doit être un entier ≥ 60' });
+    if (typeof max !== 'number' || !Number.isInteger(max) || max < 1)
+      issues.push({ path: 'game.settings.timed_packs', message: 'max_stored doit être un entier ≥ 1' });
   }
 
   if (issues.length > 0) return { ok: false, catalog: null, issues };

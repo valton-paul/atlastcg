@@ -112,21 +112,37 @@ export function useExchangeFragments() {
   });
 }
 
-const dailyStatusSchema = z.object({ available: z.boolean(), next_available_at: z.string() });
-const dailyClaimSchema = z.object({ granted: z.boolean(), packs_granted: z.number(), next_available_at: z.string() });
+const timedPacksSchema = z.object({
+  available: z.number().int().nonnegative(),
+  max_stored: z.number().int().positive(),
+  interval_seconds: z.number().int().positive(),
+  granted: z.number().int().nonnegative(),
+  next_at: z.string().nullable(),
+  server_time: z.string(),
+});
 
-export function useDailyStatus(enabled: boolean) {
-  return useQuery({
-    queryKey: [...queryKeys.player, 'daily'],
-    queryFn: () => callRpc('get_daily_status', {}, dailyStatusSchema),
-    enabled,
-  });
+export interface TimedPacks {
+  maxStored: number;
+  intervalSeconds: number;
+  /** Prochain paquet, ramené à l'horloge de l'appareil ; null quand la réserve est pleine. */
+  nextAt: string | null;
 }
 
-export function useClaimDaily() {
+/** Synchronise la régénération des paquets : le serveur attribue ceux qui sont échus. */
+export function useTimedPacks(enabled: boolean) {
   const client = useQueryClient();
-  return useMutation({
-    mutationFn: () => callRpc('claim_daily_pack', {}, dailyClaimSchema),
-    onSettled: () => client.invalidateQueries({ queryKey: queryKeys.player }),
+  return useQuery({
+    queryKey: queryKeys.timedPacks,
+    queryFn: async (): Promise<TimedPacks> => {
+      const state = await callRpc('sync_timed_packs', {}, timedPacksSchema);
+      if (state.granted > 0) void client.invalidateQueries({ queryKey: queryKeys.playerState });
+      const offset = Date.now() - Date.parse(state.server_time);
+      return {
+        maxStored: state.max_stored,
+        intervalSeconds: state.interval_seconds,
+        nextAt: state.next_at ? new Date(Date.parse(state.next_at) + offset).toISOString() : null,
+      };
+    },
+    enabled,
   });
 }

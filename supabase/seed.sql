@@ -409,7 +409,7 @@ $$;
 
 insert into public.economy_settings (key, value, description) values
   ('starter_reward', '{"pack_slug":"decouverte","quantity":2}'::jsonb, 'Paquets offerts à la création du compte.'),
-  ('daily_reward', '{"pack_slug":"exploration","quantity":1}'::jsonb, 'Paquet quotidien facultatif (jour calendaire UTC, sans série).'),
+  ('timed_packs', '{"pack_slug":"exploration","interval_seconds":600,"max_stored":15}'::jsonb, 'Paquets régénérés : un paquet par intervalle, tant que la réserve est sous le plafond.'),
   ('fragment_exchange', '{"pack_slug":"exploration","cost":100}'::jsonb, 'Coût en fragments d''un paquet obtenu par échange.')
 on conflict (key) do update set value = excluded.value, description = excluded.description;
 

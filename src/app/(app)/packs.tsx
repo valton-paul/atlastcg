@@ -30,6 +30,7 @@ const SOURCE_LABELS = {
   expedition: 'Récompense d’expédition',
   objective: 'Récompense d’objectif',
   daily: 'Paquet du jour',
+  timer: 'Recharge automatique',
   fragment_exchange: 'Échange de fragments',
 } as const;
 
@@ -76,7 +77,7 @@ export default function PacksScreen() {
         <EmptyState
           icon="pack"
           title="Aucun paquet à ouvrir"
-          message="Terminez des expéditions, atteignez des objectifs ou récupérez le paquet du jour pour en obtenir."
+          message="Un nouveau paquet arrive toutes les 10 minutes. Expéditions et objectifs en rapportent aussi."
         />
       ) : (
         player.packs.map((userPack) => {

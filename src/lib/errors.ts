@@ -59,6 +59,7 @@ export const SERVER_ERROR_MESSAGES = {
   TOO_MANY_INVITEES: 'Vous pouvez inviter jusqu’à 10 amis par défi.',
   INVALID_REWARD_QUANTITY: 'Cette récompense n’est pas disponible pour le moment.',
   SETTING_MISSING: 'Ce service n’est pas disponible pour le moment.',
+  PLAYER_NOT_INITIALIZED: 'Votre atlas est en cours de préparation. Réessayez dans un instant.',
   DROP_RATES_MUST_SUM_TO_ONE: 'Ce paquet n’est pas disponible pour le moment.',
   DISPLAY_NAME_INVALID:
     'Le pseudo doit contenir de 3 à 24 caractères (lettres, chiffres, espaces, « . », « _ » ou « - »).',

@@ -24,7 +24,7 @@ const ownedCardSchema = z.object({
 const userPackSchema = z.object({
   id: z.string().uuid(),
   pack_id: z.string().uuid(),
-  source: z.enum(['starter', 'expedition', 'objective', 'daily', 'fragment_exchange']),
+  source: z.enum(['starter', 'expedition', 'objective', 'daily', 'timer', 'fragment_exchange']),
   created_at: z.string(),
 });
 
@@ -134,7 +134,7 @@ export function ensurePlayerInitialized(): Promise<Profile> {
 
 export function usePlayerState(userId: string | null) {
   return useQuery({
-    queryKey: [...queryKeys.player, 'state', userId],
+    queryKey: [...queryKeys.playerState, userId],
     queryFn: () => fetchPlayerState(userId as string),
     enabled: !!userId,
   });

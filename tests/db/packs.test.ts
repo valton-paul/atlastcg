@@ -267,7 +267,7 @@ describe('tirage côté serveur', () => {
   });
 });
 
-describe('fragments et paquet quotidien', () => {
+describe('fragments', () => {
   let db: TestDb;
   beforeAll(async () => {
     db = await createTestDb();
@@ -311,15 +311,92 @@ describe('fragments et paquet quotidien', () => {
     expect(await scalar<number>(db, 'select fragments from public.player_wallets where user_id = $1', [user])).toBe(50);
     expect(await availablePacks(db, user, 'exploration')).toHaveLength(2);
   });
+});
 
-  it('attribue le paquet quotidien une seule fois par jour, même en cas de requêtes simultanées', async () => {
-    const user = await createUser(db);
-    expect(await rpc<{ available: boolean }>(db, user, 'get_daily_status')).toMatchObject({ available: true });
-    const results = await Promise.all(
-      Array.from({ length: 5 }, () => rpc<{ granted: boolean }>(db, user, 'claim_daily_pack')),
+interface TimerState {
+  available: number;
+  max_stored: number;
+  interval_seconds: number;
+  granted: number;
+  next_at: string | null;
+  server_time: string;
+}
+
+describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
+  let db: TestDb;
+  beforeAll(async () => {
+    db = await createTestDb();
+  });
+  afterAll(() => db.close());
+
+  const sync = (user: string) => rpc<TimerState>(db, user, 'sync_timed_packs');
+  const secondsUntilNext = (s: TimerState) => (Date.parse(s.next_at as string) - Date.parse(s.server_time)) / 1000;
+  async function rewindTimer(user: string, minutes: number) {
+    await db.admin.query(
+      'update public.player_wallets set pack_timer_anchor = now() - make_interval(mins => $2) where user_id = $1',
+      [user, minutes],
     );
-    expect(results.filter((r) => r.granted)).toHaveLength(1);
-    expect(await availablePacks(db, user, 'exploration')).toHaveLength(1);
-    expect(await rpc<{ available: boolean }>(db, user, 'get_daily_status')).toMatchObject({ available: false });
+  }
+
+  it('démarre le minuteur à la première synchronisation, sans paquet immédiat', async () => {
+    const user = await createUser(db);
+    const state = await sync(user);
+    expect(state).toMatchObject({ available: 2, max_stored: 15, interval_seconds: 600, granted: 0 });
+    expect(secondsUntilNext(state)).toBeCloseTo(600, -1);
+  });
+
+  it('attribue un paquet par intervalle écoulé et conserve le temps entamé, une seule fois malgré la concurrence', async () => {
+    const user = await createUser(db);
+    await sync(user);
+    await rewindTimer(user, 25);
+    const results = await Promise.all(Array.from({ length: 5 }, () => sync(user)));
+    expect(results.reduce((sum, r) => sum + r.granted, 0)).toBe(2);
+    expect(await availablePacks(db, user, 'exploration')).toHaveLength(2);
+    const state = await sync(user);
+    expect(state).toMatchObject({ available: 4, granted: 0 });
+    // 25 min écoulées : 2 paquets, et les 5 minutes entamées comptent pour le suivant.
+    expect(secondsUntilNext(state)).toBeCloseTo(300, -1);
+  });
+
+  it('plafonne la régénération à 15 paquets et suspend le minuteur', async () => {
+    const user = await createUser(db);
+    await sync(user);
+    await rewindTimer(user, 60 * 24 * 10);
+    const state = await sync(user);
+    expect(state).toMatchObject({ available: 15, granted: 13, next_at: null });
+    await rewindTimer(user, 60);
+    expect(await sync(user)).toMatchObject({ available: 15, granted: 0, next_at: null });
+  });
+
+  it('le temps passé réserve pleine ne produit pas de paquet : ouvrir un paquet relance le minuteur', async () => {
+    const user = await createUser(db);
+    await sync(user);
+    await rewindTimer(user, 60 * 24);
+    await sync(user);
+    await rewindTimer(user, 60 * 5);
+    const [pack] = await availablePacks(db, user);
+    await rpc(db, user, 'open_pack', { p_user_pack_id: pack, p_idempotency_key: randomUUID() });
+    const state = await sync(user);
+    expect(state).toMatchObject({ available: 14, granted: 0 });
+    expect(secondsUntilNext(state)).toBeCloseTo(600, -1);
+  });
+
+  it('n’empêche jamais les autres récompenses de dépasser le plafond', async () => {
+    const user = await createUser(db);
+    await sync(user);
+    await rewindTimer(user, 60 * 24);
+    await sync(user);
+    await grantPack(db, user, 'patrimoine');
+    expect(await sync(user)).toMatchObject({ available: 16, granted: 0, next_at: null });
+  });
+
+  it('refuse toute manipulation du minuteur par le client', async () => {
+    const user = await createUser(db);
+    await expect(
+      asUser(db, user, (c) =>
+        c.query("update public.player_wallets set pack_timer_anchor = now() - interval '1 year'"),
+      ),
+    ).rejects.toThrow(/permission denied/);
+    await expect(asAnon(db, (c) => c.query('select public.sync_timed_packs()'))).rejects.toThrow(/permission denied/);
   });
 });

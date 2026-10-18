@@ -55,7 +55,7 @@
   "expeditionReward": { "pack": "exploration", "quantity": 1 },
   "settings": {
     "starter_reward": { "value": { "pack_slug": "decouverte", "quantity": 2 }, "description": "Paquets offerts à la création du compte." },
-    "daily_reward": { "value": { "pack_slug": "exploration", "quantity": 1 }, "description": "Paquet quotidien facultatif (jour calendaire UTC, sans série)." },
+    "timed_packs": { "value": { "pack_slug": "exploration", "interval_seconds": 600, "max_stored": 15 }, "description": "Paquets régénérés : un paquet par intervalle, tant que la réserve est sous le plafond." },
     "fragment_exchange": { "value": { "pack_slug": "exploration", "cost": 100 }, "description": "Coût en fragments d'un paquet obtenu par échange." }
   }
 }

@@ -48,27 +48,53 @@ beforeEach(() => {
 });
 
 describe('accueil', () => {
-  it('met en avant le paquet à ouvrir, le nombre disponible et le prochain paquet du jour', async () => {
-    const inTwoHours = new Date(Date.now() + 2 * 3600 * 1000 + 30_000).toISOString();
-    mockRpc.mockResolvedValue({ data: { available: false, next_available_at: inTwoHours }, error: null });
+  function timerState(available: number, nextInSeconds: number | null, serverAheadSeconds = 0) {
+    const server = Date.now() + serverAheadSeconds * 1000;
+    return {
+      data: {
+        available,
+        max_stored: 15,
+        interval_seconds: 600,
+        granted: 0,
+        next_at: nextInSeconds === null ? null : new Date(server + nextInSeconds * 1000).toISOString(),
+        server_time: new Date(server).toISOString(),
+      },
+      error: null,
+    };
+  }
+
+  it('met en avant le paquet à ouvrir, la réserve et le prochain paquet régénéré', async () => {
+    mockRpc.mockResolvedValue(timerState(2, 7 * 60 + 42));
     mockData = ready(['a0000000-0000-4000-8000-000000000001', 'a0000000-0000-4000-8000-000000000002']);
     await renderHome();
 
+    expect(mockRpc).toHaveBeenCalledWith('sync_timed_packs', {});
     expect(screen.getByRole('header', { name: 'Ouvrir un paquet' })).toBeOnTheScreen();
     expect(screen.getByText('Découvrez 5 nouvelles cartes du monde')).toBeOnTheScreen();
-    expect(await screen.findByLabelText(/^2 paquets disponibles\. Prochain paquet dans 2:00:/)).toBeOnTheScreen();
+    expect(
+      await screen.findByLabelText(/^2 paquets disponibles sur 15\. Prochain paquet dans 7:4[1-3]\.$/),
+    ).toBeOnTheScreen();
 
     await fireEvent.press(screen.getByTestId('home-open-pack'));
     expect(mockRouter.push).toHaveBeenCalledWith('/open/a0000000-0000-4000-8000-000000000001');
   });
 
-  it('sans paquet, désactive l’ouverture et propose le paquet du jour', async () => {
-    mockRpc.mockResolvedValue({ data: { available: true, next_available_at: new Date().toISOString() }, error: null });
+  it('cale le compte à rebours sur l’horloge du serveur, pas sur celle de l’appareil', async () => {
+    mockRpc.mockResolvedValue(timerState(0, 5 * 60, 3600));
     mockData = ready([]);
     await renderHome();
 
     expect(screen.getByTestId('home-open-pack')).toBeDisabled();
-    expect(await screen.findByRole('button', { name: 'Récupérer le paquet du jour' })).toBeOnTheScreen();
+    expect(await screen.findByLabelText(/Prochain paquet dans [45]:\d\d\.$/)).toBeOnTheScreen();
+  });
+
+  it('signale une réserve pleine sans compte à rebours', async () => {
+    mockRpc.mockResolvedValue(timerState(15, null));
+    mockData = ready(['a0000000-0000-4000-8000-000000000001']);
+    await renderHome();
+
+    expect(await screen.findByText('Réserve pleine : ouvrez un paquet pour relancer la recharge')).toBeOnTheScreen();
+    expect(screen.queryByText(/Prochain paquet/)).toBeNull();
   });
 });
 

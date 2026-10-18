@@ -16,7 +16,7 @@ import {
   Surface,
   Text,
 } from '@/design-system';
-import { useClaimDaily, useDailyStatus, useInterruptedOpenings } from '@/features/packs/api';
+import { type TimedPacks, useInterruptedOpenings, useTimedPacks } from '@/features/packs/api';
 import { packTheme, PackVisual } from '@/features/packs/PackVisual';
 import { formatCountdown, useCountdown } from '@/features/packs/useCountdown';
 import { PlayerHeader } from '@/features/player/PlayerHeader';
@@ -32,18 +32,17 @@ export default function HomeScreen() {
   const data = useAtlasData();
   const router = useRouter();
   const queryClient = useQueryClient();
-  const daily = useDailyStatus(data.status === 'ready');
-  const claimDaily = useClaimDaily();
+  const timed = useTimedPacks(data.status === 'ready');
   const interrupted = useInterruptedOpenings(data.status === 'ready');
   const haptic = useHaptics();
   const { reduceMotion } = usePreferences();
   const [selectedPackId, setSelectedPackId] = useState<string | null>(null);
 
-  const nextDailyIn = useCountdown(daily.data && !daily.data.available ? daily.data.next_available_at : null);
-  const dailyReady = nextDailyIn === 0;
+  const nextPackIn = useCountdown(timed.data?.nextAt ?? null);
+  const nextPackDue = nextPackIn === 0;
   useEffect(() => {
-    if (dailyReady) void queryClient.invalidateQueries({ queryKey: [...queryKeys.player, 'daily'] });
-  }, [dailyReady, queryClient]);
+    if (nextPackDue) void queryClient.invalidateQueries({ queryKey: queryKeys.timedPacks });
+  }, [nextPackDue, queryClient]);
 
   const float = useSharedValue(0);
   useEffect(() => {
@@ -169,42 +168,33 @@ export default function HomeScreen() {
           testID="home-open-pack"
         />
 
-        <View style={styles.counter} accessible accessibilityLabel={counterLabel(total, daily.data, nextDailyIn)}>
+        <View style={styles.counter} accessible accessibilityLabel={counterLabel(total, timed.data, nextPackIn)}>
           <Text variant="title" align="center">
             {total}
-            <Text variant="title" color={colors.textMuted}>
-              {' '}
-              paquet{total > 1 ? 's' : ''}
-            </Text>
+            {timed.data ? (
+              <Text variant="title" color={colors.textMuted}>
+                {' '}
+                / {timed.data.maxStored}
+              </Text>
+            ) : null}
           </Text>
           <Text variant="caption" color={colors.textMuted} align="center">
-            disponible{total > 1 ? 's' : ''}
+            paquet{total > 1 ? 's' : ''} disponible{total > 1 ? 's' : ''}
           </Text>
-          {daily.data?.available ? (
-            <Button
-              label="Récupérer le paquet du jour"
-              variant="secondary"
-              compact
-              icon="calendar"
-              loading={claimDaily.isPending}
-              onPress={() => claimDaily.mutate(undefined, { onSuccess: (r) => r.granted && haptic('success') })}
-            />
-          ) : nextDailyIn !== null ? (
+          {timed.data && !timed.data.nextAt ? (
+            <Text variant="caption" color={colors.gold} align="center">
+              Réserve pleine : ouvrez un paquet pour relancer la recharge
+            </Text>
+          ) : nextPackIn !== null ? (
             <Text variant="caption" color={colors.textMuted} align="center">
               Prochain paquet dans{' '}
               <Text variant="caption" color={colors.turquoise}>
-                {formatCountdown(nextDailyIn)}
+                {formatCountdown(nextPackIn)}
               </Text>
             </Text>
           ) : null}
         </View>
-        {claimDaily.isError ? <InlineMessage tone="error" message={errorMessage(claimDaily.error)} /> : null}
-
-        {!group ? (
-          <Text variant="caption" color={colors.textMuted} align="center" style={styles.hint}>
-            Terminez une expédition ou atteignez un objectif pour gagner d’autres paquets.
-          </Text>
-        ) : null}
+        {timed.isError ? <InlineMessage tone="error" message={errorMessage(timed.error)} /> : null}
         <View style={styles.links}>
           <Button label="Objectifs" variant="ghost" compact icon="trophy" onPress={() => router.push('/objectives')} />
           <Button label="Expéditions" variant="ghost" compact icon="compass" onPress={() => router.push('/world')} />
@@ -214,11 +204,13 @@ export default function HomeScreen() {
   );
 }
 
-function counterLabel(total: number, daily: { available: boolean } | undefined, nextDailyIn: number | null): string {
+function counterLabel(total: number, timed: TimedPacks | undefined, nextPackIn: number | null): string {
   const packs = `${total} paquet${total > 1 ? 's' : ''} disponible${total > 1 ? 's' : ''}`;
-  if (daily?.available) return `${packs}. Le paquet du jour est disponible.`;
-  if (nextDailyIn !== null) return `${packs}. Prochain paquet dans ${formatCountdown(nextDailyIn)}.`;
-  return packs;
+  if (!timed) return packs;
+  const stock = `${packs} sur ${timed.maxStored}`;
+  if (!timed.nextAt) return `${stock}. Réserve pleine.`;
+  if (nextPackIn !== null) return `${stock}. Prochain paquet dans ${formatCountdown(nextPackIn)}.`;
+  return stock;
 }
 
 const styles = StyleSheet.create({
@@ -243,6 +235,5 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     backgroundColor: colors.ink,
   },
-  hint: { maxWidth: 320, alignSelf: 'center' },
   links: { flexDirection: 'row', justifyContent: 'center', gap: spacing.md },
 });

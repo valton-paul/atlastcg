@@ -69,7 +69,6 @@ describe('migrations sur une base vierge', () => {
         .sort(),
     ).toEqual(
       [
-        'claim_daily_pack',
         'claim_objective',
         'complete_expedition',
         'complete_onboarding',
@@ -78,7 +77,6 @@ describe('migrations sur une base vierge', () => {
         'ensure_player_initialized',
         'exchange_fragments',
         'get_challenge',
-        'get_daily_status',
         'get_friend_comparison',
         'join_challenge',
         'list_challenges',
@@ -93,6 +91,7 @@ describe('migrations sur une base vierge', () => {
         'start_expedition',
         'submit_challenge',
         'submit_expedition_step',
+        'sync_timed_packs',
       ].sort(),
     );
   });
@@ -132,7 +131,7 @@ describe('migrations sur une base vierge', () => {
   });
 
   it('journalise les modifications de configuration', async () => {
-    await db.admin.query("update public.economy_settings set description = 'audit test' where key = 'daily_reward'");
+    await db.admin.query("update public.economy_settings set description = 'audit test' where key = 'timed_packs'");
     const count = await scalar<number>(
       db,
       "select count(*)::int from atlas_private.config_audit_log where table_name = 'economy_settings' and operation = 'UPDATE'",
