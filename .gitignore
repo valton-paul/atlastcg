@@ -54,3 +54,6 @@ coverage/
 
 specification/
 docs/
+
+# CLI Supabase (liaison au projet distant)
+supabase/.temp/

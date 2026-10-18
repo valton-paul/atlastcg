@@ -25,7 +25,14 @@ Sans configuration Supabase, l'application démarre sur un écran expliquant quo
 
 ### Préparer le projet Supabase
 
-1. Appliquer les migrations de `supabase/migrations/` puis `supabase/seed.sql` (`supabase db push` puis exécution du seed, ou `supabase db reset` en local).
+1. Appliquer les migrations et le seed avec la CLI Supabase (installée en dépendance de développement) :
+   ```bash
+   npm run db:login      # ouvre le navigateur pour autoriser la CLI
+   npm run db:link       # choisir le projet ; demande le mot de passe de la base
+   npm run db:push:dry   # liste ce qui sera appliqué, sans rien modifier
+   npm run db:push       # applique les migrations manquantes puis le seed
+   ```
+   La CLI mémorise les migrations déjà jouées : relancer `db:push` n'applique que les nouvelles.
 2. Dans Authentification → URL Configuration, autoriser : `atlas://auth/callback`, `atlas://reset-password` (et `exp://**` en développement avec Expo Go).
 3. Les illustrations se déposent dans le bucket public `card-illustrations` (créé par la migration `storage`).
 
