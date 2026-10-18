@@ -117,9 +117,11 @@ export type Catalog = {
   settings: EconomySettings;
 };
 
+export type FragmentOffer = { packSlug: string; cost: number };
+
 export type EconomySettings = {
-  fragmentExchangeCost: number | null;
-  fragmentExchangePackSlug: string | null;
+  /** Offres de la boutique de fragments (Premium, Légendaire…). */
+  fragmentOffers: FragmentOffer[];
 };
 
 export const economySettingSchema = z.object({ key: z.string(), value: z.unknown() });

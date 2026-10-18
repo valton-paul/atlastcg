@@ -56,7 +56,7 @@ describe('catalogue éditorial', () => {
 
   it('refuse des probabilités dont la somme ne vaut pas 1', () => {
     const { countries, game } = load();
-    game.packs[0].dropRates = { ...game.packs[0].dropRates, common: 0.5 };
+    game.packs[0].dropRates = { ...game.packs[0].dropRates, common: 0.6 };
     expect(issuesOf(countries, game)).toEqual(
       expect.arrayContaining([expect.stringMatching(/somme des probabilités/)]),
     );

@@ -46,7 +46,7 @@ function openingPayload() {
   return {
     opening_id: '22222222-2222-4222-8222-222222222222',
     user_pack_id: USER_PACK_ID,
-    pack: { slug: 'decouverte', name: 'Découverte' },
+    pack: { slug: 'classique', name: 'Classique' },
     configuration_version: 2,
     opened_at: '2026-10-17T10:00:00Z',
     cards: [toCard(fr, 1, true), toCard(jp, 2, false)],
@@ -97,11 +97,12 @@ describe('parcours d’ouverture d’un paquet', () => {
     mockRpc.mockResolvedValue({ data: openingPayload(), error: null });
     await renderScreen();
 
-    const pack = screen.getByRole('button', { name: 'Ouvrir le paquet Découverte' });
+    const pack = screen.getByRole('button', { name: 'Ouvrir le paquet Classique' });
     await fireEvent.press(pack);
     await fireEvent.press(pack);
 
-    await waitFor(() => expect(screen.getByText('Carte 1 sur 2')).toBeOnTheScreen(), { timeout: 3000 });
+    await waitFor(() => expect(screen.getByLabelText('Carte 1 sur 2')).toBeOnTheScreen(), { timeout: 3000 });
+    expect(screen.getByText('Touche pour révéler')).toBeOnTheScreen();
     expect(mockRpc).toHaveBeenCalledTimes(1);
     expect(mockRpc).toHaveBeenCalledWith('open_pack', {
       p_user_pack_id: USER_PACK_ID,
@@ -109,7 +110,7 @@ describe('parcours d’ouverture d’un paquet', () => {
     });
 
     await fireEvent.press(screen.getByRole('button', { name: 'Révéler' }));
-    expect(screen.getByText('Nouvelle carte ajoutée à votre atlas')).toBeOnTheScreen();
+    expect(screen.getByText('Nouvelle carte')).toBeOnTheScreen();
 
     await fireEvent.press(screen.getByRole('button', { name: 'Passer l’animation et voir toutes les cartes' }));
     expect(screen.getByText('Votre atlas s’agrandit')).toBeOnTheScreen();
@@ -128,7 +129,7 @@ describe('parcours d’ouverture d’un paquet', () => {
       .mockResolvedValueOnce({ data: { ...openingPayload(), replayed: true }, error: null });
     await renderScreen();
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Ouvrir le paquet Découverte' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Ouvrir le paquet Classique' }));
     await waitFor(() => expect(screen.getByText('L’ouverture n’a pas abouti')).toBeOnTheScreen(), { timeout: 3000 });
 
     await fireEvent.press(screen.getByRole('button', { name: 'Réessayer' }));
@@ -146,7 +147,7 @@ describe('parcours d’ouverture d’un paquet', () => {
     mockRpc.mockResolvedValue({ data: null, error: { code: 'P0001', message: 'PACK_NOT_FOUND' } });
     await renderScreen();
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Ouvrir le paquet Découverte' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Ouvrir le paquet Classique' }));
     await waitFor(() => expect(screen.getByText(/Ce paquet est introuvable/)).toBeOnTheScreen(), { timeout: 3000 });
     expect(screen.queryByRole('button', { name: 'Réessayer' })).toBeNull();
   });
@@ -155,7 +156,7 @@ describe('parcours d’ouverture d’un paquet', () => {
     mockRpc.mockResolvedValue({ data: { cards: [] }, error: null });
     await renderScreen();
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Ouvrir le paquet Découverte' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Ouvrir le paquet Classique' }));
     await waitFor(() => expect(screen.getByText(/répondu de façon inattendue/)).toBeOnTheScreen(), { timeout: 3000 });
   });
 });

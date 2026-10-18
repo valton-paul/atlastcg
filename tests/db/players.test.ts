@@ -19,7 +19,7 @@ describe('initialisation du joueur', () => {
   });
   afterAll(() => db.close());
 
-  it('crée profil, portefeuille et deux paquets Découverte à l’inscription', async () => {
+  it('crée profil, portefeuille et deux paquets Classique à l’inscription', async () => {
     const user = await createUser(db, { displayName: 'Ada' });
     const profile = await scalar<{ display_name: string; public_code: string }>(
       db,
@@ -29,7 +29,7 @@ describe('initialisation du joueur', () => {
     expect(profile.display_name).toBe('Ada');
     expect(profile.public_code).toMatch(/^[A-HJ-NP-Z2-9]{8}$/);
     expect(await scalar<number>(db, 'select fragments from public.player_wallets where user_id = $1', [user])).toBe(0);
-    expect(await availablePacks(db, user, 'decouverte')).toHaveLength(2);
+    expect(await availablePacks(db, user, 'classique')).toHaveLength(2);
   });
 
   it('ne distribue jamais deux fois les ressources de départ (appels répétés et simultanés)', async () => {

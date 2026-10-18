@@ -374,7 +374,7 @@ export function parseCatalog(
 
   if (!packSlugs.has(game.expeditionReward.pack))
     issues.push({ path: 'game.expeditionReward', message: 'paquet de récompense inconnu' });
-  for (const key of ['starter_reward', 'timed_packs', 'fragment_exchange']) {
+  for (const key of ['starter_reward', 'timed_packs']) {
     const setting = game.settings[key];
     if (!setting) {
       issues.push({ path: `game.settings.${key}`, message: 'réglage obligatoire manquant' });
@@ -391,6 +391,24 @@ export function parseCatalog(
       issues.push({ path: 'game.settings.timed_packs', message: 'interval_seconds doit être un entier ≥ 60' });
     if (typeof max !== 'number' || !Number.isInteger(max) || max < 1)
       issues.push({ path: 'game.settings.timed_packs', message: 'max_stored doit être un entier ≥ 1' });
+  }
+  const shop = game.settings.fragment_shop?.value;
+  if (!shop || !Array.isArray(shop.offers) || shop.offers.length < 1) {
+    issues.push({ path: 'game.settings.fragment_shop', message: 'au moins une offre est requise' });
+  } else {
+    for (const [i, offer] of shop.offers.entries()) {
+      const path = `game.settings.fragment_shop.offers.${i}`;
+      if (!offer || typeof offer !== 'object') {
+        issues.push({ path, message: 'offre invalide' });
+        continue;
+      }
+      const packSlug = (offer as { pack_slug?: unknown }).pack_slug;
+      const cost = (offer as { cost?: unknown }).cost;
+      if (typeof packSlug !== 'string' || !packSlugs.has(packSlug))
+        issues.push({ path, message: 'paquet inconnu' });
+      if (typeof cost !== 'number' || !Number.isInteger(cost) || cost < 1)
+        issues.push({ path, message: 'cost doit être un entier ≥ 1' });
+    }
   }
 
   if (issues.length > 0) return { ok: false, catalog: null, issues };

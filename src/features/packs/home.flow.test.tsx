@@ -70,13 +70,16 @@ describe('accueil', () => {
 
     expect(mockRpc).toHaveBeenCalledWith('sync_timed_packs', {});
     expect(screen.getByRole('header', { name: 'Ouvrir un paquet' })).toBeOnTheScreen();
-    expect(screen.getByText('Découvrez 5 nouvelles cartes du monde')).toBeOnTheScreen();
+    expect(screen.getByText(/5 cartes · jusqu’à Rare/)).toBeOnTheScreen();
     expect(
-      await screen.findByLabelText(/^2 paquets disponibles sur 15\. Prochain paquet dans 7:4[1-3]\.$/),
+      await screen.findByLabelText(/^2 paquets à ouvrir\. Réserve 2 sur 15\. Prochain paquet dans 7:4[1-3]\.$/),
     ).toBeOnTheScreen();
 
     await fireEvent.press(screen.getByTestId('home-open-pack'));
-    expect(mockRouter.push).toHaveBeenCalledWith('/open/a0000000-0000-4000-8000-000000000001');
+    // Ouverture en overlay sur l’accueil (pas de navigation vers /open).
+    expect(mockRouter.push).not.toHaveBeenCalled();
+    expect(screen.getByLabelText('Fermer')).toBeOnTheScreen();
+    expect(screen.getByText('Paquet Classique')).toBeOnTheScreen();
   });
 
   it('cale le compte à rebours sur l’horloge du serveur, pas sur celle de l’appareil', async () => {

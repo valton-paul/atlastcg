@@ -13,6 +13,7 @@ const cardData = {
   category: 'monument' as const,
   rarity: 'epic' as const,
   countryName: 'France',
+  isoCode: 'FR',
   isoNumeric: '250',
   illustrationPath: null,
 };

@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
-import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { useId, useState } from 'react';
+import { Platform, StyleSheet, View } from 'react-native';
 import Svg, { Circle, Defs, G, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 
 import type { CardCategory, Rarity } from '@/features/catalog/types';
@@ -10,16 +10,6 @@ import { getSupabase, isSupabaseConfigured } from '@/lib/supabase';
 import silhouettes from './data/silhouettes.json';
 
 const SILHOUETTES = silhouettes as { size: number; paths: Record<string, string> };
-
-const CATEGORY_TINT: Record<CardCategory, [string, string]> = {
-  country: ['#17345A', '#0D1B33'],
-  capital: ['#1F2D55', '#0C1530'],
-  culture: ['#3A2546', '#141022'],
-  monument: ['#3B3020', '#15110B'],
-  geography: ['#173E3C', '#0A1A1E'],
-  history: ['#3A2A22', '#140E0C'],
-  special: ['#2B2B4A', '#10101E'],
-};
 
 export function illustrationUrl(path: string | null): string | null {
   if (!path || !isSupabaseConfigured()) return null;
@@ -34,20 +24,29 @@ type Props = {
   locked?: boolean;
 };
 
-/** Illustration de carte. Sans image licenciée, un rendu cartographique original est utilisé. */
+/** Illustration plein cadre. Sans photo licenciée, un paysage géométrique original est utilisé. */
 export function CardArtwork({ category, rarity, isoNumeric, illustrationPath, locked = false }: Props) {
   const [failed, setFailed] = useState(false);
   const uri = locked ? null : illustrationUrl(illustrationPath);
+  const saturate = locked ? 0 : rarityStyles[rarity].saturate;
   if (uri && !failed) {
     return (
-      <Image
-        source={{ uri }}
-        style={StyleSheet.absoluteFill}
-        contentFit="cover"
-        transition={200}
-        onError={() => setFailed(true)}
-        accessibilityIgnoresInvertColors
-      />
+      <View style={StyleSheet.absoluteFill}>
+        <Image
+          source={{ uri }}
+          style={[
+            StyleSheet.absoluteFill,
+            saturate < 1 && Platform.OS === 'web' ? ({ filter: `saturate(${saturate})` } as object) : null,
+          ]}
+          contentFit="cover"
+          transition={200}
+          onError={() => setFailed(true)}
+          accessibilityIgnoresInvertColors
+        />
+        {saturate < 1 && Platform.OS !== 'web' ? (
+          <View pointerEvents="none" style={[StyleSheet.absoluteFill, { backgroundColor: `rgba(11, 20, 38, ${1 - saturate})` }]} />
+        ) : null}
+      </View>
     );
   }
   return <ProceduralArtwork category={category} rarity={rarity} isoNumeric={isoNumeric} locked={locked} />;
@@ -64,108 +63,156 @@ function ProceduralArtwork({
   isoNumeric: string | null;
   locked: boolean;
 }) {
-  const [from, to] = locked ? [colors.slate, colors.ink] : CATEGORY_TINT[category];
-  const accent = locked ? colors.borderStrong : rarityStyles[rarity].color;
+  const style = rarityStyles[rarity];
+  const sky = locked ? colors.slate : style.artSurface;
+  const ground = locked ? colors.ink : style.surface;
+  const accent = locked ? colors.borderStrong : style.color;
+  const moon = locked ? colors.border : mix(accent, '#F2F5FA', 0.45);
   const silhouette = isoNumeric ? SILHOUETTES.paths[isoNumeric] : undefined;
-  const gradientId = `bg-${category}-${locked ? 'l' : 'u'}`;
-  const showSilhouetteLarge = category === 'country' || category === 'capital';
+  const gradientId = `sky-${useId().replace(/:/g, '')}`;
+
   return (
     <View style={StyleSheet.absoluteFill}>
-      <Svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+      <Svg width="100%" height="100%" viewBox="0 0 100 150" preserveAspectRatio="xMidYMid slice">
         <Defs>
-          <LinearGradient id={gradientId} x1="0" y1="0" x2="0.4" y2="1">
-            <Stop offset="0" stopColor={from} />
-            <Stop offset="1" stopColor={to} />
+          <LinearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0" stopColor={sky} />
+            <Stop offset="1" stopColor={ground} />
           </LinearGradient>
         </Defs>
-        <Rect x={0} y={0} width={100} height={100} fill={`url(#${gradientId})`} />
-        <G opacity={0.18}>
-          {[20, 40, 60, 80].map((v) => (
-            <Path key={`h${v}`} d={`M0 ${v}H100`} stroke={colors.text} strokeWidth={0.2} />
-          ))}
-          {[20, 40, 60, 80].map((v) => (
-            <Path key={`v${v}`} d={`M${v} 0V100`} stroke={colors.text} strokeWidth={0.2} />
-          ))}
-        </G>
-        {silhouette ? (
-          <G
-            opacity={showSilhouetteLarge ? 0.95 : 0.28}
-            transform={showSilhouetteLarge ? 'translate(10 10) scale(0.8)' : 'translate(0 0) scale(1)'}
-          >
-            <Path
-              d={silhouette}
-              fill={locked ? colors.slateRaised : accent}
-              fillOpacity={showSilhouetteLarge ? 0.22 : 0.4}
-              stroke={accent}
-              strokeWidth={showSilhouetteLarge ? 1.2 : 0.8}
-              strokeLinejoin="round"
-            />
-          </G>
-        ) : null}
-        {!locked && category === 'capital' ? (
-          <G transform="translate(50 50)">
-            <Circle r={6} fill={colors.night} stroke={accent} strokeWidth={1.2} />
-            <Path d="M0 -3.4l1 2.2 2.4.3-1.8 1.6.5 2.4L0 1.9l-2.1 1.1.5-2.4-1.8-1.6 2.4-.3z" fill={accent} />
-          </G>
-        ) : null}
-        {!locked && !showSilhouetteLarge ? <CategoryEmblem category={category} color={accent} /> : null}
-        {locked ? (
-          <G transform="translate(50 50)">
-            <Circle r={11} fill={colors.night} opacity={0.8} />
-            <Path
-              d="M-4.5 -1.5h9v8h-9zM-3 -1.5v-3a3 3 0 0 1 6 0v3"
-              stroke={colors.textMuted}
-              strokeWidth={1.4}
-              fill="none"
-            />
-          </G>
-        ) : null}
+        <Rect x={0} y={0} width={100} height={150} fill={`url(#${gradientId})`} />
+        {category === 'country' || category === 'capital' ? (
+          <CountryFigure
+            silhouette={silhouette}
+            accent={accent}
+            locked={locked}
+            capital={category === 'capital'}
+          />
+        ) : (
+          <>
+            <Circle cx={72} cy={28} r={14} fill={moon} opacity={locked ? 0.35 : 0.85} />
+            <Scene category={category} accent={accent} locked={locked} />
+          </>
+        )}
+        {locked ? <Rect x={0} y={0} width={100} height={150} fill={colors.nightDeep} opacity={0.45} /> : null}
       </Svg>
     </View>
   );
 }
 
-function CategoryEmblem({ category, color }: { category: CardCategory; color: string }) {
-  const stroke = {
-    stroke: color,
-    strokeWidth: 1.6,
-    fill: 'none',
-    strokeLinecap: 'round' as const,
-    strokeLinejoin: 'round' as const,
-  };
-  switch (category) {
-    case 'monument':
-      return (
-        <G transform="translate(30 28)">
-          <Path {...stroke} d="M4 14 20 4l16 10M6 14h28M9 16v20M17 16v20M23 16v20M31 16v20M4 38h32M2 42h36" />
+function CountryFigure({
+  silhouette,
+  accent,
+  locked,
+  capital,
+}: {
+  silhouette: string | undefined;
+  accent: string;
+  locked: boolean;
+  capital: boolean;
+}) {
+  return (
+    <G>
+      {silhouette ? (
+        <G transform="translate(6 18) scale(0.88)">
+          <Path
+            d={silhouette}
+            fill={locked ? colors.slateRaised : accent}
+            fillOpacity={locked ? 0.35 : 0.28}
+            stroke={accent}
+            strokeWidth={1.4}
+            strokeLinejoin="round"
+          />
         </G>
-      );
+      ) : (
+        <Circle cx={50} cy={62} r={28} fill="none" stroke={accent} strokeWidth={1.2} opacity={0.5} />
+      )}
+      {capital && !locked ? (
+        <G transform="translate(50 62)">
+          <Circle r={7} fill={colors.nightDeep} stroke={accent} strokeWidth={1.3} />
+          <Path d="M0 -3.6l1.1 2.3 2.5.3-1.9 1.7.5 2.5L0 1.8l-2.2 1.2.5-2.5-1.9-1.7 2.5-.3z" fill={accent} />
+        </G>
+      ) : null}
+    </G>
+  );
+}
+
+function Scene({ category, accent, locked }: { category: CardCategory; accent: string; locked: boolean }) {
+  const fill = locked ? colors.slateRaised : accent;
+  switch (category) {
     case 'geography':
       return (
-        <G transform="translate(24 32)">
-          <Path {...stroke} d="M2 34 18 8l9 14 6-8 17 20zM14 15l4 4 4-5" />
-          <Circle {...stroke} cx={42} cy={6} r={4} />
+        <G>
+          <Path d="M0 150 0 108 22 64 40 92 58 48 78 86 100 62 100 150z" fill={fill} opacity={0.55} />
+          <Path d="M0 150 0 118 28 86 46 108 70 72 100 98 100 150z" fill={fill} opacity={0.85} />
         </G>
       );
-    case 'culture':
+    case 'monument':
       return (
-        <G transform="translate(30 28)">
-          <Path {...stroke} d="M20 2c8 6 16 6 18 4v14c0 12-8 20-18 22C10 40 2 32 2 20V6c2 2 10 2 18-4z" />
-          <Path {...stroke} d="M11 18c2-2 4-2 6 0M23 18c2-2 4-2 6 0M12 28c4 4 12 4 16 0" />
+        <G>
+          <Path d="M0 150H100V118H0z" fill={fill} opacity={0.22} />
+          <Path d="M38 118 50 36 62 118z" fill={fill} opacity={0.9} />
+          <Rect x={47} y={70} width={6} height={18} fill={colors.nightDeep} opacity={0.35} />
         </G>
       );
     case 'history':
       return (
-        <G transform="translate(30 30)">
-          <Path {...stroke} d="M6 4h28v32H6zM6 4c-4 0-4 6 0 6M34 36c4 0 4-6 0-6M12 14h16M12 20h16M12 26h10" />
+        <G>
+          <Rect x={28} y={88} width={44} height={30} fill={fill} opacity={0.9} />
+          <Path d="M24 88h52c0-18-12-32-26-32S24 70 24 88z" fill={fill} opacity={0.8} />
+          <Circle cx={50} cy={70} r={22} fill={fill} opacity={0.35} />
+        </G>
+      );
+    case 'capital':
+      return (
+        <G>
+          <Rect x={0} y={108} width={100} height={42} fill={fill} opacity={0.2} />
+          <Rect x={22} y={78} width={56} height={40} fill={fill} opacity={0.85} />
+          <Rect x={34} y={90} width={10} height={12} fill={colors.nightDeep} opacity={0.35} />
+          <Rect x={56} y={90} width={10} height={12} fill={colors.nightDeep} opacity={0.35} />
+        </G>
+      );
+    case 'culture':
+      return (
+        <G>
+          <Path d="M20 118c0-28 12-48 30-48s30 20 30 48H20z" fill={fill} opacity={0.85} />
+          <Rect x={46} y={88} width={8} height={30} fill={colors.nightDeep} opacity={0.3} />
+        </G>
+      );
+    case 'special':
+      return (
+        <G>
+          {[
+            [18, 24],
+            [40, 18],
+            [82, 40],
+            [28, 48],
+          ].map(([x, y], i) => (
+            <Circle key={i} cx={x} cy={y} r={1.4} fill={fill} opacity={0.7} />
+          ))}
+          <Path d="M50 42 56 58h18l-14 11 5 18-15-10-15 10 5-18-14-11h18z" fill={fill} opacity={0.8} />
         </G>
       );
     default:
       return (
-        <G transform="translate(50 50)">
-          <Circle {...stroke} r={14} />
-          <Path {...stroke} d="M6 -6 -3 -2 -6 6 3 2z" />
+        <G>
+          <Path d="M0 150 0 112 100 96 100 150z" fill={fill} opacity={0.35} />
+          <Path d="M18 112h64v8H18z" fill={fill} opacity={0.7} />
         </G>
       );
   }
+}
+
+function mix(a: string, b: string, t: number): string {
+  const pa = hex(a);
+  const pb = hex(b);
+  if (!pa || !pb) return a;
+  const m = (i: number) => Math.round(pa[i] + (pb[i] - pa[i]) * t);
+  return `#${[m(0), m(1), m(2)].map((n) => n.toString(16).padStart(2, '0')).join('')}`;
+}
+
+function hex(value: string): [number, number, number] | null {
+  const raw = value.replace('#', '');
+  if (raw.length !== 6) return null;
+  return [parseInt(raw.slice(0, 2), 16), parseInt(raw.slice(2, 4), 16), parseInt(raw.slice(4, 6), 16)];
 }

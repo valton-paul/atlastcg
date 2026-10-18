@@ -44,7 +44,8 @@ export default function AlbumScreen() {
     .map((entry) => catalog.cardsById.get(entry.card_id))
     .filter((card): card is NonNullable<typeof card> => !!card);
   const columns = width >= 600 ? 5 : 3;
-  const cardWidth = Math.floor((width - spacing.lg * 2 - spacing.sm * (columns - 1)) / columns);
+  const gap = spacing.lg;
+  const cardWidth = Math.floor((width - spacing.lg * 2 - gap * (columns - 1)) / columns);
 
   return (
     <Screen back title={collection.title}>
@@ -63,7 +64,7 @@ export default function AlbumScreen() {
           </Text>
         </Surface>
       ) : null}
-      <View style={styles.grid}>
+      <View style={[styles.grid, { gap }]}>
         {cards.map((card) => {
           const owned = player.ownedCards.get(card.id);
           return (
@@ -85,5 +86,5 @@ export default function AlbumScreen() {
 }
 
 const styles = StyleSheet.create({
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+  grid: { flexDirection: 'row', flexWrap: 'wrap' },
 });

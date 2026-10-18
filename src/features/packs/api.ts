@@ -102,12 +102,22 @@ export function useOpenPack() {
   });
 }
 
-const exchangeSchema = z.object({ replayed: z.boolean(), packs_granted: z.number(), fragments_balance: z.number() });
+const exchangeSchema = z.object({
+  replayed: z.boolean(),
+  packs_granted: z.number(),
+  fragments_balance: z.number(),
+  pack_slug: z.string(),
+});
 
 export function useExchangeFragments() {
   const client = useQueryClient();
   return useMutation({
-    mutationFn: () => callRpc('exchange_fragments', { p_idempotency_key: randomUUID() }, exchangeSchema),
+    mutationFn: (packSlug: string) =>
+      callRpc(
+        'exchange_fragments',
+        { p_idempotency_key: randomUUID(), p_pack_slug: packSlug },
+        exchangeSchema,
+      ),
     onSettled: () => client.invalidateQueries({ queryKey: queryKeys.player }),
   });
 }
@@ -128,11 +138,11 @@ export interface TimedPacks {
   nextAt: string | null;
 }
 
-/** Synchronise la régénération des paquets : le serveur attribue ceux qui sont échus. */
-export function useTimedPacks(enabled: boolean) {
+/** Synchronise la régénération des paquets : le serveur attribue au plus un paquet échu. */
+export function useTimedPacks(enabled: boolean, userId?: string | null) {
   const client = useQueryClient();
   return useQuery({
-    queryKey: queryKeys.timedPacks,
+    queryKey: [...queryKeys.timedPacks, userId ?? null],
     queryFn: async (): Promise<TimedPacks> => {
       const state = await callRpc('sync_timed_packs', {}, timedPacksSchema);
       if (state.granted > 0) void client.invalidateQueries({ queryKey: queryKeys.playerState });

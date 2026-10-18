@@ -115,7 +115,13 @@ ${game.packs
 on conflict (slug) do update set
   name = excluded.name, description = excluded.description, status = excluded.status,
   cards_per_pack = excluded.cards_per_pack, card_categories = excluded.card_categories,
-  configuration_version = excluded.configuration_version, position = excluded.position;`);
+  configuration_version = excluded.configuration_version, position = excluded.position;
+
+-- Les paquets retirés du catalogue restent en base (inventaires existants) mais ne sont plus proposés.
+update public.pack_definitions
+   set status = 'archived'
+ where status = 'published'
+   and slug not in (${game.packs.map((p) => lit(p.slug)).join(', ')});`);
 
   const rates = game.packs.flatMap((p) =>
     Object.entries(p.dropRates).map(

@@ -1,26 +1,42 @@
-import { memo, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { memo, useCallback, useEffect, useMemo, useRef, type ComponentRef } from 'react';
+import { Platform, StyleSheet, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-import Svg, { Circle, G, Path, Rect } from 'react-native-svg';
+import Animated, { runOnJS, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
 import { IconButton } from '@/design-system/components/IconButton';
 import { colors, spacing } from '@/design-system/tokens';
-import type { CountryState } from '@/features/collection/progress';
+import type { CollectionTier } from '@/features/collection/progress';
 
 import mapData from './data/world-map.json';
+import { clientToSvg, countryAtSvgPoint, countryFromDomPoint } from './hit-test';
 import { clamp, clampTranslation, focusViewport, geometry, MAX_SCALE, MIN_SCALE } from './viewport';
 
 type MapCountry = { id: string; name: string; d: string; cx: number; cy: number };
 const MAP = mapData as { width: number; height: number; countries: MapCountry[] };
 
-export const STATE_FILL: Record<CountryState, string> = {
-  unknown: colors.map.unknown,
-  discovered: colors.map.discovered,
-  exploring: colors.map.discovered,
-  explored: colors.map.explored,
-  completed: colors.map.completed,
+/**
+ * Sur le web, `onPress` de react-native-svg active un mixin qui spam des erreurs WebShape
+ * et les `onClick` DOM sont avalés par Gesture Handler. La sélection web passe donc par
+ * Gesture.Tap + hit-test. Sur natif, `onPress` reste le chemin fiable.
+ */
+function nativePress(enabled: boolean, onSelect: () => void) {
+  if (!enabled || Platform.OS === 'web') return undefined;
+  return { onPress: onSelect };
+}
+
+/** Remplissage d’un pays selon le % de cartes uniques collectées. */
+export const TIER_FILL: Record<CollectionTier, string> = {
+  empty: colors.map.tierEmpty,
+  started: colors.map.tierStarted,
+  exploring: colors.map.tierExploring,
+  advanced: colors.map.tierAdvanced,
+  nearly: colors.map.tierNearly,
+  complete: colors.map.tierComplete,
 };
+
+/** @deprecated Alias de `TIER_FILL`. */
+export const STATE_FILL = TIER_FILL;
 
 export function mapCountryByNumeric(isoNumeric: string): MapCountry | undefined {
   return MAP.countries.find((c) => c.id === isoNumeric);
@@ -29,91 +45,86 @@ export function mapCountryByNumeric(isoNumeric: string): MapCountry | undefined 
 type Props = {
   width: number;
   height: number;
-  /** États indexés par code ISO numérique, uniquement pour les pays du catalogue. */
-  states: ReadonlyMap<string, CountryState>;
+  /** Paliers de collection indexés par code ISO numérique (pays du catalogue uniquement). */
+  tiers: ReadonlyMap<string, CollectionTier>;
   selected: string | null;
   onSelect: (isoNumeric: string) => void;
   reduceMotion: boolean;
   /** Part du cadre recouverte par un panneau : le pays sélectionné est cadré dans la zone restante. */
   insetRight?: number;
   insetBottom?: number;
+  /** Pays brièvement illuminé (rouge) pendant le tirage d'expédition. */
+  drawHighlight?: string | null;
+  /** Pays retenu (or) à la fin du tirage. */
+  drawWinner?: string | null;
+  /** Désactive les taps pays pendant l'animation de tirage. */
+  interactionEnabled?: boolean;
 };
 
-/** Symbole porté par chaque état, pour ne jamais dépendre de la seule couleur. */
-export function StateMarker({ state, x, y, r }: { state: CountryState; x: number; y: number; r: number }) {
-  switch (state) {
-    case 'unknown':
-      return (
-        <Circle
-          cx={x}
-          cy={y}
-          r={r * 0.55}
-          fill="none"
-          stroke={colors.textFaint}
-          strokeWidth={r * 0.25}
-          strokeDasharray={`${r * 0.4} ${r * 0.3}`}
-        />
-      );
-    case 'discovered':
-      return <Circle cx={x} cy={y} r={r * 0.6} fill="none" stroke={colors.text} strokeWidth={r * 0.28} />;
-    case 'exploring':
-      return (
-        <G>
-          <Circle cx={x} cy={y} r={r * 0.6} fill="none" stroke={colors.turquoise} strokeWidth={r * 0.28} />
-          <Path d={`M${x} ${y - r * 0.6}A${r * 0.6} ${r * 0.6} 0 0 1 ${x} ${y + r * 0.6}z`} fill={colors.turquoise} />
-        </G>
-      );
-    case 'explored':
-      return <Circle cx={x} cy={y} r={r * 0.62} fill={colors.text} stroke={colors.nightDeep} strokeWidth={r * 0.18} />;
-    case 'completed': {
-      const s = r * 0.9;
-      return (
-        <Path
-          d={`M${x} ${y - s}l${s * 0.29} ${s * 0.6} ${s * 0.66} ${s * 0.09}-${s * 0.48} ${s * 0.46} ${s * 0.12} ${s * 0.66}L${x} ${y + s * 0.5}l-${s * 0.59} ${s * 0.31} ${s * 0.12}-${s * 0.66}-${s * 0.48}-${s * 0.46} ${s * 0.66}-${s * 0.09}z`}
-          fill={colors.gold}
-          stroke={colors.nightDeep}
-          strokeWidth={r * 0.12}
-        />
-      );
-    }
-  }
-}
-
 const Countries = memo(function Countries({
-  states,
+  tiers,
   selected,
   onSelect,
+  drawHighlight,
+  drawWinner,
+  interactionEnabled,
 }: {
-  states: ReadonlyMap<string, CountryState>;
+  tiers: ReadonlyMap<string, CollectionTier>;
   selected: string | null;
   onSelect: (id: string) => void;
+  drawHighlight: string | null;
+  drawWinner: string | null;
+  interactionEnabled: boolean;
 }) {
   return (
     <>
       {MAP.countries.map((country) => {
-        const state = states.get(country.id);
+        const tier = tiers.get(country.id);
         const isSelected = selected === country.id;
+        const isPulse = drawHighlight === country.id;
+        const isWinner = drawWinner === country.id;
+        const fill = isWinner
+          ? colors.map.drawWinner
+          : isPulse
+            ? colors.map.drawPulse
+            : tier
+              ? TIER_FILL[tier]
+              : colors.map.graticule;
+        const stroke = isWinner
+          ? colors.gold
+          : isPulse
+            ? colors.map.drawPulse
+            : isSelected
+              ? colors.map.selected
+              : tier
+                ? colors.map.unknownStroke
+                : colors.map.graticule;
         return (
           <Path
             key={country.id}
             d={country.d}
-            fill={state ? STATE_FILL[state] : colors.map.graticule}
-            fillOpacity={state ? 1 : 0.9}
-            stroke={isSelected ? colors.map.selected : state ? colors.map.unknownStroke : colors.map.graticule}
-            strokeWidth={isSelected ? 1.4 : 0.4}
-            onPress={state ? () => onSelect(country.id) : undefined}
+            fill={fill}
+            fillOpacity={isPulse || isWinner ? 1 : tier ? 1 : 0.9}
+            stroke={stroke}
+            strokeWidth={isWinner ? 2 : isPulse || isSelected ? 1.4 : 0.4}
+            {...(tier ? ({ 'data-country': country.id } as object) : null)}
+            {...nativePress(interactionEnabled && !!tier, () => onSelect(country.id))}
           />
         );
       })}
       {MAP.countries.map((country) => {
-        const state = states.get(country.id);
-        if (!state) return null;
+        const tier = tiers.get(country.id);
+        if (!tier) return null;
         return (
-          <G key={`m-${country.id}`}>
-            <StateMarker state={state} x={country.cx} y={country.cy} r={8} />
-            {/* Zone tactile élargie pour les petits pays. */}
-            <Circle cx={country.cx} cy={country.cy} r={18} fill="transparent" onPress={() => onSelect(country.id)} />
-          </G>
+          <Circle
+            key={`h-${country.id}`}
+            cx={country.cx}
+            cy={country.cy}
+            r={18}
+            fill="transparent"
+            {...({ 'data-country': country.id } as object)}
+            {...nativePress(interactionEnabled, () => onSelect(country.id))}
+          />
         );
       })}
     </>
@@ -126,12 +137,15 @@ const FOCUS_SCALE = 2.5;
 export function WorldMap({
   width,
   height,
-  states,
+  tiers,
   selected,
   onSelect,
   reduceMotion,
   insetRight = 0,
   insetBottom = 0,
+  drawHighlight = null,
+  drawWinner = null,
+  interactionEnabled = true,
 }: Props) {
   // La carte est réduite pour tenir entière dans le cadre, puis centrée.
   const ratio = Math.min(width / MAP.width, height / MAP.height);
@@ -140,11 +154,14 @@ export function WorldMap({
   const offsetX = (width - contentWidth) / 2;
   const offsetY = (height - contentHeight) / 2;
   const g = geometry(width, height, { contentWidth, contentHeight, insetRight, insetBottom });
+  const selectable = useMemo(() => new Set(tiers.keys()), [tiers]);
+  const hostRef = useRef<ComponentRef<typeof View>>(null);
 
   const scale = useSharedValue(1);
   const x = useSharedValue(0);
   const y = useSharedValue(0);
   const start = useSharedValue({ scale: 1, x: 0, y: 0 });
+  const prevSelected = useRef(selected);
 
   const animateTo = (target: { scale: number; x: number; y: number }) => {
     if (reduceMotion) {
@@ -159,7 +176,14 @@ export function WorldMap({
   };
 
   useEffect(() => {
-    if (!selected) return;
+    const wasSelected = prevSelected.current;
+    prevSelected.current = selected;
+
+    // Croix du panneau : même reset que le bouton « Vue d’ensemble ».
+    if (!selected) {
+      if (wasSelected) animateTo({ scale: 1, ...clampTranslation(1, 0, 0, g) });
+      return;
+    }
     const country = mapCountryByNumeric(selected);
     if (!country) return;
     const target = focusViewport(
@@ -194,6 +218,35 @@ export function WorldMap({
     y,
   ]);
 
+  const selectAtScreen = useCallback(
+    (clientX: number, clientY: number) => {
+      const fromDom = countryFromDomPoint(clientX, clientY, selectable);
+      if (fromDom) {
+        onSelect(fromDom);
+        return;
+      }
+      const host = hostRef.current as unknown as { querySelector?: (s: string) => Element | null } | null;
+      const svg = host?.querySelector?.('svg') as SVGSVGElement | null;
+      if (!svg) return;
+      const point = clientToSvg(clientX, clientY, svg);
+      if (!point) return;
+      const id = countryAtSvgPoint(point.svgX, point.svgY, selectable);
+      if (id) onSelect(id);
+    },
+    [selectable, onSelect],
+  );
+  const selectAtScreenRef = useRef(selectAtScreen);
+  useEffect(() => {
+    selectAtScreenRef.current = selectAtScreen;
+  }, [selectAtScreen]);
+
+  const tapOnJs = useCallback((clientX: number, clientY: number) => {
+    selectAtScreenRef.current(clientX, clientY);
+  }, []);
+
+  // Les callbacks Gesture Handler s'exécutent hors du render ; le linter refs de React Compiler
+  // les signale à tort lorsqu'ils ferment sur des shared values / runOnJS.
+  /* eslint-disable react-hooks/refs */
   const pinch = Gesture.Pinch()
     .onStart(() => {
       start.set({ scale: scale.get(), x: x.get(), y: y.get() });
@@ -222,7 +275,15 @@ export function WorldMap({
       y.set(t.y);
     });
 
-  const gesture = Gesture.Simultaneous(pinch, pan);
+  const tap = Gesture.Tap()
+    .maxDistance(12)
+    .onEnd((e) => {
+      runOnJS(tapOnJs)(e.absoluteX, e.absoluteY);
+    });
+
+  const gesture =
+    Platform.OS === 'web' ? Gesture.Simultaneous(pinch, pan, tap) : Gesture.Simultaneous(pinch, pan);
+  /* eslint-enable react-hooks/refs */
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: x.get() }, { translateY: y.get() }, { scale: scale.get() }],
@@ -235,12 +296,24 @@ export function WorldMap({
   };
 
   return (
-    <View style={[styles.frame, { width, height }]}>
+    <View ref={hostRef} style={[styles.frame, { width, height }]}>
       <GestureDetector gesture={gesture}>
         <Animated.View style={[{ width, height }, animatedStyle]}>
-          <Svg width={width} height={height} viewBox={`0 0 ${MAP.width} ${MAP.height}`}>
+          <Svg
+            width={width}
+            height={height}
+            viewBox={`0 0 ${MAP.width} ${MAP.height}`}
+            preserveAspectRatio="xMidYMid meet"
+          >
             <Rect x={0} y={0} width={MAP.width} height={MAP.height} fill={colors.nightDeep} />
-            <Countries states={states} selected={selected} onSelect={onSelect} />
+            <Countries
+              tiers={tiers}
+              selected={selected}
+              onSelect={onSelect}
+              drawHighlight={drawHighlight}
+              drawWinner={drawWinner}
+              interactionEnabled={interactionEnabled}
+            />
           </Svg>
         </Animated.View>
       </GestureDetector>

@@ -96,18 +96,21 @@ export function makeCatalog(): Fixture {
     packs: [
       {
         id: packId,
-        slug: 'decouverte',
-        name: 'Découverte',
-        description: 'Pays et capitales',
+        slug: 'classique',
+        name: 'Classique',
+        description: 'Toutes les cartes',
         cards_per_pack: 5,
-        card_categories: ['country', 'capital'],
+        card_categories: null,
         continent: null,
-        configuration_version: 2,
+        configuration_version: 1,
         position: 1,
         pack_drop_rates: [
-          { configuration_version: 1, rarity: 'common', probability: 1 },
-          { configuration_version: 2, rarity: 'common', probability: 0.7 },
-          { configuration_version: 2, rarity: 'uncommon', probability: 0.3 },
+          { configuration_version: 1, rarity: 'common', probability: 0.5 },
+          { configuration_version: 1, rarity: 'uncommon', probability: 0.25 },
+          { configuration_version: 1, rarity: 'rare', probability: 0.15 },
+          { configuration_version: 1, rarity: 'epic', probability: 0.07 },
+          { configuration_version: 1, rarity: 'legendary', probability: 0.025 },
+          { configuration_version: 1, rarity: 'mythic', probability: 0.005 },
         ],
       },
     ],
@@ -131,7 +134,12 @@ export function makeCatalog(): Fixture {
         reward_pack_quantity: 1,
       },
     ],
-    settings: { fragmentExchangeCost: 100, fragmentExchangePackSlug: 'decouverte' },
+    settings: {
+      fragmentOffers: [
+        { packSlug: 'premium', cost: 100 },
+        { packSlug: 'legendaire', cost: 280 },
+      ],
+    },
   });
   return { catalog, cards };
 }

@@ -30,7 +30,7 @@ describe('parcours principal', () => {
           )
         ).rows,
     );
-    expect(packs.map((p) => p.slug)).toEqual(['decouverte', 'decouverte']);
+    expect(packs.map((p) => p.slug)).toEqual(['classique', 'classique']);
 
     // 3. Ouverture.
     const opening = await rpc<{ cards: { card_id: string; country_code: string }[] }>(db, user, 'open_pack', {

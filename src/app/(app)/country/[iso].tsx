@@ -20,7 +20,13 @@ import { toCardData } from '@/features/cards/adapters';
 import { AtlasCard } from '@/features/cards/AtlasCard';
 import silhouettes from '@/features/cards/data/silhouettes.json';
 import { CONTINENT_LABELS } from '@/features/catalog/types';
-import { cardsOfCountry, COUNTRY_STATE_LABELS, countryProgress, countryState } from '@/features/collection/progress';
+import {
+  cardsOfCountry,
+  COLLECTION_TIER_LABELS,
+  collectionRatio,
+  collectionTier,
+  countryProgress,
+} from '@/features/collection/progress';
 import { sortCards } from '@/features/collection/filters';
 import { useAtlasData } from '@/features/player/useAtlasData';
 import { errorMessage } from '@/lib/errors';
@@ -45,8 +51,9 @@ export default function CountryScreen() {
     );
   }
 
-  const state = countryState(catalog, player.ownedCards, player.expeditions, country.iso_code);
   const progress = countryProgress(catalog, player.ownedCards, country.iso_code);
+  const tier = collectionTier(progress);
+  const pct = Math.round(collectionRatio(progress) * 100);
   const cards = sortCards(catalog, player.ownedCards, cardsOfCountry(catalog, country.iso_code), 'country');
   const expedition = catalog.expeditionsByCountry.get(country.iso_code);
   const expeditionState = expedition ? player.expeditions.get(expedition.id) : undefined;
@@ -69,7 +76,8 @@ export default function CountryScreen() {
         ) : null}
         <View style={styles.flex}>
           <Text variant="overline" color={discovered ? colors.turquoise : colors.textMuted}>
-            {COUNTRY_STATE_LABELS[state]}
+            {COLLECTION_TIER_LABELS[tier]}
+            {progress.total > 0 ? ` · ${pct} %` : ''}
           </Text>
           {discovered ? (
             <Text>
@@ -141,5 +149,5 @@ export default function CountryScreen() {
 const styles = StyleSheet.create({
   hero: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg },
   flex: { flex: 1, gap: spacing.xs },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md, justifyContent: 'center' },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.lg, justifyContent: 'center' },
 });

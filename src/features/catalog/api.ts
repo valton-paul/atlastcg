@@ -84,7 +84,9 @@ export async function fetchCatalog(): Promise<Catalog> {
         .from('pack_definitions')
         .select(
           'id, slug, name, description, cards_per_pack, card_categories, continent, configuration_version, position, pack_drop_rates(configuration_version, rarity, probability)',
-        ),
+        )
+        .eq('status', 'published')
+        .order('position'),
       z.array(packDefinitionSchema),
     ),
     selectRows(
@@ -105,13 +107,16 @@ export async function fetchCatalog(): Promise<Catalog> {
   });
 }
 
-const exchangeSchema = z.object({ cost: z.number().int().positive(), pack_slug: z.string() });
+const shopSchema = z.object({
+  offers: z.array(z.object({ pack_slug: z.string(), cost: z.number().int().positive() })).min(1),
+});
 
 export function parseSettings(rows: { key: string; value?: unknown }[]): EconomySettings {
-  const exchange = exchangeSchema.safeParse(rows.find((r) => r.key === 'fragment_exchange')?.value);
+  const shop = shopSchema.safeParse(rows.find((r) => r.key === 'fragment_shop')?.value);
   return {
-    fragmentExchangeCost: exchange.success ? exchange.data.cost : null,
-    fragmentExchangePackSlug: exchange.success ? exchange.data.pack_slug : null,
+    fragmentOffers: shop.success
+      ? shop.data.offers.map((o) => ({ packSlug: o.pack_slug, cost: o.cost }))
+      : [],
   };
 }
 

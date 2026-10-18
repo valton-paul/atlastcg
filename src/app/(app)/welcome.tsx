@@ -69,7 +69,7 @@ export default function WelcomeScreen() {
           Le monde est à collectionner
         </Text>
         <Text color={colors.textMuted}>
-          {firstPack ? 'Deux paquets Découverte vous attendent pour commencer votre atlas.' : 'Votre atlas est prêt.'}
+          {firstPack ? 'Deux paquets classiques vous attendent pour commencer votre atlas.' : 'Votre atlas est prêt.'}
         </Text>
       </View>
       {PILLARS.map((pillar) => (

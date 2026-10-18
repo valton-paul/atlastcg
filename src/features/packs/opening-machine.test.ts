@@ -15,7 +15,7 @@ function result(replayed = false): OpeningResult {
   return {
     opening_id: '00000000-0000-4000-8000-0000000000aa',
     user_pack_id: '00000000-0000-4000-8000-0000000000bb',
-    pack: { slug: 'decouverte', name: 'Découverte' },
+    pack: { slug: 'classique', name: 'Classique' },
     configuration_version: 1,
     opened_at: '2026-01-01T00:00:00Z',
     cards: [

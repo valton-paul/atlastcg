@@ -11,7 +11,7 @@ function objective(slug: string, progress: number, target: number, claimed = fal
     progress,
     claimed,
     collection_slug: null,
-    reward: { pack_slug: 'exploration', pack_name: 'Exploration', quantity: 1 },
+    reward: { pack_slug: 'classique', pack_name: 'Classique', quantity: 1 },
   };
 }
 

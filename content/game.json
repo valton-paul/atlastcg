@@ -10,22 +10,22 @@
   ],
   "packs": [
     {
-      "slug": "decouverte", "name": "Paquet Découverte", "position": 1,
-      "description": "Le paquet des premiers pas : des pays et leurs capitales.",
-      "cardsPerPack": 5, "categories": ["country", "capital"], "configurationVersion": 1,
-      "dropRates": { "common": 0.7, "uncommon": 0.3 }
+      "slug": "classique", "name": "Classique", "position": 1,
+      "description": "Le paquet de base : toutes les cartes du catalogue, obtenu par recharge, expéditions et objectifs.",
+      "cardsPerPack": 5, "categories": null, "configurationVersion": 1,
+      "dropRates": { "common": 0.5, "uncommon": 0.25, "rare": 0.15, "epic": 0.07, "legendary": 0.025, "mythic": 0.005 }
     },
     {
-      "slug": "exploration", "name": "Paquet Exploration", "position": 2,
-      "description": "Le paquet standard : toutes les cartes du catalogue.",
-      "cardsPerPack": 5, "categories": null, "configurationVersion": 2,
-      "dropRates": { "common": 0.547, "uncommon": 0.27, "rare": 0.11, "epic": 0.06, "legendary": 0.01, "mythic": 0.003 }
+      "slug": "premium", "name": "Premium", "position": 2,
+      "description": "Meilleures chances de cartes rares et au-delà. S’achète avec des fragments.",
+      "cardsPerPack": 5, "categories": null, "configurationVersion": 1,
+      "dropRates": { "common": 0.25, "uncommon": 0.3, "rare": 0.25, "epic": 0.13, "legendary": 0.055, "mythic": 0.015 }
     },
     {
-      "slug": "patrimoine", "name": "Paquet Thématique Patrimoine", "position": 3,
-      "description": "Monuments, paysages, cultures et lieux de mémoire du monde.",
-      "cardsPerPack": 5, "categories": ["monument", "geography", "culture", "history"], "configurationVersion": 2,
-      "dropRates": { "uncommon": 0.1, "rare": 0.5, "epic": 0.31, "legendary": 0.07, "mythic": 0.02 }
+      "slug": "legendaire", "name": "Légendaire", "position": 3,
+      "description": "Très haut de gamme : fortes chances d’épiques, légendaires et mythiques. S’achète avec des fragments.",
+      "cardsPerPack": 5, "categories": null, "configurationVersion": 1,
+      "dropRates": { "common": 0.1, "uncommon": 0.2, "rare": 0.3, "epic": 0.23, "legendary": 0.14, "mythic": 0.03 }
     }
   ],
   "collections": [
@@ -41,31 +41,39 @@
     { "slug": "cultures-et-memoires", "title": "Cultures et mémoires", "description": "Langues, traditions et lieux de mémoire.", "type": "cultural", "rule": { "categories": ["culture", "history"] } }
   ],
   "objectives": [
-    { "slug": "premiers-pas", "title": "Premiers pas", "description": "Possède 10 cartes différentes.", "kind": "cards_owned", "target": 10, "rewardPack": "exploration", "rewardQuantity": 1 },
-    { "slug": "voyageur", "title": "Voyageur", "description": "Découvre 10 pays.", "kind": "countries_discovered", "target": 10, "rewardPack": "exploration", "rewardQuantity": 1 },
-    { "slug": "premiere-expedition", "title": "Première expédition", "description": "Termine une expédition.", "kind": "expeditions_completed", "target": 1, "rewardPack": "patrimoine", "rewardQuantity": 1 },
-    { "slug": "collectionneur", "title": "Collectionneur", "description": "Possède 30 cartes différentes.", "kind": "cards_owned", "target": 30, "rewardPack": "patrimoine", "rewardQuantity": 1 },
-    { "slug": "six-continents", "title": "Six continents", "description": "Découvre au moins un pays sur chaque continent.", "kind": "continents_discovered", "target": 6, "rewardPack": "patrimoine", "rewardQuantity": 1 },
-    { "slug": "explorateur-confirme", "title": "Explorateur confirmé", "description": "Termine 5 expéditions.", "kind": "expeditions_completed", "target": 5, "rewardPack": "exploration", "rewardQuantity": 2 },
-    { "slug": "grand-collectionneur", "title": "Grand collectionneur", "description": "Possède 60 cartes différentes.", "kind": "cards_owned", "target": 60, "rewardPack": "exploration", "rewardQuantity": 2 },
-    { "slug": "globe-trotteur", "title": "Globe-trotteur", "description": "Découvre 50 pays.", "kind": "countries_discovered", "target": 50, "rewardPack": "exploration", "rewardQuantity": 2 },
-    { "slug": "conservateur", "title": "Conservateur", "description": "Possède 150 cartes différentes.", "kind": "cards_owned", "target": 150, "rewardPack": "patrimoine", "rewardQuantity": 2 },
-    { "slug": "aventurier", "title": "Aventurier", "description": "Termine 20 expéditions.", "kind": "expeditions_completed", "target": 20, "rewardPack": "exploration", "rewardQuantity": 3 },
-    { "slug": "tour-du-monde", "title": "Tour du monde", "description": "Découvre 100 pays.", "kind": "countries_discovered", "target": 100, "rewardPack": "exploration", "rewardQuantity": 3 },
-    { "slug": "encyclopediste", "title": "Encyclopédiste", "description": "Possède 300 cartes différentes.", "kind": "cards_owned", "target": 300, "rewardPack": "patrimoine", "rewardQuantity": 3 },
-    { "slug": "grand-explorateur", "title": "Grand explorateur", "description": "Termine 50 expéditions.", "kind": "expeditions_completed", "target": 50, "rewardPack": "exploration", "rewardQuantity": 5 },
-    { "slug": "album-pays-europe", "title": "Album complet : Europe", "description": "Complète la collection Pays d'Europe.", "kind": "collection_completed", "collection": "pays-europe", "rewardPack": "patrimoine", "rewardQuantity": 1 },
-    { "slug": "album-pays-asie", "title": "Album complet : Asie", "description": "Complète la collection Pays d'Asie.", "kind": "collection_completed", "collection": "pays-asie", "rewardPack": "patrimoine", "rewardQuantity": 1 },
-    { "slug": "album-pays-afrique", "title": "Album complet : Afrique", "description": "Complète la collection Pays d'Afrique.", "kind": "collection_completed", "collection": "pays-afrique", "rewardPack": "patrimoine", "rewardQuantity": 1 },
-    { "slug": "album-pays-amerique-du-nord", "title": "Album complet : Amérique du Nord", "description": "Complète la collection Pays d'Amérique du Nord.", "kind": "collection_completed", "collection": "pays-amerique-du-nord", "rewardPack": "patrimoine", "rewardQuantity": 1 },
-    { "slug": "album-pays-amerique-du-sud", "title": "Album complet : Amérique du Sud", "description": "Complète la collection Pays d'Amérique du Sud.", "kind": "collection_completed", "collection": "pays-amerique-du-sud", "rewardPack": "patrimoine", "rewardQuantity": 1 },
-    { "slug": "album-pays-oceanie", "title": "Album complet : Océanie", "description": "Complète la collection Pays d'Océanie.", "kind": "collection_completed", "collection": "pays-oceanie", "rewardPack": "patrimoine", "rewardQuantity": 1 },
-    { "slug": "album-capitales", "title": "Album complet : Capitales", "description": "Complète la collection Capitales du monde.", "kind": "collection_completed", "collection": "capitales-du-monde", "rewardPack": "exploration", "rewardQuantity": 2 }
+    { "slug": "premiers-pas", "title": "Premiers pas", "description": "Possède 10 cartes différentes.", "kind": "cards_owned", "target": 10, "rewardPack": "classique", "rewardQuantity": 1 },
+    { "slug": "voyageur", "title": "Voyageur", "description": "Découvre 10 pays.", "kind": "countries_discovered", "target": 10, "rewardPack": "classique", "rewardQuantity": 1 },
+    { "slug": "premiere-expedition", "title": "Première expédition", "description": "Termine une expédition.", "kind": "expeditions_completed", "target": 1, "rewardPack": "classique", "rewardQuantity": 1 },
+    { "slug": "collectionneur", "title": "Collectionneur", "description": "Possède 30 cartes différentes.", "kind": "cards_owned", "target": 30, "rewardPack": "premium", "rewardQuantity": 1 },
+    { "slug": "six-continents", "title": "Six continents", "description": "Découvre au moins un pays sur chaque continent.", "kind": "continents_discovered", "target": 6, "rewardPack": "premium", "rewardQuantity": 1 },
+    { "slug": "explorateur-confirme", "title": "Explorateur confirmé", "description": "Termine 5 expéditions.", "kind": "expeditions_completed", "target": 5, "rewardPack": "classique", "rewardQuantity": 2 },
+    { "slug": "grand-collectionneur", "title": "Grand collectionneur", "description": "Possède 60 cartes différentes.", "kind": "cards_owned", "target": 60, "rewardPack": "premium", "rewardQuantity": 1 },
+    { "slug": "globe-trotteur", "title": "Globe-trotteur", "description": "Découvre 50 pays.", "kind": "countries_discovered", "target": 50, "rewardPack": "premium", "rewardQuantity": 2 },
+    { "slug": "conservateur", "title": "Conservateur", "description": "Possède 150 cartes différentes.", "kind": "cards_owned", "target": 150, "rewardPack": "legendaire", "rewardQuantity": 1 },
+    { "slug": "aventurier", "title": "Aventurier", "description": "Termine 20 expéditions.", "kind": "expeditions_completed", "target": 20, "rewardPack": "premium", "rewardQuantity": 2 },
+    { "slug": "tour-du-monde", "title": "Tour du monde", "description": "Découvre 100 pays.", "kind": "countries_discovered", "target": 100, "rewardPack": "legendaire", "rewardQuantity": 1 },
+    { "slug": "encyclopediste", "title": "Encyclopédiste", "description": "Possède 300 cartes différentes.", "kind": "cards_owned", "target": 300, "rewardPack": "legendaire", "rewardQuantity": 2 },
+    { "slug": "grand-explorateur", "title": "Grand explorateur", "description": "Termine 50 expéditions.", "kind": "expeditions_completed", "target": 50, "rewardPack": "legendaire", "rewardQuantity": 2 },
+    { "slug": "album-pays-europe", "title": "Album complet : Europe", "description": "Complète la collection Pays d'Europe.", "kind": "collection_completed", "collection": "pays-europe", "rewardPack": "premium", "rewardQuantity": 1 },
+    { "slug": "album-pays-asie", "title": "Album complet : Asie", "description": "Complète la collection Pays d'Asie.", "kind": "collection_completed", "collection": "pays-asie", "rewardPack": "premium", "rewardQuantity": 1 },
+    { "slug": "album-pays-afrique", "title": "Album complet : Afrique", "description": "Complète la collection Pays d'Afrique.", "kind": "collection_completed", "collection": "pays-afrique", "rewardPack": "premium", "rewardQuantity": 1 },
+    { "slug": "album-pays-amerique-du-nord", "title": "Album complet : Amérique du Nord", "description": "Complète la collection Pays d'Amérique du Nord.", "kind": "collection_completed", "collection": "pays-amerique-du-nord", "rewardPack": "premium", "rewardQuantity": 1 },
+    { "slug": "album-pays-amerique-du-sud", "title": "Album complet : Amérique du Sud", "description": "Complète la collection Pays d'Amérique du Sud.", "kind": "collection_completed", "collection": "pays-amerique-du-sud", "rewardPack": "premium", "rewardQuantity": 1 },
+    { "slug": "album-pays-oceanie", "title": "Album complet : Océanie", "description": "Complète la collection Pays d'Océanie.", "kind": "collection_completed", "collection": "pays-oceanie", "rewardPack": "premium", "rewardQuantity": 1 },
+    { "slug": "album-capitales", "title": "Album complet : Capitales", "description": "Complète la collection Capitales du monde.", "kind": "collection_completed", "collection": "capitales-du-monde", "rewardPack": "legendaire", "rewardQuantity": 1 }
   ],
-  "expeditionReward": { "pack": "exploration", "quantity": 1 },
+  "expeditionReward": { "pack": "classique", "quantity": 1 },
   "settings": {
-    "starter_reward": { "value": { "pack_slug": "decouverte", "quantity": 2 }, "description": "Paquets offerts à la création du compte." },
-    "timed_packs": { "value": { "pack_slug": "exploration", "interval_seconds": 600, "max_stored": 15 }, "description": "Paquets régénérés : un paquet par intervalle, tant que la réserve est sous le plafond." },
-    "fragment_exchange": { "value": { "pack_slug": "exploration", "cost": 100 }, "description": "Coût en fragments d'un paquet obtenu par échange." }
+    "starter_reward": { "value": { "pack_slug": "classique", "quantity": 2 }, "description": "Paquets offerts à la création du compte." },
+    "timed_packs": { "value": { "pack_slug": "classique", "interval_seconds": 600, "max_stored": 15 }, "description": "Paquets régénérés : au plus un paquet classique par synchronisation (toutes les 10 min), tant que la réserve est sous le plafond. Pas de rattrapage en rafale." },
+    "fragment_shop": {
+      "value": {
+        "offers": [
+          { "pack_slug": "premium", "cost": 100 },
+          { "pack_slug": "legendaire", "cost": 280 }
+        ]
+      },
+      "description": "Boutique de paquets contre fragments. Coûts calibrés pour qu’un Premium coûte environ un paquet classique de doublons, et un Légendaire environ trois."
+    }
   }
 }

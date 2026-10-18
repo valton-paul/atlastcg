@@ -11,6 +11,7 @@ export function toCardData(catalog: Catalog, card: Card | OpeningCard): AtlasCar
     category: card.category,
     rarity: card.rarity,
     countryName: country?.name ?? null,
+    isoCode: country?.iso_code ?? null,
     isoNumeric: country?.iso_numeric ?? null,
     illustrationPath: card.illustration_path,
   };

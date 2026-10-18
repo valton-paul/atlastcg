@@ -192,8 +192,10 @@ export function LightRays({
         <Svg width={size} height={size} viewBox="0 0 100 100" {...decorativeSvgProps}>
           <Defs>
             <RadialGradient id={id} cx="50" cy="50" r="50" gradientUnits="userSpaceOnUse">
-              <Stop offset="0" stopColor={color} stopOpacity={0.95} />
-              <Stop offset="0.35" stopColor={color} stopOpacity={0.45} />
+              {/* Centre creux : la lumière porte sur les bords pour ne pas écraser la carte. */}
+              <Stop offset="0" stopColor={color} stopOpacity={0.08} />
+              <Stop offset="0.42" stopColor={color} stopOpacity={0.55} />
+              <Stop offset="0.78" stopColor={color} stopOpacity={0.35} />
               <Stop offset="1" stopColor={color} stopOpacity={0} />
             </RadialGradient>
           </Defs>
@@ -230,6 +232,257 @@ export function ScreenFlash({
   );
 }
 
+/** Halo radial qui gonfle derrière une carte prestige. */
+export function CoronaBloom({
+  color,
+  size,
+  delay = 0,
+  intensity = 0.55,
+}: {
+  color: string;
+  size: number;
+  delay?: number;
+  intensity?: number;
+}) {
+  const pulse = useSharedValue(0);
+  useEffect(() => {
+    pulse.set(
+      withDelay(
+        delay,
+        withRepeat(
+          withTiming(1, { duration: 1600, easing: Easing.inOut(Easing.quad) }),
+          -1,
+          true,
+        ),
+      ),
+    );
+    return () => cancelAnimation(pulse);
+  }, [pulse, delay]);
+  const style = useAnimatedStyle(() => ({
+    opacity: intensity * (0.45 + pulse.get() * 0.55),
+    transform: [{ scale: 0.82 + pulse.get() * 0.22 }],
+  }));
+  const id = `corona-${color.replace('#', '')}`;
+  return (
+    <View pointerEvents="none" style={styles.center} {...decorativeViewProps}>
+      <Animated.View style={[{ width: size, height: size }, style]}>
+        <Svg width={size} height={size} viewBox="0 0 100 100" {...decorativeSvgProps}>
+          <Defs>
+            <RadialGradient id={id} cx="50" cy="50" r="50" gradientUnits="userSpaceOnUse">
+              <Stop offset="0" stopColor="#FFFFFF" stopOpacity={0.55} />
+              <Stop offset="0.28" stopColor={color} stopOpacity={0.7} />
+              <Stop offset="1" stopColor={color} stopOpacity={0} />
+            </RadialGradient>
+          </Defs>
+          <Path d="M50 0A50 50 0 1 1 49.9 0Z" fill={`url(#${id})`} />
+        </Svg>
+      </Animated.View>
+    </View>
+  );
+}
+
+/** Anneau orbitant autour de la carte. */
+export function OrbitRing({
+  color,
+  size,
+  delay = 0,
+  reverse = false,
+  dashed = true,
+}: {
+  color: string;
+  size: number;
+  delay?: number;
+  reverse?: boolean;
+  dashed?: boolean;
+}) {
+  const spin = useSharedValue(0);
+  const fade = useSharedValue(0);
+  useEffect(() => {
+    fade.set(withDelay(delay, withTiming(1, { duration: 400 })));
+    spin.set(withRepeat(withTiming(1, { duration: reverse ? 9000 : 6500, easing: Easing.linear }), -1, false));
+    return () => {
+      cancelAnimation(spin);
+      cancelAnimation(fade);
+    };
+  }, [spin, fade, delay, reverse]);
+  const style = useAnimatedStyle(() => ({
+    opacity: fade.get() * 0.9,
+    transform: [{ rotate: `${(reverse ? -360 : 360) * spin.get()}deg` }],
+  }));
+  return (
+    <View pointerEvents="none" style={styles.center} {...decorativeViewProps}>
+      <Animated.View
+        style={[
+          {
+            width: size,
+            height: size,
+            borderRadius: size / 2,
+            borderWidth: dashed ? 1.5 : 2.5,
+            borderColor: color,
+            borderStyle: dashed ? 'dashed' : 'solid',
+          },
+          style,
+        ]}
+      />
+    </View>
+  );
+}
+
+/** Poussière d'or / braises qui tombent du haut de la scène. */
+export function FallingSparks({
+  count,
+  color,
+  secondary = '#FFFFFF',
+  width,
+  height,
+  delay = 0,
+  duration = 1400,
+}: {
+  count: number;
+  color: string;
+  secondary?: string;
+  width: number;
+  height: number;
+  delay?: number;
+  duration?: number;
+}) {
+  const progress = useOneShot(delay, duration);
+  return (
+    <View pointerEvents="none" style={styles.center} {...decorativeViewProps}>
+      {Array.from({ length: count }, (_, i) => {
+        const j = jitter(i + 7);
+        const x = (j - 0.5) * width;
+        const fall = height * (0.55 + jitter(i + 19) * 0.7);
+        const size = 2 + Math.round(j * 5);
+        return (
+          <DustMote
+            key={i}
+            progress={progress}
+            x={x}
+            fall={fall}
+            size={size}
+            color={i % 2 === 0 ? color : secondary}
+            sway={12 + j * 18}
+          />
+        );
+      })}
+    </View>
+  );
+}
+
+function DustMote({
+  progress,
+  x,
+  fall,
+  size,
+  color,
+  sway,
+}: {
+  progress: SharedValue<number>;
+  x: number;
+  fall: number;
+  size: number;
+  color: string;
+  sway: number;
+}) {
+  const style = useAnimatedStyle(() => {
+    const p = progress.get();
+    return {
+      opacity: p === 0 ? 0 : p < 0.15 ? p * 6 : 1 - p,
+      transform: [
+        { translateX: x + Math.sin(p * 8) * sway },
+        { translateY: -fall * 0.45 + fall * p },
+        { rotate: '45deg' },
+        { scale: 1 - 0.4 * p },
+      ],
+    };
+  });
+  return (
+    <Animated.View
+      style={[styles.spark, { width: size, height: size, backgroundColor: color, shadowColor: color }, style]}
+    />
+  );
+}
+
+/** Faille verticale qui s'ouvre (révélation mythique). */
+export function MythicRift({ color, delay = 0 }: { color: string; delay?: number }) {
+  const progress = useOneShot(delay, 720);
+  const style = useAnimatedStyle(() => {
+    const p = progress.get();
+    const open = p < 0.35 ? p / 0.35 : 1;
+    const fade = p < 0.55 ? 1 : 1 - (p - 0.55) / 0.45;
+    return {
+      opacity: p === 0 ? 0 : fade * 0.95,
+      transform: [{ scaleY: 0.2 + open * 0.8 }, { scaleX: 0.35 + open * 2.4 }],
+    };
+  });
+  return (
+    <View pointerEvents="none" style={styles.center} {...decorativeViewProps}>
+      <Animated.View style={[styles.rift, { backgroundColor: color, shadowColor: color }, style]} />
+    </View>
+  );
+}
+
+/**
+ * Atmosphère derrière une révélation prestige.
+ * Légendaire : vignette d'or. Mythique : éclipse, puis braise.
+ */
+export function PrestigeAtmosphere({
+  kind,
+  accent,
+  delay = 0,
+}: {
+  kind: 'legendary' | 'mythic';
+  accent: string;
+  delay?: number;
+}) {
+  const progress = useSharedValue(0);
+  useEffect(() => {
+    progress.set(
+      withDelay(
+        delay,
+        withTiming(1, { duration: kind === 'mythic' ? 900 : 600, easing: Easing.out(Easing.cubic) }),
+      ),
+    );
+    return () => cancelAnimation(progress);
+  }, [progress, delay, kind]);
+  const veilStyle = useAnimatedStyle(() => {
+    const p = progress.get();
+    if (kind === 'mythic') {
+      const eclipse = p < 0.45 ? p / 0.45 : Math.max(0.35, 1 - (p - 0.45) * 0.5);
+      return { opacity: eclipse * 0.72 };
+    }
+    return { opacity: Math.min(0.38, p * 0.5) };
+  });
+  const glowStyle = useAnimatedStyle(() => {
+    const p = progress.get();
+    return {
+      opacity: kind === 'mythic' ? Math.max(0, (p - 0.25) * 0.7) : p * 0.45,
+      transform: [{ scale: 0.7 + p * 0.5 }],
+    };
+  });
+  return (
+    <View pointerEvents="none" style={StyleSheet.absoluteFill} {...decorativeViewProps}>
+      <Animated.View
+        style={[StyleSheet.absoluteFill, { backgroundColor: kind === 'mythic' ? '#070308' : '#140E04' }, veilStyle]}
+      />
+      <View style={styles.center}>
+        <Animated.View
+          style={[
+            {
+              width: 340,
+              height: 340,
+              borderRadius: 170,
+              backgroundColor: accent,
+            },
+            glowStyle,
+          ]}
+        />
+      </View>
+    </View>
+  );
+}
+
 const decorativeViewProps = {
   accessibilityElementsHidden: true,
   importantForAccessibility: 'no-hide-descendants' as const,
@@ -245,4 +498,12 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
   },
   ring: { position: 'absolute', borderWidth: 3 },
+  rift: {
+    width: 8,
+    height: 280,
+    borderRadius: 8,
+    shadowOpacity: 1,
+    shadowRadius: 24,
+    shadowOffset: { width: 0, height: 0 },
+  },
 });

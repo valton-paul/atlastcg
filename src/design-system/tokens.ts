@@ -21,12 +21,23 @@ export const colors = {
   map: {
     ocean: '#0E1A30',
     graticule: '#16253F',
-    unknown: '#22314D',
     unknownStroke: '#33486D',
+    selected: '#F2F5FA',
+    /** Paliers de collection (cartes uniques / cartes disponibles). */
+    tierEmpty: '#22314D',
+    tierStarted: '#1A4554',
+    tierExploring: '#2A6F8F',
+    tierAdvanced: '#2F9E98',
+    tierNearly: '#A8904E',
+    tierComplete: '#D9B66C',
+    /** Alias historiques encore utilisés hors carte. */
+    unknown: '#22314D',
     discovered: '#2A6F8F',
     explored: '#3CC6C0',
     completed: '#D9B66C',
-    selected: '#F2F5FA',
+    /** Signature du tirage d'expédition (illumination temporaire). */
+    drawPulse: '#E85A5A',
+    drawWinner: '#D9B66C',
   },
 } as const;
 
@@ -38,17 +49,106 @@ export const rarityStyles: Record<
   {
     label: string;
     color: string;
+    /** Fond teinté du corps de carte. */
     surface: string;
+    /** Fond légèrement teinté de la zone illustration. */
+    artSurface: string;
+    borderWidth: number;
+    /** Rayon de lueur (0 = aucune) : le budget d’effets commence à Rare. */
+    glow: number;
+    /** Saturation de l’illustration (communes volontairement mates). */
+    saturate: number;
+    shine: boolean;
+    embers: boolean;
+    brackets: boolean;
     shape: 'circle' | 'diamond' | 'triangle' | 'star' | 'crown' | 'sun';
     rank: number;
   }
 > = {
-  common: { label: 'Commune', color: '#AEB9CC', surface: '#1D2B45', shape: 'circle', rank: 1 },
-  uncommon: { label: 'Peu commune', color: '#6FD3A8', surface: '#163A36', shape: 'diamond', rank: 2 },
-  rare: { label: 'Rare', color: '#6FA8FF', surface: '#1A2F5C', shape: 'triangle', rank: 3 },
-  epic: { label: 'Épique', color: '#C49BFF', surface: '#2E2252', shape: 'star', rank: 4 },
-  legendary: { label: 'Légendaire', color: '#E8C67A', surface: '#3A3020', shape: 'crown', rank: 5 },
-  mythic: { label: 'Mythique', color: '#FF7BAC', surface: '#3E1830', shape: 'sun', rank: 6 },
+  common: {
+    label: 'Commune',
+    color: '#8E9BB0',
+    surface: '#121C2E',
+    artSurface: '#1A2438',
+    borderWidth: 1,
+    glow: 0,
+    saturate: 0.35,
+    shine: false,
+    embers: false,
+    brackets: false,
+    shape: 'circle',
+    rank: 1,
+  },
+  uncommon: {
+    label: 'Peu commune',
+    color: '#5FCB8F',
+    surface: '#0F2420',
+    artSurface: '#163A32',
+    borderWidth: 1.5,
+    glow: 0,
+    saturate: 0.75,
+    shine: false,
+    embers: false,
+    brackets: true,
+    shape: 'diamond',
+    rank: 2,
+  },
+  rare: {
+    label: 'Rare',
+    color: '#5B9CFF',
+    surface: '#101F3A',
+    artSurface: '#1A2F5C',
+    borderWidth: 1.5,
+    glow: 10,
+    saturate: 1,
+    shine: false,
+    embers: false,
+    brackets: true,
+    shape: 'triangle',
+    rank: 3,
+  },
+  epic: {
+    label: 'Épique',
+    color: '#8B5CF0',
+    surface: '#161022',
+    artSurface: '#221835',
+    borderWidth: 2,
+    glow: 14,
+    saturate: 1,
+    shine: false,
+    embers: false,
+    brackets: true,
+    shape: 'star',
+    rank: 4,
+  },
+  legendary: {
+    label: 'Légendaire',
+    color: '#E8B04B',
+    surface: '#241C10',
+    artSurface: '#3A2A14',
+    borderWidth: 2,
+    glow: 20,
+    saturate: 1,
+    shine: true,
+    embers: false,
+    brackets: true,
+    shape: 'crown',
+    rank: 5,
+  },
+  mythic: {
+    label: 'Mythique',
+    color: '#F05A5A',
+    surface: '#261014',
+    artSurface: '#3A1818',
+    borderWidth: 2,
+    glow: 22,
+    saturate: 1,
+    shine: true,
+    embers: true,
+    brackets: true,
+    shape: 'sun',
+    rank: 6,
+  },
 };
 
 export const spacing = {

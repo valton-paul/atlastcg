@@ -43,6 +43,10 @@ export function useAnimatedStyle<T>(factory: () => T): T {
   return factory();
 }
 
+export function useAnimatedProps<T>(factory: () => T): T {
+  return factory();
+}
+
 export const withTiming = <T>(value: T) => value;
 export const withSpring = <T>(value: T) => value;
 export const withDelay = <T>(_delay: number, value: T) => value;

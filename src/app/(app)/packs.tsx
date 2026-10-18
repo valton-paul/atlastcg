@@ -1,4 +1,5 @@
 import { useRouter } from 'expo-router';
+import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import {
@@ -31,7 +32,7 @@ const SOURCE_LABELS = {
   objective: 'Récompense d’objectif',
   daily: 'Paquet du jour',
   timer: 'Recharge automatique',
-  fragment_exchange: 'Échange de fragments',
+  fragment_exchange: 'Boutique de fragments',
 } as const;
 
 function DropRates({ pack }: { pack: PackDefinition }) {
@@ -63,13 +64,18 @@ export default function PacksScreen() {
   const router = useRouter();
   const exchange = useExchangeFragments();
   const haptic = useHaptics();
+  const [boughtSlug, setBoughtSlug] = useState<string | null>(null);
 
   if (data.status === 'loading') return <LoadingState />;
   if (data.status === 'error') return <ErrorState message={errorMessage(data.error)} onRetry={data.retry} />;
 
   const { catalog, player } = data;
-  const cost = catalog.settings.fragmentExchangeCost;
-  const exchangePack = catalog.packs.find((p) => p.slug === catalog.settings.fragmentExchangePackSlug);
+  const offers = catalog.settings.fragmentOffers
+    .map((offer) => {
+      const pack = catalog.packs.find((p) => p.slug === offer.packSlug);
+      return pack ? { offer, pack } : null;
+    })
+    .filter((row): row is NonNullable<typeof row> => !!row);
 
   return (
     <Screen title="Mes paquets" back refreshing={data.refreshing} onRefresh={data.refresh}>
@@ -77,7 +83,7 @@ export default function PacksScreen() {
         <EmptyState
           icon="pack"
           title="Aucun paquet à ouvrir"
-          message="Un nouveau paquet arrive toutes les 10 minutes. Expéditions et objectifs en rapportent aussi."
+          message="Un paquet classique arrive toutes les 10 minutes. Expéditions, objectifs et fragments en rapportent aussi."
         />
       ) : (
         player.packs.map((userPack) => {
@@ -85,7 +91,7 @@ export default function PacksScreen() {
           if (!def) return null;
           return (
             <Surface key={userPack.id} tone="raised" style={styles.packRow}>
-              <PackVisual slug={def.slug} width={64} />
+              <PackVisual slug={def.slug} width={64} animated={false} />
               <View style={styles.flex}>
                 <Text variant="bodyStrong">Paquet {def.name}</Text>
                 <Text variant="caption" color={colors.textMuted}>
@@ -98,32 +104,59 @@ export default function PacksScreen() {
         })
       )}
 
-      {cost && exchangePack ? (
+      {offers.length > 0 ? (
         <>
-          <SectionHeader title="Fragments" />
-          <Surface tone="precious">
-            <Text color={colors.text}>
-              Chaque doublon rapporte des fragments. {cost} fragments s’échangent contre un paquet {exchangePack.name}.
-            </Text>
-            <ProgressBar value={Math.min(player.fragments, cost)} total={cost} tone="precious" label="Fragments" />
-            <Button
-              label={`Échanger ${cost} fragments`}
-              variant="precious"
-              disabled={player.fragments < cost}
-              loading={exchange.isPending}
-              onPress={() => exchange.mutate(undefined, { onSuccess: () => haptic('success') })}
-            />
-            {exchange.isError ? <InlineMessage tone="error" message={errorMessage(exchange.error)} /> : null}
-            {exchange.isSuccess && exchange.data.packs_granted > 0 ? (
-              <InlineMessage tone="success" message="Un nouveau paquet a été ajouté à votre inventaire." />
-            ) : null}
-          </Surface>
+          <SectionHeader title="Boutique de fragments" />
+          <Text variant="caption" color={colors.textMuted}>
+            Les doublons se convertissent en fragments. Échangez-les contre des paquets plus puissants — aucun paquet
+            n’est vendu contre de l’argent.
+          </Text>
+          {offers.map(({ offer, pack }) => (
+            <Surface key={offer.packSlug} tone="precious">
+              <View style={styles.shopHeader}>
+                <PackVisual slug={pack.slug} width={56} animated={false} />
+                <View style={styles.flex}>
+                  <Text variant="bodyStrong">Paquet {pack.name}</Text>
+                  <Text variant="caption" color={colors.textMuted}>
+                    {pack.description}
+                  </Text>
+                </View>
+              </View>
+              <ProgressBar
+                value={Math.min(player.fragments, offer.cost)}
+                total={offer.cost}
+                tone="precious"
+                label={`${player.fragments} / ${offer.cost} fragments`}
+              />
+              <Button
+                label={`Échanger ${offer.cost} fragments`}
+                variant="precious"
+                disabled={player.fragments < offer.cost}
+                loading={exchange.isPending && exchange.variables === offer.packSlug}
+                onPress={() =>
+                  exchange.mutate(offer.packSlug, {
+                    onSuccess: () => {
+                      haptic('success');
+                      setBoughtSlug(offer.packSlug);
+                    },
+                  })
+                }
+              />
+              {exchange.isError && exchange.variables === offer.packSlug ? (
+                <InlineMessage tone="error" message={errorMessage(exchange.error)} />
+              ) : null}
+              {boughtSlug === offer.packSlug && exchange.isSuccess && exchange.data.packs_granted > 0 ? (
+                <InlineMessage tone="success" message={`Paquet ${pack.name} ajouté à votre inventaire.`} />
+              ) : null}
+            </Surface>
+          ))}
         </>
       ) : null}
 
-      <SectionHeader title="Contenu des paquets" />
+      <SectionHeader title="Comment ça marche" />
       <Text variant="caption" color={colors.textMuted}>
-        Probabilités de rareté pour chaque carte, identiques pour tous les joueurs. Aucun paquet n’est vendu.
+        Probabilités de rareté pour chaque carte, identiques pour tous les joueurs. Un paquet classique se recharge
+        toutes les 10 minutes tant que la réserve n’est pas pleine.
       </Text>
       {catalog.packs.map((pack) => (
         <Surface key={pack.id}>
@@ -140,6 +173,7 @@ export default function PacksScreen() {
 
 const styles = StyleSheet.create({
   packRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  shopHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   flex: { flex: 1 },
   rates: { gap: spacing.xs, marginTop: spacing.xs },
   rateRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },

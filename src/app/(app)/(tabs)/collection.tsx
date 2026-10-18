@@ -1,6 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { FlatList, ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
   Button,
@@ -9,6 +10,7 @@ import {
   EmptyState,
   ErrorState,
   LoadingState,
+  MIN_TOUCH,
   ProgressBar,
   rarityStyles,
   spacing,
@@ -27,7 +29,7 @@ import {
   type OwnershipFilter,
   type SortOrder,
 } from '@/features/collection/filters';
-import { atlasStats, collectionProgress } from '@/features/collection/progress';
+import { atlasStats, collectionProgress, rarityProgress } from '@/features/collection/progress';
 import { useMarkCardsSeen } from '@/features/player/api';
 import { PlayerHeader } from '@/features/player/PlayerHeader';
 import { useAtlasData } from '@/features/player/useAtlasData';
@@ -49,6 +51,7 @@ export default function CollectionScreen() {
   const data = useAtlasData();
   const router = useRouter();
   const markSeen = useMarkCardsSeen();
+  const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const [view, setView] = useState<View_>('cards');
   const [showFilters, setShowFilters] = useState(false);
@@ -67,8 +70,12 @@ export default function CollectionScreen() {
 
   const { catalog, player } = data;
   const stats = atlasStats(catalog, player.ownedCards, player.expeditions);
-  const columns = width >= 1000 ? 6 : width >= 700 ? 4 : width >= 420 ? 3 : 2;
-  const cardWidth = Math.floor((width - spacing.lg * 2 - spacing.md * (columns - 1)) / columns);
+  // Grille dense : 4 colonnes sur téléphone pour parcourir vite la collection.
+  const columns = width >= 1000 ? 7 : width >= 700 ? 5 : 4;
+  const columnGap = spacing.sm;
+  const cardWidth = Math.floor((width - spacing.lg * 2 - columnGap * (columns - 1)) / columns);
+  // Barre d’onglets + safe area : la dernière rangée ne doit plus être coupée.
+  const listBottomPad = MIN_TOUCH + spacing.xxxl + Math.max(insets.bottom, spacing.sm);
   const newIds = [...player.ownedCards.values()].filter((c) => !c.seen_at).map((c) => c.card_id);
   const activeFilterCount = (filters.continent ? 1 : 0) + (filters.sort !== DEFAULT_FILTERS.sort ? 1 : 0);
 
@@ -124,15 +131,18 @@ export default function CollectionScreen() {
               selected={!filters.rarity}
               onPress={() => setFilters((f) => ({ ...f, rarity: null }))}
             />
-            {RARITIES.map((r) => (
-              <Chip
-                key={r}
-                label={rarityStyles[r].label}
-                rarity={r}
-                selected={filters.rarity === r}
-                onPress={() => setFilters((f) => ({ ...f, rarity: f.rarity === r ? null : r }))}
-              />
-            ))}
+            {RARITIES.map((r) => {
+              const progress = rarityProgress(catalog, player.ownedCards, r);
+              return (
+                <Chip
+                  key={r}
+                  label={`${rarityStyles[r].label} ${progress.owned}/${progress.total}`}
+                  rarity={r}
+                  selected={filters.rarity === r}
+                  onPress={() => setFilters((f) => ({ ...f, rarity: f.rarity === r ? null : r }))}
+                />
+              );
+            })}
           </ScrollView>
           <Button
             label={
@@ -210,8 +220,8 @@ export default function CollectionScreen() {
           data={cards}
           keyExtractor={(card) => card.id}
           numColumns={columns}
-          columnWrapperStyle={styles.columns}
-          contentContainerStyle={styles.list}
+          columnWrapperStyle={[styles.columns, { gap: columnGap }]}
+          contentContainerStyle={[styles.list, { paddingBottom: listBottomPad, gap: columnGap }]}
           ListHeaderComponent={header}
           refreshing={data.refreshing}
           onRefresh={data.refresh}
@@ -252,7 +262,7 @@ export default function CollectionScreen() {
           }}
         />
       ) : (
-        <ScrollView contentContainerStyle={styles.list}>
+        <ScrollView contentContainerStyle={[styles.list, { paddingBottom: listBottomPad }]}>
           {header}
           {catalog.collections.map((collection) => {
             const progress = collectionProgress(collection, player.ownedCards);
@@ -288,6 +298,6 @@ const styles = StyleSheet.create({
   wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   row: { flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-end' },
   flex: { flex: 1 },
-  list: { paddingHorizontal: spacing.lg, paddingBottom: spacing.xxl, gap: spacing.md },
-  columns: { gap: spacing.md },
+  list: { paddingHorizontal: spacing.lg, gap: spacing.lg },
+  columns: { gap: spacing.sm },
 });

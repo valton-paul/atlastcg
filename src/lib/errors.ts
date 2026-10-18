@@ -34,6 +34,10 @@ export const SERVER_ERROR_MESSAGES = {
   EXPEDITION_LOCKED: 'Obtenez au moins une carte de ce pays pour débloquer son expédition.',
   EXPEDITION_NOT_STARTED: 'Démarrez l’expédition avant de répondre.',
   EXPEDITION_ALREADY_COMPLETED: 'Cette expédition est déjà terminée.',
+  EXPEDITION_POOL_EMPTY:
+    'Aucune destination disponible : découvrez un nouveau pays (au moins une carte) ou terminez l’expédition en cours.',
+  EXPEDITION_DAILY_LIMIT: 'Vous avez déjà lancé 3 expéditions aujourd’hui. Revenez demain.',
+  DRAW_NOT_FOUND: 'Ce tirage d’expédition est introuvable.',
   STEP_NOT_FOUND: 'Cette étape est introuvable.',
   STEP_LOCKED: 'Terminez d’abord les étapes précédentes.',
   STEPS_INCOMPLETE: 'Il reste des étapes à terminer.',

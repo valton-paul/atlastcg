@@ -48,7 +48,7 @@ describe('ouverture des paquets', () => {
 
   it('attribue 5 cartes, consomme le paquet et renvoie un résumé cohérent', async () => {
     const user = await createUser(db);
-    const [packId] = await availablePacks(db, user, 'decouverte');
+    const [packId] = await availablePacks(db, user, 'classique');
 
     const result = await rpc<Opening>(db, user, 'open_pack', {
       p_user_pack_id: packId,
@@ -57,7 +57,6 @@ describe('ouverture des paquets', () => {
 
     expect(result.replayed).toBe(false);
     expect(result.cards).toHaveLength(5);
-    expect(result.cards.every((c) => ['country', 'capital'].includes(c.category))).toBe(true);
     expect(result.summary.new_count + result.summary.duplicate_count).toBe(5);
     expect(await totalCards(db, user)).toBe(5);
     expect(await scalar(db, 'select status::text from public.user_packs where id = $1', [packId])).toBe('opened');
@@ -153,7 +152,7 @@ describe('ouverture des paquets', () => {
 
   it('compense les doublons en fragments, avec un historique cohérent avec le solde', async () => {
     const user = await createUser(db);
-    for (let i = 0; i < 6; i++) await grantPack(db, user, 'decouverte');
+    for (let i = 0; i < 6; i++) await grantPack(db, user, 'classique');
     let duplicates = 0;
     for (const packId of await availablePacks(db, user)) {
       const r = await rpc<Opening>(db, user, 'open_pack', { p_user_pack_id: packId, p_idempotency_key: randomUUID() });
@@ -191,7 +190,7 @@ describe('ouverture des paquets', () => {
 
   it('détruit chaque doublon contre le nombre de fragments prévu pour sa rareté', async () => {
     const user = await createUser(db);
-    for (let i = 0; i < 6; i++) await grantPack(db, user, 'decouverte');
+    for (let i = 0; i < 6; i++) await grantPack(db, user, 'classique');
     const rates = await db.admin.query<{ rarity: string; duplicate_fragments: number }>(
       'select rarity::text, duplicate_fragments from public.rarities',
     );
@@ -244,18 +243,18 @@ describe('tirage côté serveur', () => {
       `select draw_rarity::text as rarity, count(*)::int as n
          from generate_series(1, 4000) g,
               lateral atlas_private.draw_pack_cards(
-                (select id from public.pack_definitions where slug = 'exploration'), 2, 5 + 0 * g)
+                (select id from public.pack_definitions where slug = 'classique'), 1, 5 + 0 * g)
         group by 1`,
     );
     const total = rows.reduce((acc, r) => acc + r.n, 0);
     expect(total).toBe(20000);
     const expected: Record<string, number> = {
-      common: 0.547,
-      uncommon: 0.27,
-      rare: 0.11,
-      epic: 0.06,
-      legendary: 0.01,
-      mythic: 0.003,
+      common: 0.5,
+      uncommon: 0.25,
+      rare: 0.15,
+      epic: 0.07,
+      legendary: 0.025,
+      mythic: 0.005,
     };
     for (const [rarity, p] of Object.entries(expected)) {
       const observed = (rows.find((r) => r.rarity === rarity)?.n ?? 0) / total;
@@ -271,10 +270,10 @@ describe('tirage côté serveur', () => {
       `select count(*) filter (where c.status <> 'published')::int as drafts,
               (select count(*) from (
                  select g, draw_card_id from generate_series(1, 300) g,
-                   lateral atlas_private.draw_pack_cards((select id from public.pack_definitions where slug = 'decouverte'), 1, 5 + 0 * g)
+                   lateral atlas_private.draw_pack_cards((select id from public.pack_definitions where slug = 'classique'), 1, 5 + 0 * g)
                   group by 1, 2 having count(*) > 1) x)::int as repeats
          from generate_series(1, 300) g,
-              lateral atlas_private.draw_pack_cards((select id from public.pack_definitions where slug = 'decouverte'), 1, 5 + 0 * g) d
+              lateral atlas_private.draw_pack_cards((select id from public.pack_definitions where slug = 'classique'), 1, 5 + 0 * g) d
          join public.cards c on c.id = d.draw_card_id`,
     );
     expect(rows[0]).toEqual({ drafts: 0, repeats: 0 });
@@ -289,13 +288,17 @@ describe('tirage côté serveur', () => {
           await c.query<{ rarity: string; p: number }>(
             `select r.rarity::text, r.probability::float as p from public.pack_drop_rates r
              join public.pack_definitions p on p.id = r.pack_id and r.configuration_version = p.configuration_version
-            where p.slug = 'decouverte' order by r.rarity`,
+            where p.slug = 'classique' order by r.rarity`,
           )
         ).rows,
     );
     expect(rows).toEqual([
-      { rarity: 'common', p: 0.7 },
-      { rarity: 'uncommon', p: 0.3 },
+      { rarity: 'common', p: 0.5 },
+      { rarity: 'uncommon', p: 0.25 },
+      { rarity: 'rare', p: 0.15 },
+      { rarity: 'epic', p: 0.07 },
+      { rarity: 'legendary', p: 0.025 },
+      { rarity: 'mythic', p: 0.005 },
     ]);
   });
 });
@@ -314,35 +317,41 @@ describe('fragments', () => {
   it('refuse un échange avec un solde insuffisant', async () => {
     const user = await createUser(db);
     await setFragments(user, 99);
-    await expect(rpc(db, user, 'exchange_fragments', { p_idempotency_key: randomUUID() })).rejects.toThrow(
-      'INSUFFICIENT_FRAGMENTS',
-    );
+    await expect(
+      rpc(db, user, 'exchange_fragments', { p_idempotency_key: randomUUID(), p_pack_slug: 'premium' }),
+    ).rejects.toThrow('INSUFFICIENT_FRAGMENTS');
   });
 
-  it('échange 100 fragments contre un paquet, une seule fois par clé', async () => {
+  it('échange 100 fragments contre un paquet Premium, une seule fois par clé', async () => {
     const user = await createUser(db);
     await setFragments(user, 150);
     const key = randomUUID();
-    const first = await rpc<{ packs_granted: number; fragments_balance: number }>(db, user, 'exchange_fragments', {
-      p_idempotency_key: key,
-    });
+    const first = await rpc<{ packs_granted: number; fragments_balance: number; pack_slug: string }>(
+      db,
+      user,
+      'exchange_fragments',
+      { p_idempotency_key: key, p_pack_slug: 'premium' },
+    );
     const again = await rpc<{ replayed: boolean; packs_granted: number }>(db, user, 'exchange_fragments', {
       p_idempotency_key: key,
+      p_pack_slug: 'premium',
     });
-    expect(first).toMatchObject({ packs_granted: 1, fragments_balance: 50 });
+    expect(first).toMatchObject({ packs_granted: 1, fragments_balance: 50, pack_slug: 'premium' });
     expect(again).toMatchObject({ replayed: true, packs_granted: 0 });
-    expect(await availablePacks(db, user, 'exploration')).toHaveLength(1);
+    expect(await availablePacks(db, user, 'premium')).toHaveLength(1);
   });
 
   it('ne laisse jamais le solde devenir négatif lors d’échanges concurrents', async () => {
     const user = await createUser(db);
     await setFragments(user, 250);
     const results = await Promise.allSettled(
-      Array.from({ length: 6 }, () => rpc(db, user, 'exchange_fragments', { p_idempotency_key: randomUUID() })),
+      Array.from({ length: 6 }, () =>
+        rpc(db, user, 'exchange_fragments', { p_idempotency_key: randomUUID(), p_pack_slug: 'premium' }),
+      ),
     );
     expect(results.filter((r) => r.status === 'fulfilled')).toHaveLength(2);
     expect(await scalar<number>(db, 'select fragments from public.player_wallets where user_id = $1', [user])).toBe(50);
-    expect(await availablePacks(db, user, 'exploration')).toHaveLength(2);
+    expect(await availablePacks(db, user, 'premium')).toHaveLength(2);
   });
 });
 
@@ -378,25 +387,28 @@ describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
     expect(secondsUntilNext(state)).toBeCloseTo(600, -1);
   });
 
-  it('attribue un paquet par intervalle écoulé et conserve le temps entamé, une seule fois malgré la concurrence', async () => {
+  it('attribue au plus un paquet par synchronisation, même après plusieurs intervalles', async () => {
     const user = await createUser(db);
     await sync(user);
     await rewindTimer(user, 25);
     const results = await Promise.all(Array.from({ length: 5 }, () => sync(user)));
-    expect(results.reduce((sum, r) => sum + r.granted, 0)).toBe(2);
-    expect(await availablePacks(db, user, 'exploration')).toHaveLength(2);
+    // Une seule sync « gagne » le paquet dû ; les concurrentes voient l’ancre déjà avancée.
+    expect(results.reduce((sum, r) => sum + r.granted, 0)).toBe(1);
+    expect(await availablePacks(db, user, 'classique')).toHaveLength(3);
     const state = await sync(user);
-    expect(state).toMatchObject({ available: 4, granted: 0 });
-    // 25 min écoulées : 2 paquets, et les 5 minutes entamées comptent pour le suivant.
-    expect(secondsUntilNext(state)).toBeCloseTo(300, -1);
+    expect(state).toMatchObject({ available: 3, granted: 0 });
+    expect(secondsUntilNext(state)).toBeCloseTo(600, -1);
   });
 
-  it('plafonne la régénération à 15 paquets et suspend le minuteur', async () => {
+  it('plafonne la réserve à 15 paquets (un par sync, pas de rattrapage en rafale)', async () => {
     const user = await createUser(db);
     await sync(user);
-    await rewindTimer(user, 60 * 24 * 10);
+    for (let i = 0; i < 20; i++) {
+      await rewindTimer(user, 10);
+      await sync(user);
+    }
     const state = await sync(user);
-    expect(state).toMatchObject({ available: 15, granted: 13, next_at: null });
+    expect(state).toMatchObject({ available: 15, granted: 0, next_at: null });
     await rewindTimer(user, 60);
     expect(await sync(user)).toMatchObject({ available: 15, granted: 0, next_at: null });
   });
@@ -404,8 +416,10 @@ describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
   it('le temps passé réserve pleine ne produit pas de paquet : ouvrir un paquet relance le minuteur', async () => {
     const user = await createUser(db);
     await sync(user);
-    await rewindTimer(user, 60 * 24);
-    await sync(user);
+    for (let i = 0; i < 20; i++) {
+      await rewindTimer(user, 10);
+      await sync(user);
+    }
     await rewindTimer(user, 60 * 5);
     const [pack] = await availablePacks(db, user);
     await rpc(db, user, 'open_pack', { p_user_pack_id: pack, p_idempotency_key: randomUUID() });
@@ -417,9 +431,11 @@ describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
   it('n’empêche jamais les autres récompenses de dépasser le plafond', async () => {
     const user = await createUser(db);
     await sync(user);
-    await rewindTimer(user, 60 * 24);
-    await sync(user);
-    await grantPack(db, user, 'patrimoine');
+    for (let i = 0; i < 20; i++) {
+      await rewindTimer(user, 10);
+      await sync(user);
+    }
+    await grantPack(db, user, 'premium');
     expect(await sync(user)).toMatchObject({ available: 16, granted: 0, next_at: null });
   });
 

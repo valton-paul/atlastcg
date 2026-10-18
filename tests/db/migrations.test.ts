@@ -74,6 +74,7 @@ describe('migrations sur une base vierge', () => {
         'complete_onboarding',
         'create_challenge',
         'delete_my_account',
+        'draw_expedition',
         'ensure_player_initialized',
         'exchange_fragments',
         'get_challenge',
@@ -86,6 +87,7 @@ describe('migrations sur une base vierge', () => {
         'open_pack',
         'remove_friend',
         'respond_friend_request',
+        'reveal_expedition_draw',
         'revoke_challenge_link',
         'send_friend_request',
         'start_expedition',
@@ -106,14 +108,14 @@ describe('migrations sur une base vierge', () => {
   it('refuse une configuration de probabilités dont la somme diffère de 1', async () => {
     await expect(
       db.admin.query(
-        `update public.pack_drop_rates set probability = 0.5
-          where rarity = 'common' and pack_id = (select id from public.pack_definitions where slug = 'exploration')`,
+        `update public.pack_drop_rates set probability = 0.4
+          where rarity = 'common' and pack_id = (select id from public.pack_definitions where slug = 'classique')`,
       ),
     ).rejects.toThrow('DROP_RATES_MUST_SUM_TO_ONE');
   });
 
   it('refuse un seed qui modifie les probabilités sans changer de version', async () => {
-    const tampered = readSeed().replace("('exploration', 2, 'common', 0.547)", "('exploration', 2, 'common', 0.548)");
+    const tampered = readSeed().replace("('classique', 1, 'common', 0.5)", "('classique', 1, 'common', 0.51)");
     expect(tampered).not.toEqual(readSeed());
     const client = await db.admin.connect();
     try {
@@ -125,9 +127,9 @@ describe('migrations sur une base vierge', () => {
     expect(
       await scalar<string>(
         db,
-        "select probability::text from public.pack_drop_rates r join public.pack_definitions p on p.id = r.pack_id where p.slug = 'exploration' and r.rarity = 'common'",
+        "select probability::text from public.pack_drop_rates r join public.pack_definitions p on p.id = r.pack_id where p.slug = 'classique' and r.rarity = 'common'",
       ),
-    ).toBe('0.547000');
+    ).toBe('0.500000');
   });
 
   it('journalise les modifications de configuration', async () => {

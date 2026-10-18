@@ -8,32 +8,30 @@ import { CONTINENT_LABELS, type Catalog, type Country } from '@/features/catalog
 import { sortCards } from '@/features/collection/filters';
 import {
   cardsOfCountry,
-  COUNTRY_STATE_LABELS,
+  COLLECTION_TIER_LABELS,
+  collectionRatio,
   countryProgress,
-  type CountryState,
+  type CollectionTier,
   type OwnedMap,
 } from '@/features/collection/progress';
-import type { UserExpedition } from '@/features/player/api';
 
 type Props = {
   catalog: Catalog;
   owned: OwnedMap;
-  expeditions: ReadonlyMap<string, UserExpedition>;
   country: Country;
-  state: CountryState;
+  tier: CollectionTier;
   onClose: () => void;
   style?: ViewStyle;
   onHeight?: (height: number) => void;
 };
 
 /** Détail d'un pays affiché par-dessus la carte, sans quitter la vue. */
-export function CountryPanel({ catalog, owned, expeditions, country, state, onClose, style, onHeight }: Props) {
+export function CountryPanel({ catalog, owned, country, tier, onClose, style, onHeight }: Props) {
   const router = useRouter();
   const progress = countryProgress(catalog, owned, country.iso_code);
   const discovered = progress.owned > 0;
+  const pct = Math.round(collectionRatio(progress) * 100);
   const cards = sortCards(catalog, owned, cardsOfCountry(catalog, country.iso_code), 'rarity');
-  const expedition = catalog.expeditionsByCountry.get(country.iso_code);
-  const expeditionState = expedition ? expeditions.get(expedition.id) : undefined;
 
   return (
     <View
@@ -45,13 +43,14 @@ export function CountryPanel({ catalog, owned, expeditions, country, state, onCl
       <View style={styles.header}>
         <View style={styles.flex}>
           <Text variant="overline" color={discovered ? colors.turquoise : colors.textMuted}>
-            {COUNTRY_STATE_LABELS[state]} · {CONTINENT_LABELS[country.continent]}
+            {COLLECTION_TIER_LABELS[tier]} · {CONTINENT_LABELS[country.continent]}
           </Text>
           <Text variant="heading" accessibilityRole="header">
             {country.name}
           </Text>
           <Text variant="caption" color={colors.textMuted}>
             {country.region}
+            {progress.total > 0 ? ` · ${pct} %` : ''}
           </Text>
         </View>
         <Pressable
@@ -71,7 +70,7 @@ export function CountryPanel({ catalog, owned, expeditions, country, state, onCl
           </Text>
         ) : (
           <Text variant="caption" color={colors.textMuted}>
-            Obtenez une carte de ce pays pour révéler ses informations et débloquer son expédition.
+            Obtenez une carte de ce pays pour révéler ses informations.
           </Text>
         )}
         <ProgressBar label="Cartes du pays" value={progress.owned} total={progress.total} />
@@ -92,34 +91,6 @@ export function CountryPanel({ catalog, owned, expeditions, country, state, onCl
             );
           })}
         </ScrollView>
-
-        {expedition ? (
-          <View style={styles.expedition}>
-            <Text variant="overline" color={colors.textMuted}>
-              Expédition
-            </Text>
-            <Text variant="bodyStrong">{expedition.title}</Text>
-            <Text variant="caption" color={colors.textMuted} numberOfLines={3}>
-              {expedition.summary}
-            </Text>
-            <Button
-              label={
-                !discovered
-                  ? 'Expédition verrouillée'
-                  : expeditionState?.status === 'completed'
-                    ? 'Revoir l’expédition'
-                    : expeditionState
-                      ? 'Reprendre l’expédition'
-                      : 'Partir en expédition'
-              }
-              icon="compass"
-              compact
-              disabled={!discovered}
-              variant={expeditionState?.status === 'completed' ? 'secondary' : 'primary'}
-              onPress={() => router.push(`/expedition/${expedition.slug}`)}
-            />
-          </View>
-        ) : null}
 
         <Button
           label="Voir la fiche du pays"
@@ -158,10 +129,4 @@ const styles = StyleSheet.create({
   body: { flexGrow: 0 },
   bodyContent: { gap: spacing.md },
   cards: { gap: spacing.sm, paddingVertical: spacing.xs },
-  expedition: {
-    gap: spacing.xs,
-    padding: spacing.md,
-    borderRadius: radius.md,
-    backgroundColor: colors.night,
-  },
 });

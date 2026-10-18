@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 
 import { usePreferences } from './preferences';
 
-export type HapticKind = 'tap' | 'reveal' | 'rare' | 'success' | 'error';
+export type HapticKind = 'tap' | 'reveal' | 'rare' | 'legendary' | 'mythic' | 'success' | 'error';
 
 function play(kind: HapticKind): Promise<void> {
   switch (kind) {
@@ -14,6 +14,14 @@ function play(kind: HapticKind): Promise<void> {
       return Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     case 'rare':
       return Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    case 'legendary':
+      return Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy).then(() =>
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success),
+      );
+    case 'mythic':
+      return Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
+        .then(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Rigid))
+        .then(() => Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success));
     case 'success':
       return Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     case 'error':

@@ -1,25 +1,32 @@
-import type { Card, Catalog, CollectionDefinition, Continent } from '@/features/catalog/types';
+import type { Card, Catalog, CollectionDefinition, Continent, Rarity } from '@/features/catalog/types';
 import type { OwnedCard, UserExpedition } from '@/features/player/api';
 
 export type OwnedMap = ReadonlyMap<string, OwnedCard>;
 
 /**
- * État d'un pays sur la carte du monde :
- * - `unknown` : aucune carte du pays possédée ;
- * - `discovered` : au moins une carte possédée ;
- * - `exploring` : expédition commencée ;
- * - `explored` : expédition terminée ;
- * - `completed` : expédition terminée et toutes les cartes du pays possédées.
+ * Palier de collection d’un pays (couleur de la carte du monde).
+ * Basé uniquement sur les cartes uniques : les doublons n’influencent pas la teinte.
  */
-export type CountryState = 'unknown' | 'discovered' | 'exploring' | 'explored' | 'completed';
+export type CollectionTier = 'empty' | 'started' | 'exploring' | 'advanced' | 'nearly' | 'complete';
 
-export const COUNTRY_STATE_LABELS: Record<CountryState, string> = {
-  unknown: 'Inexploré',
-  discovered: 'Découvert',
-  exploring: 'Expédition en cours',
-  explored: 'Exploré',
-  completed: 'Complété',
+export const COLLECTION_TIER_LABELS: Record<CollectionTier, string> = {
+  empty: 'Inexploré',
+  started: 'Premiers pas',
+  exploring: 'En exploration',
+  advanced: 'Bien découvert',
+  nearly: 'Collection avancée',
+  complete: 'Pays complété',
 };
+
+/** Ordre d’affichage de la légende (du moins au plus rempli). */
+export const COLLECTION_TIER_ORDER: CollectionTier[] = [
+  'empty',
+  'started',
+  'exploring',
+  'advanced',
+  'nearly',
+  'complete',
+];
 
 export type Progress = { owned: number; total: number };
 
@@ -32,19 +39,24 @@ export function countryProgress(catalog: Catalog, owned: OwnedMap, iso: string):
   return { owned: cards.filter((c) => owned.has(c.id)).length, total: cards.length };
 }
 
-export function countryState(
-  catalog: Catalog,
-  owned: OwnedMap,
-  expeditions: ReadonlyMap<string, UserExpedition>,
-  iso: string,
-): CountryState {
-  const progress = countryProgress(catalog, owned, iso);
-  if (progress.owned === 0) return 'unknown';
-  const expedition = catalog.expeditionsByCountry.get(iso);
-  const state = expedition ? expeditions.get(expedition.id) : undefined;
-  if (state?.status === 'completed') return progress.owned === progress.total ? 'completed' : 'explored';
-  if (state?.status === 'in_progress') return 'exploring';
-  return 'discovered';
+/** Ratio 0–1 ; 0 si le pays n’a encore aucune carte publiée. */
+export function collectionRatio(progress: Progress): number {
+  if (progress.total <= 0) return 0;
+  return progress.owned / progress.total;
+}
+
+/**
+ * Palier de couleur d’après la progression en % de cartes uniques.
+ * Seuils : 0 · 1–24 · 25–49 · 50–74 · 75–99 · 100.
+ */
+export function collectionTier(progress: Progress): CollectionTier {
+  const pct = collectionRatio(progress) * 100;
+  if (pct <= 0) return 'empty';
+  if (pct < 25) return 'started';
+  if (pct < 50) return 'exploring';
+  if (pct < 75) return 'advanced';
+  if (pct < 100) return 'nearly';
+  return 'complete';
 }
 
 export function collectionProgress(collection: CollectionDefinition, owned: OwnedMap): Progress {
@@ -106,4 +118,16 @@ export function continentProgress(catalog: Catalog, owned: OwnedMap, continent: 
     owned: countries.filter((c) => countryProgress(catalog, owned, c.iso_code).owned > 0).length,
     total: countries.length,
   };
+}
+
+/** Cartes uniques possédées / publiées pour une rareté. */
+export function rarityProgress(catalog: Catalog, owned: OwnedMap, rarity: Rarity): Progress {
+  let total = 0;
+  let ownedCount = 0;
+  for (const card of catalog.cards) {
+    if (card.status !== 'published' || card.rarity !== rarity) continue;
+    total += 1;
+    if (owned.has(card.id)) ownedCount += 1;
+  }
+  return { owned: ownedCount, total };
 }

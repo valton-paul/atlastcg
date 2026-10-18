@@ -2303,29 +2303,40 @@ select col.id, c.id, v.position
   join public.cards c on c.slug = v.card_slug;
 
 insert into public.pack_definitions (slug, name, description, status, cards_per_pack, card_categories, configuration_version, position) values
-  ('decouverte', 'Paquet Découverte', 'Le paquet des premiers pas : des pays et leurs capitales.', 'published', 5, array['country', 'capital']::public.card_category[], 1, 1),
-  ('exploration', 'Paquet Exploration', 'Le paquet standard : toutes les cartes du catalogue.', 'published', 5, null, 2, 2),
-  ('patrimoine', 'Paquet Thématique Patrimoine', 'Monuments, paysages, cultures et lieux de mémoire du monde.', 'published', 5, array['monument', 'geography', 'culture', 'history']::public.card_category[], 2, 3)
+  ('classique', 'Classique', 'Le paquet de base : toutes les cartes du catalogue, obtenu par recharge, expéditions et objectifs.', 'published', 5, null, 1, 1),
+  ('premium', 'Premium', 'Meilleures chances de cartes rares et au-delà. S’achète avec des fragments.', 'published', 5, null, 1, 2),
+  ('legendaire', 'Légendaire', 'Très haut de gamme : fortes chances d’épiques, légendaires et mythiques. S’achète avec des fragments.', 'published', 5, null, 1, 3)
 on conflict (slug) do update set
   name = excluded.name, description = excluded.description, status = excluded.status,
   cards_per_pack = excluded.cards_per_pack, card_categories = excluded.card_categories,
   configuration_version = excluded.configuration_version, position = excluded.position;
 
+-- Les paquets retirés du catalogue restent en base (inventaires existants) mais ne sont plus proposés.
+update public.pack_definitions
+   set status = 'archived'
+ where status = 'published'
+   and slug not in ('classique', 'premium', 'legendaire');
+
 create temporary table seed_drop_rates (pack_slug text, configuration_version int, rarity public.card_rarity, probability numeric) on commit drop;
 insert into seed_drop_rates values
-    ('decouverte', 1, 'common', 0.7),
-    ('decouverte', 1, 'uncommon', 0.3),
-    ('exploration', 2, 'common', 0.547),
-    ('exploration', 2, 'uncommon', 0.27),
-    ('exploration', 2, 'rare', 0.11),
-    ('exploration', 2, 'epic', 0.06),
-    ('exploration', 2, 'legendary', 0.01),
-    ('exploration', 2, 'mythic', 0.003),
-    ('patrimoine', 2, 'uncommon', 0.1),
-    ('patrimoine', 2, 'rare', 0.5),
-    ('patrimoine', 2, 'epic', 0.31),
-    ('patrimoine', 2, 'legendary', 0.07),
-    ('patrimoine', 2, 'mythic', 0.02);
+    ('classique', 1, 'common', 0.5),
+    ('classique', 1, 'uncommon', 0.25),
+    ('classique', 1, 'rare', 0.15),
+    ('classique', 1, 'epic', 0.07),
+    ('classique', 1, 'legendary', 0.025),
+    ('classique', 1, 'mythic', 0.005),
+    ('premium', 1, 'common', 0.25),
+    ('premium', 1, 'uncommon', 0.3),
+    ('premium', 1, 'rare', 0.25),
+    ('premium', 1, 'epic', 0.13),
+    ('premium', 1, 'legendary', 0.055),
+    ('premium', 1, 'mythic', 0.015),
+    ('legendaire', 1, 'common', 0.1),
+    ('legendaire', 1, 'uncommon', 0.2),
+    ('legendaire', 1, 'rare', 0.3),
+    ('legendaire', 1, 'epic', 0.23),
+    ('legendaire', 1, 'legendary', 0.14),
+    ('legendaire', 1, 'mythic', 0.03);
 
 insert into public.pack_drop_rates (pack_id, configuration_version, rarity, probability)
 select p.id, s.configuration_version, s.rarity, s.probability
@@ -2351,9 +2362,9 @@ end;
 $$;
 
 insert into public.economy_settings (key, value, description) values
-  ('starter_reward', '{"pack_slug":"decouverte","quantity":2}'::jsonb, 'Paquets offerts à la création du compte.'),
-  ('timed_packs', '{"pack_slug":"exploration","interval_seconds":600,"max_stored":15}'::jsonb, 'Paquets régénérés : un paquet par intervalle, tant que la réserve est sous le plafond.'),
-  ('fragment_exchange', '{"pack_slug":"exploration","cost":100}'::jsonb, 'Coût en fragments d''un paquet obtenu par échange.')
+  ('starter_reward', '{"pack_slug":"classique","quantity":2}'::jsonb, 'Paquets offerts à la création du compte.'),
+  ('timed_packs', '{"pack_slug":"classique","interval_seconds":600,"max_stored":15}'::jsonb, 'Paquets régénérés : au plus un paquet classique par synchronisation (toutes les 10 min), tant que la réserve est sous le plafond. Pas de rattrapage en rafale.'),
+  ('fragment_shop', '{"offers":[{"pack_slug":"premium","cost":100},{"pack_slug":"legendaire","cost":280}]}'::jsonb, 'Boutique de paquets contre fragments. Coûts calibrés pour qu’un Premium coûte environ un paquet classique de doublons, et un Légendaire environ trois.')
 on conflict (key) do update set value = excluded.value, description = excluded.description;
 
 insert into public.expeditions (slug, country_code, title, summary, status, reward_pack_id, reward_pack_quantity)
@@ -2557,7 +2568,7 @@ select v.slug, v.country_code, v.title, v.summary, 'published', p.id, 1
     ('expedition-mh', 'MH', 'Expédition : Îles Marshall', 'Situe les Îles Marshall, découvre Atoll de Bikini et relève un défi de connaissances.'),
     ('expedition-sb', 'SB', 'Expédition : Îles Salomon', 'Situe les Îles Salomon, découvre Rennell Est et relève un défi de connaissances.')
   ) as v (slug, country_code, title, summary)
-  join public.pack_definitions p on p.slug = 'exploration'
+  join public.pack_definitions p on p.slug = 'classique'
 on conflict (slug) do update set
   country_code = excluded.country_code, title = excluded.title, summary = excluded.summary,
   status = excluded.status, reward_pack_id = excluded.reward_pack_id,
@@ -3175,26 +3186,26 @@ on conflict (step_id) do update set correct_choice = excluded.correct_choice;
 insert into public.objectives (slug, title, description, kind, target, collection_id, reward_pack_id, reward_pack_quantity, status, position)
 select v.slug, v.title, v.description, v.kind::public.objective_kind, v.target, col.id, p.id, v.quantity, 'published', v.position
   from (values
-    ('premiers-pas', 'Premiers pas', 'Possède 10 cartes différentes.', 'cards_owned', 10, null, 'exploration', 1, 1),
-    ('voyageur', 'Voyageur', 'Découvre 10 pays.', 'countries_discovered', 10, null, 'exploration', 1, 2),
-    ('premiere-expedition', 'Première expédition', 'Termine une expédition.', 'expeditions_completed', 1, null, 'patrimoine', 1, 3),
-    ('collectionneur', 'Collectionneur', 'Possède 30 cartes différentes.', 'cards_owned', 30, null, 'patrimoine', 1, 4),
-    ('six-continents', 'Six continents', 'Découvre au moins un pays sur chaque continent.', 'continents_discovered', 6, null, 'patrimoine', 1, 5),
-    ('explorateur-confirme', 'Explorateur confirmé', 'Termine 5 expéditions.', 'expeditions_completed', 5, null, 'exploration', 2, 6),
-    ('grand-collectionneur', 'Grand collectionneur', 'Possède 60 cartes différentes.', 'cards_owned', 60, null, 'exploration', 2, 7),
-    ('globe-trotteur', 'Globe-trotteur', 'Découvre 50 pays.', 'countries_discovered', 50, null, 'exploration', 2, 8),
-    ('conservateur', 'Conservateur', 'Possède 150 cartes différentes.', 'cards_owned', 150, null, 'patrimoine', 2, 9),
-    ('aventurier', 'Aventurier', 'Termine 20 expéditions.', 'expeditions_completed', 20, null, 'exploration', 3, 10),
-    ('tour-du-monde', 'Tour du monde', 'Découvre 100 pays.', 'countries_discovered', 100, null, 'exploration', 3, 11),
-    ('encyclopediste', 'Encyclopédiste', 'Possède 300 cartes différentes.', 'cards_owned', 300, null, 'patrimoine', 3, 12),
-    ('grand-explorateur', 'Grand explorateur', 'Termine 50 expéditions.', 'expeditions_completed', 50, null, 'exploration', 5, 13),
-    ('album-pays-europe', 'Album complet : Europe', 'Complète la collection Pays d''Europe.', 'collection_completed', 1, 'pays-europe', 'patrimoine', 1, 14),
-    ('album-pays-asie', 'Album complet : Asie', 'Complète la collection Pays d''Asie.', 'collection_completed', 1, 'pays-asie', 'patrimoine', 1, 15),
-    ('album-pays-afrique', 'Album complet : Afrique', 'Complète la collection Pays d''Afrique.', 'collection_completed', 1, 'pays-afrique', 'patrimoine', 1, 16),
-    ('album-pays-amerique-du-nord', 'Album complet : Amérique du Nord', 'Complète la collection Pays d''Amérique du Nord.', 'collection_completed', 1, 'pays-amerique-du-nord', 'patrimoine', 1, 17),
-    ('album-pays-amerique-du-sud', 'Album complet : Amérique du Sud', 'Complète la collection Pays d''Amérique du Sud.', 'collection_completed', 1, 'pays-amerique-du-sud', 'patrimoine', 1, 18),
-    ('album-pays-oceanie', 'Album complet : Océanie', 'Complète la collection Pays d''Océanie.', 'collection_completed', 1, 'pays-oceanie', 'patrimoine', 1, 19),
-    ('album-capitales', 'Album complet : Capitales', 'Complète la collection Capitales du monde.', 'collection_completed', 1, 'capitales-du-monde', 'exploration', 2, 20)
+    ('premiers-pas', 'Premiers pas', 'Possède 10 cartes différentes.', 'cards_owned', 10, null, 'classique', 1, 1),
+    ('voyageur', 'Voyageur', 'Découvre 10 pays.', 'countries_discovered', 10, null, 'classique', 1, 2),
+    ('premiere-expedition', 'Première expédition', 'Termine une expédition.', 'expeditions_completed', 1, null, 'classique', 1, 3),
+    ('collectionneur', 'Collectionneur', 'Possède 30 cartes différentes.', 'cards_owned', 30, null, 'premium', 1, 4),
+    ('six-continents', 'Six continents', 'Découvre au moins un pays sur chaque continent.', 'continents_discovered', 6, null, 'premium', 1, 5),
+    ('explorateur-confirme', 'Explorateur confirmé', 'Termine 5 expéditions.', 'expeditions_completed', 5, null, 'classique', 2, 6),
+    ('grand-collectionneur', 'Grand collectionneur', 'Possède 60 cartes différentes.', 'cards_owned', 60, null, 'premium', 1, 7),
+    ('globe-trotteur', 'Globe-trotteur', 'Découvre 50 pays.', 'countries_discovered', 50, null, 'premium', 2, 8),
+    ('conservateur', 'Conservateur', 'Possède 150 cartes différentes.', 'cards_owned', 150, null, 'legendaire', 1, 9),
+    ('aventurier', 'Aventurier', 'Termine 20 expéditions.', 'expeditions_completed', 20, null, 'premium', 2, 10),
+    ('tour-du-monde', 'Tour du monde', 'Découvre 100 pays.', 'countries_discovered', 100, null, 'legendaire', 1, 11),
+    ('encyclopediste', 'Encyclopédiste', 'Possède 300 cartes différentes.', 'cards_owned', 300, null, 'legendaire', 2, 12),
+    ('grand-explorateur', 'Grand explorateur', 'Termine 50 expéditions.', 'expeditions_completed', 50, null, 'legendaire', 2, 13),
+    ('album-pays-europe', 'Album complet : Europe', 'Complète la collection Pays d''Europe.', 'collection_completed', 1, 'pays-europe', 'premium', 1, 14),
+    ('album-pays-asie', 'Album complet : Asie', 'Complète la collection Pays d''Asie.', 'collection_completed', 1, 'pays-asie', 'premium', 1, 15),
+    ('album-pays-afrique', 'Album complet : Afrique', 'Complète la collection Pays d''Afrique.', 'collection_completed', 1, 'pays-afrique', 'premium', 1, 16),
+    ('album-pays-amerique-du-nord', 'Album complet : Amérique du Nord', 'Complète la collection Pays d''Amérique du Nord.', 'collection_completed', 1, 'pays-amerique-du-nord', 'premium', 1, 17),
+    ('album-pays-amerique-du-sud', 'Album complet : Amérique du Sud', 'Complète la collection Pays d''Amérique du Sud.', 'collection_completed', 1, 'pays-amerique-du-sud', 'premium', 1, 18),
+    ('album-pays-oceanie', 'Album complet : Océanie', 'Complète la collection Pays d''Océanie.', 'collection_completed', 1, 'pays-oceanie', 'premium', 1, 19),
+    ('album-capitales', 'Album complet : Capitales', 'Complète la collection Capitales du monde.', 'collection_completed', 1, 'capitales-du-monde', 'legendaire', 1, 20)
   ) as v (slug, title, description, kind, target, collection_slug, pack_slug, quantity, position)
   join public.pack_definitions p on p.slug = v.pack_slug
   left join public.collections col on col.slug = v.collection_slug
