@@ -9,9 +9,22 @@ import { getSupabase, isSupabaseConfigured } from '@/lib/supabase';
 
 import { normalizeDisplayName } from './validation';
 
-export type AuthStatus = 'loading' | 'signed-out' | 'signed-in' | 'unconfigured';
+/** `unverified` : session ouverte mais adresse e-mail pas encore confirmée. */
+export type AuthStatus = 'loading' | 'signed-out' | 'signed-in' | 'unverified' | 'unconfigured';
 
 type SignUpResult = { needsEmailConfirmation: boolean };
+
+/**
+ * Issue d'un lien d'authentification : `session` (session ouverte sur cet appareil),
+ * `confirmed` (adresse confirmée, mais lien ouvert ailleurs que sur l'appareil d'origine),
+ * `none` (aucun code dans le lien).
+ */
+export type AuthRedirectOutcome = 'session' | 'confirmed' | 'none';
+
+function statusFor(session: Session | null): AuthStatus {
+  if (!session) return 'signed-out';
+  return session.user.email_confirmed_at ? 'signed-in' : 'unverified';
+}
 
 type AuthContextValue = {
   status: AuthStatus;
@@ -22,9 +35,12 @@ type AuthContextValue = {
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, displayName: string) => Promise<SignUpResult>;
   signOut: () => Promise<void>;
+  resendConfirmation: (email: string) => Promise<void>;
+  /** Recharge l'utilisateur depuis le serveur ; renvoie vrai si l'adresse est désormais confirmée. */
+  refreshVerification: () => Promise<boolean>;
   requestPasswordReset: (email: string) => Promise<void>;
   updatePassword: (password: string) => Promise<void>;
-  handleAuthRedirect: (url: string) => Promise<boolean>;
+  handleAuthRedirect: (url: string) => Promise<AuthRedirectOutcome>;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -48,7 +64,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       .then(({ data }) => {
         if (!active) return;
         setSession(data.session);
-        setStatus(data.session ? 'signed-in' : 'signed-out');
+        setStatus(statusFor(data.session));
       })
       .catch((error: unknown) => {
         logger.warn('auth:get-session', toAppError(error).code);
@@ -61,7 +77,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         queryClient.clear();
       }
       setSession(next);
-      setStatus(next ? 'signed-in' : 'signed-out');
+      setStatus(statusFor(next));
     });
     return () => {
       active = false;
@@ -92,6 +108,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (error) throw toAppError(error);
   }, []);
 
+  const resendConfirmation = useCallback(async (email: string) => {
+    const { error } = await getSupabase().auth.resend({
+      type: 'signup',
+      email: email.trim(),
+      options: { emailRedirectTo: Linking.createURL(AUTH_CALLBACK_PATH) },
+    });
+    if (error) throw toAppError(error);
+  }, []);
+
+  const refreshVerification = useCallback(async () => {
+    const { data, error } = await getSupabase().auth.refreshSession();
+    if (error) throw toAppError(error);
+    return !!data.session?.user.email_confirmed_at;
+  }, []);
+
   const requestPasswordReset = useCallback(async (email: string) => {
     const { error } = await getSupabase().auth.resetPasswordForEmail(email.trim(), {
       redirectTo: Linking.createURL(RESET_PASSWORD_PATH),
@@ -106,16 +137,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   /** Échange le code PKCE reçu par lien profond (confirmation d'e-mail ou réinitialisation). */
-  const handleAuthRedirect = useCallback(async (url: string) => {
+  const handleAuthRedirect = useCallback(async (url: string): Promise<AuthRedirectOutcome> => {
     const { queryParams, path } = Linking.parse(url);
     const code = typeof queryParams?.code === 'string' ? queryParams.code : null;
-    const errorCode = typeof queryParams?.error_code === 'string' ? queryParams.error_code : null;
-    if (errorCode) throw new AppError('SESSION_EXPIRED');
-    if (!code) return false;
+    // Selon le cas, Supabase place l'erreur dans la requête ou dans le fragment (`#error_code=…`).
+    const errorCode =
+      typeof queryParams?.error_code === 'string'
+        ? queryParams.error_code
+        : (/[?&#]error_code=([^&#]+)/.exec(url)?.[1] ?? null);
+    if (errorCode) throw new AppError(errorCode === 'otp_expired' ? 'LINK_EXPIRED' : 'SESSION_EXPIRED');
+    if (!code) return 'none';
     const { error } = await getSupabase().auth.exchangeCodeForSession(code);
-    if (error) throw toAppError(error);
+    if (error) {
+      // Le serveur ne délivre un code qu'après avoir validé le lien : l'adresse est confirmée,
+      // mais le vérificateur PKCE n'existe que sur l'appareil qui a fait la demande.
+      if (path !== RESET_PASSWORD_PATH) {
+        logger.warn('auth:exchange-code', toAppError(error).code);
+        return 'confirmed';
+      }
+      throw toAppError(error);
+    }
     if (path === RESET_PASSWORD_PATH) setPasswordRecovery(true);
-    return true;
+    return 'session';
   }, []);
 
   const value = useMemo<AuthContextValue>(
@@ -127,6 +170,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       signIn,
       signUp,
       signOut,
+      resendConfirmation,
+      refreshVerification,
       requestPasswordReset,
       updatePassword,
       handleAuthRedirect,
@@ -138,6 +183,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       signIn,
       signUp,
       signOut,
+      resendConfirmation,
+      refreshVerification,
       requestPasswordReset,
       updatePassword,
       handleAuthRedirect,

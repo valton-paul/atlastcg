@@ -1,4 +1,5 @@
 export * from './tokens';
+export { decorativeSvgProps } from './decorative';
 export { Button, type ButtonVariant } from './components/Button';
 export { Chip } from './components/Chip';
 export { ConfirmDialog } from './components/ConfirmDialog';

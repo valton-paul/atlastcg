@@ -41,6 +41,17 @@ describe('toAppError', () => {
     expect(message).toMatch(/inattendue/);
   });
 
+  it('signale une base non initialisée sans proposer de réessayer en boucle', () => {
+    const error = toAppError({
+      code: 'PGRST205',
+      message: "Could not find the table 'public.countries' in the schema cache",
+    });
+    expect(error.code).toBe('SERVER_NOT_READY');
+    expect(error.retryable).toBe(false);
+    expect(error.message).not.toContain('countries');
+    expect(toAppError({ code: 'PGRST202', message: 'Could not find the function' }).code).toBe('SERVER_NOT_READY');
+  });
+
   it('conserve une AppError existante', () => {
     const original = new AppError('NOT_CONFIGURED');
     expect(toAppError(original)).toBe(original);

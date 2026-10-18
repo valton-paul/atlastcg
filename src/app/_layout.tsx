@@ -63,6 +63,7 @@ export default function RootLayout() {
                   <Stack.Screen name="(auth)" />
                   <Stack.Screen name="auth/callback" />
                   <Stack.Screen name="reset-password" />
+                  <Stack.Screen name="verify-email" />
                   <Stack.Screen name="legal" options={{ presentation: 'modal' }} />
                 </Stack>
               </ThemeProvider>

@@ -7,10 +7,12 @@
 export type AppErrorCode =
   | 'NETWORK'
   | 'NOT_CONFIGURED'
+  | 'SERVER_NOT_READY'
   | 'NOT_AUTHENTICATED'
   | 'SESSION_EXPIRED'
   | 'INVALID_CREDENTIALS'
   | 'EMAIL_NOT_CONFIRMED'
+  | 'LINK_EXPIRED'
   | 'EMAIL_TAKEN'
   | 'WEAK_PASSWORD'
   | 'INVALID_EMAIL'
@@ -69,9 +71,11 @@ export type ServerErrorCode = keyof typeof SERVER_ERROR_MESSAGES;
 const CLIENT_MESSAGES: Record<Exclude<AppErrorCode, ServerErrorCode>, string> = {
   NETWORK: 'Connexion impossible. Vérifiez votre réseau puis réessayez.',
   NOT_CONFIGURED: 'L’application n’est pas reliée à son serveur. Contactez l’équipe Atlas.',
+  SERVER_NOT_READY: 'Le serveur Atlas n’est pas encore prêt : sa base de données n’a pas été initialisée.',
   SESSION_EXPIRED: 'Votre session a expiré. Reconnectez-vous pour continuer.',
   INVALID_CREDENTIALS: 'Adresse e-mail ou mot de passe incorrect.',
   EMAIL_NOT_CONFIRMED: 'Confirmez votre adresse e-mail grâce au lien reçu, puis connectez-vous.',
+  LINK_EXPIRED: 'Ce lien a expiré ou a déjà été utilisé. Demandez un nouvel e-mail de confirmation.',
   EMAIL_TAKEN: 'Un compte existe déjà avec cette adresse e-mail.',
   WEAK_PASSWORD: 'Choisissez un mot de passe plus robuste (au moins 8 caractères).',
   INVALID_EMAIL: 'Cette adresse e-mail n’est pas valide.',
@@ -108,6 +112,7 @@ function isServerCode(value: string): value is ServerErrorCode {
 const AUTH_CODES: Record<string, AppErrorCode> = {
   invalid_credentials: 'INVALID_CREDENTIALS',
   email_not_confirmed: 'EMAIL_NOT_CONFIRMED',
+  otp_expired: 'LINK_EXPIRED',
   user_already_exists: 'EMAIL_TAKEN',
   email_exists: 'EMAIL_TAKEN',
   weak_password: 'WEAK_PASSWORD',
@@ -140,6 +145,8 @@ export function toAppError(error: unknown): AppError {
   if (code === '23505' && /display_name/.test(message)) return new AppError('DISPLAY_NAME_TAKEN', error);
   if (code === '23514' && /display_name/.test(message)) return new AppError('DISPLAY_NAME_INVALID', error);
   if (code === 'PGRST301' || code === 'PGRST303') return new AppError('SESSION_EXPIRED', error);
+  // Table ou fonction absente : migrations non appliquées sur le projet.
+  if (['PGRST202', 'PGRST205', '42P01', '42883'].includes(code)) return new AppError('SERVER_NOT_READY', error);
 
   if (code && AUTH_CODES[code]) return new AppError(AUTH_CODES[code], error);
   if (e.name === 'AuthApiError' && /invalid login credentials/i.test(message)) {

@@ -1,5 +1,6 @@
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
+import { decorativeSvgProps } from '../decorative';
 import { colors } from '../tokens';
 
 export type IconName =
@@ -53,7 +54,7 @@ export function Icon({ name, size = 24, color = colors.text, strokeWidth = 1.8 }
     strokeLinejoin: 'round' as const,
   };
   return (
-    <Svg width={size} height={size} viewBox="0 0 24 24" accessibilityElementsHidden importantForAccessibility="no">
+    <Svg width={size} height={size} viewBox="0 0 24 24" {...decorativeSvgProps}>
       {renderGlyph(name, common, color)}
     </Svg>
   );

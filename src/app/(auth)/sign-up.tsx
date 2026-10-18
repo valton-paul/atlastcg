@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Button, colors, InlineMessage, Screen, spacing, Surface, Text, TextField } from '@/design-system';
+import { Button, colors, InlineMessage, Screen, spacing, Text, TextField } from '@/design-system';
 import { AuthHeader } from '@/features/auth/AuthHeader';
 import { useAuth } from '@/features/auth/AuthProvider';
 import {
@@ -23,8 +23,6 @@ export default function SignUpScreen() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [awaitingConfirmation, setAwaitingConfirmation] = useState(false);
-
   const errors = {
     displayName: validateDisplayName(displayName),
     email: validateEmail(email),
@@ -40,28 +38,14 @@ export default function SignUpScreen() {
     setLoading(true);
     try {
       const result = await signUp(email, password, displayName);
-      if (result.needsEmailConfirmation) setAwaitingConfirmation(true);
-      else router.replace('/');
+      if (result.needsEmailConfirmation) {
+        router.replace({ pathname: '/verify-email', params: { email: email.trim(), sent: '1' } });
+      } else router.replace('/');
     } catch (e) {
       setError(errorMessage(e));
     } finally {
       setLoading(false);
     }
-  }
-
-  if (awaitingConfirmation) {
-    return (
-      <Screen>
-        <AuthHeader title="Vérifiez vos e-mails" />
-        <Surface tone="explore">
-          <Text>
-            Un lien de confirmation a été envoyé à {email.trim()}. Ouvrez-le depuis ce téléphone pour activer votre
-            compte : vos premiers paquets vous attendront.
-          </Text>
-        </Surface>
-        <Button label="J’ai confirmé, me connecter" onPress={() => router.replace('/sign-in')} />
-      </Screen>
-    );
   }
 
   return (

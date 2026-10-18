@@ -11,3 +11,4 @@ specifications
 assets
 content/*.json
 docs
+tsconfig.json

@@ -1,19 +1,20 @@
 import { Redirect, Stack, useSegments } from 'expo-router';
 
-import { colors, ErrorState, LoadingState, Screen } from '@/design-system';
+import { Button, colors, ErrorState, LoadingState, Screen } from '@/design-system';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { NotConfiguredScreen } from '@/features/auth/NotConfiguredScreen';
 import { usePlayerState } from '@/features/player/api';
 import { errorMessage } from '@/lib/errors';
 
 export default function AppLayout() {
-  const { status, userId, passwordRecovery } = useAuth();
-  const player = usePlayerState(userId);
+  const { status, userId, passwordRecovery, signOut } = useAuth();
+  const player = usePlayerState(status === 'signed-in' ? userId : null);
   const segments = useSegments();
 
   if (status === 'unconfigured') return <NotConfiguredScreen />;
   if (status === 'loading') return <LoadingState />;
   if (status === 'signed-out') return <Redirect href="/sign-in" />;
+  if (status === 'unverified') return <Redirect href="/verify-email" />;
   if (passwordRecovery) return <Redirect href="/reset-password" />;
 
   if (player.isPending) {
@@ -27,6 +28,7 @@ export default function AppLayout() {
     return (
       <Screen>
         <ErrorState message={errorMessage(player.error)} onRetry={() => void player.refetch()} />
+        <Button label="Se déconnecter" variant="ghost" onPress={() => void signOut()} />
       </Screen>
     );
   }

@@ -36,6 +36,20 @@ describe('connexion', () => {
     expect(mockSignIn).toHaveBeenCalledWith('paul@exemple.fr', 'atlas2026');
   });
 
+  it('redirige vers la validation d’adresse si l’e-mail n’est pas confirmé', async () => {
+    mockSignIn.mockRejectedValue(new AppError('EMAIL_NOT_CONFIRMED'));
+    await render(<SignInScreen />);
+    await fireEvent.changeText(screen.getByTestId('sign-in-email'), ' paul@exemple.fr ');
+    await fireEvent.changeText(screen.getByTestId('sign-in-password'), 'atlas2026');
+    await fireEvent.press(screen.getByTestId('sign-in-submit'));
+    await waitFor(() =>
+      expect(mockRouter.replace).toHaveBeenCalledWith({
+        pathname: '/verify-email',
+        params: { email: 'paul@exemple.fr' },
+      }),
+    );
+  });
+
   it('affiche un message compréhensible en cas d’identifiants incorrects', async () => {
     mockSignIn.mockRejectedValue(new AppError('INVALID_CREDENTIALS'));
     await render(<SignInScreen />);

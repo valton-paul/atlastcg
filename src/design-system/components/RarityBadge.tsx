@@ -1,13 +1,14 @@
 import { StyleSheet, View } from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
 
+import { decorativeSvgProps } from '../decorative';
 import { radius, rarityStyles, spacing, type RarityKey } from '../tokens';
 import { Text } from './Text';
 
 export function RarityGlyph({ rarity, size = 12 }: { rarity: RarityKey; size?: number }) {
   const { color, shape } = rarityStyles[rarity];
   return (
-    <Svg width={size} height={size} viewBox="0 0 12 12" accessibilityElementsHidden importantForAccessibility="no">
+    <Svg width={size} height={size} viewBox="0 0 12 12" {...decorativeSvgProps}>
       {shape === 'circle' && <Circle cx={6} cy={6} r={4.5} fill={color} />}
       {shape === 'diamond' && <Path d="M6 .8 11.2 6 6 11.2.8 6z" fill={color} />}
       {shape === 'triangle' && <Path d="M6 1 11.4 10.6H.6z" fill={color} />}

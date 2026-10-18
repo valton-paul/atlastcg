@@ -15,6 +15,7 @@ import {
   Surface,
   Text,
 } from '@/design-system';
+import { decorativeSvgProps } from '@/design-system/decorative';
 import { toCardData } from '@/features/cards/adapters';
 import { AtlasCard } from '@/features/cards/AtlasCard';
 import silhouettes from '@/features/cards/data/silhouettes.json';
@@ -56,7 +57,7 @@ export default function CountryScreen() {
     <Screen back title={country.name} subtitle={`${CONTINENT_LABELS[country.continent]} · ${country.region}`}>
       <Surface tone={discovered ? 'explore' : 'panel'} style={styles.hero}>
         {silhouette ? (
-          <Svg width={96} height={96} viewBox="0 0 100 100" accessibilityElementsHidden importantForAccessibility="no">
+          <Svg width={96} height={96} viewBox="0 0 100 100" {...decorativeSvgProps}>
             <Path
               d={silhouette}
               fill={discovered ? colors.turquoise : colors.slateRaised}

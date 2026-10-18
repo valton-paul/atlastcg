@@ -6,7 +6,7 @@ import { Button, colors, InlineMessage, Screen, spacing, Text, TextField, type T
 import { AuthHeader } from '@/features/auth/AuthHeader';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { validateEmail } from '@/features/auth/validation';
-import { errorMessage } from '@/lib/errors';
+import { errorMessage, toAppError } from '@/lib/errors';
 
 export default function SignInScreen() {
   const { signIn } = useAuth();
@@ -30,6 +30,10 @@ export default function SignInScreen() {
       await signIn(email, password);
       router.replace('/');
     } catch (e) {
+      if (toAppError(e).code === 'EMAIL_NOT_CONFIRMED') {
+        router.replace({ pathname: '/verify-email', params: { email: email.trim() } });
+        return;
+      }
       setError(errorMessage(e));
     } finally {
       setLoading(false);
