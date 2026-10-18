@@ -30,7 +30,7 @@ export const colors = {
   },
 } as const;
 
-export type RarityKey = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary';
+export type RarityKey = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'mythic';
 
 /** La rareté est toujours signalée par un libellé ET une forme, jamais par la couleur seule. */
 export const rarityStyles: Record<
@@ -39,7 +39,7 @@ export const rarityStyles: Record<
     label: string;
     color: string;
     surface: string;
-    shape: 'circle' | 'diamond' | 'triangle' | 'star' | 'crown';
+    shape: 'circle' | 'diamond' | 'triangle' | 'star' | 'crown' | 'sun';
     rank: number;
   }
 > = {
@@ -48,6 +48,7 @@ export const rarityStyles: Record<
   rare: { label: 'Rare', color: '#6FA8FF', surface: '#1A2F5C', shape: 'triangle', rank: 3 },
   epic: { label: 'Épique', color: '#C49BFF', surface: '#2E2252', shape: 'star', rank: 4 },
   legendary: { label: 'Légendaire', color: '#E8C67A', surface: '#3A3020', shape: 'crown', rank: 5 },
+  mythic: { label: 'Mythique', color: '#FF7BAC', surface: '#3E1830', shape: 'sun', rank: 6 },
 };
 
 export const spacing = {

@@ -121,7 +121,7 @@ export async function giveCards(db: TestDb, userId: string, slugs: string[]): Pr
   await db.admin.query(
     `insert into public.user_cards (user_id, card_id, quantity)
      select $1, id, 1 from public.cards where slug = any($2)
-     on conflict (user_id, card_id) do update set quantity = public.user_cards.quantity + 1`,
+     on conflict (user_id, card_id) do nothing`,
     [userId, slugs],
   );
 }

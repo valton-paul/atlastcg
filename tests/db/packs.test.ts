@@ -177,16 +177,42 @@ describe('ouverture des paquets', () => {
     );
     expect(balance).toBe(ledger);
     expect(balance).toBe(awarded);
-    // Chaque carte possédée correspond exactement aux attributions enregistrées.
-    const mismatch = await scalar<number>(
+    // Les doublons sont détruits : un seul exemplaire par carte tirée au moins une fois.
+    const owned = await scalar<number>(db, 'select count(*)::int from public.user_cards where user_id = $1', [user]);
+    const distinctDrawn = await scalar<number>(
       db,
-      `select count(*)::int from public.user_cards uc
-        where uc.user_id = $1 and uc.quantity <> (
-          select count(*) from public.pack_opening_cards poc join public.pack_openings po on po.id = poc.opening_id
-           where po.user_id = uc.user_id and poc.card_id = uc.card_id)`,
+      `select count(distinct poc.card_id)::int from public.pack_opening_cards poc
+         join public.pack_openings po on po.id = poc.opening_id where po.user_id = $1`,
       [user],
     );
-    expect(mismatch).toBe(0);
+    expect(owned).toBe(distinctDrawn);
+    expect(await totalCards(db, user)).toBe(owned);
+  });
+
+  it('détruit chaque doublon contre le nombre de fragments prévu pour sa rareté', async () => {
+    const user = await createUser(db);
+    for (let i = 0; i < 6; i++) await grantPack(db, user, 'decouverte');
+    const rates = await db.admin.query<{ rarity: string; duplicate_fragments: number }>(
+      'select rarity::text, duplicate_fragments from public.rarities',
+    );
+    const fragmentsFor = new Map(rates.rows.map((r) => [r.rarity, r.duplicate_fragments]));
+    let checked = 0;
+    for (const packId of await availablePacks(db, user)) {
+      const r = await rpc<Opening>(db, user, 'open_pack', { p_user_pack_id: packId, p_idempotency_key: randomUUID() });
+      for (const card of r.cards) {
+        expect(card.quantity).toBe(1);
+        if (!card.is_new) {
+          expect(card.fragments_awarded).toBe(fragmentsFor.get(card.rarity));
+          checked++;
+        }
+      }
+    }
+    expect(checked).toBeGreaterThan(0);
+    expect(
+      await scalar<number>(db, 'select count(*)::int from public.user_cards where user_id = $1 and quantity <> 1', [
+        user,
+      ]),
+    ).toBe(0);
   });
 
   it('interdit toute écriture directe sur l’inventaire, les paquets et le solde', async () => {
@@ -218,12 +244,19 @@ describe('tirage côté serveur', () => {
       `select draw_rarity::text as rarity, count(*)::int as n
          from generate_series(1, 4000) g,
               lateral atlas_private.draw_pack_cards(
-                (select id from public.pack_definitions where slug = 'exploration'), 1, 5 + 0 * g)
+                (select id from public.pack_definitions where slug = 'exploration'), 2, 5 + 0 * g)
         group by 1`,
     );
     const total = rows.reduce((acc, r) => acc + r.n, 0);
     expect(total).toBe(20000);
-    const expected: Record<string, number> = { common: 0.55, uncommon: 0.27, rare: 0.11, epic: 0.06, legendary: 0.01 };
+    const expected: Record<string, number> = {
+      common: 0.547,
+      uncommon: 0.27,
+      rare: 0.11,
+      epic: 0.06,
+      legendary: 0.01,
+      mythic: 0.003,
+    };
     for (const [rarity, p] of Object.entries(expected)) {
       const observed = (rows.find((r) => r.rarity === rarity)?.n ?? 0) / total;
       // 5 écarts-types d'une loi binomiale : un échec signale une anomalie réelle.

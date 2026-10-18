@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const RARITIES = ['common', 'uncommon', 'rare', 'epic', 'legendary'] as const;
+export const RARITIES = ['common', 'uncommon', 'rare', 'epic', 'legendary', 'mythic'] as const;
 export const CATEGORIES = ['country', 'capital', 'culture', 'monument', 'geography', 'history', 'special'] as const;
 export const HERITAGE_CATEGORIES = ['culture', 'monument', 'geography', 'history'] as const;
 export const CONTINENTS = ['africa', 'asia', 'europe', 'north_america', 'south_america', 'oceania'] as const;
@@ -105,12 +105,12 @@ export const gameDocSchema = z.object({
     .array(
       z.object({
         rarity: z.enum(RARITIES),
-        rank: z.number().int().min(1).max(5),
+        rank: z.number().int().min(1).max(RARITIES.length),
         label: text,
         duplicateFragments: z.number().int().min(0),
       }),
     )
-    .length(5),
+    .length(RARITIES.length),
   packs: z.array(packSchema).min(1),
   collections: z.array(collectionSchema),
   objectives: z.array(objectiveSchema),

@@ -37,7 +37,7 @@ type View_ = 'cards' | 'albums';
 
 const OWNERSHIP: OwnershipFilter[] = ['owned', 'new', 'duplicates', 'missing', 'all'];
 const COLLECTION_DEFAULTS: CardFilters = { ...DEFAULT_FILTERS, ownership: 'owned' };
-const RARITIES: Rarity[] = ['common', 'uncommon', 'rare', 'epic', 'legendary'];
+const RARITIES: Rarity[] = ['common', 'uncommon', 'rare', 'epic', 'legendary', 'mythic'];
 const SORTS: { key: SortOrder; label: string }[] = [
   { key: 'rarity', label: 'Plus rares d’abord' },
   { key: 'country', label: 'Par pays' },

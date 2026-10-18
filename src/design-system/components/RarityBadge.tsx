@@ -14,6 +14,17 @@ export function RarityGlyph({ rarity, size = 12 }: { rarity: RarityKey; size?: n
       {shape === 'triangle' && <Path d="M6 1 11.4 10.6H.6z" fill={color} />}
       {shape === 'star' && <Path d="M6 .5l1.6 3.6 3.9.4-2.9 2.6.8 3.9L6 9 2.6 11l.8-3.9L.5 4.5l3.9-.4z" fill={color} />}
       {shape === 'crown' && <Path d="M1 9.5 1.5 3l2.8 2.6L6 1.5l1.7 4.1L10.5 3l.5 6.5z" fill={color} />}
+      {shape === 'sun' && (
+        <>
+          <Circle cx={6} cy={6} r={2.6} fill={color} />
+          <Path
+            d="M6 0v2.2M6 9.8V12M0 6h2.2M9.8 6H12M1.8 1.8l1.6 1.6M8.6 8.6l1.6 1.6M10.2 1.8 8.6 3.4M3.4 8.6l-1.6 1.6"
+            stroke={color}
+            strokeWidth={1.3}
+            strokeLinecap="round"
+          />
+        </>
+      )}
     </Svg>
   );
 }

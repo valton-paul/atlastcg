@@ -58,6 +58,20 @@ export function interpolate(value: number, input: number[], output: number[]) {
   return o0 + (o1 - o0) * t;
 }
 
+type LayoutAnimation = {
+  delay: (ms: number) => LayoutAnimation;
+  duration: (ms: number) => LayoutAnimation;
+  springify: () => LayoutAnimation;
+};
+const layoutAnimation: LayoutAnimation = {
+  delay: () => layoutAnimation,
+  duration: () => layoutAnimation,
+  springify: () => layoutAnimation,
+};
+export const FadeIn = layoutAnimation;
+export const FadeInDown = layoutAnimation;
+export const ZoomIn = layoutAnimation;
+
 const Animated = {
   View,
   Text,

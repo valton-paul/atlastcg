@@ -52,6 +52,11 @@ export function openingReducer(state: OpeningState, event: OpeningEvent): Openin
   }
 }
 
+/** Rareté la plus élevée d'un tirage, annoncée par la couleur de l'éclatement du paquet. */
+export function bestRarity<R extends string>(cards: { rarity: R }[], rank: (rarity: string) => number): R | null {
+  return cards.reduce<R | null>((best, c) => (best === null || rank(c.rarity) > rank(best) ? c.rarity : best), null);
+}
+
 /** Ordre de révélation : la meilleure carte en dernier pour ménager la découverte. */
 export function revealOrder<T extends { rarity: string; slot: number }>(
   cards: T[],

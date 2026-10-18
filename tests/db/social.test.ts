@@ -136,7 +136,7 @@ describe('défis asynchrones', () => {
     expect(forBob.questions).toHaveLength(5);
     expect(forBob.invite_code).toBeNull();
     expect(JSON.stringify(forBob)).not.toContain('correct');
-    expect(forBob.questions[0].prompt).toMatch(/^Quelle est la capitale (de la|du|des|de l')/);
+    expect(forBob.questions[0].prompt).toMatch(/^Quelle est la capitale (de la |du |des |de l'|de |d')/);
 
     const solutions = (
       await db.admin.query<{ correct_choice: number }>(

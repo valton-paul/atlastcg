@@ -5,6 +5,7 @@ import {
   type CountryEntry,
   type GameDoc,
   type Rarity,
+  RARITIES,
   countriesDocSchema,
   gameDocSchema,
 } from './schema';
@@ -321,7 +322,7 @@ export function parseCatalog(
 
   const rarityRanks = new Set(game.rarities.map((r) => r.rank));
   const rarityNames = new Set(game.rarities.map((r) => r.rarity));
-  if (rarityRanks.size !== 5 || rarityNames.size !== 5) {
+  if (rarityRanks.size !== RARITIES.length || rarityNames.size !== RARITIES.length) {
     issues.push({ path: 'game.rarities', message: 'raretés ou rangs dupliqués' });
   }
 

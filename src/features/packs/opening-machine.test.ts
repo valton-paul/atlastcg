@@ -1,5 +1,5 @@
 import type { OpeningResult } from './api';
-import { initialOpeningState, openingReducer, revealOrder, type OpeningState } from './opening-machine';
+import { bestRarity, initialOpeningState, openingReducer, revealOrder, type OpeningState } from './opening-machine';
 
 function result(replayed = false): OpeningResult {
   const base = {
@@ -95,5 +95,16 @@ describe('revealOrder', () => {
       (r) => ranks[r],
     );
     expect(ordered.map((c) => c.slot)).toEqual([2, 4, 3, 1]);
+  });
+});
+
+describe('bestRarity', () => {
+  const ranks: Record<string, number> = { common: 1, rare: 3, legendary: 5, mythic: 6 };
+  it('retient la rareté la plus élevée du tirage', () => {
+    const cards = [{ rarity: 'common' }, { rarity: 'mythic' }, { rarity: 'rare' }];
+    expect(bestRarity(cards, (r) => ranks[r])).toBe('mythic');
+  });
+  it('renvoie null pour un tirage vide', () => {
+    expect(bestRarity([], (r) => ranks[r])).toBeNull();
   });
 });

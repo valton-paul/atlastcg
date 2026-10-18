@@ -2,7 +2,9 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { AccessibilityInfo, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import Animated, {
+  cancelAnimation,
   Easing,
+  FadeInDown,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
@@ -27,9 +29,10 @@ import { toCardData } from '@/features/cards/adapters';
 import { AtlasCard } from '@/features/cards/AtlasCard';
 import type { Catalog } from '@/features/catalog/types';
 import { useOpenPack, type OpeningResult } from '@/features/packs/api';
-import { initialOpeningState, openingReducer, revealOrder } from '@/features/packs/opening-machine';
-import { PackVisual } from '@/features/packs/PackVisual';
-import { RevealCard } from '@/features/packs/RevealCard';
+import { ParticleBurst, ScreenFlash, Shockwave } from '@/features/packs/effects';
+import { bestRarity, initialOpeningState, openingReducer, revealOrder } from '@/features/packs/opening-machine';
+import { packTheme, PackVisual } from '@/features/packs/PackVisual';
+import { REVEAL_EFFECTS, RevealCard } from '@/features/packs/RevealCard';
 import { useCompleteOnboarding } from '@/features/player/api';
 import { useAtlasData } from '@/features/player/useAtlasData';
 import { toAppError } from '@/lib/errors';
@@ -37,6 +40,10 @@ import { useHaptics } from '@/lib/haptics';
 import { usePreferences } from '@/lib/preferences';
 
 const rank = (rarity: string) => rarityStyles[rarity as keyof typeof rarityStyles]?.rank ?? 0;
+
+/** Charge minimale du paquet avant l'éclatement, puis durée de l'éclatement (≈ 0,7 s au total). */
+const CHARGE_MS = 380;
+const BURST_MS = 320;
 
 export default function OpenPackScreen() {
   const { userPackId, onboarding } = useLocalSearchParams<{ userPackId: string; onboarding?: string }>();
@@ -61,6 +68,10 @@ export default function OpenPackScreen() {
 
   const lift = useSharedValue(0);
   const float = useSharedValue(0);
+  const shake = useSharedValue(0);
+  const burst = useSharedValue(0);
+  // Couleur de la meilleure rareté obtenue : l'éclatement du paquet annonce ce qui l'attend.
+  const [burstColor, setBurstColor] = useState<string | null>(null);
   useEffect(() => {
     if (reduceMotion) return;
     float.set(withRepeat(withSequence(withTiming(1, { duration: 1800 }), withTiming(0, { duration: 1800 })), -1, true));
@@ -70,16 +81,34 @@ export default function OpenPackScreen() {
     if (state.phase !== 'sealed' && state.phase !== 'error') return;
     haptic('reveal');
     setOpeningSlug(inventorySlug);
+    setBurstColor(null);
+    burst.set(0);
     dispatch({ type: 'OPEN' });
     startedAt.current = Date.now();
-    if (!reduceMotion) lift.set(withTiming(1, { duration: 600, easing: Easing.out(Easing.back(1.4)) }));
+    if (!reduceMotion) {
+      lift.set(withTiming(1, { duration: CHARGE_MS, easing: Easing.out(Easing.cubic) }));
+      shake.set(withRepeat(withSequence(withTiming(1, { duration: 45 }), withTiming(-1, { duration: 45 })), -1, true));
+    }
     openPack.mutate(userPackId, {
       onSuccess: (result) => {
-        // Laisse la courte animation d'ouverture se terminer (jamais plus de 700 ms d'attente).
-        const wait = reduceMotion ? 0 : Math.max(0, 700 - (Date.now() - startedAt.current));
-        setTimeout(() => dispatch({ type: 'RESOLVED', result }), wait);
+        if (reduceMotion) {
+          dispatch({ type: 'RESOLVED', result });
+          return;
+        }
+        const charge = Math.max(0, CHARGE_MS - (Date.now() - startedAt.current));
+        setTimeout(() => {
+          cancelAnimation(shake);
+          shake.set(0);
+          const best = bestRarity(result.cards, rank);
+          haptic(best && rank(best) >= 3 ? 'rare' : 'reveal');
+          setBurstColor(best ? rarityStyles[best].color : colors.gold);
+          burst.set(withTiming(1, { duration: BURST_MS, easing: Easing.out(Easing.cubic) }));
+          setTimeout(() => dispatch({ type: 'RESOLVED', result }), BURST_MS);
+        }, charge);
       },
       onError: (error) => {
+        cancelAnimation(shake);
+        shake.set(0);
         lift.set(0);
         const appError = toAppError(error);
         haptic('error');
@@ -90,7 +119,7 @@ export default function OpenPackScreen() {
         });
       },
     });
-  }, [state.phase, haptic, inventorySlug, reduceMotion, lift, openPack, userPackId]);
+  }, [state.phase, haptic, inventorySlug, reduceMotion, lift, shake, burst, openPack, userPackId]);
 
   const ordered = useMemo(
     () => (state.phase === 'revealing' || state.phase === 'summary' ? revealOrder(state.result.cards, rank) : []),
@@ -98,6 +127,10 @@ export default function OpenPackScreen() {
   );
 
   const current = state.phase === 'revealing' ? ordered[state.index] : undefined;
+  const flashKey =
+    state.phase === 'revealing' && state.flipped && current && rank(current.rarity) >= 5 && !reduceMotion
+      ? `${current.slot}-${state.index}`
+      : null;
   useEffect(() => {
     if (state.phase !== 'revealing' || !state.flipped || !current) return;
     haptic(rank(current.rarity) >= 3 ? 'rare' : 'reveal');
@@ -118,11 +151,17 @@ export default function OpenPackScreen() {
   );
 
   const packStyle = useAnimatedStyle(() => ({
+    opacity: 1 - burst.get(),
     transform: [
-      { translateY: -float.get() * 6 - lift.get() * 30 },
-      { rotate: `${lift.get() * -4}deg` },
-      { scale: 1 + lift.get() * 0.06 },
+      { translateY: -float.get() * 6 - lift.get() * 24 },
+      { translateX: shake.get() * lift.get() * 3 },
+      { rotate: `${shake.get() * lift.get() * 2.5}deg` },
+      { scale: 1 + lift.get() * 0.06 + burst.get() * 0.35 },
     ],
+  }));
+  const auraStyle = useAnimatedStyle(() => ({
+    opacity: lift.get() * 0.45 * (1 - burst.get()) + Math.sin(burst.get() * Math.PI) * 0.5,
+    transform: [{ scale: 0.8 + lift.get() * 0.3 + burst.get() * 0.9 }],
   }));
 
   if (data.status === 'loading') return <LoadingState />;
@@ -166,18 +205,37 @@ export default function OpenPackScreen() {
       {state.phase === 'sealed' || state.phase === 'opening' ? (
         <View style={styles.center}>
           {packSlug ? (
-            <Pressable
-              onPress={open}
-              disabled={state.phase === 'opening'}
-              accessibilityRole="button"
-              accessibilityLabel={`Ouvrir le paquet ${packDef?.name ?? ''}`}
-              accessibilityState={{ busy: state.phase === 'opening' }}
-              testID="sealed-pack"
-            >
-              <Animated.View style={packStyle}>
-                <PackVisual slug={packSlug} width={200} glow={state.phase === 'opening' ? 1 : 0} />
-              </Animated.View>
-            </Pressable>
+            <View style={styles.packStage}>
+              <Animated.View
+                pointerEvents="none"
+                style={[
+                  styles.packAura,
+                  {
+                    backgroundColor: burstColor ?? packTheme(packSlug).accent,
+                    shadowColor: burstColor ?? packTheme(packSlug).accent,
+                  },
+                  auraStyle,
+                ]}
+              />
+              {burstColor ? (
+                <>
+                  <Shockwave color={burstColor} size={320} duration={BURST_MS + 200} />
+                  <ParticleBurst count={26} color={burstColor} distance={220} duration={BURST_MS + 300} />
+                </>
+              ) : null}
+              <Pressable
+                onPress={open}
+                disabled={state.phase === 'opening'}
+                accessibilityRole="button"
+                accessibilityLabel={`Ouvrir le paquet ${packDef?.name ?? ''}`}
+                accessibilityState={{ busy: state.phase === 'opening' }}
+                testID="sealed-pack"
+              >
+                <Animated.View style={packStyle}>
+                  <PackVisual slug={packSlug} width={200} glow={state.phase === 'opening' ? 1 : 0} />
+                </Animated.View>
+              </Pressable>
+            </View>
           ) : (
             <ErrorState
               title="Paquet déjà ouvert ?"
@@ -223,6 +281,7 @@ export default function OpenPackScreen() {
             card={toCardData(catalog, current)}
             isNew={current.is_new}
             quantity={current.quantity}
+            fragments={current.fragments_awarded}
             flipped={state.flipped}
             reduceMotion={reduceMotion}
             onPress={() => dispatch({ type: 'NEXT' })}
@@ -235,7 +294,7 @@ export default function OpenPackScreen() {
                 </Text>
               ) : (
                 <Text variant="bodyStrong" color={colors.textMuted}>
-                  Doublon · +{current.fragments_awarded} fragments
+                  Doublon converti · +{current.fragments_awarded} fragments
                 </Text>
               )
             ) : (
@@ -276,6 +335,18 @@ export default function OpenPackScreen() {
               });
           }}
         />
+      ) : null}
+
+      {flashKey && current ? (
+        <ScreenFlash
+          key={flashKey}
+          color={rarityStyles[current.rarity].color}
+          peak={0.45}
+          delay={REVEAL_EFFECTS[current.rarity].flip * 0.5}
+        />
+      ) : null}
+      {state.phase === 'opening' && burstColor ? (
+        <ScreenFlash color={burstColor} peak={0.35} duration={BURST_MS} />
       ) : null}
     </View>
   );
@@ -340,15 +411,16 @@ function Summary({
         <Stat label="fragments" value={summary.fragments_awarded} color={colors.gold} />
       </View>
       <View style={styles.grid}>
-        {ordered.map((card) => (
-          <AtlasCard
-            key={card.slot}
-            card={toCardData(catalog, card)}
-            isNew={card.is_new}
-            quantity={card.quantity}
-            size="small"
-            onPress={() => onCard(card.slug)}
-          />
+        {ordered.map((card, i) => (
+          <Animated.View key={card.slot} entering={FadeInDown.delay(i * 60).duration(280)}>
+            <AtlasCard
+              card={toCardData(catalog, card)}
+              isNew={card.is_new}
+              quantity={card.quantity}
+              size="small"
+              onPress={() => onCard(card.slug)}
+            />
+          </Animated.View>
         ))}
       </View>
       {rares.length > 0 ? (
@@ -450,6 +522,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xs,
   },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.lg, paddingHorizontal: spacing.xl },
+  packStage: { width: 280, height: 340, alignItems: 'center', justifyContent: 'center' },
+  packAura: {
+    position: 'absolute',
+    width: 180,
+    height: 250,
+    borderRadius: 40,
+    shadowOpacity: 1,
+    shadowRadius: 40,
+    shadowOffset: { width: 0, height: 0 },
+    elevation: 16,
+  },
   revealInfo: { minHeight: 24 },
   wide: { alignSelf: 'stretch' },
   summary: { padding: spacing.lg, gap: spacing.lg },

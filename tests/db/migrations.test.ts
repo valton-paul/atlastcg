@@ -113,7 +113,7 @@ describe('migrations sur une base vierge', () => {
   });
 
   it('refuse un seed qui modifie les probabilités sans changer de version', async () => {
-    const tampered = readSeed().replace("('exploration', 1, 'common', 0.55)", "('exploration', 1, 'common', 0.56)");
+    const tampered = readSeed().replace("('exploration', 2, 'common', 0.547)", "('exploration', 2, 'common', 0.548)");
     expect(tampered).not.toEqual(readSeed());
     const client = await db.admin.connect();
     try {
@@ -127,7 +127,7 @@ describe('migrations sur une base vierge', () => {
         db,
         "select probability::text from public.pack_drop_rates r join public.pack_definitions p on p.id = r.pack_id where p.slug = 'exploration' and r.rarity = 'common'",
       ),
-    ).toBe('0.550000');
+    ).toBe('0.547000');
   });
 
   it('journalise les modifications de configuration', async () => {
@@ -142,5 +142,64 @@ describe('migrations sur une base vierge', () => {
   it('déclare le bucket public des illustrations', async () => {
     const { rows } = await db.admin.query("select public from storage.buckets where id = 'card-illustrations'");
     expect(rows[0]).toEqual({ public: true });
+  });
+});
+
+describe('conversion des doublons existants', () => {
+  const CONVERSION = '20261018120100_duplicates_to_fragments.sql';
+  let db: TestDb;
+
+  beforeAll(async () => {
+    db = await createTestDb({ template: false });
+    await db.admin.query(readShim());
+    for (const migration of readMigrations()) {
+      if (migration.name >= CONVERSION) break;
+      await db.admin.query(migration.sql);
+    }
+    await db.admin.query(readSeed());
+  });
+  afterAll(() => db.close());
+
+  it('détruit les exemplaires en trop contre des fragments, au barème de leur rareté', async () => {
+    const userId = await createUser(db, { displayName: 'Collectionneuse' });
+    await db.admin.query(
+      `insert into public.user_cards (user_id, card_id, quantity)
+       select $1, id, case rarity when 'common' then 3 else 2 end
+         from public.cards where slug in ('pays-fr', 'tour-eiffel')`,
+      [userId],
+    );
+    const expected = await scalar<number>(
+      db,
+      `select sum((uc.quantity - 1) * ra.duplicate_fragments)::int from public.user_cards uc
+         join public.cards c on c.id = uc.card_id join public.rarities ra on ra.rarity = c.rarity
+        where uc.user_id = $1`,
+      [userId],
+    );
+    const before = await scalar<number>(
+      db,
+      'select coalesce((select fragments from public.player_wallets where user_id = $1), 0)',
+      [userId],
+    );
+
+    for (const migration of readMigrations().filter((m) => m.name >= CONVERSION)) {
+      await db.admin.query(migration.sql);
+    }
+
+    expect(expected).toBeGreaterThan(0);
+    expect(
+      await scalar<number>(db, 'select count(*)::int from public.user_cards where user_id = $1 and quantity <> 1', [
+        userId,
+      ]),
+    ).toBe(0);
+    expect(await scalar<number>(db, 'select fragments from public.player_wallets where user_id = $1', [userId])).toBe(
+      before + expected,
+    );
+    expect(
+      await scalar<number>(
+        db,
+        "select count(*)::int from public.resource_ledger where user_id = $1 and reason = 'duplicate_compensation'",
+        [userId],
+      ),
+    ).toBe(1);
   });
 });

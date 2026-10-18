@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const rarityEnum = z.enum(['common', 'uncommon', 'rare', 'epic', 'legendary']);
+export const rarityEnum = z.enum(['common', 'uncommon', 'rare', 'epic', 'legendary', 'mythic']);
 export const categoryEnum = z.enum(['country', 'capital', 'culture', 'monument', 'geography', 'history', 'special']);
 export const continentEnum = z.enum(['africa', 'asia', 'europe', 'north_america', 'south_america', 'oceania']);
 
