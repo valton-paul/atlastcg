@@ -26,15 +26,6 @@ import { useAtlasData } from '@/features/player/useAtlasData';
 import { errorMessage } from '@/lib/errors';
 import { useHaptics } from '@/lib/haptics';
 
-const SOURCE_LABELS = {
-  starter: 'Cadeau de bienvenue',
-  expedition: 'Récompense d’expédition',
-  objective: 'Récompense d’objectif',
-  daily: 'Paquet du jour',
-  timer: 'Recharge automatique',
-  fragment_exchange: 'Boutique de fragments',
-} as const;
-
 function DropRates({ pack }: { pack: PackDefinition }) {
   const rates = [...pack.pack_drop_rates].sort((a, b) => rarityStyles[a.rarity].rank - rarityStyles[b.rarity].rank);
   return (
@@ -77,31 +68,54 @@ export default function PacksScreen() {
     })
     .filter((row): row is NonNullable<typeof row> => !!row);
 
+  /** Un type de paquet = une ligne, avec le stock (×N) et le premier id à ouvrir. */
+  const groupedPacks: { definition: PackDefinition; count: number; nextId: string }[] = [];
+  {
+    const byType = new Map<string, { definition: PackDefinition; count: number; nextId: string }>();
+    for (const userPack of player.packs) {
+      const definition = catalog.packsById.get(userPack.pack_id);
+      if (!definition) continue;
+      const existing = byType.get(userPack.pack_id);
+      if (existing) existing.count += 1;
+      else byType.set(userPack.pack_id, { definition, count: 1, nextId: userPack.id });
+    }
+    groupedPacks.push(...[...byType.values()].sort((a, b) => a.definition.position - b.definition.position));
+  }
+
   return (
     <Screen title="Mes paquets" back refreshing={data.refreshing} onRefresh={data.refresh}>
-      {player.packs.length === 0 ? (
+      {groupedPacks.length === 0 ? (
         <EmptyState
           icon="pack"
           title="Aucun paquet à ouvrir"
           message="Un paquet classique arrive toutes les 10 minutes. Expéditions, objectifs et fragments en rapportent aussi."
         />
       ) : (
-        player.packs.map((userPack) => {
-          const def = catalog.packsById.get(userPack.pack_id);
-          if (!def) return null;
-          return (
-            <Surface key={userPack.id} tone="raised" style={styles.packRow}>
-              <PackVisual slug={def.slug} width={64} animated={false} />
-              <View style={styles.flex}>
-                <Text variant="bodyStrong">Paquet {def.name}</Text>
-                <Text variant="caption" color={colors.textMuted}>
-                  {SOURCE_LABELS[userPack.source]}
+        groupedPacks.map(({ definition, count, nextId }) => (
+          <Surface
+            key={definition.id}
+            tone="raised"
+            style={styles.packRow}
+            accessibilityLabel={`Paquet ${definition.name}, ${count} en stock`}
+          >
+            <PackVisual slug={definition.slug} width={64} animated={false} />
+            <View style={styles.flex}>
+              <Text variant="bodyStrong">Paquet {definition.name}</Text>
+              <Text variant="caption" color={colors.textMuted}>
+                {count > 1 ? `${count} en stock` : '1 en stock'}
+                {` · ${definition.cards_per_pack} cartes`}
+              </Text>
+            </View>
+            {count > 1 ? (
+              <View style={styles.badge} accessibilityElementsHidden>
+                <Text variant="caption" color={colors.gold}>
+                  ×{count}
                 </Text>
               </View>
-              <Button label="Ouvrir" compact onPress={() => router.push(`/open/${userPack.id}`)} />
-            </Surface>
-          );
-        })
+            ) : null}
+            <Button label="Ouvrir" compact onPress={() => router.push(`/open/${nextId}`)} />
+          </Surface>
+        ))
       )}
 
       {offers.length > 0 ? (
@@ -175,6 +189,14 @@ const styles = StyleSheet.create({
   packRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   shopHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   flex: { flex: 1 },
+  badge: {
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 2,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: colors.gold,
+    backgroundColor: 'rgba(217, 182, 108, 0.12)',
+  },
   rates: { gap: spacing.xs, marginTop: spacing.xs },
   rateRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
 });
