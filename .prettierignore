@@ -1,0 +1,13 @@
+node_modules
+.expo
+dist
+dist-android
+coverage
+package-lock.json
+supabase/seed.sql
+src/features/world-map/data/*.json
+src/features/cards/data/*.json
+specifications
+assets
+content/*.json
+docs

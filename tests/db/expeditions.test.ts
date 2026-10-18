@@ -1,13 +1,4 @@
-import {
-  type TestDb,
-  asUser,
-  availablePacks,
-  createTestDb,
-  createUser,
-  giveCards,
-  rpc,
-  scalar,
-} from './support/db';
+import { type TestDb, asUser, availablePacks, createTestDb, createUser, giveCards, rpc, scalar } from './support/db';
 
 interface Step {
   id: string;
@@ -33,18 +24,23 @@ describe('expéditions', () => {
   afterAll(() => db.close());
 
   async function steps(userId: string): Promise<Step[]> {
-    return asUser(db, userId, async (c) =>
-      (
-        await c.query<Step>(
-          'select id, position, kind::text, choices from public.expedition_steps where expedition_id = $1 order by position',
-          [expeditionId],
-        )
-      ).rows,
+    return asUser(
+      db,
+      userId,
+      async (c) =>
+        (
+          await c.query<Step>(
+            'select id, position, kind::text, choices from public.expedition_steps where expedition_id = $1 order by position',
+            [expeditionId],
+          )
+        ).rows,
     );
   }
 
   async function solution(stepId: string): Promise<number> {
-    return scalar<number>(db, 'select correct_choice from atlas_private.expedition_step_solutions where step_id = $1', [stepId]);
+    return scalar<number>(db, 'select correct_choice from atlas_private.expedition_step_solutions where step_id = $1', [
+      stepId,
+    ]);
   }
 
   async function startedPlayer(): Promise<string> {
@@ -63,7 +59,9 @@ describe('expéditions', () => {
 
   it('est verrouillée tant que le joueur ne possède aucune carte du pays', async () => {
     const user = await createUser(db);
-    await expect(rpc(db, user, 'start_expedition', { p_expedition_id: expeditionId })).rejects.toThrow('EXPEDITION_LOCKED');
+    await expect(rpc(db, user, 'start_expedition', { p_expedition_id: expeditionId })).rejects.toThrow(
+      'EXPEDITION_LOCKED',
+    );
   });
 
   it('ne révèle les étapes qu’après le démarrage, et jamais les bonnes réponses', async () => {
@@ -82,7 +80,9 @@ describe('expéditions', () => {
   it('impose l’ordre des étapes', async () => {
     const user = await startedPlayer();
     const [, , quiz] = await steps(user);
-    await expect(rpc(db, user, 'submit_expedition_step', { p_step_id: quiz.id, p_choice: 0 })).rejects.toThrow('STEP_LOCKED');
+    await expect(rpc(db, user, 'submit_expedition_step', { p_step_id: quiz.id, p_choice: 0 })).rejects.toThrow(
+      'STEP_LOCKED',
+    );
   });
 
   it('une mauvaise réponse renvoie une explication et permet de réessayer', async () => {
@@ -100,19 +100,27 @@ describe('expéditions', () => {
     expect(hit.correct).toBe(true);
     expect(hit.state.completed_steps).toBe(1);
     expect(
-      await scalar<number>(db, 'select attempts from public.user_expedition_steps where user_id = $1 and step_id = $2', [user, locate.id]),
+      await scalar<number>(
+        db,
+        'select attempts from public.user_expedition_steps where user_id = $1 and step_id = $2',
+        [user, locate.id],
+      ),
     ).toBe(2);
   });
 
   it('refuse un choix hors limites', async () => {
     const user = await startedPlayer();
     const [locate] = await steps(user);
-    await expect(rpc(db, user, 'submit_expedition_step', { p_step_id: locate.id, p_choice: 9 })).rejects.toThrow('INVALID_CHOICE');
+    await expect(rpc(db, user, 'submit_expedition_step', { p_step_id: locate.id, p_choice: 9 })).rejects.toThrow(
+      'INVALID_CHOICE',
+    );
   });
 
   it('refuse la finalisation tant que les étapes ne sont pas terminées', async () => {
     const user = await startedPlayer();
-    await expect(rpc(db, user, 'complete_expedition', { p_expedition_id: expeditionId })).rejects.toThrow('STEPS_INCOMPLETE');
+    await expect(rpc(db, user, 'complete_expedition', { p_expedition_id: expeditionId })).rejects.toThrow(
+      'STEPS_INCOMPLETE',
+    );
   });
 
   it('se finalise une seule fois et attribue la récompense une seule fois', async () => {
@@ -179,19 +187,23 @@ describe('objectifs de découverte', () => {
     const objectives = await rpc<Objective[]>(db, user, 'list_objectives');
     const first = objectives.find((o) => o.slug === 'premiers-pas');
     expect(first).toMatchObject({ progress: 2, target: 10, claimed: false });
-    await expect(rpc(db, user, 'claim_objective', { p_objective_id: first?.id })).rejects.toThrow('OBJECTIVE_NOT_COMPLETED');
+    await expect(rpc(db, user, 'claim_objective', { p_objective_id: first?.id })).rejects.toThrow(
+      'OBJECTIVE_NOT_COMPLETED',
+    );
   });
 
   it('attribue la récompense une seule fois, même en cas de requêtes simultanées', async () => {
     const user = await createUser(db);
-    const slugs = (await db.admin.query<{ slug: string }>("select slug from public.cards where category = 'country' limit 10")).rows.map(
-      (r) => r.slug,
-    );
+    const slugs = (
+      await db.admin.query<{ slug: string }>("select slug from public.cards where category = 'country' limit 10")
+    ).rows.map((r) => r.slug);
     await giveCards(db, user, slugs);
     const objective = (await rpc<Objective[]>(db, user, 'list_objectives')).find((o) => o.slug === 'premiers-pas');
     const packsBefore = (await availablePacks(db, user)).length;
     const results = await Promise.all(
-      Array.from({ length: 5 }, () => rpc<{ granted: boolean }>(db, user, 'claim_objective', { p_objective_id: objective?.id })),
+      Array.from({ length: 5 }, () =>
+        rpc<{ granted: boolean }>(db, user, 'claim_objective', { p_objective_id: objective?.id }),
+      ),
     );
     expect(results.filter((r) => r.granted)).toHaveLength(1);
     expect((await availablePacks(db, user)).length).toBe(packsBefore + 1);

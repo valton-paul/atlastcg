@@ -42,10 +42,7 @@ export async function createTestDb(options: { template?: boolean } = {}): Promis
   };
 }
 
-export async function createUser(
-  db: TestDb,
-  options: { displayName?: string; email?: string } = {},
-): Promise<string> {
+export async function createUser(db: TestDb, options: { displayName?: string; email?: string } = {}): Promise<string> {
   const email = options.email ?? `${randomUUID()}@example.test`;
   const meta = options.displayName ? { display_name: options.displayName } : {};
   const { rows } = await db.admin.query<{ id: string }>(

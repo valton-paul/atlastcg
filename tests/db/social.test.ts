@@ -30,7 +30,9 @@ describe('amis et comparaison', () => {
   afterAll(() => db.close());
 
   it('envoie, liste et accepte une demande via le code public', async () => {
-    await expect(rpc(db, alice, 'send_friend_request', { p_public_code: 'ZZZZZZZZ' })).rejects.toThrow('FRIEND_CODE_NOT_FOUND');
+    await expect(rpc(db, alice, 'send_friend_request', { p_public_code: 'ZZZZZZZZ' })).rejects.toThrow(
+      'FRIEND_CODE_NOT_FOUND',
+    );
     await expect(rpc(db, alice, 'send_friend_request', { p_public_code: await code(alice) })).rejects.toThrow(
       'CANNOT_FRIEND_SELF',
     );
@@ -46,7 +48,10 @@ describe('amis et comparaison', () => {
     await expect(
       rpc(db, alice, 'respond_friend_request', { p_friendship_id: bobList.incoming[0].friendship_id, p_accept: true }),
     ).rejects.toThrow('FRIEND_REQUEST_NOT_FOUND');
-    await rpc(db, bob, 'respond_friend_request', { p_friendship_id: bobList.incoming[0].friendship_id, p_accept: true });
+    await rpc(db, bob, 'respond_friend_request', {
+      p_friendship_id: bobList.incoming[0].friendship_id,
+      p_accept: true,
+    });
     expect((await rpc<FriendList>(db, alice, 'list_friends')).friends.map((f) => f.display_name)).toEqual(['Bob']);
   });
 
@@ -71,12 +76,16 @@ describe('amis et comparaison', () => {
     });
     expect(hidden.friend).toMatchObject({ visible: false, stats: null });
 
-    await expect(rpc(db, carol, 'get_friend_comparison', { p_public_code: await code(alice) })).rejects.toThrow('NOT_FRIENDS');
+    await expect(rpc(db, carol, 'get_friend_comparison', { p_public_code: await code(alice) })).rejects.toThrow(
+      'NOT_FRIENDS',
+    );
   });
 
   it('interdit la lecture directe des tables sociales', async () => {
     for (const table of ['friendships', 'challenges', 'challenge_questions', 'challenge_participants']) {
-      await expect(asUser(db, alice, (c) => c.query(`select 1 from public.${table}`))).rejects.toThrow(/permission denied/);
+      await expect(asUser(db, alice, (c) => c.query(`select 1 from public.${table}`))).rejects.toThrow(
+        /permission denied/,
+      );
     }
   });
 
@@ -156,8 +165,12 @@ describe('défis asynchrones', () => {
   });
 
   it('refuse les accès non autorisés et les réponses invalides', async () => {
-    const { challenge_id } = await rpc<{ challenge_id: string }>(db, alice, 'create_challenge', { p_type: 'continents' });
-    await expect(rpc(db, mallory, 'get_challenge', { p_challenge_id: challenge_id })).rejects.toThrow('CHALLENGE_NOT_FOUND');
+    const { challenge_id } = await rpc<{ challenge_id: string }>(db, alice, 'create_challenge', {
+      p_type: 'continents',
+    });
+    await expect(rpc(db, mallory, 'get_challenge', { p_challenge_id: challenge_id })).rejects.toThrow(
+      'CHALLENGE_NOT_FOUND',
+    );
     await expect(
       rpc(db, alice, 'submit_challenge', { p_challenge_id: challenge_id, p_answers: [0, 1] }),
     ).rejects.toThrow('INVALID_ARGUMENT');
@@ -171,7 +184,9 @@ describe('défis asynchrones', () => {
       p_type: 'continents',
     });
     await rpc(db, mallory, 'join_challenge', { p_invite_code: created.invite_code });
-    expect((await rpc<Challenge>(db, mallory, 'get_challenge', { p_challenge_id: created.challenge_id })).questions).toHaveLength(5);
+    expect(
+      (await rpc<Challenge>(db, mallory, 'get_challenge', { p_challenge_id: created.challenge_id })).questions,
+    ).toHaveLength(5);
 
     await expect(rpc(db, bob, 'revoke_challenge_link', { p_challenge_id: created.challenge_id })).rejects.toThrow(
       'CHALLENGE_NOT_FOUND',
@@ -197,9 +212,9 @@ describe('défis asynchrones', () => {
   });
 
   it('refuse un continent trop petit pour un défi de capitales', async () => {
-    await expect(
-      rpc(db, alice, 'create_challenge', { p_type: 'capitals', p_continent: 'oceania' }),
-    ).rejects.toThrow('CHALLENGE_POOL_TOO_SMALL');
+    await expect(rpc(db, alice, 'create_challenge', { p_type: 'capitals', p_continent: 'oceania' })).rejects.toThrow(
+      'CHALLENGE_POOL_TOO_SMALL',
+    );
     await expect(rpc(db, alice, 'create_challenge', { p_type: 'flags' })).rejects.toThrow('INVALID_ARGUMENT');
   });
 });

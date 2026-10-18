@@ -28,9 +28,7 @@ export function renderSeedSql(catalog: Catalog): string {
 
   push(`
 insert into public.rarities (rarity, rank, label, duplicate_fragments) values
-${game.rarities
-  .map((r) => `  (${lit(r.rarity)}, ${r.rank}, ${lit(r.label)}, ${r.duplicateFragments})`)
-  .join(',\n')}
+${game.rarities.map((r) => `  (${lit(r.rarity)}, ${r.rank}, ${lit(r.label)}, ${r.duplicateFragments})`).join(',\n')}
 on conflict (rarity) do update set
   rank = excluded.rank, label = excluded.label, duplicate_fragments = excluded.duplicate_fragments;`);
 

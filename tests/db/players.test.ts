@@ -100,12 +100,26 @@ describe('isolation des données entre joueurs (RLS)', () => {
   });
 
   it("Alice voit ses propres cartes et leur contenu, pas celui des cartes qu'elle ne possède pas", async () => {
-    const owned = await asUser(db, alice, async (c) => (await c.query('select card_id from public.user_cards')).rows.length);
-    const contents = await asUser(db, alice, async (c) => (await c.query('select card_id from public.card_contents')).rows.length);
-    const distinctOwned = await scalar<number>(db, 'select count(*)::int from public.user_cards where user_id = $1', [alice]);
+    const owned = await asUser(
+      db,
+      alice,
+      async (c) => (await c.query('select card_id from public.user_cards')).rows.length,
+    );
+    const contents = await asUser(
+      db,
+      alice,
+      async (c) => (await c.query('select card_id from public.card_contents')).rows.length,
+    );
+    const distinctOwned = await scalar<number>(db, 'select count(*)::int from public.user_cards where user_id = $1', [
+      alice,
+    ]);
     expect(owned).toBe(distinctOwned);
     expect(contents).toBe(distinctOwned);
-    const bobContents = await asUser(db, bob, async (c) => (await c.query('select 1 from public.card_contents')).rows.length);
+    const bobContents = await asUser(
+      db,
+      bob,
+      async (c) => (await c.query('select 1 from public.card_contents')).rows.length,
+    );
     expect(bobContents).toBe(0);
   });
 
@@ -125,20 +139,25 @@ describe('isolation des données entre joueurs (RLS)', () => {
   });
 
   it('Bob ne peut pas modifier le profil d’Alice ; Alice ne modifie que les champs autorisés', async () => {
-    const updated = await asUser(db, bob, async (c) =>
-      (await c.query("update public.profiles set display_name = 'Pirate' where id = $1", [alice])).rowCount,
+    const updated = await asUser(
+      db,
+      bob,
+      async (c) =>
+        (await c.query("update public.profiles set display_name = 'Pirate' where id = $1", [alice])).rowCount,
     );
     expect(updated).toBe(0);
 
-    await asUser(db, alice, (c) => c.query("update public.profiles set display_name = 'Alice B', collection_visibility = 'private'"));
+    await asUser(db, alice, (c) =>
+      c.query("update public.profiles set display_name = 'Alice B', collection_visibility = 'private'"),
+    );
     expect(await scalar(db, 'select display_name from public.profiles where id = $1', [alice])).toBe('Alice B');
 
     await expect(
       asUser(db, alice, (c) => c.query("update public.profiles set public_code = 'AAAAAAAA'")),
     ).rejects.toThrow(/permission denied/);
-    await expect(
-      asUser(db, alice, (c) => c.query("update public.profiles set display_name = 'x'")),
-    ).rejects.toThrow(/check constraint/);
+    await expect(asUser(db, alice, (c) => c.query("update public.profiles set display_name = 'x'"))).rejects.toThrow(
+      /check constraint/,
+    );
     await expect(
       asUser(db, bob, (c) => c.query("update public.profiles set display_name = 'alice b'")),
     ).rejects.toThrow(/duplicate key/);
@@ -151,16 +170,24 @@ describe('isolation des données entre joueurs (RLS)', () => {
       [alice],
     );
     await db.admin.query("update public.cards set status = 'archived' where slug = $1", [slug]);
-    const visibleForAlice = await asUser(db, alice, async (c) => (await c.query('select 1 from public.cards where slug = $1', [slug])).rows.length);
-    const visibleForBob = await asUser(db, bob, async (c) => (await c.query('select 1 from public.cards where slug = $1', [slug])).rows.length);
+    const visibleForAlice = await asUser(
+      db,
+      alice,
+      async (c) => (await c.query('select 1 from public.cards where slug = $1', [slug])).rows.length,
+    );
+    const visibleForBob = await asUser(
+      db,
+      bob,
+      async (c) => (await c.query('select 1 from public.cards where slug = $1', [slug])).rows.length,
+    );
     expect([visibleForAlice, visibleForBob]).toEqual([1, 0]);
     await db.admin.query("update public.cards set status = 'published' where slug = $1", [slug]);
   });
 
   it('mark_cards_seen ne touche que les cartes du joueur', async () => {
-    const ids = (await db.admin.query<{ card_id: string }>('select card_id from public.user_cards where user_id = $1', [alice])).rows.map(
-      (r) => r.card_id,
-    );
+    const ids = (
+      await db.admin.query<{ card_id: string }>('select card_id from public.user_cards where user_id = $1', [alice])
+    ).rows.map((r) => r.card_id);
     expect(await rpc<number>(db, bob, 'mark_cards_seen', { p_card_ids: ids })).toBe(0);
     expect(await rpc<number>(db, alice, 'mark_cards_seen', { p_card_ids: ids })).toBe(ids.length);
     expect(await rpc<number>(db, alice, 'mark_cards_seen', { p_card_ids: ids })).toBe(0);
@@ -176,7 +203,9 @@ describe('suppression de compte', () => {
 
   it('exige une confirmation explicite', async () => {
     const user = await createUser(db);
-    await expect(rpc(db, user, 'delete_my_account', { p_confirmation: 'oui' })).rejects.toThrow('CONFIRMATION_REQUIRED');
+    await expect(rpc(db, user, 'delete_my_account', { p_confirmation: 'oui' })).rejects.toThrow(
+      'CONFIRMATION_REQUIRED',
+    );
     expect(await scalar<number>(db, 'select count(*)::int from auth.users where id = $1', [user])).toBe(1);
   });
 

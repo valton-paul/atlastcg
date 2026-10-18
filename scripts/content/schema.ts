@@ -1,24 +1,9 @@
 import { z } from 'zod';
 
 export const RARITIES = ['common', 'uncommon', 'rare', 'epic', 'legendary'] as const;
-export const CATEGORIES = [
-  'country',
-  'capital',
-  'culture',
-  'monument',
-  'geography',
-  'history',
-  'special',
-] as const;
+export const CATEGORIES = ['country', 'capital', 'culture', 'monument', 'geography', 'history', 'special'] as const;
 export const HERITAGE_CATEGORIES = ['culture', 'monument', 'geography', 'history'] as const;
-export const CONTINENTS = [
-  'africa',
-  'asia',
-  'europe',
-  'north_america',
-  'south_america',
-  'oceania',
-] as const;
+export const CONTINENTS = ['africa', 'asia', 'europe', 'north_america', 'south_america', 'oceania'] as const;
 
 export type Rarity = (typeof RARITIES)[number];
 export type Category = (typeof CATEGORIES)[number];
@@ -26,9 +11,7 @@ export type Continent = (typeof CONTINENTS)[number];
 
 const text = z.string().trim().min(1);
 const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'slug invalide');
-const illustrationPath = z
-  .string()
-  .regex(/^[a-z0-9][a-z0-9/_.-]*\.(webp|png|jpg)$/, "chemin d'illustration invalide");
+const illustrationPath = z.string().regex(/^[a-z0-9][a-z0-9/_.-]*\.(webp|png|jpg)$/, "chemin d'illustration invalide");
 
 const cardContent = z.object({
   rarity: z.enum(RARITIES),

@@ -104,10 +104,7 @@ function stableIndex(seed: string, modulo: number): number {
 }
 
 /** Trois capitales distractrices : même continent en priorité, ordre alphabétique stable. */
-export function capitalChoices(
-  country: CountryEntry,
-  all: CountryEntry[],
-): { choices: string[]; correct: number } {
+export function capitalChoices(country: CountryEntry, all: CountryEntry[]): { choices: string[]; correct: number } {
   const others = all
     .filter((c) => c.iso !== country.iso && c.capital !== country.capital)
     .sort((a, b) => {
@@ -231,8 +228,7 @@ function poolForPack(pack: GameDoc['packs'][number], cards: CatalogCard[]): Cata
 }
 
 export type ParseResult =
-  | { ok: true; catalog: Catalog; issues: [] }
-  | { ok: false; catalog: null; issues: ContentIssue[] };
+  { ok: true; catalog: Catalog; issues: [] } | { ok: false; catalog: null; issues: ContentIssue[] };
 
 /**
  * Valide les documents de contenu et construit le catalogue normalisé.
@@ -272,8 +268,7 @@ export function parseCatalog(
     if (seenIso.has(country.iso)) issues.push({ path, message: `code ISO dupliqué : ${country.iso}` });
     if (seenNumeric.has(country.isoNumeric))
       issues.push({ path, message: `code numérique dupliqué : ${country.isoNumeric}` });
-    if (seenCapitals.has(country.capital))
-      issues.push({ path, message: `capitale dupliquée : ${country.capital}` });
+    if (seenCapitals.has(country.capital)) issues.push({ path, message: `capitale dupliquée : ${country.capital}` });
     seenIso.add(country.iso);
     seenNumeric.add(country.isoNumeric);
     seenCapitals.add(country.capital);

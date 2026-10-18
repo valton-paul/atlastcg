@@ -19,13 +19,16 @@ describe('parcours principal', () => {
     expect(profile.display_name).toBe('Exploratrice');
 
     // 2. Paquets disponibles, tels que lus par l'écran d'accueil.
-    const packs = await asUser(db, user, async (c) =>
-      (
-        await c.query<{ id: string; slug: string }>(
-          `select up.id, p.slug from public.user_packs up join public.pack_definitions p on p.id = up.pack_id
+    const packs = await asUser(
+      db,
+      user,
+      async (c) =>
+        (
+          await c.query<{ id: string; slug: string }>(
+            `select up.id, p.slug from public.user_packs up join public.pack_definitions p on p.id = up.pack_id
             where up.status = 'available' order by up.created_at`,
-        )
-      ).rows,
+          )
+        ).rows,
     );
     expect(packs.map((p) => p.slug)).toEqual(['decouverte', 'decouverte']);
 
@@ -37,30 +40,39 @@ describe('parcours principal', () => {
     expect(opening.cards).toHaveLength(5);
 
     // 4. Collection et fiche carte (contenu éditorial débloqué).
-    const collection = await asUser(db, user, async (c) =>
-      (
-        await c.query<{ card_id: string; discovery_text: string | null }>(
-          `select uc.card_id, cc.discovery_text from public.user_cards uc
+    const collection = await asUser(
+      db,
+      user,
+      async (c) =>
+        (
+          await c.query<{ card_id: string; discovery_text: string | null }>(
+            `select uc.card_id, cc.discovery_text from public.user_cards uc
              left join public.card_contents cc on cc.card_id = uc.card_id`,
-        )
-      ).rows,
+          )
+        ).rows,
     );
     expect(new Set(collection.map((c) => c.card_id))).toEqual(new Set(opening.cards.map((c) => c.card_id)));
     expect(collection.every((c) => c.discovery_text)).toBe(true);
 
     // 5. Fiche pays et expédition du premier pays obtenu.
     const country = opening.cards[0].country_code;
-    const expedition = await asUser(db, user, async (c) =>
-      (await c.query<{ id: string }>('select id from public.expeditions where country_code = $1', [country])).rows[0],
+    const expedition = await asUser(
+      db,
+      user,
+      async (c) =>
+        (await c.query<{ id: string }>('select id from public.expeditions where country_code = $1', [country])).rows[0],
     );
     await rpc(db, user, 'start_expedition', { p_expedition_id: expedition.id });
-    const [locate] = await asUser(db, user, async (c) =>
-      (
-        await c.query<{ id: string }>(
-          'select id from public.expedition_steps where expedition_id = $1 order by position',
-          [expedition.id],
-        )
-      ).rows,
+    const [locate] = await asUser(
+      db,
+      user,
+      async (c) =>
+        (
+          await c.query<{ id: string }>(
+            'select id from public.expedition_steps where expedition_id = $1 order by position',
+            [expedition.id],
+          )
+        ).rows,
     );
     const answer = (
       await db.admin.query<{ correct_choice: number }>(

@@ -34,7 +34,9 @@ interface Opening {
 }
 
 async function totalCards(db: TestDb, userId: string): Promise<number> {
-  return scalar<number>(db, 'select coalesce(sum(quantity), 0)::int from public.user_cards where user_id = $1', [userId]);
+  return scalar<number>(db, 'select coalesce(sum(quantity), 0)::int from public.user_cards where user_id = $1', [
+    userId,
+  ]);
 }
 
 describe('ouverture des paquets', () => {
@@ -44,7 +46,7 @@ describe('ouverture des paquets', () => {
   });
   afterAll(() => db.close());
 
-  it("attribue 5 cartes, consomme le paquet et renvoie un résumé cohérent", async () => {
+  it('attribue 5 cartes, consomme le paquet et renvoie un résumé cohérent', async () => {
     const user = await createUser(db);
     const [packId] = await availablePacks(db, user, 'decouverte');
 
@@ -59,7 +61,11 @@ describe('ouverture des paquets', () => {
     expect(result.summary.new_count + result.summary.duplicate_count).toBe(5);
     expect(await totalCards(db, user)).toBe(5);
     expect(await scalar(db, 'select status::text from public.user_packs where id = $1', [packId])).toBe('opened');
-    expect(await scalar<number>(db, 'select count(*)::int from public.pack_opening_cards where opening_id = $1', [result.opening_id])).toBe(5);
+    expect(
+      await scalar<number>(db, 'select count(*)::int from public.pack_opening_cards where opening_id = $1', [
+        result.opening_id,
+      ]),
+    ).toBe(5);
     expect(result.summary.collections.length).toBeGreaterThan(0);
   });
 
@@ -76,11 +82,17 @@ describe('ouverture des paquets', () => {
     expect(await totalCards(db, user)).toBe(5);
   });
 
-  it("renvoie le résultat enregistré si le paquet est rouvert avec une nouvelle clé", async () => {
+  it('renvoie le résultat enregistré si le paquet est rouvert avec une nouvelle clé', async () => {
     const user = await createUser(db);
     const [packId] = await availablePacks(db, user);
-    const first = await rpc<Opening>(db, user, 'open_pack', { p_user_pack_id: packId, p_idempotency_key: randomUUID() });
-    const again = await rpc<Opening>(db, user, 'open_pack', { p_user_pack_id: packId, p_idempotency_key: randomUUID() });
+    const first = await rpc<Opening>(db, user, 'open_pack', {
+      p_user_pack_id: packId,
+      p_idempotency_key: randomUUID(),
+    });
+    const again = await rpc<Opening>(db, user, 'open_pack', {
+      p_user_pack_id: packId,
+      p_idempotency_key: randomUUID(),
+    });
     expect(again.replayed).toBe(true);
     expect(again.opening_id).toBe(first.opening_id);
     expect(await totalCards(db, user)).toBe(5);
@@ -101,7 +113,9 @@ describe('ouverture des paquets', () => {
     expect(openingIds.size).toBe(1);
     expect(results.filter((r) => !r.replayed)).toHaveLength(1);
     expect(await totalCards(db, user)).toBe(5);
-    expect(await scalar<number>(db, 'select count(*)::int from public.pack_openings where user_pack_id = $1', [packId])).toBe(1);
+    expect(
+      await scalar<number>(db, 'select count(*)::int from public.pack_openings where user_pack_id = $1', [packId]),
+    ).toBe(1);
   });
 
   it('refuse la réutilisation d’une clé pour un autre paquet', async () => {
@@ -119,9 +133,9 @@ describe('ouverture des paquets', () => {
     const owner = await createUser(db);
     const thief = await createUser(db);
     const [packId] = await availablePacks(db, owner);
-    await expect(rpc(db, thief, 'open_pack', { p_user_pack_id: packId, p_idempotency_key: randomUUID() })).rejects.toThrow(
-      'PACK_NOT_FOUND',
-    );
+    await expect(
+      rpc(db, thief, 'open_pack', { p_user_pack_id: packId, p_idempotency_key: randomUUID() }),
+    ).rejects.toThrow('PACK_NOT_FOUND');
     expect(await totalCards(db, thief)).toBe(0);
     expect(await scalar(db, 'select status::text from public.user_packs where id = $1', [packId])).toBe('available');
   });
@@ -129,9 +143,9 @@ describe('ouverture des paquets', () => {
   it('refuse les appels anonymes et les arguments manquants', async () => {
     const user = await createUser(db);
     const [packId] = await availablePacks(db, user);
-    await expect(rpc(db, null, 'open_pack', { p_user_pack_id: packId, p_idempotency_key: randomUUID() })).rejects.toThrow(
-      /permission denied/,
-    );
+    await expect(
+      rpc(db, null, 'open_pack', { p_user_pack_id: packId, p_idempotency_key: randomUUID() }),
+    ).rejects.toThrow(/permission denied/);
     await expect(rpc(db, user, 'open_pack', { p_user_pack_id: packId, p_idempotency_key: null })).rejects.toThrow(
       'INVALID_ARGUMENT',
     );
@@ -150,7 +164,11 @@ describe('ouverture des paquets', () => {
     }
     expect(duplicates).toBeGreaterThan(0);
     const balance = await scalar<number>(db, 'select fragments from public.player_wallets where user_id = $1', [user]);
-    const ledger = await scalar<number>(db, 'select coalesce(sum(delta), 0)::int from public.resource_ledger where user_id = $1', [user]);
+    const ledger = await scalar<number>(
+      db,
+      'select coalesce(sum(delta), 0)::int from public.resource_ledger where user_id = $1',
+      [user],
+    );
     const awarded = await scalar<number>(
       db,
       `select coalesce(sum(poc.fragments_awarded), 0)::int from public.pack_opening_cards poc
@@ -174,13 +192,13 @@ describe('ouverture des paquets', () => {
   it('interdit toute écriture directe sur l’inventaire, les paquets et le solde', async () => {
     const user = await createUser(db);
     const statements = [
-      "update public.player_wallets set fragments = 999999",
-      "insert into public.user_cards (user_id, card_id, quantity) select auth.uid(), id, 1 from public.cards limit 1",
+      'update public.player_wallets set fragments = 999999',
+      'insert into public.user_cards (user_id, card_id, quantity) select auth.uid(), id, 1 from public.cards limit 1',
       "update public.user_packs set status = 'available', opened_at = null",
       "insert into public.user_packs (user_id, pack_id, source, grant_key) select auth.uid(), id, 'starter', 'starter' from public.pack_definitions limit 1",
       "insert into public.reward_grants (user_id, grant_key, source) values (auth.uid(), 'hack', 'daily')",
-      "update public.pack_drop_rates set probability = 1",
-      "delete from public.pack_openings",
+      'update public.pack_drop_rates set probability = 1',
+      'delete from public.pack_openings',
     ];
     for (const sql of statements) {
       await expect(asUser(db, user, (c) => c.query(sql))).rejects.toThrow(/permission denied/);
@@ -231,14 +249,16 @@ describe('tirage côté serveur', () => {
   });
 
   it('expose publiquement les probabilités de la version active', async () => {
-    const rows = await asAnon(db, async (c) =>
-      (
-        await c.query<{ rarity: string; p: number }>(
-          `select r.rarity::text, r.probability::float as p from public.pack_drop_rates r
+    const rows = await asAnon(
+      db,
+      async (c) =>
+        (
+          await c.query<{ rarity: string; p: number }>(
+            `select r.rarity::text, r.probability::float as p from public.pack_drop_rates r
              join public.pack_definitions p on p.id = r.pack_id and r.configuration_version = p.configuration_version
             where p.slug = 'decouverte' order by r.rarity`,
-        )
-      ).rows,
+          )
+        ).rows,
     );
     expect(rows).toEqual([
       { rarity: 'common', p: 0.7 },
@@ -295,7 +315,9 @@ describe('fragments et paquet quotidien', () => {
   it('attribue le paquet quotidien une seule fois par jour, même en cas de requêtes simultanées', async () => {
     const user = await createUser(db);
     expect(await rpc<{ available: boolean }>(db, user, 'get_daily_status')).toMatchObject({ available: true });
-    const results = await Promise.all(Array.from({ length: 5 }, () => rpc<{ granted: boolean }>(db, user, 'claim_daily_pack')));
+    const results = await Promise.all(
+      Array.from({ length: 5 }, () => rpc<{ granted: boolean }>(db, user, 'claim_daily_pack')),
+    );
     expect(results.filter((r) => r.granted)).toHaveLength(1);
     expect(await availablePacks(db, user, 'exploration')).toHaveLength(1);
     expect(await rpc<{ available: boolean }>(db, user, 'get_daily_status')).toMatchObject({ available: false });

@@ -22,11 +22,15 @@ describe('migrations sur une base vierge', () => {
 
   it("permet l'inscription avant la publication du catalogue, puis rattrape les paquets de départ", async () => {
     const userId = await createUser(db, { displayName: 'Pionnière' });
-    expect(await scalar<number>(db, 'select count(*)::int from public.user_packs where user_id = $1', [userId])).toBe(0);
+    expect(await scalar<number>(db, 'select count(*)::int from public.user_packs where user_id = $1', [userId])).toBe(
+      0,
+    );
 
     await db.admin.query(readSeed());
     await rpc(db, userId, 'ensure_player_initialized');
-    expect(await scalar<number>(db, 'select count(*)::int from public.user_packs where user_id = $1', [userId])).toBe(2);
+    expect(await scalar<number>(db, 'select count(*)::int from public.user_packs where user_id = $1', [userId])).toBe(
+      2,
+    );
   });
 
   it('applique le seed de manière idempotente', async () => {
@@ -58,7 +62,12 @@ describe('migrations sur une base vierge', () => {
         where n.nspname = 'public'`,
     );
     expect(rows.filter((r) => r.anon).map((r) => r.fn)).toEqual([]);
-    expect(rows.filter((r) => r.auth).map((r) => r.fn).sort()).toEqual(
+    expect(
+      rows
+        .filter((r) => r.auth)
+        .map((r) => r.fn)
+        .sort(),
+    ).toEqual(
       [
         'claim_daily_pack',
         'claim_objective',

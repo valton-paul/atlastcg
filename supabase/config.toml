@@ -1,0 +1,25 @@
+# Configuration locale minimale pour la CLI Supabase (`supabase start`, `supabase db reset`).
+# Les valeurs absentes prennent les défauts de la CLI. Non vérifié : la CLI n'était pas
+# disponible dans l'environnement de développement initial.
+project_id = "atlas"
+
+[db]
+major_version = 17
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[storage]
+enabled = true
+
+[auth]
+enabled = true
+site_url = "atlas://"
+additional_redirect_urls = ["atlas://auth/callback", "atlas://reset-password", "exp://**"]
+minimum_password_length = 8
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+double_confirm_changes = true
