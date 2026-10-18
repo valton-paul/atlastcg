@@ -253,10 +253,6 @@ export default function HomeScreen() {
           ) : null}
         </View>
         {timed.isError ? <InlineMessage tone="error" message={errorMessage(timed.error)} /> : null}
-        <View style={styles.links}>
-          <Button label="Objectifs" variant="ghost" compact icon="trophy" onPress={() => router.push('/objectives')} />
-          <Button label="Expéditions" variant="ghost" compact icon="compass" onPress={() => router.push('/world')} />
-        </View>
       </ScrollView>
 
       {openingPackId ? (
@@ -297,7 +293,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.night,
     zIndex: 20,
   },
-  content: { paddingBottom: spacing.xxl, gap: spacing.lg, alignItems: 'stretch' },
+  content: { paddingBottom: spacing.lg, gap: spacing.md, alignItems: 'stretch', flexGrow: 1 },
   hero: {
     alignItems: 'center',
     gap: spacing.xs,
@@ -336,5 +332,4 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     backgroundColor: colors.ink,
   },
-  links: { flexDirection: 'row', justifyContent: 'center', gap: spacing.md },
 });
