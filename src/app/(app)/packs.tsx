@@ -21,10 +21,24 @@ import {
 import type { PackDefinition } from '@/features/catalog/types';
 import { useExchangeFragments } from '@/features/packs/api';
 import { formatProbability } from '@/features/packs/format';
-import { PackVisual } from '@/features/packs/PackVisual';
+import { packTheme, PackVisual } from '@/features/packs/PackVisual';
 import { useAtlasData } from '@/features/player/useAtlasData';
 import { errorMessage } from '@/lib/errors';
 import { useHaptics } from '@/lib/haptics';
+
+function shopTone(slug: string): 'precious' | 'prestige' | 'raised' {
+  const tier = packTheme(slug).tier;
+  if (tier === 'legendaire') return 'precious';
+  if (tier === 'premium') return 'prestige';
+  return 'raised';
+}
+
+function shopButtonVariant(slug: string): 'precious' | 'prestige' | 'primary' {
+  const tier = packTheme(slug).tier;
+  if (tier === 'legendaire') return 'precious';
+  if (tier === 'premium') return 'prestige';
+  return 'primary';
+}
 
 function DropRates({ pack }: { pack: PackDefinition }) {
   const rates = [...pack.pack_drop_rates].sort((a, b) => rarityStyles[a.rarity].rank - rarityStyles[b.rarity].rank);
@@ -125,45 +139,49 @@ export default function PacksScreen() {
             Les doublons se convertissent en fragments. Échangez-les contre des paquets plus puissants — aucun paquet
             n’est vendu contre de l’argent.
           </Text>
-          {offers.map(({ offer, pack }) => (
-            <Surface key={offer.packSlug} tone="precious">
-              <View style={styles.shopHeader}>
-                <PackVisual slug={pack.slug} width={56} animated={false} />
-                <View style={styles.flex}>
-                  <Text variant="bodyStrong">Paquet {pack.name}</Text>
-                  <Text variant="caption" color={colors.textMuted}>
-                    {pack.description}
-                  </Text>
+          {offers.map(({ offer, pack }) => {
+            const tone = shopTone(pack.slug);
+            const barTone = tone === 'raised' ? 'explore' : tone;
+            return (
+              <Surface key={offer.packSlug} tone={tone}>
+                <View style={styles.shopHeader}>
+                  <PackVisual slug={pack.slug} width={56} animated={false} />
+                  <View style={styles.flex}>
+                    <Text variant="bodyStrong">Paquet {pack.name}</Text>
+                    <Text variant="caption" color={colors.textMuted}>
+                      {pack.description}
+                    </Text>
+                  </View>
                 </View>
-              </View>
-              <ProgressBar
-                value={Math.min(player.fragments, offer.cost)}
-                total={offer.cost}
-                tone="precious"
-                label={`${player.fragments} / ${offer.cost} fragments`}
-              />
-              <Button
-                label={`Échanger ${offer.cost} fragments`}
-                variant="precious"
-                disabled={player.fragments < offer.cost}
-                loading={exchange.isPending && exchange.variables === offer.packSlug}
-                onPress={() =>
-                  exchange.mutate(offer.packSlug, {
-                    onSuccess: () => {
-                      haptic('success');
-                      setBoughtSlug(offer.packSlug);
-                    },
-                  })
-                }
-              />
-              {exchange.isError && exchange.variables === offer.packSlug ? (
-                <InlineMessage tone="error" message={errorMessage(exchange.error)} />
-              ) : null}
-              {boughtSlug === offer.packSlug && exchange.isSuccess && exchange.data.packs_granted > 0 ? (
-                <InlineMessage tone="success" message={`Paquet ${pack.name} ajouté à votre inventaire.`} />
-              ) : null}
-            </Surface>
-          ))}
+                <ProgressBar
+                  value={Math.min(player.fragments, offer.cost)}
+                  total={offer.cost}
+                  tone={barTone}
+                  label={`${player.fragments} / ${offer.cost} fragments`}
+                />
+                <Button
+                  label={`Échanger ${offer.cost} fragments`}
+                  variant={shopButtonVariant(pack.slug)}
+                  disabled={player.fragments < offer.cost}
+                  loading={exchange.isPending && exchange.variables === offer.packSlug}
+                  onPress={() =>
+                    exchange.mutate(offer.packSlug, {
+                      onSuccess: () => {
+                        haptic('success');
+                        setBoughtSlug(offer.packSlug);
+                      },
+                    })
+                  }
+                />
+                {exchange.isError && exchange.variables === offer.packSlug ? (
+                  <InlineMessage tone="error" message={errorMessage(exchange.error)} />
+                ) : null}
+                {boughtSlug === offer.packSlug && exchange.isSuccess && exchange.data.packs_granted > 0 ? (
+                  <InlineMessage tone="success" message={`Paquet ${pack.name} ajouté à votre inventaire.`} />
+                ) : null}
+              </Surface>
+            );
+          })}
         </>
       ) : null}
 

@@ -9,22 +9,19 @@ import { colors, spacing } from '@/design-system/tokens';
 import type { CollectionTier } from '@/features/collection/progress';
 
 import mapData from './data/world-map.json';
-import { clientToSvg, countryAtSvgPoint, countryFromDomPoint } from './hit-test';
+import {
+  clientToSvg,
+  countryAtSvgPoint,
+  countryFromDomPoint,
+  framePointToSvg,
+  isTinyMapCountry,
+  TINY_MARKER_R,
+} from './hit-test';
 import { resolveMapCountryId } from './territories';
 import { clamp, clampTranslation, focusViewport, geometry, MAX_SCALE, MIN_SCALE } from './viewport';
 
 type MapCountry = { id: string; name: string; d: string; cx: number; cy: number };
 const MAP = mapData as { width: number; height: number; countries: MapCountry[] };
-
-/**
- * Sur le web, `onPress` de react-native-svg active un mixin qui spam des erreurs WebShape
- * et les `onClick` DOM sont avalés par Gesture Handler. La sélection web passe donc par
- * Gesture.Tap + hit-test. Sur natif, `onPress` reste le chemin fiable.
- */
-function nativePress(enabled: boolean, onSelect: () => void) {
-  if (!enabled || Platform.OS === 'web') return undefined;
-  return { onPress: onSelect };
-}
 
 /** Remplissage d’un pays selon le % de cartes uniques collectées. */
 export const TIER_FILL: Record<CollectionTier, string> = {
@@ -65,17 +62,13 @@ type Props = {
 const Countries = memo(function Countries({
   tiers,
   selected,
-  onSelect,
   drawHighlight,
   drawWinner,
-  interactionEnabled,
 }: {
   tiers: ReadonlyMap<string, CollectionTier>;
   selected: string | null;
-  onSelect: (id: string) => void;
   drawHighlight: string | null;
   drawWinner: string | null;
-  interactionEnabled: boolean;
 }) {
   return (
     <>
@@ -109,26 +102,26 @@ const Countries = memo(function Countries({
             fillOpacity={isPulse || isWinner ? 1 : tier ? 1 : 0.9}
             stroke={stroke}
             strokeWidth={isWinner ? 2 : isPulse || isSelected ? 1.4 : 0.4}
+            // Attribut web pour elementsFromPoint ; la sélection passe par Gesture.Tap partout.
             {...(tier ? ({ 'data-country': ownerId } as object) : null)}
-            {...nativePress(interactionEnabled && !!tier, () => onSelect(ownerId))}
           />
         );
       })}
+      {/* Cibles élargies seulement pour les micro-États (trop petits pour un tap précis). */}
       {MAP.countries.map((country) => {
         const ownerId = resolveMapCountryId(country.id);
         const tier = tiers.get(ownerId);
         if (!tier) return null;
-        // Un seul hit-circle par souverain (évite un double cible Danemark / Groenland).
         if (ownerId !== country.id) return null;
+        if (!isTinyMapCountry(country)) return null;
         return (
           <Circle
             key={`h-${country.id}`}
             cx={country.cx}
             cy={country.cy}
-            r={18}
+            r={TINY_MARKER_R}
             fill="transparent"
             {...({ 'data-country': ownerId } as object)}
-            {...nativePress(interactionEnabled, () => onSelect(ownerId))}
           />
         );
       })}
@@ -167,6 +160,10 @@ export function WorldMap({
   const y = useSharedValue(0);
   const start = useSharedValue({ scale: 1, x: 0, y: 0 });
   const prevSelected = useRef(selected);
+  const interactionRef = useRef(interactionEnabled);
+  useEffect(() => {
+    interactionRef.current = interactionEnabled;
+  }, [interactionEnabled]);
 
   const animateTo = (target: { scale: number; x: number; y: number }) => {
     if (reduceMotion) {
@@ -223,23 +220,58 @@ export function WorldMap({
     y,
   ]);
 
-  const selectAtScreen = useCallback(
-    (clientX: number, clientY: number) => {
-      const fromDom = countryFromDomPoint(clientX, clientY, selectable);
-      if (fromDom) {
-        onSelect(fromDom);
-        return;
-      }
-      const host = hostRef.current as unknown as { querySelector?: (s: string) => Element | null } | null;
-      const svg = host?.querySelector?.('svg') as SVGSVGElement | null;
-      if (!svg) return;
-      const point = clientToSvg(clientX, clientY, svg);
-      if (!point) return;
-      const id = countryAtSvgPoint(point.svgX, point.svgY, selectable);
+  const selectAtSvg = useCallback(
+    (svgX: number, svgY: number) => {
+      if (!interactionRef.current) return;
+      const id = countryAtSvgPoint(svgX, svgY, selectable);
       if (id) onSelect(id);
     },
     [selectable, onSelect],
   );
+
+  const selectAtScreen = useCallback(
+    (clientX: number, clientY: number) => {
+      if (!interactionRef.current) return;
+
+      // Web : DOM / CTM (prend en compte le transform CSS du pan/zoom).
+      if (Platform.OS === 'web') {
+        const fromDom = countryFromDomPoint(clientX, clientY, selectable);
+        if (fromDom) {
+          onSelect(fromDom);
+          return;
+        }
+        const host = hostRef.current as unknown as { querySelector?: (s: string) => Element | null } | null;
+        const svg = host?.querySelector?.('svg') as SVGSVGElement | null;
+        if (!svg) return;
+        const point = clientToSvg(clientX, clientY, svg);
+        if (!point) return;
+        selectAtSvg(point.svgX, point.svgY);
+        return;
+      }
+
+      // Natif : inverse manuelle du pan/zoom (Path.onPress est peu fiable sous GestureDetector).
+      const node = hostRef.current as unknown as {
+        measureInWindow?: (cb: (x: number, y: number, w: number, h: number) => void) => void;
+      } | null;
+      if (!node?.measureInWindow) return;
+      node.measureInWindow((wx, wy) => {
+        const localX = clientX - wx;
+        const localY = clientY - wy;
+        const point = framePointToSvg(localX, localY, {
+          frameWidth: width,
+          frameHeight: height,
+          mapWidth: MAP.width,
+          mapHeight: MAP.height,
+          scale: scale.get(),
+          translateX: x.get(),
+          translateY: y.get(),
+        });
+        selectAtSvg(point.svgX, point.svgY);
+      });
+    },
+    [selectable, onSelect, selectAtSvg, width, height, scale, x, y],
+  );
+
   const selectAtScreenRef = useRef(selectAtScreen);
   useEffect(() => {
     selectAtScreenRef.current = selectAtScreen;
@@ -286,8 +318,7 @@ export function WorldMap({
       runOnJS(tapOnJs)(e.absoluteX, e.absoluteY);
     });
 
-  const gesture =
-    Platform.OS === 'web' ? Gesture.Simultaneous(pinch, pan, tap) : Gesture.Simultaneous(pinch, pan);
+  const gesture = Gesture.Simultaneous(pinch, pan, tap);
   /* eslint-enable react-hooks/refs */
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -314,10 +345,8 @@ export function WorldMap({
             <Countries
               tiers={tiers}
               selected={selected}
-              onSelect={onSelect}
               drawHighlight={drawHighlight}
               drawWinner={drawWinner}
-              interactionEnabled={interactionEnabled}
             />
           </Svg>
         </Animated.View>

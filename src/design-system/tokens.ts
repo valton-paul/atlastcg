@@ -11,6 +11,8 @@ export const colors = {
   textFaint: '#7D8BA5',
   gold: '#D9B66C',
   goldSoft: '#3A3222',
+  violet: '#B794F4',
+  violetSoft: '#241836',
   turquoise: '#3CC6C0',
   turquoiseSoft: '#143A40',
   success: '#5FCB8F',

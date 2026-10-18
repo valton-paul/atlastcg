@@ -59,9 +59,14 @@ export default function CountryScreen() {
   const expeditionState = expedition ? player.expeditions.get(expedition.id) : undefined;
   const discovered = progress.owned > 0;
   const silhouette = SILHOUETTES.paths[country.iso_numeric];
+  const displayName = discovered ? country.name : '???';
 
   return (
-    <Screen back title={country.name} subtitle={`${CONTINENT_LABELS[country.continent]} · ${country.region}`}>
+    <Screen
+      back
+      title={displayName}
+      subtitle={discovered ? `${CONTINENT_LABELS[country.continent]} · ${country.region}` : CONTINENT_LABELS[country.continent]}
+    >
       <Surface tone={discovered ? 'explore' : 'panel'} style={styles.hero}>
         {silhouette ? (
           <Svg width={96} height={96} viewBox="0 0 100 100" {...decorativeSvgProps}>

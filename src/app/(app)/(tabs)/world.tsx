@@ -380,16 +380,22 @@ export default function WorldScreen() {
               {countries.map((country) => {
                 const tier = derived.tiersByIso.get(country.iso_code) ?? 'empty';
                 const p = countryProgress(catalog, player.ownedCards, country.iso_code);
+                const discovered = p.owned > 0;
+                const label = discovered ? country.name : '???';
                 return (
                   <Pressable
                     key={country.iso_code}
                     accessibilityRole="button"
-                    accessibilityLabel={`${country.name}, ${COLLECTION_TIER_LABELS[tier]}, ${p.owned} cartes sur ${p.total}`}
+                    accessibilityLabel={
+                      discovered
+                        ? `${country.name}, ${COLLECTION_TIER_LABELS[tier]}, ${p.owned} cartes sur ${p.total}`
+                        : `Pays inconnu, ${p.owned} cartes sur ${p.total}`
+                    }
                     onPress={() => router.push(`/country/${country.iso_code}`)}
                     style={({ pressed }) => [styles.countryRow, pressed && styles.pressed]}
                   >
                     <LegendSwatch tier={tier} />
-                    <Text style={styles.flex}>{country.name}</Text>
+                    <Text style={styles.flex}>{label}</Text>
                     <Text variant="caption" color={colors.textMuted}>
                       {p.owned}/{p.total}
                     </Text>

@@ -41,9 +41,9 @@ type PackTheme = {
 
 export const PACK_THEMES: Record<string, PackTheme> = {
   classique: {
-    from: '#141A24',
-    to: '#070A10',
-    accent: '#A8B8CC',
+    from: '#1A3A4A',
+    to: '#0A1822',
+    accent: '#7EC8C4',
     label: 'Classique',
     tier: 'classique',
     blurb: (n) => `${n} cartes · jusqu’à Rare`,
@@ -117,7 +117,7 @@ type Props = {
 };
 
 const RINGS: Record<PackTier | 'other', number[]> = {
-  classique: [14, 26, 40],
+  classique: [12, 22, 34, 48],
   premium: [10, 18, 28, 40, 54, 68, 84],
   legendaire: [8, 16, 24, 34, 46, 58, 72, 86, 100],
   other: [12, 22, 34, 48],
@@ -170,12 +170,12 @@ export function PackVisual({ slug, width = 180, glow = 0, animated = true }: Pro
     };
   });
 
-  const borderW = tier === 'legendaire' ? 2.4 : tier === 'premium' ? 1.8 : 1.1;
-  const strokeOp = tier === 'classique' ? 0.55 : 0.78;
+  const borderW = tier === 'legendaire' ? 2.4 : tier === 'premium' ? 1.8 : 1.45;
+  const strokeOp = tier === 'classique' ? 0.72 : 0.78;
   // rx=12 dans le viewBox 100 → coin = 12 % de la largeur (évite le décalage clip / SVG).
   const corner = width * 0.12;
-  const auraPad = tier === 'legendaire' ? 36 : tier === 'premium' ? 28 : 0;
-  const glowSpread = tier === 'legendaire' ? 28 : 18;
+  const auraPad = tier === 'legendaire' ? 36 : tier === 'premium' ? 28 : tier === 'classique' ? 14 : 0;
+  const glowSpread = tier === 'legendaire' ? 28 : tier === 'premium' ? 18 : 12;
 
   return (
     <View
@@ -213,8 +213,16 @@ export function PackVisual({ slug, width = 180, glow = 0, animated = true }: Pro
           </LinearGradient>
           {/* Voile très léger, sans « pastille » de rareté au centre. */}
           <RadialGradient id={`${id}-core`} cx="50" cy="68" r="52" gradientUnits="userSpaceOnUse">
-            <Stop offset="0" stopColor={theme.accent} stopOpacity={0.04 + glow * 0.12} />
-            <Stop offset="0.55" stopColor={theme.accent} stopOpacity={0.02 + glow * 0.06} />
+            <Stop
+              offset="0"
+              stopColor={theme.accent}
+              stopOpacity={(tier === 'classique' ? 0.1 : 0.04) + glow * 0.12}
+            />
+            <Stop
+              offset="0.55"
+              stopColor={theme.accent}
+              stopOpacity={(tier === 'classique' ? 0.04 : 0.02) + glow * 0.06}
+            />
             <Stop offset="1" stopColor={theme.accent} stopOpacity={0} />
           </RadialGradient>
           <LinearGradient id={`${id}-shine`} x1="0" y1="0" x2="0" y2="1">
@@ -233,7 +241,10 @@ export function PackVisual({ slug, width = 180, glow = 0, animated = true }: Pro
 
         <G opacity={strokeOp * 0.85} stroke={theme.accent} fill="none">
           <Path d="M10 28c16-8 26 6 42-2 14-7 24-9 38 3" strokeWidth={0.5} />
-          {tier !== 'classique' ? <Path d="M8 34c18-7 30 8 48 0 14-6 24-7 36 5" strokeWidth={0.4} /> : null}
+          <Path d="M8 34c18-7 30 8 48 0 14-6 24-7 36 5" strokeWidth={0.4} />
+          {tier === 'classique' ? (
+            <Path d="M12 40c14-5 26 6 42-1 12-5 22-5 34 3" strokeWidth={0.35} />
+          ) : null}
           {tier === 'legendaire' ? (
             <>
               <Path d="M10 40c16-6 28 7 46-1 14-6 22-6 34 4" strokeWidth={0.35} />
@@ -241,7 +252,10 @@ export function PackVisual({ slug, width = 180, glow = 0, animated = true }: Pro
             </>
           ) : null}
           <Path d="M10 122c14 7 28-7 46 2 14 7 26 9 36-3" strokeWidth={0.5} />
-          {tier !== 'classique' ? <Path d="M8 128c16 5 30-8 48 0 14 6 24 7 36-5" strokeWidth={0.4} /> : null}
+          <Path d="M8 128c16 5 30-8 48 0 14 6 24 7 36-5" strokeWidth={0.4} />
+          {tier === 'classique' ? (
+            <Path d="M12 134c14 4 26-5 42 1 12 4 22 4 34-3" strokeWidth={0.35} />
+          ) : null}
           {tier === 'legendaire' ? (
             <>
               <Path d="M10 134c16 5 28-6 46 1 14 5 22 5 34-3" strokeWidth={0.35} />
@@ -249,6 +263,16 @@ export function PackVisual({ slug, width = 180, glow = 0, animated = true }: Pro
             </>
           ) : null}
         </G>
+
+        {/* Méridiens / parallèles — densifie le dos classique sans le surcharger. */}
+        {tier === 'classique' ? (
+          <G opacity={0.35} stroke={theme.accent} fill="none" strokeWidth={0.35}>
+            <Path d="M50 30v76" />
+            <Path d="M34 36c-2 10-2 22 0 34 2 12 2 24 0 34" />
+            <Path d="M66 36c2 10 2 22 0 34-2 12-2 24 0 34" />
+            <Path d="M22 68h56" />
+          </G>
+        ) : null}
 
         <G opacity={strokeOp} stroke={theme.accent} fill="none">
           {rings.map((r, i) => (
@@ -305,8 +329,8 @@ export function PackVisual({ slug, width = 180, glow = 0, animated = true }: Pro
           </G>
         ) : null}
 
-        {tier === 'premium' ? (
-          <G stroke={theme.accent} strokeWidth={0.7} opacity={0.75}>
+        {tier === 'classique' || tier === 'premium' ? (
+          <G stroke={theme.accent} strokeWidth={tier === 'premium' ? 0.7 : 0.55} opacity={tier === 'premium' ? 0.75 : 0.65}>
             <Path d="M14 18h4M16 16v4" />
             <Path d="M82 18h4M84 16v4" />
             <Path d="M14 132h4M16 130v4" />
@@ -332,7 +356,7 @@ export function PackVisual({ slug, width = 180, glow = 0, animated = true }: Pro
           stroke={`url(#${id}-frame)`}
           strokeWidth={borderW}
         />
-        {tier === 'premium' || tier === 'legendaire' ? (
+        {tier === 'classique' || tier === 'premium' || tier === 'legendaire' ? (
           <Rect
             x={5.5}
             y={5.5}
@@ -341,8 +365,8 @@ export function PackVisual({ slug, width = 180, glow = 0, animated = true }: Pro
             rx={10}
             fill="none"
             stroke={theme.accent}
-            strokeWidth={0.55}
-            opacity={0.55}
+            strokeWidth={tier === 'classique' ? 0.45 : 0.55}
+            opacity={tier === 'classique' ? 0.4 : 0.55}
           />
         ) : null}
         {tier === 'legendaire' ? (
@@ -359,8 +383,16 @@ export function PackVisual({ slug, width = 180, glow = 0, animated = true }: Pro
           />
         ) : null}
 
-        {tier === 'premium' ? (
-          <Rect x={3} y={6} width={8} height={138} rx={4} fill={`url(#${id}-shine)`} opacity={0.5} />
+        {tier === 'classique' || tier === 'premium' ? (
+          <Rect
+            x={3}
+            y={6}
+            width={8}
+            height={138}
+            rx={4}
+            fill={`url(#${id}-shine)`}
+            opacity={tier === 'premium' ? 0.5 : 0.35}
+          />
         ) : null}
 
         {glow > 0 ? (

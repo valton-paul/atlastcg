@@ -7,13 +7,13 @@ type Props = {
   value: number;
   total: number;
   label?: string;
-  tone?: 'explore' | 'precious';
+  tone?: 'explore' | 'precious' | 'prestige';
   showCount?: boolean;
 };
 
 export function ProgressBar({ value, total, label, tone = 'explore', showCount = true }: Props) {
   const ratio = total > 0 ? Math.min(1, Math.max(0, value / total)) : 0;
-  const fill = tone === 'precious' ? colors.gold : colors.turquoise;
+  const fill = tone === 'precious' ? colors.gold : tone === 'prestige' ? colors.violet : colors.turquoise;
   return (
     <View
       style={styles.root}

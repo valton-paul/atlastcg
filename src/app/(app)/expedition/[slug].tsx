@@ -26,6 +26,7 @@ import {
   useSubmitStep,
   type ExpeditionStep,
   type StepAnswer,
+  type StepProgress,
 } from '@/features/expeditions/api';
 import { useInvalidatePlayer } from '@/features/player/api';
 import { useAtlasData } from '@/features/player/useAtlasData';
@@ -33,6 +34,15 @@ import { errorMessage } from '@/lib/errors';
 import { useHaptics } from '@/lib/haptics';
 
 const KIND_LABELS = { locate: 'Repérage', discover: 'Découverte', quiz: 'Question' } as const;
+
+function questionScore(steps: ExpeditionStep[], progress: Map<string, StepProgress>) {
+  const questions = steps.filter((s) => s.kind === 'locate' || s.kind === 'quiz');
+  const perfect = questions.filter((s) => {
+    const p = progress.get(s.id);
+    return !!p?.completed_at && p.attempts === 1;
+  }).length;
+  return { perfect, total: questions.length };
+}
 
 export default function ExpeditionScreen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
@@ -44,6 +54,7 @@ export default function ExpeditionScreen() {
   const start = useStartExpedition();
   const complete = useCompleteExpedition();
   const haptic = useHaptics();
+  const [showScore, setShowScore] = useState(false);
 
   if (data.status === 'loading') return <LoadingState />;
   if (data.status === 'error') return <ErrorState message={errorMessage(data.error)} onRetry={data.retry} />;
@@ -68,7 +79,7 @@ export default function ExpeditionScreen() {
         <Surface tone="explore">
           <Text>{expedition.summary}</Text>
           <Text variant="caption" color={colors.textMuted}>
-            Trois étapes courtes, sans limite de temps. Une erreur n’est jamais pénalisée : vous pouvez réessayer.
+            Quelques étapes courtes, sans limite de temps. Une erreur n’est jamais bloquante : vous pouvez réessayer.
           </Text>
           <Text variant="caption" color={colors.gold}>
             Récompense : {rewardLabel}
@@ -99,6 +110,47 @@ export default function ExpeditionScreen() {
   const done = list.filter((s) => steps.data.progress.get(s.id)?.completed_at).length;
   const currentStep = list.find((s) => !steps.data.progress.get(s.id)?.completed_at);
   const completed = userExpedition.status === 'completed';
+  const finale = showScore || completed;
+
+  if (finale) {
+    const { perfect, total } = questionScore(list, steps.data.progress);
+    const mistakes = Math.max(0, total - perfect);
+    return (
+      <Screen back title={expedition.title} subtitle={country?.name}>
+        <Surface tone="precious" testID="expedition-score">
+          <Text variant="overline" color={colors.gold}>
+            Expédition terminée
+          </Text>
+          <Text variant="hero" align="center">
+            {perfect}/{total}
+          </Text>
+          <Text align="center" color={colors.textMuted}>
+            {total <= 1 ? 'bonne réponse du premier coup' : 'bonnes réponses du premier coup'}
+          </Text>
+          {mistakes === 0 ? (
+            <Text align="center">Sans faute — bel effort d’exploration.</Text>
+          ) : (
+            <Text align="center">
+              {mistakes === 1
+                ? '1 question a nécessité une correction.'
+                : `${mistakes} questions ont nécessité une correction.`}
+            </Text>
+          )}
+          {complete.data?.packs_granted || completed ? (
+            <Text variant="caption" color={colors.gold} align="center">
+              Récompense : {rewardLabel}
+            </Text>
+          ) : null}
+          <Button
+            label="Terminer"
+            icon="compass"
+            onPress={() => router.replace('/world')}
+            testID="expedition-finish"
+          />
+        </Surface>
+      </Screen>
+    );
+  }
 
   return (
     <Screen back title={expedition.title} subtitle={country?.name}>
@@ -133,18 +185,7 @@ export default function ExpeditionScreen() {
         })}
       </View>
 
-      {completed ? (
-        <Surface tone="precious">
-          <Text variant="heading">Expédition terminée</Text>
-          <Text color={colors.textMuted}>Vous avez exploré {country?.name_with_article ?? 'ce pays'}. Bravo !</Text>
-          <Button
-            label="Voir le pays"
-            variant="secondary"
-            compact
-            onPress={() => router.replace(`/country/${expedition.country_code}`)}
-          />
-        </Surface>
-      ) : currentStep ? (
+      {currentStep ? (
         <StepCard key={currentStep.id} step={currentStep} />
       ) : (
         <Surface tone="precious">
@@ -158,6 +199,7 @@ export default function ExpeditionScreen() {
               complete.mutate(expedition.id, {
                 onSuccess: (r) => {
                   haptic('success');
+                  setShowScore(true);
                   if (r.packs_granted > 0) {
                     AccessibilityInfo.announceForAccessibility(`Récompense reçue : ${rewardLabel}`);
                   }
@@ -169,12 +211,6 @@ export default function ExpeditionScreen() {
           {complete.isError ? <InlineMessage tone="error" message={errorMessage(complete.error)} /> : null}
         </Surface>
       )}
-      {complete.isSuccess && complete.data.packs_granted > 0 ? (
-        <>
-          <InlineMessage tone="success" message={`Récompense ajoutée à votre inventaire : ${rewardLabel}.`} />
-          <Button label="Ouvrir mes paquets" icon="pack" onPress={() => router.push('/packs')} />
-        </>
-      ) : null}
     </Screen>
   );
 }
@@ -192,6 +228,12 @@ function StepCard({ step }: { step: ExpeditionStep }) {
       { stepId: step.id, choice: value },
       {
         onSuccess: (result) => {
+          // Découverte : pas d’écran intermédiaire — enchaîne sur l’étape suivante.
+          if (step.kind === 'discover' && result.correct) {
+            haptic('success');
+            void invalidate();
+            return;
+          }
           setAnswer(result);
           haptic(result.correct ? 'success' : 'error');
           AccessibilityInfo.announceForAccessibility(
@@ -213,7 +255,7 @@ function StepCard({ step }: { step: ExpeditionStep }) {
         <View style={styles.timelineRow}>
           <Icon name="check" color={colors.success} />
           <Text variant="heading" style={styles.flex}>
-            {step.kind === 'discover' ? 'Découverte notée' : 'Bonne réponse !'}
+            Bonne réponse !
           </Text>
         </View>
         <Text>{answer.explanation}</Text>

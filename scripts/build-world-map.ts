@@ -59,8 +59,57 @@ const worldProjection = geoNaturalEarth1().fitExtent(
 );
 const worldPath = geoPath(worldProjection).digits(1);
 
+/** Aire absolue (formule du lacet) d'un anneau déjà projeté. */
+function ringArea(ring: [number, number][]): number {
+  let sum = 0;
+  const n = ring.length;
+  if (n < 3) return 0;
+  for (let i = 0, j = n - 1; i < n; j = i++) {
+    const [xj, yj] = ring[j]!;
+    const [xi, yi] = ring[i]!;
+    sum += xj * yi - xi * yj;
+  }
+  return Math.abs(sum / 2);
+}
+
+function projectRing(ring: number[][]): [number, number][] {
+  const out: [number, number][] = [];
+  for (const c of ring) {
+    const p = worldProjection(c as [number, number]);
+    if (p) out.push(p);
+  }
+  return out;
+}
+
+/**
+ * Pour un MultiPolygon, ne garde que le plus grand polygone (aire absolue du lacet
+ * en coordonnées projetées) afin que les territoires d'outre-mer ne tirent pas le
+ * centroïde hors du territoire principal (ex. France / Guyane).
+ */
+function mainLandFeature(f: CountryFeature): CountryFeature {
+  const geom = f.geometry;
+  if (geom.type !== 'MultiPolygon' || geom.coordinates.length <= 1) return f;
+
+  let best = geom.coordinates[0]!;
+  let bestArea = -1;
+  for (const polygon of geom.coordinates) {
+    const outer = polygon[0];
+    if (!outer) continue;
+    const area = ringArea(projectRing(outer));
+    if (area > bestArea) {
+      bestArea = area;
+      best = polygon;
+    }
+  }
+
+  return {
+    ...f,
+    geometry: { type: 'Polygon', coordinates: best },
+  };
+}
+
 const countries = features.map((f) => {
-  const [cx, cy] = worldPath.centroid(f);
+  const [cx, cy] = worldPath.centroid(mainLandFeature(f));
   return {
     id: f.id,
     name: f.properties.name,

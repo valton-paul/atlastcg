@@ -36,12 +36,13 @@ describe('détail d’un pays sur la carte', () => {
     expect(onClose).toHaveBeenCalled();
   });
 
-  it('ne révèle pas la capitale d’un pays encore inconnu', async () => {
+  it('masque le nom et la capitale d’un pays encore inconnu', async () => {
     await render(
       <CountryPanel catalog={catalog} owned={ownedMap()} country={kenya} tier="empty" onClose={jest.fn()} />,
     );
 
-    expect(screen.getByRole('header', { name: 'Kenya' })).toBeOnTheScreen();
+    expect(screen.getByRole('header', { name: '???' })).toBeOnTheScreen();
+    expect(screen.queryByText('Kenya')).toBeNull();
     expect(screen.queryByText(/Capitale/)).toBeNull();
     expect(screen.getByText(/Obtenez une carte de ce pays/)).toBeOnTheScreen();
   });

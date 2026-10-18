@@ -5,7 +5,7 @@ import { colors, radius, spacing } from '../tokens';
 
 type Props = {
   children: ReactNode;
-  tone?: 'panel' | 'raised' | 'precious' | 'explore';
+  tone?: 'panel' | 'raised' | 'precious' | 'prestige' | 'explore';
   onPress?: () => void;
   accessibilityLabel?: string;
   accessibilityHint?: string;
@@ -17,6 +17,7 @@ const tones = {
   panel: { backgroundColor: colors.ink, borderColor: colors.border },
   raised: { backgroundColor: colors.slate, borderColor: colors.border },
   precious: { backgroundColor: colors.goldSoft, borderColor: colors.gold },
+  prestige: { backgroundColor: colors.violetSoft, borderColor: colors.violet },
   explore: { backgroundColor: colors.turquoiseSoft, borderColor: colors.turquoise },
 } as const;
 

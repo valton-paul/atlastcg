@@ -35,25 +35,30 @@ export function CountryPanel({ catalog, owned, country, tier, onClose, locked = 
   const pct = Math.round(collectionRatio(progress) * 100);
   const cards = sortCards(catalog, owned, cardsOfCountry(catalog, country.iso_code), 'rarity');
 
+  const displayName = discovered ? country.name : '???';
+
   return (
     <View
       style={[styles.panel, discovered && styles.discovered, style]}
       onLayout={(e) => onHeight?.(e.nativeEvent.layout.height)}
       testID="country-panel"
-      accessibilityLabel={`Détail : ${country.name}`}
+      accessibilityLabel={discovered ? `Détail : ${country.name}` : 'Pays inconnu'}
     >
       <View style={styles.header}>
         <View style={styles.flex}>
           <Text variant="overline" color={discovered ? colors.turquoise : colors.textMuted}>
-            {COLLECTION_TIER_LABELS[tier]} · {CONTINENT_LABELS[country.continent]}
+            {COLLECTION_TIER_LABELS[tier]}
+            {discovered ? ` · ${CONTINENT_LABELS[country.continent]}` : ''}
           </Text>
           <Text variant="heading" accessibilityRole="header">
-            {country.name}
+            {displayName}
           </Text>
-          <Text variant="caption" color={colors.textMuted}>
-            {country.region}
-            {progress.total > 0 ? ` · ${pct} %` : ''}
-          </Text>
+          {discovered ? (
+            <Text variant="caption" color={colors.textMuted}>
+              {country.region}
+              {progress.total > 0 ? ` · ${pct} %` : ''}
+            </Text>
+          ) : null}
         </View>
         {locked ? null : (
           <Pressable

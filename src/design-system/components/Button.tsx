@@ -6,7 +6,7 @@ import { colors, MIN_TOUCH, radius, spacing } from '../tokens';
 import { Icon, type IconName } from './Icon';
 import { Text } from './Text';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'precious' | 'danger';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'precious' | 'prestige' | 'danger';
 
 type Props = {
   label: string;
@@ -26,6 +26,7 @@ const palette: Record<ButtonVariant, { bg: string; fg: string; border: string }>
   secondary: { bg: colors.slate, fg: colors.text, border: colors.border },
   ghost: { bg: 'transparent', fg: colors.turquoise, border: 'transparent' },
   precious: { bg: colors.gold, fg: colors.nightDeep, border: colors.gold },
+  prestige: { bg: colors.violet, fg: colors.nightDeep, border: colors.violet },
   danger: { bg: colors.dangerSoft, fg: colors.danger, border: colors.danger },
 };
 
