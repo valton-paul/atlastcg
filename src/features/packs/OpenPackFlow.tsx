@@ -540,11 +540,6 @@ function Summary({
 }: SummaryProps) {
   const { summary } = result;
   const rares = ordered.filter((c) => rank(c.rarity) >= 3);
-  const unlockedExpeditions = [
-    ...new Set(ordered.filter((c) => c.is_new && c.country_code).map((c) => c.country_code as string)),
-  ]
-    .map((iso) => catalog.expeditionsByCountry.get(iso))
-    .filter((e): e is NonNullable<typeof e> => !!e);
 
   return (
     <ScrollView contentContainerStyle={styles.summary} testID="opening-summary">
@@ -584,6 +579,17 @@ function Summary({
           </Animated.View>
         ))}
       </View>
+
+      {remainingPacks > 0 ? (
+        <Button
+          label={`Ouvrir le paquet suivant (${remainingPacks})`}
+          icon="sparkle"
+          onPress={onNextPack}
+          disabled={busy}
+          testID="open-next-pack"
+        />
+      ) : null}
+
       {rares.length > 0 ? (
         <Surface tone="precious">
           <Text variant="bodyStrong">Cartes remarquables</Text>
@@ -609,31 +615,10 @@ function Summary({
           ))}
         </Surface>
       ) : null}
-      {unlockedExpeditions.length > 0 ? (
-        <Surface tone="explore">
-          <View style={styles.collectionRow}>
-            <Icon name="compass" color={colors.turquoise} size={20} />
-            <Text variant="bodyStrong">Nouvelles découvertes</Text>
-          </View>
-          {unlockedExpeditions.map((e) => (
-            <Text key={e.id} variant="caption">
-              Expédition disponible : {e.title}
-            </Text>
-          ))}
-        </Surface>
-      ) : null}
       <Text variant="caption" color={colors.textMuted} align="center">
         Solde : {summary.fragments_balance} fragments
       </Text>
       <View style={styles.actions}>
-        {remainingPacks > 0 ? (
-          <Button
-            label={`Ouvrir le paquet suivant (${remainingPacks})`}
-            icon="sparkle"
-            onPress={onNextPack}
-            disabled={busy}
-          />
-        ) : null}
         {onboarding ? (
           <Button
             label="Découvrir mon atlas"
