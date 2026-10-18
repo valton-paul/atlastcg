@@ -1,4 +1,4 @@
-# Atlas
+# Atlas TCG
 
 Jeu mobile de collection de cartes sur les pays, leurs capitales et leurs cultures.
 Expo SDK 58 · React Native 0.88 · TypeScript strict · Expo Router · Supabase (PostgreSQL, Auth, RLS, Storage).

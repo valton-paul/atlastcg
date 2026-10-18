@@ -40,7 +40,7 @@ export default function CountryScreen() {
   if (!country) {
     return (
       <Screen back title="Pays">
-        <EmptyState icon="globe" title="Pays introuvable" message="Ce pays n’est pas encore présent dans Atlas." />
+        <EmptyState icon="globe" title="Pays introuvable" message="Ce pays n’est pas encore présent dans Atlas TCG." />
       </Screen>
     );
   }

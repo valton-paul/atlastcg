@@ -71,8 +71,8 @@ export type ServerErrorCode = keyof typeof SERVER_ERROR_MESSAGES;
 
 const CLIENT_MESSAGES: Record<Exclude<AppErrorCode, ServerErrorCode>, string> = {
   NETWORK: 'Connexion impossible. Vérifiez votre réseau puis réessayez.',
-  NOT_CONFIGURED: 'L’application n’est pas reliée à son serveur. Contactez l’équipe Atlas.',
-  SERVER_NOT_READY: 'Le serveur Atlas n’est pas encore prêt : sa base de données n’a pas été initialisée.',
+  NOT_CONFIGURED: 'L’application n’est pas reliée à son serveur. Contactez l’équipe Atlas TCG.',
+  SERVER_NOT_READY: 'Le serveur Atlas TCG n’est pas encore prêt : sa base de données n’a pas été initialisée.',
   SESSION_EXPIRED: 'Votre session a expiré. Reconnectez-vous pour continuer.',
   INVALID_CREDENTIALS: 'Adresse e-mail ou mot de passe incorrect.',
   EMAIL_NOT_CONFIRMED: 'Confirmez votre adresse e-mail grâce au lien reçu, puis connectez-vous.',

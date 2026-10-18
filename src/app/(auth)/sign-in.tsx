@@ -79,7 +79,7 @@ export default function SignInScreen() {
       </View>
       <View style={styles.footer}>
         <Text color={colors.textMuted} align="center">
-          Nouveau sur Atlas ?
+          Nouveau sur Atlas TCG ?
         </Text>
         <Button label="Créer un compte" variant="secondary" onPress={() => router.push('/sign-up')} />
       </View>

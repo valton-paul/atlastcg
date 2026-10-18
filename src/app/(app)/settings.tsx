@@ -54,7 +54,7 @@ export default function SettingsScreen() {
         </View>
       </Surface>
       <Text variant="caption" color={colors.textMuted}>
-        Atlas ne diffuse aucun son pour le moment et n’envoie aucune notification.
+        Atlas TCG ne diffuse aucun son pour le moment et n’envoie aucune notification.
       </Text>
 
       <SectionHeader title="Compte" />

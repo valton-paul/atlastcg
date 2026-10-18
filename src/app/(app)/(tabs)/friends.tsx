@@ -91,7 +91,7 @@ export default function FriendsScreen() {
               variant="secondary"
               onPress={() =>
                 Share.share({
-                  message: `Ajoute-moi sur Atlas avec mon code explorateur : ${player.profile.public_code}`,
+                  message: `Ajoute-moi sur Atlas TCG avec mon code explorateur : ${player.profile.public_code}`,
                 }).catch(() => undefined)
               }
             />

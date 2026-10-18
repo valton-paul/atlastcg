@@ -7,7 +7,7 @@ export function NotConfiguredScreen() {
     <Screen>
       <ErrorState
         title="Configuration manquante"
-        message="Atlas n’est pas relié à son serveur. Renseignez SUPABASE_URL et SUPABASE_PUBLIC_KEY dans le fichier .env (voir README), puis relancez l’application."
+        message="Atlas TCG n’est pas relié à son serveur. Renseignez SUPABASE_URL et SUPABASE_PUBLIC_KEY dans le fichier .env (voir README), puis relancez l’application."
       />
     </Screen>
   );

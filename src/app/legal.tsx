@@ -10,7 +10,7 @@ export default function LegalScreen() {
       <Surface tone="precious">
         <Text variant="caption">
           Version de travail : l’identité de l’éditeur, l’adresse de contact et les conditions d’utilisation définitives
-          seront publiées avant la mise à disposition publique d’Atlas.
+          seront publiées avant la mise à disposition publique d’Atlas TCG.
         </Text>
       </Surface>
 
@@ -22,10 +22,10 @@ export default function LegalScreen() {
         vos appareils.{'\n'}• Les préférences d’animation et de vibration restent sur votre téléphone.
       </Text>
 
-      <SectionHeader title="Ce qu’Atlas ne fait pas" />
+      <SectionHeader title="Ce qu’Atlas TCG ne fait pas" />
       <Text color={colors.textMuted}>
-        Atlas n’affiche aucune publicité, ne vend aucun paquet, n’utilise pas de traceur publicitaire et n’envoie pas de
-        notification.
+        Atlas TCG n’affiche aucune publicité, ne vend aucun paquet, n’utilise pas de traceur publicitaire et n’envoie pas
+        de notification.
       </Text>
 
       <SectionHeader title="Visibilité" />
@@ -43,7 +43,8 @@ export default function LegalScreen() {
       <SectionHeader title="Contenus et crédits" />
       <Text color={colors.textMuted}>
         Les contours des pays proviennent de Natural Earth (domaine public), via le jeu de données world-atlas. Les
-        textes culturels sont rédigés pour Atlas et accompagnés de leurs sources ; signalez toute erreur à l’équipe.
+        textes culturels sont rédigés pour Atlas TCG et accompagnés de leurs sources ; signalez toute erreur à
+        l’équipe.
         Polices : Fraunces et Inter (licence SIL Open Font).
       </Text>
     </Screen>

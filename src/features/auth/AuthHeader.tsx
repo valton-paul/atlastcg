@@ -26,7 +26,7 @@ export function AuthHeader({ title, subtitle }: { title: string; subtitle?: stri
     <View style={styles.root}>
       <AtlasMark />
       <Text variant="overline" color={colors.gold}>
-        Atlas
+        Atlas TCG
       </Text>
       <Text variant="hero">{title}</Text>
       {subtitle ? <Text color={colors.textMuted}>{subtitle}</Text> : null}

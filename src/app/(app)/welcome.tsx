@@ -62,9 +62,12 @@ export default function WelcomeScreen() {
       <View style={styles.hero}>
         <AtlasMark size={72} />
         <Text variant="overline" color={colors.gold}>
-          Bienvenue{name ? `, ${name}` : ''}
+          Atlas TCG
         </Text>
-        <Text variant="hero">Le monde est à collectionner</Text>
+        <Text variant="hero">Bienvenue{name ? `, ${name}` : ''}</Text>
+        <Text variant="subheading" color={colors.textMuted}>
+          Le monde est à collectionner
+        </Text>
         <Text color={colors.textMuted}>
           {firstPack ? 'Deux paquets Découverte vous attendent pour commencer votre atlas.' : 'Votre atlas est prêt.'}
         </Text>

@@ -216,7 +216,7 @@ function InvitePanel({ challenge }: { challenge: Challenge }) {
           variant="secondary"
           onPress={() =>
             Share.share({
-              message: `Relève mon défi Atlas ! Code : ${challenge.invite_code} (ou ouvre ${url} si l’application est installée).`,
+              message: `Relève mon défi Atlas TCG ! Code : ${challenge.invite_code} (ou ouvre ${url} si l’application est installée).`,
             }).catch(() => undefined)
           }
         />

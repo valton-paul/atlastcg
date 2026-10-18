@@ -45,5 +45,5 @@ export function packsContaining(catalog: Catalog, card: Card): PackDefinition[] 
 
 export function shareMessage(card: Card, countryName: string | null): string {
   const place = countryName && card.category !== 'country' ? ` (${countryName})` : '';
-  return `J’ai découvert la carte « ${card.title} »${place} dans Atlas, le jeu où le monde est à collectionner.`;
+  return `J’ai découvert la carte « ${card.title} »${place} dans Atlas TCG, le jeu où le monde est à collectionner.`;
 }

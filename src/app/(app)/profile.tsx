@@ -105,7 +105,9 @@ export default function ProfileScreen() {
           compact
           variant="secondary"
           onPress={() =>
-            Share.share({ message: `Ajoute-moi sur Atlas avec mon code explorateur : ${profile.public_code}` }).catch(
+            Share.share({
+              message: `Ajoute-moi sur Atlas TCG avec mon code explorateur : ${profile.public_code}`,
+            }).catch(
               () => undefined,
             )
           }
