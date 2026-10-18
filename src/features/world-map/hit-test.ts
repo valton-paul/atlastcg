@@ -1,5 +1,7 @@
 import mapData from './data/world-map.json';
 
+import { resolveMapCountryId } from './territories';
+
 type MapCountry = { id: string; name: string; d: string; cx: number; cy: number };
 const MAP = mapData as { width: number; height: number; countries: MapCountry[] };
 
@@ -58,9 +60,10 @@ export function countryAtSvgPoint(svgX: number, svgY: number, selectable: Readon
   if (ctx && typeof Path2D !== 'undefined') {
     let hit: string | null = null;
     for (const country of MAP.countries) {
-      if (!selectable.has(country.id)) continue;
+      const ownerId = resolveMapCountryId(country.id);
+      if (!selectable.has(ownerId)) continue;
       try {
-        if (ctx.isPointInPath(new Path2D(country.d), svgX, svgY)) hit = country.id;
+        if (ctx.isPointInPath(new Path2D(country.d), svgX, svgY)) hit = ownerId;
       } catch {
         // chemin SVG invalide : ignorer
       }
@@ -71,11 +74,14 @@ export function countryAtSvgPoint(svgX: number, svgY: number, selectable: Readon
   let markerHit: string | null = null;
   let markerDist = MARKER_HIT_R2;
   for (const country of MAP.countries) {
-    if (!selectable.has(country.id)) continue;
+    const ownerId = resolveMapCountryId(country.id);
+    if (!selectable.has(ownerId)) continue;
+    // Centroïde du souverain uniquement (pas celui du Groenland, trop à l’écart).
+    if (ownerId !== country.id) continue;
     const d = (svgX - country.cx) ** 2 + (svgY - country.cy) ** 2;
     if (d <= markerDist) {
       markerDist = d;
-      markerHit = country.id;
+      markerHit = ownerId;
     }
   }
   return markerHit;

@@ -10,6 +10,7 @@ import type { CollectionTier } from '@/features/collection/progress';
 
 import mapData from './data/world-map.json';
 import { clientToSvg, countryAtSvgPoint, countryFromDomPoint } from './hit-test';
+import { resolveMapCountryId } from './territories';
 import { clamp, clampTranslation, focusViewport, geometry, MAX_SCALE, MIN_SCALE } from './viewport';
 
 type MapCountry = { id: string; name: string; d: string; cx: number; cy: number };
@@ -79,10 +80,11 @@ const Countries = memo(function Countries({
   return (
     <>
       {MAP.countries.map((country) => {
-        const tier = tiers.get(country.id);
-        const isSelected = selected === country.id;
-        const isPulse = drawHighlight === country.id;
-        const isWinner = drawWinner === country.id;
+        const ownerId = resolveMapCountryId(country.id);
+        const tier = tiers.get(ownerId);
+        const isSelected = selected === ownerId;
+        const isPulse = drawHighlight === ownerId;
+        const isWinner = drawWinner === ownerId;
         const fill = isWinner
           ? colors.map.drawWinner
           : isPulse
@@ -107,14 +109,17 @@ const Countries = memo(function Countries({
             fillOpacity={isPulse || isWinner ? 1 : tier ? 1 : 0.9}
             stroke={stroke}
             strokeWidth={isWinner ? 2 : isPulse || isSelected ? 1.4 : 0.4}
-            {...(tier ? ({ 'data-country': country.id } as object) : null)}
-            {...nativePress(interactionEnabled && !!tier, () => onSelect(country.id))}
+            {...(tier ? ({ 'data-country': ownerId } as object) : null)}
+            {...nativePress(interactionEnabled && !!tier, () => onSelect(ownerId))}
           />
         );
       })}
       {MAP.countries.map((country) => {
-        const tier = tiers.get(country.id);
+        const ownerId = resolveMapCountryId(country.id);
+        const tier = tiers.get(ownerId);
         if (!tier) return null;
+        // Un seul hit-circle par souverain (évite un double cible Danemark / Groenland).
+        if (ownerId !== country.id) return null;
         return (
           <Circle
             key={`h-${country.id}`}
@@ -122,8 +127,8 @@ const Countries = memo(function Countries({
             cy={country.cy}
             r={18}
             fill="transparent"
-            {...({ 'data-country': country.id } as object)}
-            {...nativePress(interactionEnabled, () => onSelect(country.id))}
+            {...({ 'data-country': ownerId } as object)}
+            {...nativePress(interactionEnabled, () => onSelect(ownerId))}
           />
         );
       })}

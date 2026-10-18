@@ -392,6 +392,22 @@ export function parseCatalog(
     if (typeof max !== 'number' || !Number.isInteger(max) || max < 1)
       issues.push({ path: 'game.settings.timed_packs', message: 'max_stored doit être un entier ≥ 1' });
   }
+  const expeditionCharges = game.settings.expedition_charges?.value;
+  if (!expeditionCharges) {
+    issues.push({ path: 'game.settings.expedition_charges', message: 'réglage obligatoire manquant' });
+  } else {
+    const { interval_seconds: interval, max_stored: max } = expeditionCharges as {
+      interval_seconds?: unknown;
+      max_stored?: unknown;
+    };
+    if (typeof interval !== 'number' || !Number.isInteger(interval) || interval < 60)
+      issues.push({
+        path: 'game.settings.expedition_charges',
+        message: 'interval_seconds doit être un entier ≥ 60',
+      });
+    if (typeof max !== 'number' || !Number.isInteger(max) || max < 1)
+      issues.push({ path: 'game.settings.expedition_charges', message: 'max_stored doit être un entier ≥ 1' });
+  }
   const shop = game.settings.fragment_shop?.value;
   if (!shop || !Array.isArray(shop.offers) || shop.offers.length < 1) {
     issues.push({ path: 'game.settings.fragment_shop', message: 'au moins une offre est requise' });

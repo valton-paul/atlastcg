@@ -37,6 +37,8 @@ export const SERVER_ERROR_MESSAGES = {
   EXPEDITION_POOL_EMPTY:
     'Aucune destination disponible : découvrez un nouveau pays (au moins une carte) ou terminez l’expédition en cours.',
   EXPEDITION_DAILY_LIMIT: 'Vous avez déjà lancé 3 expéditions aujourd’hui. Revenez demain.',
+  EXPEDITION_NO_CHARGE:
+    'Aucune charge d’expédition disponible. Une nouvelle charge arrive toutes les 30 minutes (max. 10).',
   DRAW_NOT_FOUND: 'Ce tirage d’expédition est introuvable.',
   STEP_NOT_FOUND: 'Cette étape est introuvable.',
   STEP_LOCKED: 'Terminez d’abord les étapes précédentes.',

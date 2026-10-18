@@ -20,14 +20,16 @@ describe('tirage d’expédition', () => {
       expedition_slug: string;
       replayed: boolean;
       already_active: boolean;
-      daily_remaining: number;
+      charges: number;
+      max_stored: number;
     }>(db, user, 'draw_expedition');
 
     expect(draw.country_code).toBe('FR');
     expect(draw.draw_id).toBeTruthy();
     expect(draw.replayed).toBe(false);
     expect(draw.already_active).toBe(false);
-    expect(draw.daily_remaining).toBe(2);
+    expect(draw.charges).toBe(9);
+    expect(draw.max_stored).toBe(10);
     expect(draw.iso_numeric).toMatch(/^\d{3}$/);
 
     const again = await rpc<typeof draw>(db, user, 'draw_expedition');
@@ -36,6 +38,7 @@ describe('tirage d’expédition', () => {
       iso_numeric: draw.iso_numeric,
       expedition_slug: draw.expedition_slug,
       replayed: true,
+      charges: 9,
     });
 
     await rpc(db, user, 'reveal_expedition_draw', { p_draw_id: draw.draw_id });
@@ -50,20 +53,18 @@ describe('tirage d’expédition', () => {
     expect(active.expedition_slug).toBe(draw.expedition_slug);
   });
 
-  it('bloque après 3 expéditions démarrées le même jour UTC', async () => {
+  it('bloque sans charge disponible', async () => {
     const user = await createUser(db);
 
-    // 3 pays découverts dont les expéditions sont déjà comptées aujourd’hui,
-    // + un 4ᵉ pays découvert pour tenter un nouveau démarrage.
     const countries = await db.admin.query<{ iso: string; expedition_id: string; card_slug: string }>(
       `select e.country_code as iso, e.id as expedition_id, c.slug as card_slug
          from public.expeditions e
          join public.cards c on c.country_code = e.country_code and c.category = 'country' and c.status = 'published'
         where e.status = 'published'
         order by e.country_code
-        limit 4`,
+        limit 2`,
     );
-    expect(countries.rows.length).toBe(4);
+    expect(countries.rows.length).toBe(2);
 
     await giveCards(
       db,
@@ -71,19 +72,37 @@ describe('tirage d’expédition', () => {
       countries.rows.map((r) => r.card_slug),
     );
 
-    for (const row of countries.rows.slice(0, 3)) {
-      await db.admin.query(
-        `insert into public.user_expeditions (user_id, expedition_id, status, started_at, completed_at)
-         values ($1, $2, 'completed', now(), now())`,
-        [user, row.expedition_id],
-      );
-    }
+    await db.admin.query(`update public.player_wallets set expedition_charges = 0, expedition_charge_anchor = now() where user_id = $1`, [
+      user,
+    ]);
 
-    await expect(rpc(db, user, 'draw_expedition')).rejects.toThrow('EXPEDITION_DAILY_LIMIT');
+    await expect(rpc(db, user, 'draw_expedition')).rejects.toThrow('EXPEDITION_NO_CHARGE');
 
-    const fourth = countries.rows[3]!;
-    await expect(rpc(db, user, 'start_expedition', { p_expedition_id: fourth.expedition_id })).rejects.toThrow(
-      'EXPEDITION_DAILY_LIMIT',
+    const second = countries.rows[1]!;
+    await expect(rpc(db, user, 'start_expedition', { p_expedition_id: second.expedition_id })).rejects.toThrow(
+      'EXPEDITION_NO_CHARGE',
     );
+  });
+
+  it('régénère une charge après l’intervalle', async () => {
+    const user = await createUser(db);
+    await giveCards(db, user, ['pays-fr']);
+
+    await db.admin.query(
+      `update public.player_wallets
+          set expedition_charges = 0,
+              expedition_charge_anchor = now() - interval '31 minutes'
+        where user_id = $1`,
+      [user],
+    );
+
+    const state = await rpc<{ charges: number; max_stored: number; next_at: string | null }>(
+      db,
+      user,
+      'sync_expedition_charges',
+    );
+    expect(state.charges).toBe(1);
+    expect(state.max_stored).toBe(10);
+    expect(state.next_at).toBeTruthy();
   });
 });

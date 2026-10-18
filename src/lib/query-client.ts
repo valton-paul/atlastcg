@@ -28,6 +28,7 @@ export const queryKeys = {
   cardDetail: (slug: string) => ['card', slug] as const,
   objectives: ['player', 'objectives'] as const,
   timedPacks: ['player', 'timed-packs'] as const,
+  expeditionCharges: ['player', 'expedition-charges'] as const,
   playerState: ['player', 'state'] as const,
   friends: ['social', 'friends'] as const,
   comparison: (code: string) => ['social', 'compare', code] as const,

@@ -15,4 +15,10 @@ describe('countryAtSvgPoint', () => {
   it('ignore les pays hors catalogue', () => {
     expect(countryAtSvgPoint(mali.cx, mali.cy, new Set())).toBeNull();
   });
+
+  it('rattache le Groenland au Danemark (Path2D)', () => {
+    if (typeof Path2D === 'undefined') return;
+    const greenland = MAP.countries.find((c) => c.id === '304')!;
+    expect(countryAtSvgPoint(greenland.cx, greenland.cy, new Set(['208']))).toBe('208');
+  });
 });

@@ -32,9 +32,11 @@ import {
   buildDrawSequence,
   drawStepDelay,
   useDrawExpedition,
+  useExpeditionCharges,
   useRevealExpeditionDraw,
   type ExpeditionDraw,
 } from '@/features/expeditions/draw';
+import { formatCountdown, useCountdown } from '@/features/packs/useCountdown';
 import { PlayerHeader } from '@/features/player/PlayerHeader';
 import { useAtlasData } from '@/features/player/useAtlasData';
 import { CountryPanel } from '@/features/world-map/CountryPanel';
@@ -42,21 +44,13 @@ import { TIER_FILL, WorldMap } from '@/features/world-map/WorldMap';
 import { errorMessage } from '@/lib/errors';
 import { useHaptics } from '@/lib/haptics';
 import { usePreferences } from '@/lib/preferences';
+import { queryKeys } from '@/lib/query-client';
+import { useQueryClient } from '@tanstack/react-query';
 
 const SIDE_PANEL_MIN_FRAME = 700;
 const SIDE_PANEL_WIDTH = 360;
-const DAILY_EXPEDITION_LIMIT = 3;
 
 type DrawPhase = 'idle' | 'spinning' | 'winner' | 'reveal';
-
-function expeditionsStartedTodayUtc(expeditions: Iterable<{ started_at: string }>): number {
-  const today = new Date().toISOString().slice(0, 10);
-  let n = 0;
-  for (const e of expeditions) {
-    if (e.started_at.startsWith(today)) n += 1;
-  }
-  return n;
-}
 
 function LegendItem({ tier }: { tier: CollectionTier }) {
   return (
@@ -72,10 +66,17 @@ function LegendItem({ tier }: { tier: CollectionTier }) {
 export default function WorldScreen() {
   const data = useAtlasData();
   const router = useRouter();
+  const queryClient = useQueryClient();
   const { reduceMotion } = usePreferences();
   const haptic = useHaptics();
   const drawExpedition = useDrawExpedition();
   const revealDraw = useRevealExpeditionDraw();
+  const charges = useExpeditionCharges(data.status === 'ready');
+  const nextChargeIn = useCountdown(charges.data?.nextAt ?? null);
+  const nextChargeDue = nextChargeIn === 0;
+  useEffect(() => {
+    if (nextChargeDue) void queryClient.invalidateQueries({ queryKey: queryKeys.expeditionCharges });
+  }, [nextChargeDue, queryClient]);
   const [mode, setMode] = useState<'map' | 'list'>('map');
   const [selected, setSelected] = useState<string | null>(null);
   const [frame, setFrame] = useState<{ width: number; height: number } | null>(null);
@@ -183,20 +184,44 @@ export default function WorldScreen() {
 
   const { catalog, player } = data;
   const stats = atlasStats(catalog, player.ownedCards, player.expeditions);
-  const selectedCountry = selected ? catalog.countries.find((c) => c.iso_numeric === selected) : undefined;
+  const activeExpedition = [...player.expeditions.values()].find((e) => e.status === 'in_progress');
+  const activeCountryNumeric = (() => {
+    if (!activeExpedition) return null;
+    const def = catalog.expeditions.find((e) => e.id === activeExpedition.expedition_id);
+    if (!def) return null;
+    return catalog.countriesByIso.get(def.country_code)?.iso_numeric ?? null;
+  })();
+  const drawing = drawPhase === 'spinning' || drawPhase === 'winner';
+  /** Tirage / expédition en cours : le pays reste verrouillé (et en rouge si destination tirée). */
+  const countryLocked = drawing || drawPhase === 'reveal' || !!activeExpedition;
+  const effectiveSelected =
+    drawing ? null : countryLocked && activeCountryNumeric ? activeCountryNumeric : selected;
+  const selectedCountry = effectiveSelected
+    ? catalog.countries.find((c) => c.iso_numeric === effectiveSelected)
+    : undefined;
   const selectedTier = selectedCountry ? derived.tiersByIso.get(selectedCountry.iso_code) : undefined;
   const side = frame ? frame.width >= SIDE_PANEL_MIN_FRAME : false;
   const panelWidth = frame ? Math.min(SIDE_PANEL_WIDTH, frame.width * 0.42) : 0;
-  const drawing = drawPhase === 'spinning' || drawPhase === 'winner';
   const panelOpen = !!(selectedCountry && selectedTier) && drawPhase !== 'spinning';
   const insetRight = panelOpen && side ? panelWidth + spacing.md * 2 : 0;
   const insetBottom = panelOpen && !side ? panelHeight + spacing.md * 2 : 0;
-  const activeExpedition = [...player.expeditions.values()].find((e) => e.status === 'in_progress');
-  const dailyRemaining = Math.max(
-    0,
-    DAILY_EXPEDITION_LIMIT - expeditionsStartedTodayUtc(player.expeditions.values()),
-  );
-  const canLaunchDraw = dailyRemaining > 0 || !!activeExpedition;
+  const chargeCount = charges.data?.charges ?? 0;
+  const chargeMax = charges.data?.maxStored ?? 10;
+  const canLaunchDraw = chargeCount > 0 || !!activeExpedition;
+  /** Rouge tant que la destination tirée n’a pas été quittée via « Partir ». */
+  const mapWinner = drawWinner;
+
+  const clearDrawHighlight = () => {
+    setDrawPhase('idle');
+    setDrawResult(null);
+    setDrawWinner(null);
+    setDrawHighlight(null);
+  };
+
+  const goToExpedition = (slug: string) => {
+    clearDrawHighlight();
+    router.push(`/expedition/${slug}`);
+  };
 
   const toolbar = (
     <View style={styles.toolbar}>
@@ -223,14 +248,17 @@ export default function WorldScreen() {
               width={frame.width}
               height={frame.height}
               tiers={derived.tiersByNumeric}
-              selected={drawing ? null : selected}
-              onSelect={setSelected}
+              selected={effectiveSelected}
+              onSelect={(id) => {
+                if (countryLocked) return;
+                setSelected(id);
+              }}
               reduceMotion={reduceMotion}
               insetRight={insetRight}
               insetBottom={insetBottom}
               drawHighlight={drawHighlight}
-              drawWinner={drawWinner}
-              interactionEnabled={!drawing}
+              drawWinner={mapWinner}
+              interactionEnabled={!countryLocked}
             />
           ) : null}
 
@@ -243,9 +271,11 @@ export default function WorldScreen() {
                   label={
                     activeExpedition
                       ? 'Reprendre l’expédition'
-                      : dailyRemaining <= 0
-                        ? 'Limite du jour atteinte'
-                        : `Lancer une expédition (${dailyRemaining}/${DAILY_EXPEDITION_LIMIT})`
+                      : chargeCount <= 0
+                        ? nextChargeIn !== null
+                          ? `Prochaine charge dans ${formatCountdown(nextChargeIn)}`
+                          : 'Aucune charge disponible'
+                        : `Lancer une expédition (${chargeCount}/${chargeMax})`
                   }
                   icon="compass"
                   disabled={!canLaunchDraw}
@@ -253,18 +283,19 @@ export default function WorldScreen() {
                     if (activeExpedition && drawPhase === 'idle') {
                       const def = catalog.expeditions.find((e) => e.id === activeExpedition.expedition_id);
                       if (def) {
-                        router.push(`/expedition/${def.slug}`);
+                        goToExpedition(def.slug);
                         return;
                       }
                     }
                     launchDraw();
                   }}
-                  loading={drawExpedition.isPending}
+                  loading={drawExpedition.isPending || charges.isLoading}
                 />
               )}
               {drawExpedition.isError ? (
                 <InlineMessage tone="error" message={errorMessage(drawExpedition.error)} />
               ) : null}
+              {charges.isError ? <InlineMessage tone="error" message={errorMessage(charges.error)} /> : null}
             </View>
           ) : null}
 
@@ -281,7 +312,7 @@ export default function WorldScreen() {
               <Button
                 label="Partir en expédition"
                 icon="sparkle"
-                onPress={() => router.push(`/expedition/${drawResult.expedition_slug}`)}
+                onPress={() => goToExpedition(drawResult.expedition_slug)}
               />
               <Button
                 label="Rester sur la carte"
@@ -305,7 +336,7 @@ export default function WorldScreen() {
           {!panelOpen && drawPhase === 'idle' ? (
             <View style={styles.hint} pointerEvents="none">
               <Text variant="caption" color={colors.textMuted} align="center">
-                Jusqu’à 3 expéditions par jour, parmi vos pays découverts. Touchez un pays pour son détail.
+                Jusqu’à 10 charges (1 toutes les 30 min), parmi vos pays découverts. Touchez un pays pour son détail.
               </Text>
             </View>
           ) : null}
@@ -315,7 +346,11 @@ export default function WorldScreen() {
               owned={player.ownedCards}
               country={selectedCountry}
               tier={selectedTier}
-              onClose={() => setSelected(null)}
+              locked={countryLocked}
+              onClose={() => {
+                if (countryLocked) return;
+                setSelected(null);
+              }}
               onHeight={side ? undefined : setPanelHeight}
               style={
                 side

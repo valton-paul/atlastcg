@@ -37,7 +37,8 @@ export const colors = {
     completed: '#D9B66C',
     /** Signature du tirage d'expédition (illumination temporaire). */
     drawPulse: '#E85A5A',
-    drawWinner: '#D9B66C',
+    /** Destination tirée / en cours — reste rouge jusqu’au départ. */
+    drawWinner: '#E85A5A',
   },
 } as const;
 

@@ -69,7 +69,10 @@ export function useStartExpedition() {
   const client = useQueryClient();
   return useMutation({
     mutationFn: (expeditionId: string) => callRpc('start_expedition', { p_expedition_id: expeditionId }, stateSchema),
-    onSuccess: () => client.invalidateQueries({ queryKey: queryKeys.player }),
+    onSuccess: () => {
+      void client.invalidateQueries({ queryKey: queryKeys.player });
+      void client.invalidateQueries({ queryKey: queryKeys.expeditionCharges });
+    },
   });
 }
 

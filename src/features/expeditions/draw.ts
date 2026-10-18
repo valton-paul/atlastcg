@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 
 import { callRpc } from '@/lib/api';
@@ -18,11 +18,28 @@ export const expeditionDrawSchema = z.object({
   reward_pack_quantity: z.number().int().positive(),
   replayed: z.boolean(),
   already_active: z.boolean(),
-  /** Absent si la migration daily n’est pas encore poussée : on tolère avec un défaut. */
-  daily_remaining: z.number().int().nonnegative().optional().default(3),
+  charges: z.number().int().nonnegative().optional(),
+  max_stored: z.number().int().positive().optional(),
+  next_at: z.string().nullable().optional(),
+  /** Ancien champ (migration daily) — ignoré au profit de `charges`. */
+  daily_remaining: z.number().int().nonnegative().optional(),
 });
 
 export type ExpeditionDraw = z.infer<typeof expeditionDrawSchema>;
+
+const chargesSchema = z.object({
+  charges: z.number().int().nonnegative(),
+  max_stored: z.number().int().positive(),
+  next_at: z.string().nullable(),
+  server_time: z.string(),
+});
+
+export interface ExpeditionCharges {
+  charges: number;
+  maxStored: number;
+  /** Prochaine charge, calée sur l’horloge locale ; null si réserve pleine. */
+  nextAt: string | null;
+}
 
 const revealSchema = z.object({
   draw_id: z.string().uuid(),
@@ -32,12 +49,33 @@ const revealSchema = z.object({
   status: z.literal('revealed'),
 });
 
+/** Synchronise la réserve d’expéditions (+1 / 30 min, plafond 10). */
+export function useExpeditionCharges(enabled: boolean) {
+  return useQuery({
+    queryKey: queryKeys.expeditionCharges,
+    queryFn: async (): Promise<ExpeditionCharges> => {
+      const state = await callRpc('sync_expedition_charges', {}, chargesSchema);
+      const offset = Date.now() - Date.parse(state.server_time);
+      return {
+        charges: state.charges,
+        maxStored: state.max_stored,
+        nextAt: state.next_at ? new Date(Date.parse(state.next_at) + offset).toISOString() : null,
+      };
+    },
+    enabled,
+    refetchInterval: 60_000,
+  });
+}
+
 /** Tire une destination côté serveur (ou reprend un tirage / une expédition en cours). */
 export function useDrawExpedition() {
   const client = useQueryClient();
   return useMutation({
     mutationFn: () => callRpc('draw_expedition', {}, expeditionDrawSchema),
-    onSuccess: () => client.invalidateQueries({ queryKey: queryKeys.player }),
+    onSuccess: () => {
+      void client.invalidateQueries({ queryKey: queryKeys.player });
+      void client.invalidateQueries({ queryKey: queryKeys.expeditionCharges });
+    },
   });
 }
 

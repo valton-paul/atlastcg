@@ -21,12 +21,14 @@ type Props = {
   country: Country;
   tier: CollectionTier;
   onClose: () => void;
+  /** Expédition en cours : pas de fermeture / changement de pays. */
+  locked?: boolean;
   style?: ViewStyle;
   onHeight?: (height: number) => void;
 };
 
 /** Détail d'un pays affiché par-dessus la carte, sans quitter la vue. */
-export function CountryPanel({ catalog, owned, country, tier, onClose, style, onHeight }: Props) {
+export function CountryPanel({ catalog, owned, country, tier, onClose, locked = false, style, onHeight }: Props) {
   const router = useRouter();
   const progress = countryProgress(catalog, owned, country.iso_code);
   const discovered = progress.owned > 0;
@@ -53,14 +55,16 @@ export function CountryPanel({ catalog, owned, country, tier, onClose, style, on
             {progress.total > 0 ? ` · ${pct} %` : ''}
           </Text>
         </View>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Fermer le panneau"
-          onPress={onClose}
-          style={styles.close}
-        >
-          <Icon name="close" size={20} color={colors.textMuted} />
-        </Pressable>
+        {locked ? null : (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Fermer le panneau"
+            onPress={onClose}
+            style={styles.close}
+          >
+            <Icon name="close" size={20} color={colors.textMuted} />
+          </Pressable>
+        )}
       </View>
 
       <ScrollView style={styles.body} contentContainerStyle={styles.bodyContent}>
