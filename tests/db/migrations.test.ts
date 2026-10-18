@@ -1,4 +1,4 @@
-import { readMigrations, readSeed, readShim } from './support/paths';
+import { catalogCardCount, readMigrations, readSeed, readShim } from './support/paths';
 import { type TestDb, createTestDb, createUser, rpc, scalar } from './support/db';
 
 describe('migrations sur une base vierge', () => {
@@ -42,7 +42,7 @@ describe('migrations sur une base vierge', () => {
       'select (select count(*) from public.cards) c, (select count(*) from public.collection_cards) cc, (select count(*) from public.expedition_steps) s, (select count(*) from public.pack_drop_rates) r',
     );
     expect(after.rows[0]).toEqual(before.rows[0]);
-    expect(Number(after.rows[0].c)).toBe(90);
+    expect(Number(after.rows[0].c)).toBe(catalogCardCount());
   });
 
   it('active la RLS sur toutes les tables de public et atlas_private', async () => {

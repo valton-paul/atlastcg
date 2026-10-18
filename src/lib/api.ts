@@ -1,4 +1,4 @@
-import type { z } from 'zod';
+import { z } from 'zod';
 
 import { AppError, toAppError } from './errors';
 import { logger } from './logger';
@@ -45,4 +45,24 @@ export async function selectRows<S extends z.ZodTypeAny>(
     throw appError;
   }
   return parseResponse(context, data, schema);
+}
+
+/** Taille de page alignée sur la limite par défaut de PostgREST (`max_rows`). */
+export const PAGE_SIZE = 1000;
+
+/**
+ * Lit toutes les lignes d'une requête page par page, pour qu'un catalogue qui grandit ne soit
+ * jamais tronqué silencieusement. `page(from, to)` doit porter un ordre stable.
+ */
+export async function selectAllRows<T extends z.ZodTypeAny>(
+  context: string,
+  page: (from: number, to: number) => PromiseLike<{ data: unknown; error: unknown }>,
+  itemSchema: T,
+): Promise<z.infer<T>[]> {
+  const rows: z.infer<T>[] = [];
+  for (let from = 0; ; from += PAGE_SIZE) {
+    const batch = await selectRows(context, page(from, from + PAGE_SIZE - 1), z.array(itemSchema));
+    rows.push(...batch);
+    if (batch.length < PAGE_SIZE) return rows;
+  }
 }

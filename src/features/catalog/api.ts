@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { z } from 'zod';
 
-import { selectRows } from '@/lib/api';
+import { selectAllRows, selectRows } from '@/lib/api';
 import { queryKeys } from '@/lib/query-client';
 import { getSupabase } from '@/lib/supabase';
 
@@ -51,15 +51,18 @@ export async function fetchCatalog(): Promise<Catalog> {
         .order('name'),
       z.array(countrySchema),
     ),
-    selectRows(
+    selectAllRows(
       'cards',
-      db
-        .from('cards')
-        .select(
-          'id, slug, title, subtitle, category, rarity, country_code, illustration_path, illustration_credit, status',
-        )
-        .order('title'),
-      z.array(cardSchema),
+      (from, to) =>
+        db
+          .from('cards')
+          .select(
+            'id, slug, title, subtitle, category, rarity, country_code, illustration_path, illustration_credit, status',
+          )
+          .order('title')
+          .order('id')
+          .range(from, to),
+      cardSchema,
     ),
     selectRows(
       'rarities',

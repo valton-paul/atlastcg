@@ -212,9 +212,23 @@ describe('défis asynchrones', () => {
   });
 
   it('refuse un continent trop petit pour un défi de capitales', async () => {
-    await expect(rpc(db, alice, 'create_challenge', { p_type: 'capitals', p_continent: 'oceania' })).rejects.toThrow(
-      'CHALLENGE_POOL_TOO_SMALL',
+    const keep = await db.admin.query<{ iso_code: string }>(
+      "select iso_code from public.countries where continent = 'oceania' and status = 'published' order by iso_code limit 3",
     );
+    const kept = keep.rows.map((r) => r.iso_code);
+    await db.admin.query(
+      "update public.countries set status = 'draft' where continent = 'oceania' and status = 'published' and not (iso_code = any($1))",
+      [kept],
+    );
+    try {
+      await expect(rpc(db, alice, 'create_challenge', { p_type: 'capitals', p_continent: 'oceania' })).rejects.toThrow(
+        'CHALLENGE_POOL_TOO_SMALL',
+      );
+    } finally {
+      await db.admin.query(
+        "update public.countries set status = 'published' where continent = 'oceania' and status = 'draft'",
+      );
+    }
     await expect(rpc(db, alice, 'create_challenge', { p_type: 'flags' })).rejects.toThrow('INVALID_ARGUMENT');
   });
 });

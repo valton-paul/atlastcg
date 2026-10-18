@@ -76,11 +76,17 @@ export const CONTINENT_LABELS: Record<Continent, string> = {
 };
 
 export function nameWithArticle(country: Pick<CountryEntry, 'article' | 'name'>): string {
+  if (country.article === null) return country.name;
   return country.article === "l'" ? `l'${country.name}` : `${country.article} ${country.name}`;
 }
 
+/** Voyelle ou h muet initial : « d'Oman », « d'Haïti », mais « de Cuba ». */
+const ELISION = /^[AEIOUYÉÈÊÎÏÔÂH]/i;
+
 export function nameGenitive(country: Pick<CountryEntry, 'article' | 'name'>): string {
   switch (country.article) {
+    case null:
+      return ELISION.test(country.name) ? `d'${country.name}` : `de ${country.name}`;
     case 'le':
       return `du ${country.name}`;
     case 'les':
@@ -123,6 +129,21 @@ export function capitalChoices(country: CountryEntry, all: CountryEntry[]): { ch
 function cardsForCountry(country: CountryEntry): CatalogCard[] {
   const iso = country.iso.toLowerCase();
   const { cards } = country;
+  const heritageCards = [cards.heritage, ...(cards.extras ?? [])].map(
+    (h): CatalogCard => ({
+      slug: h.slug,
+      title: h.title,
+      subtitle: h.subtitle ?? null,
+      category: h.category,
+      rarity: h.rarity,
+      countryCode: country.iso,
+      illustrationPath: h.illustration ?? null,
+      illustrationCredit: h.illustrationCredit ?? null,
+      discoveryText: h.discovery,
+      funFact: h.fact,
+      sources: h.sources,
+    }),
+  );
   return [
     {
       slug: `pays-${iso}`,
@@ -150,19 +171,7 @@ function cardsForCountry(country: CountryEntry): CatalogCard[] {
       funFact: cards.capital.fact,
       sources: cards.capital.sources,
     },
-    {
-      slug: cards.heritage.slug,
-      title: cards.heritage.title,
-      subtitle: cards.heritage.subtitle ?? null,
-      category: cards.heritage.category,
-      rarity: cards.heritage.rarity,
-      countryCode: country.iso,
-      illustrationPath: cards.heritage.illustration ?? null,
-      illustrationCredit: cards.heritage.illustrationCredit ?? null,
-      discoveryText: cards.heritage.discovery,
-      funFact: cards.heritage.fact,
-      sources: cards.heritage.sources,
-    },
+    ...heritageCards,
   ];
 }
 

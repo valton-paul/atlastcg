@@ -22,6 +22,14 @@ export function readSeed(): string {
   return readFileSync(join(ROOT, 'supabase', 'seed.sql'), 'utf8');
 }
 
+/** Nombre de cartes publiées par le seed : pays, capitale, patrimoine et cartes supplémentaires. */
+export function catalogCardCount(): number {
+  const doc = JSON.parse(readFileSync(join(ROOT, 'content', 'countries.json'), 'utf8')) as {
+    countries: { cards: { extras?: unknown[] } }[];
+  };
+  return doc.countries.reduce((total, c) => total + 3 + (c.cards.extras?.length ?? 0), 0);
+}
+
 export interface DbState {
   port: number;
   dataDir: string;

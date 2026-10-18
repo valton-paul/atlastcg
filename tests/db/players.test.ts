@@ -10,6 +10,7 @@ import {
   rpc,
   scalar,
 } from './support/db';
+import { catalogCardCount } from './support/paths';
 
 describe('initialisation du joueur', () => {
   let db: TestDb;
@@ -125,7 +126,7 @@ describe('isolation des données entre joueurs (RLS)', () => {
 
   it('le catalogue publié est lisible sans compte, mais pas le contenu éditorial', async () => {
     const cards = await asAnon(db, async (c) => (await c.query('select id from public.cards')).rows.length);
-    expect(cards).toBe(90);
+    expect(cards).toBe(catalogCardCount());
     await expect(asAnon(db, (c) => c.query('select 1 from public.card_contents'))).rejects.toThrow(/permission denied/);
     await expect(asAnon(db, (c) => c.query('select 1 from public.expedition_steps'))).rejects.toThrow(
       /permission denied/,

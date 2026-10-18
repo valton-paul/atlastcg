@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 
-import { callRpc, selectRows } from '@/lib/api';
+import { callRpc, selectAllRows, selectRows } from '@/lib/api';
 import { toAppError } from '@/lib/errors';
 import { queryKeys } from '@/lib/query-client';
 import { getSupabase } from '@/lib/supabase';
@@ -87,25 +87,31 @@ export async function fetchPlayerState(userId: string): Promise<PlayerState> {
         .order('created_at', { ascending: true }),
       z.array(userPackSchema),
     ),
-    selectRows(
+    selectAllRows(
       'cards',
-      db.from('user_cards').select('card_id, quantity, seen_at, first_acquired_at'),
-      z.array(ownedCardSchema),
+      (from, to) =>
+        db.from('user_cards').select('card_id, quantity, seen_at, first_acquired_at').order('card_id').range(from, to),
+      ownedCardSchema,
     ),
     selectRows(
       'expeditions',
       db.from('user_expeditions').select('expedition_id, status, started_at, completed_at'),
       z.array(userExpeditionSchema),
     ),
-    selectRows(
+    selectAllRows(
       'expedition-steps',
-      db.from('user_expedition_steps').select('expedition_id, step_id, completed_at'),
-      z.array(userStepSchema),
+      (from, to) =>
+        db
+          .from('user_expedition_steps')
+          .select('expedition_id, step_id, completed_at')
+          .order('step_id')
+          .range(from, to),
+      userStepSchema,
     ),
-    selectRows(
+    selectAllRows(
       'started-expedition-steps',
-      db.from('expedition_steps').select('expedition_id'),
-      z.array(z.object({ expedition_id: z.string().uuid() })),
+      (from, to) => db.from('expedition_steps').select('expedition_id').order('id').range(from, to),
+      z.object({ expedition_id: z.string().uuid() }),
     ),
   ]);
 

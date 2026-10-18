@@ -31,13 +31,21 @@ const heritageCard = cardContent.extend({
 
 export const countrySchema = z.object({
   iso: z.string().regex(/^[A-Z]{2}$/),
-  article: z.enum(['le', 'la', "l'", 'les']),
+  /** `null` pour les pays employés sans article (Cuba, Malte, Singapour…). */
+  article: z.enum(['le', 'la', "l'", 'les']).nullable(),
   isoNumeric: z.string().regex(/^[0-9]{3}$/),
   name: text,
   capital: text,
   continent: z.enum(CONTINENTS),
   region: text,
-  cards: z.object({ country: cardContent, capital: cardContent, heritage: heritageCard }),
+  cards: z.object({
+    country: cardContent,
+    capital: cardContent,
+    /** Carte de patrimoine principale, présentée pendant l'expédition. */
+    heritage: heritageCard,
+    /** Cartes de patrimoine supplémentaires du pays. */
+    extras: z.array(heritageCard).max(6).optional(),
+  }),
   expedition: z.object({
     quiz: z.object({
       prompt: text,
