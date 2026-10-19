@@ -351,7 +351,12 @@ export function OpenPackFlow({
                 testID="sealed-pack"
               >
                 <Animated.View style={packStyle}>
-                  <PackVisual slug={packSlug} width={OPEN_PACK_WIDTH} glow={state.phase === 'opening' ? 1 : 0} />
+                  <PackVisual
+                    slug={packSlug}
+                    width={OPEN_PACK_WIDTH}
+                    cardsPerPack={packDef?.cards_per_pack ?? 5}
+                    glow={state.phase === 'opening' ? 1 : 0}
+                  />
                 </Animated.View>
               </Pressable>
             </View>

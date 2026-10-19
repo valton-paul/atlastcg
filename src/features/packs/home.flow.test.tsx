@@ -70,7 +70,8 @@ describe('accueil', () => {
 
     expect(mockRpc).toHaveBeenCalledWith('sync_timed_packs', {});
     expect(screen.getByRole('header', { name: 'Ouvrir un paquet' })).toBeOnTheScreen();
-    expect(screen.getByText(/5 cartes · jusqu’à Rare/)).toBeOnTheScreen();
+    expect(screen.getByLabelText(/Ouvrir le paquet Classique, 2 en stock/)).toBeOnTheScreen();
+    expect(screen.getByText('×2 en stock')).toBeOnTheScreen();
     expect(
       await screen.findByLabelText(/^2 paquets à ouvrir\. Réserve 2 sur 15\. Prochain paquet dans 7:4[1-3]\.$/),
     ).toBeOnTheScreen();

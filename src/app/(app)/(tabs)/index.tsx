@@ -27,7 +27,7 @@ import {
 import type { PackDefinition } from '@/features/catalog/types';
 import { type TimedPacks, useInterruptedOpenings, useTimedPacks } from '@/features/packs/api';
 import { OpenPackFlow } from '@/features/packs/OpenPackFlow';
-import { packBlurb, packTheme, PackVisual } from '@/features/packs/PackVisual';
+import { packTheme, PackVisual } from '@/features/packs/PackVisual';
 import { formatCountdown, useCountdown } from '@/features/packs/useCountdown';
 import { PlayerHeader } from '@/features/player/PlayerHeader';
 import { useAtlasData } from '@/features/player/useAtlasData';
@@ -169,15 +169,18 @@ export default function HomeScreen() {
                     testID={item.packId === group?.packId ? 'home-pack' : undefined}
                   >
                     <Animated.View style={[styles.packFloat, floatStyle]}>
-                      <PackVisual slug={item.definition.slug} width={PACK_WIDTH} animated={!reduceMotion} />
+                      <PackVisual
+                        slug={item.definition.slug}
+                        width={PACK_WIDTH}
+                        cardsPerPack={item.definition.cards_per_pack}
+                        animated={!reduceMotion}
+                      />
                     </Animated.View>
-                    <Text variant="subheading" color={itemTheme.accent} align="center">
-                      Paquet {item.definition.name}
-                    </Text>
-                    <Text variant="caption" color={colors.textMuted} align="center">
-                      {packBlurb(item.definition.slug, item.definition.cards_per_pack)}
-                      {item.userPackIds.length > 1 ? ` · ×${item.userPackIds.length}` : ''}
-                    </Text>
+                    {item.userPackIds.length > 1 ? (
+                      <Text variant="caption" color={itemTheme.accent} align="center">
+                        ×{item.userPackIds.length} en stock
+                      </Text>
+                    ) : null}
                   </Pressable>
                 );
               })}

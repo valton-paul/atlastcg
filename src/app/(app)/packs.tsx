@@ -112,7 +112,12 @@ export default function PacksScreen() {
             style={styles.packRow}
             accessibilityLabel={`Paquet ${definition.name}, ${count} en stock`}
           >
-            <PackVisual slug={definition.slug} width={64} animated={false} />
+            <PackVisual
+              slug={definition.slug}
+              width={64}
+              cardsPerPack={definition.cards_per_pack}
+              animated={false}
+            />
             <View style={styles.flex}>
               <Text variant="bodyStrong">Paquet {definition.name}</Text>
               <Text variant="caption" color={colors.textMuted}>
@@ -145,7 +150,7 @@ export default function PacksScreen() {
             return (
               <Surface key={offer.packSlug} tone={tone}>
                 <View style={styles.shopHeader}>
-                  <PackVisual slug={pack.slug} width={56} animated={false} />
+                  <PackVisual slug={pack.slug} width={56} cardsPerPack={pack.cards_per_pack} animated={false} />
                   <View style={styles.flex}>
                     <Text variant="bodyStrong">Paquet {pack.name}</Text>
                     <Text variant="caption" color={colors.textMuted}>

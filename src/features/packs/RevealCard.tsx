@@ -11,12 +11,12 @@ import Animated, {
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
-import Svg, { Circle, Defs, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 
 import { Text } from '@/design-system';
 import { colors, radius, rarityStyles, spacing, type RarityKey } from '@/design-system/tokens';
 import { AtlasCard, cardAccessibilityLabel, type AtlasCardData } from '@/features/cards/AtlasCard';
 
+import { CardBack } from './CardBack';
 import { FallingSparks, LightRays, MythicRift, ParticleBurst, Shockwave } from './effects';
 
 const CARD_WIDTH = 260;
@@ -61,88 +61,6 @@ type Props = {
   /** Appelé quand la conversion doublon démarre (pour animer le compteur). */
   onDuplicateConvert?: (fragments: number) => void;
 };
-
-function CardBack({
-  shimmer,
-  accent,
-  borderWidth,
-  glowPulse,
-}: {
-  shimmer: boolean;
-  accent: string;
-  borderWidth: number;
-  glowPulse: number;
-}) {
-  const sweep = useSharedValue(0);
-  useEffect(() => {
-    if (!shimmer) return;
-    sweep.set(
-      withRepeat(
-        withSequence(
-          withTiming(1, { duration: 1100, easing: Easing.inOut(Easing.quad) }),
-          withDelay(700, withTiming(0, { duration: 0 })),
-        ),
-        -1,
-        false,
-      ),
-    );
-    return () => cancelAnimation(sweep);
-  }, [shimmer, sweep]);
-  const sweepStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: interpolate(sweep.get(), [0, 1], [-CARD_WIDTH, CARD_WIDTH * 1.4]) }, { rotate: '22deg' }],
-  }));
-
-  return (
-    <View
-      style={[
-        styles.back,
-        {
-          borderColor: accent,
-          borderWidth,
-          boxShadow: glowPulse > 0 ? `0 0 ${18 + glowPulse * 28}px ${accent}99` : undefined,
-        },
-      ]}
-    >
-      <Svg width={CARD_WIDTH} height={CARD_HEIGHT} style={StyleSheet.absoluteFill}>
-        <Defs>
-          <LinearGradient id="back-stripes" x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0" stopColor={accent} stopOpacity={0} />
-            <Stop offset="0.5" stopColor={accent} stopOpacity={0.08} />
-            <Stop offset="1" stopColor={accent} stopOpacity={0} />
-          </LinearGradient>
-        </Defs>
-        {Array.from({ length: 8 }, (_, i) => (
-          <Path
-            key={i}
-            d={`M${-40 + i * 48} 0 L${40 + i * 48} ${CARD_HEIGHT}`}
-            stroke={accent}
-            strokeWidth={10}
-            strokeOpacity={0.06}
-          />
-        ))}
-      </Svg>
-      <Svg width={120} height={120} viewBox="0 0 56 56">
-        <Circle cx={28} cy={28} r={26} fill="none" stroke={accent} strokeWidth={1.2} />
-        <Circle cx={28} cy={28} r={18} fill="none" stroke={accent} strokeWidth={0.7} opacity={0.55} />
-        <Path d="M28 10l3 15 15 3-15 3-3 15-3-15-15-3 15-3z" fill={accent} />
-      </Svg>
-      {shimmer ? (
-        <Animated.View pointerEvents="none" style={[styles.sweep, sweepStyle]}>
-          <Svg width={64} height={CARD_HEIGHT * 1.6}>
-            <Defs>
-              <LinearGradient id="card-sweep" x1="0" y1="0" x2="1" y2="0">
-                <Stop offset="0" stopColor="#FFFFFF" stopOpacity={0} />
-                <Stop offset="0.5" stopColor="#FFFFFF" stopOpacity={0.28} />
-                <Stop offset="1" stopColor="#FFFFFF" stopOpacity={0} />
-              </LinearGradient>
-            </Defs>
-            <Rect width={64} height={CARD_HEIGHT * 1.6} fill="url(#card-sweep)" />
-          </Svg>
-        </Animated.View>
-      ) : null}
-    </View>
-  );
-}
 
 /**
  * Conversion doublon : la carte reste lisible.
@@ -432,6 +350,8 @@ export function RevealCard({
         >
           <Animated.View style={[styles.face, backStyle]}>
             <CardBack
+              width={CARD_WIDTH}
+              height={CARD_HEIGHT}
               shimmer={!reduceMotion && !flipped}
               accent={accent}
               borderWidth={Math.max(2, rarity.borderWidth + (isPrestige ? 1 : 0))}
@@ -475,16 +395,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  back: {
-    width: CARD_WIDTH,
-    height: CARD_HEIGHT,
-    borderRadius: radius.lg,
-    backgroundColor: '#0A101C',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-  },
-  sweep: { position: 'absolute', top: -CARD_HEIGHT * 0.3, left: 0 },
   rimGlow: {
     position: 'absolute',
     width: CARD_WIDTH + 8,
