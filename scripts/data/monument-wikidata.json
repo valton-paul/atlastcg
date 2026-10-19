@@ -1,5 +1,17 @@
 {
   "$comment": "slug → QID Wikidata (P18) ou { file: \"File:…\" }. Généré / enrichi par illustrations:monuments.",
+  "taipei-101": {
+    "file": "File:Taipei 101 from afar.jpg"
+  },
+  "gorge-de-taroko": {
+    "file": "File:Taroko-Gorge Hualien Taiwan Pudu-Bridge-at-Taroko-National-Park-01.jpg"
+  },
+  "monastere-de-visoki-decani": {
+    "file": "File:Visoki Dečani monastery, 2008.jpg"
+  },
+  "monument-newborn": {
+    "file": "File:Newborn Pristina February 2013.jpg"
+  },
   "tour-eiffel": "Q243",
   "mont-saint-michel": {
     "file": "File:Abbaye du Mont-Saint-Michel (12).jpg"
@@ -80,13 +92,17 @@
   "stone-town": "Q844417",
   "robben-island": "Q192493",
   "montagne-de-la-table": "Q213360",
-  "chutes-du-niagara": "Q274120",
+  "chutes-du-niagara": {
+    "file": "File:Niagara-Falls-Horseshoe-Falls-view.jpg"
+  },
   "grand-canyon": "Q118841",
   "statue-de-la-liberte": "Q9202",
   "yellowstone": "Q374772",
   "chichen-itza": "Q5859",
   "teotihuacan": "Q172613",
-  "jour-des-morts": "Q1033140",
+  "jour-des-morts": {
+    "file": "File:Altar día de muertos Coyoacán.jpg"
+  },
   "foret-amazonienne": "Q177567",
   "christ-redempteur": "Q79961",
   "chutes-d-iguacu": "Q36332",
@@ -102,9 +118,22 @@
   "grande-barriere-de-corail": "Q7343",
   "uluru": "Q33910",
   "opera-de-sydney": "Q45178",
-  "te-reo-maori": "Q36451",
+  "te-reo-maori": {
+    "file": "File:Te wiki o te reo Māori- He Maramatanga (27970994122).jpg"
+  },
   "milford-sound": "Q187197",
-  "haka": "Q714508",
+  "haka": {
+    "file": "File:All Blacks Haka.jpg"
+  },
+  "morna": {
+    "file": "File:Cesária Évora 2008.jpg"
+  },
+  "polyphonie-georgienne": {
+    "file": "File:The Rustavi Choir performs Gurian songs.JPG"
+  },
+  "crop-over": {
+    "file": "File:Westindiandayparade1.jpg"
+  },
   "berat": "Q170244",
   "butrint": "Q188694",
   "vallee-du-madriu": "Q332800",
@@ -249,7 +278,6 @@
   "palais-royaux-d-abomey": "Q2425839",
   "mont-cameroun": "Q190562",
   "cidade-velha": "Q464913",
-  "morna": "Q883305",
   "karthala": "Q3579376",
   "basilique-notre-dame-de-la-paix": "Q815584",
   "lac-assal": "Q81239",
@@ -320,9 +348,6 @@
     "file": "File:Nelson's Dockyard.jpg"
   },
   "junkanoo": "Q1612069",
-  "crop-over": {
-    "file": "File:CoxAndSamuelLucasAtThe Anti-Slavery Society Convention, 1840.jpg"
-  },
   "grand-trou-bleu": "Q86486",
   "volcan-arenal": "Q641588",
   "vieille-havane": "Q1165566",
@@ -398,7 +423,6 @@
   "chapeau-basotho": {
     "file": "File:Mokorotlo.jpg"
   },
-  "polyphonie-georgienne": "Q1509297",
   "bilinguisme-canadien": {
     "file": "File:Bilingual stop sign, Pain Court, Ontario, 2026-05-17 01.jpg"
   },

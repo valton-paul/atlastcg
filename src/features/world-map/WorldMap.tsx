@@ -15,6 +15,7 @@ import {
   countryFromDomPoint,
   framePointToSvg,
   isTinyMapCountry,
+  pathBBoxArea,
   TINY_MARKER_R,
 } from './hit-test';
 import { resolveMapCountryId } from './territories';
@@ -129,8 +130,17 @@ const Countries = memo(function Countries({
   );
 });
 
-/** Zoom appliqué lors de la sélection d'un pays, pour qu'il soit lisible à côté du panneau. */
+/** Zoom de base à la sélection ; les micro-pays montent plus haut pour rester cliquables. */
 const FOCUS_SCALE = 2.5;
+
+function focusScaleForCountry(country: MapCountry): number {
+  const area = pathBBoxArea(country.d);
+  if (area < 2) return 7;
+  if (area < 8) return 5.5;
+  if (area < 16) return 4;
+  if (area < 40) return 3.2;
+  return FOCUS_SCALE;
+}
 
 export function WorldMap({
   width,
@@ -191,7 +201,7 @@ export function WorldMap({
     const target = focusViewport(
       offsetX + country.cx * ratio,
       offsetY + country.cy * ratio,
-      Math.max(scale.get(), FOCUS_SCALE),
+      Math.max(scale.get(), focusScaleForCountry(country)),
       geometry(width, height, { contentWidth, contentHeight, insetRight, insetBottom }),
     );
     if (reduceMotion) {

@@ -197,7 +197,9 @@
     "NR": "common",
     "TV": "common",
     "NU": "common",
-    "CK": "common"
+    "CK": "common",
+    "TW": "epic",
+    "XK": "uncommon"
   },
   "capital": {
     "FR": "legendary",
@@ -396,6 +398,8 @@
     "TV": "common",
     "NU": "common",
     "CK": "common",
-    "MW": "common"
+    "MW": "common",
+    "TW": "epic",
+    "XK": "uncommon"
   }
 }

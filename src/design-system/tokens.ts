@@ -63,7 +63,6 @@ export const rarityStyles: Record<
     saturate: number;
     shine: boolean;
     embers: boolean;
-    brackets: boolean;
     shape: 'circle' | 'diamond' | 'triangle' | 'star' | 'crown' | 'sun';
     rank: number;
   }
@@ -78,7 +77,6 @@ export const rarityStyles: Record<
     saturate: 0.35,
     shine: false,
     embers: false,
-    brackets: false,
     shape: 'circle',
     rank: 1,
   },
@@ -92,7 +90,6 @@ export const rarityStyles: Record<
     saturate: 0.75,
     shine: false,
     embers: false,
-    brackets: true,
     shape: 'diamond',
     rank: 2,
   },
@@ -106,7 +103,6 @@ export const rarityStyles: Record<
     saturate: 1,
     shine: false,
     embers: false,
-    brackets: true,
     shape: 'triangle',
     rank: 3,
   },
@@ -120,7 +116,6 @@ export const rarityStyles: Record<
     saturate: 1,
     shine: false,
     embers: false,
-    brackets: true,
     shape: 'star',
     rank: 4,
   },
@@ -134,7 +129,6 @@ export const rarityStyles: Record<
     saturate: 1,
     shine: true,
     embers: false,
-    brackets: true,
     shape: 'crown',
     rank: 5,
   },
@@ -148,7 +142,6 @@ export const rarityStyles: Record<
     saturate: 1,
     shine: true,
     embers: true,
-    brackets: true,
     shape: 'sun',
     rank: 6,
   },

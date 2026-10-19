@@ -70,8 +70,8 @@ export default function CollectionScreen() {
 
   const { catalog, player } = data;
   const stats = atlasStats(catalog, player.ownedCards, player.expeditions);
-  // Grille dense : 4 colonnes sur téléphone pour parcourir vite la collection.
-  const columns = width >= 1000 ? 7 : width >= 700 ? 5 : 4;
+  // Téléphone : 3 colonnes pour des cartes lisibles ; tablette / desktop plus dense.
+  const columns = width >= 1000 ? 7 : width >= 700 ? 5 : 3;
   const columnGap = spacing.sm;
   const cardWidth = Math.floor((width - spacing.lg * 2 - columnGap * (columns - 1)) / columns);
   // Barre d’onglets + safe area : la dernière rangée ne doit plus être coupée.

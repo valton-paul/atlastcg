@@ -68,10 +68,13 @@ describe('countryAtSvgPoint', () => {
 });
 
 describe('micro-pays', () => {
-  it('classe la France comme grande et Chypre comme petite', () => {
+  it('classe la France comme grande et les micro-îles comme petites', () => {
     expect(pathBBoxArea(country('250').d)).toBeGreaterThan(500);
     expect(isTinyMapCountry(country('250'))).toBe(false);
+    // Chypre ~9, Barbade ~0.5 : marqueur de secours ; Salvador ~28 : vraie silhouette.
     expect(isTinyMapCountry(country('196'))).toBe(true);
+    expect(isTinyMapCountry(country('052'))).toBe(true);
+    expect(isTinyMapCountry(country('222'))).toBe(false);
   });
 });
 

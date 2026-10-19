@@ -77,6 +77,7 @@
     "teotihuacan",
     "tombouctou",
     "tours-petronas",
+    "taipei-101",
     "uluru",
     "wadi-rum"
   ],
@@ -144,8 +145,10 @@
     "tikal",
     "tour-de-londres",
     "transsiberien",
+    "gorge-de-taroko",
     "vieille-havane",
-    "washoku"
+    "washoku",
+    "monastere-de-visoki-decani"
   ],
   "uncommon": [
     "amphitheatre-d-el-jem",
@@ -215,7 +218,8 @@
     "vallee-de-bamiyan",
     "vasa",
     "vieille-ville-de-tallinn",
-    "volcan-arenal"
+    "volcan-arenal",
+    "monument-newborn"
   ],
   "common": [
     "aapravasi-ghat",

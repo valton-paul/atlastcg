@@ -5,11 +5,15 @@ import { resolveMapCountryId } from './territories';
 type MapCountry = { id: string; name: string; d: string; cx: number; cy: number };
 const MAP = mapData as { width: number; height: number; countries: MapCountry[] };
 
-/** Aire en dessous de laquelle un marqueur de secours est utile (micro-États, îles). */
-export const TINY_COUNTRY_AREA = 50;
+/**
+ * Aire en dessous de laquelle un marqueur de secours est utile (micro-États, îles).
+ * Gardé bas pour ne pas élargir artificiellement Salvador, Haïti, Belize… :
+ * leur vraie silhouette reste cliquable ; le zoom fine la précision.
+ */
+export const TINY_COUNTRY_AREA = 16;
 
-/** Rayon SVG du marqueur de secours pour les tout petits pays. */
-export const TINY_MARKER_R = 10;
+/** Rayon SVG du marqueur de secours pour les tout petits pays (évite les chevauchements caraïbes). */
+export const TINY_MARKER_R = 4.5;
 
 const TINY_MARKER_R2 = TINY_MARKER_R * TINY_MARKER_R;
 

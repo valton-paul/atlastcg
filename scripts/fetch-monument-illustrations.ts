@@ -330,7 +330,15 @@ async function main() {
         continue;
       }
 
-      if (picked.resolved.mappingUpdate) mapping[card.slug] = picked.resolved.mappingUpdate;
+      // Ne pas écraser un mapping { file: … } forcé à la main.
+      const existing = mapping[card.slug];
+      const forcedFile =
+        typeof existing === 'object' && existing && typeof existing.file === 'string'
+          ? existing.file
+          : null;
+      if (picked.resolved.mappingUpdate && !forcedFile) {
+        mapping[card.slug] = picked.resolved.mappingUpdate;
+      }
 
       if (!dryRun && !existsSync(abs)) {
         await downloadWebp(picked.info.thumbUrl, abs);

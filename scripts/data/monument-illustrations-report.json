@@ -1,26 +1,19 @@
 {
-  "fetchedAt": "2026-10-19T15:29:19.806Z",
+  "fetchedAt": "2026-10-19T16:24:13.667Z",
   "results": [
     {
-      "slug": "mont-saint-michel",
-      "path": "monuments/mont-saint-michel.webp",
-      "credit": "Gzen92 — CC BY-SA 4.0 (Wikimedia Commons)",
-      "license": "CC BY-SA 4.0",
-      "fileTitle": "File:Abbaye du Mont-Saint-Michel (12).jpg"
-    },
-    {
-      "slug": "olympie",
-      "path": "monuments/olympie.webp",
-      "credit": "Annatsach — CC BY-SA 4.0 (Wikimedia Commons)",
-      "license": "CC BY-SA 4.0",
-      "fileTitle": "File:Archaeological Site of Ancient Olympia - 9.jpg"
-    },
-    {
-      "slug": "arches-de-talava",
-      "path": "monuments/arches-de-talava.webp",
-      "credit": "vuorikari — CC BY-SA 2.0 (Wikimedia Commons)",
+      "slug": "monastere-de-visoki-decani",
+      "path": "monuments/monastere-de-visoki-decani.webp",
+      "credit": "a.dombrowski — CC BY-SA 2.0 (Wikimedia Commons)",
       "license": "CC BY-SA 2.0",
-      "fileTitle": "File:Talava Arches 1, Niue.jpg"
+      "fileTitle": "File:Visoki Dečani monastery, 2008.jpg"
+    },
+    {
+      "slug": "monument-newborn",
+      "path": "monuments/monument-newborn.webp",
+      "credit": "Arild Vågen — CC BY-SA 3.0 (Wikimedia Commons)",
+      "license": "CC BY-SA 3.0",
+      "fileTitle": "File:Newborn Pristina February 2013.jpg"
     }
   ],
   "skipped": []

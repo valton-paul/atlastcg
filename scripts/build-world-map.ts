@@ -23,12 +23,25 @@ const ANTARCTICA = '010';
 
 type CountryFeature = Feature<Geometry, { name: string }> & { id: string };
 
+/**
+ * Certains territoires Natural Earth (ex. Kosovo) n’ont pas d’`id` ISO numérique dans world-atlas.
+ * On leur en assigne un pour coller au catalogue (`isoNumeric`).
+ */
+const NAME_TO_NUMERIC: Readonly<Record<string, string>> = {
+  Kosovo: '383',
+};
+
 function countriesOf(world: unknown): CountryFeature[] {
   const topology = world as Topology<{ countries: GeometryCollection<{ name: string }> }>;
   const collection = feature(topology, topology.objects.countries) as FeatureCollection<Geometry, { name: string }>;
-  return collection.features.filter(
-    (f): f is CountryFeature => typeof f.id === 'string' && f.id !== ANTARCTICA,
-  );
+  const out: CountryFeature[] = [];
+  for (const f of collection.features) {
+    const name = f.properties?.name;
+    const id = typeof f.id === 'string' ? f.id : name ? NAME_TO_NUMERIC[name] : undefined;
+    if (!id || id === ANTARCTICA) continue;
+    out.push({ ...f, id });
+  }
+  return out;
 }
 
 const root = join(__dirname, '..');

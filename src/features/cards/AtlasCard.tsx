@@ -128,7 +128,6 @@ export function AtlasCard({
           <Rect width={100} height={150} fill={`url(#${scrimId})`} />
         </Svg>
       </View>
-      {!locked && rarity.brackets ? <CornerBrackets color={rarity.color} /> : null}
       {!reduceMotion && !locked && rarity.shine ? <ShineSweep gradientId={shineId} /> : null}
       {!reduceMotion && !locked && rarity.embers ? <RisingEmbers color={rarity.color} /> : null}
 
@@ -216,18 +215,6 @@ export function AtlasCard({
     >
       {content}
     </Pressable>
-  );
-}
-
-function CornerBrackets({ color }: { color: string }) {
-  const arm = 14;
-  return (
-    <View pointerEvents="none" style={StyleSheet.absoluteFill}>
-      <View style={[styles.bracket, styles.tl, { borderColor: color, width: arm, height: arm }]} />
-      <View style={[styles.bracket, styles.tr, { borderColor: color, width: arm, height: arm }]} />
-      <View style={[styles.bracket, styles.bl, { borderColor: color, width: arm, height: arm }]} />
-      <View style={[styles.bracket, styles.br, { borderColor: color, width: arm, height: arm }]} />
-    </View>
   );
 }
 
@@ -379,11 +366,6 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
   dots: { flexDirection: 'row', gap: 3, alignItems: 'center' },
   dot: { width: 5, height: 5, borderRadius: 2.5 },
-  bracket: { position: 'absolute', borderWidth: 1.5 },
-  tl: { top: 8, left: 8, borderRightWidth: 0, borderBottomWidth: 0 },
-  tr: { top: 8, right: 8, borderLeftWidth: 0, borderBottomWidth: 0 },
-  bl: { bottom: 8, left: 8, borderRightWidth: 0, borderTopWidth: 0 },
-  br: { bottom: 8, right: 8, borderLeftWidth: 0, borderTopWidth: 0 },
   shine: { position: 'absolute', top: -80, left: 0 },
   ember: {
     position: 'absolute',

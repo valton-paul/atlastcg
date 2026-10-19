@@ -1,5 +1,6 @@
 export const MIN_SCALE = 1;
-export const MAX_SCALE = 8;
+/** Zoom max élevé pour viser les micro-îles (Caraïbes, Pacifique) au doigt. */
+export const MAX_SCALE = 14;
 
 export type Viewport = { scale: number; x: number; y: number };
 
