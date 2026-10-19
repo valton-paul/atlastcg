@@ -11,7 +11,7 @@
       "region": "Europe de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Pays d'Europe de l'Ouest ouvert sur la Manche, l'océan Atlantique et la mer Méditerranée.",
           "fact": "La France métropolitaine est souvent surnommée « l'Hexagone » en raison de sa forme.",
           "sources": [
@@ -19,7 +19,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Capitale de la France, traversée par la Seine.",
           "fact": "L'île de la Cité est le berceau historique de la ville.",
           "sources": [
@@ -96,7 +96,7 @@
       "region": "Europe du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Péninsule en forme de botte qui s'avance dans la mer Méditerranée.",
           "fact": "Le territoire italien entoure deux États indépendants : le Vatican et Saint-Marin.",
           "sources": [
@@ -104,7 +104,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "legendary",
           "discovery": "Capitale de l'Italie, bâtie selon la tradition sur sept collines.",
           "fact": "La Cité du Vatican, plus petit État du monde, est enclavée dans Rome.",
           "sources": [
@@ -181,7 +181,7 @@
       "region": "Europe du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Pays qui occupe la majeure partie de la péninsule Ibérique.",
           "fact": "L'Espagne comprend aussi les archipels des Baléares et des Canaries.",
           "sources": [
@@ -189,7 +189,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Capitale de l'Espagne, située au centre de la péninsule Ibérique.",
           "fact": "Le roi Philippe II y installe la cour en 1561.",
           "sources": [
@@ -265,7 +265,7 @@
       "region": "Europe du Sud",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Pays du sud-est de l'Europe formé d'une partie continentale et de milliers d'îles.",
           "fact": "Le mont Olympe, son plus haut sommet, était considéré comme la demeure des dieux dans la mythologie grecque.",
           "sources": [
@@ -274,7 +274,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de la Grèce et l'une des plus anciennes villes d'Europe.",
           "fact": "Athènes a accueilli les premiers Jeux olympiques modernes en 1896.",
           "sources": [
@@ -350,7 +350,7 @@
       "region": "Europe de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Pays d'Europe centrale, le plus peuplé de l'Union européenne.",
           "fact": "L'Allemagne est un État fédéral composé de 16 Länder.",
           "sources": [
@@ -358,7 +358,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Capitale de l'Allemagne réunifiée depuis 1990.",
           "fact": "Le mur de Berlin a divisé la ville de 1961 à 1989.",
           "sources": [
@@ -434,7 +434,7 @@
       "region": "Europe du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays nordique qui s'étire le long de la côte occidentale de la péninsule scandinave.",
           "fact": "Au nord du cercle polaire, le soleil ne se couche pas pendant une partie de l'été.",
           "sources": [
@@ -442,7 +442,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale de la Norvège, au fond de l'Oslofjord.",
           "fact": "Le prix Nobel de la paix y est remis chaque année.",
           "sources": [
@@ -518,7 +518,7 @@
       "region": "Europe du Nord",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Île de l'Atlantique Nord située sur la dorsale médio-atlantique.",
           "fact": "L'activité volcanique et géothermique y est particulièrement intense.",
           "sources": [
@@ -526,7 +526,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale de l'Islande, sur la côte sud-ouest de l'île.",
           "fact": "C'est la capitale d'État souverain la plus septentrionale du monde.",
           "sources": [
@@ -588,7 +588,7 @@
       "region": "Asie de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Archipel d'Asie de l'Est formé de quatre îles principales et de milliers d'îles plus petites.",
           "fact": "Les quatre îles principales sont Honshū, Hokkaidō, Kyūshū et Shikoku.",
           "sources": [
@@ -596,7 +596,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Capitale du Japon, située sur l'île de Honshū.",
           "fact": "La ville s'appelait Edo avant d'être renommée Tokyo en 1868.",
           "sources": [
@@ -672,7 +672,7 @@
       "region": "Asie de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Pays d'Asie de l'Est parmi les plus vastes du monde.",
           "fact": "Le Yangzi Jiang est le plus long fleuve d'Asie.",
           "sources": [
@@ -680,7 +680,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Capitale de la Chine, dans le nord du pays.",
           "fact": "La Cité interdite fut le palais impérial des dynasties Ming et Qing.",
           "sources": [
@@ -757,7 +757,7 @@
       "region": "Asie du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Pays d'Asie du Sud qui occupe la majeure partie du sous-continent indien.",
           "fact": "La Constitution indienne reconnaît 22 langues dans sa huitième annexe.",
           "sources": [
@@ -765,7 +765,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "legendary",
           "discovery": "Capitale de l'Inde, intégrée au territoire de Delhi.",
           "fact": "New Delhi a été inaugurée comme capitale en 1931.",
           "sources": [
@@ -827,7 +827,7 @@
       "region": "Asie de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Asie de l'Est occupant la moitié sud de la péninsule coréenne.",
           "fact": "Environ 70 % de son territoire est montagneux.",
           "sources": [
@@ -835,7 +835,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de la Corée du Sud, traversée par le fleuve Han.",
           "fact": "Le palais Gyeongbokgung y a été construit en 1395.",
           "sources": [
@@ -911,7 +911,7 @@
       "region": "Asie du Sud-Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Asie du Sud-Est en forme de S, bordé par la mer de Chine méridionale.",
           "fact": "Le delta du Mékong, au sud, est une grande région rizicole.",
           "sources": [
@@ -919,7 +919,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale du Viêt Nam, sur le fleuve Rouge.",
           "fact": "Hanoï a célébré le millénaire de sa fondation en 2010.",
           "sources": [
@@ -981,7 +981,7 @@
       "region": "Asie du Sud-Est",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays d'Asie du Sud-Est traversé par le Mékong.",
           "fact": "Le Tonlé Sap est le plus grand lac d'eau douce d'Asie du Sud-Est.",
           "sources": [
@@ -989,7 +989,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Cambodge, au confluent du Mékong et du Tonlé Sap.",
           "fact": "Selon la tradition, son nom évoque une colline (« phnom ») et une femme appelée Penh.",
           "sources": [
@@ -1051,7 +1051,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays du Proche-Orient bordé par la mer Morte.",
           "fact": "Les rives de la mer Morte sont le point le plus bas des terres émergées.",
           "sources": [
@@ -1059,7 +1059,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Capitale de la Jordanie, bâtie à l'origine sur plusieurs collines.",
           "fact": "Dans l'Antiquité, la ville portait le nom de Philadelphie.",
           "sources": [
@@ -1121,7 +1121,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays situé à cheval entre l'Asie et l'Europe.",
           "fact": "Istanbul, sa plus grande ville, s'étend sur les deux rives du Bosphore.",
           "sources": [
@@ -1129,7 +1129,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale de la Turquie, au cœur de l'Anatolie.",
           "fact": "Ankara est devenue la capitale en 1923, à la place d'Istanbul.",
           "sources": [
@@ -1191,7 +1191,7 @@
       "region": "Afrique du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Pays d'Afrique du Nord-Est traversé par le Nil.",
           "fact": "La grande majorité de la population vit le long du Nil et dans son delta.",
           "sources": [
@@ -1199,7 +1199,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Capitale de l'Égypte, sur les rives du Nil.",
           "fact": "Le Caire historique est inscrit au patrimoine mondial depuis 1979.",
           "sources": [
@@ -1262,7 +1262,7 @@
       "region": "Afrique du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Afrique du Nord bordé par l'océan Atlantique et la mer Méditerranée.",
           "fact": "Les montagnes de l'Atlas traversent le pays.",
           "sources": [
@@ -1270,7 +1270,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale du Maroc, sur la côte atlantique.",
           "fact": "Rabat est inscrite au patrimoine mondial depuis 2012.",
           "sources": [
@@ -1332,7 +1332,7 @@
       "region": "Afrique de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Afrique de l'Ouest ouvert sur l'océan Atlantique.",
           "fact": "Le fleuve Sénégal marque une partie de sa frontière nord.",
           "sources": [
@@ -1340,7 +1340,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Capitale du Sénégal, sur la presqu'île du Cap-Vert.",
           "fact": "La pointe des Almadies, près de Dakar, est le point le plus occidental de l'Afrique continentale.",
           "sources": [
@@ -1402,7 +1402,7 @@
       "region": "Afrique de l'Est",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays de la Corne de l'Afrique dominé par de hauts plateaux.",
           "fact": "L'Éthiopie utilise son propre calendrier, qui compte treize mois.",
           "sources": [
@@ -1410,7 +1410,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Capitale de l'Éthiopie et l'une des capitales les plus élevées du monde.",
           "fact": "La ville accueille le siège de l'Union africaine.",
           "sources": [
@@ -1472,7 +1472,7 @@
       "region": "Afrique de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Afrique de l'Est bordé par l'océan Indien.",
           "fact": "L'archipel de Zanzibar fait partie de la Tanzanie.",
           "sources": [
@@ -1556,7 +1556,7 @@
       "region": "Afrique australe",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays situé à la pointe sud du continent africain.",
           "fact": "Le pays reconnaît douze langues officielles, dont la langue des signes sud-africaine depuis 2023.",
           "sources": [
@@ -1564,7 +1564,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Siège du gouvernement de l'Afrique du Sud.",
           "fact": "Le pays compte trois capitales : Pretoria (exécutif), Le Cap (législatif) et Bloemfontein (judiciaire).",
           "sources": [
@@ -1627,7 +1627,7 @@
       "region": "Amérique septentrionale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Deuxième plus grand pays du monde par la superficie.",
           "fact": "Le Canada possède le plus long littoral du monde.",
           "sources": [
@@ -1635,7 +1635,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale du Canada, en Ontario, à la frontière du Québec.",
           "fact": "Le canal Rideau, qui traverse la ville, est inscrit au patrimoine mondial depuis 2007.",
           "sources": [
@@ -1697,7 +1697,7 @@
       "region": "Amérique septentrionale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Pays d'Amérique du Nord composé de 50 États.",
           "fact": "L'Alaska et Hawaï ne sont pas contigus aux 48 autres États.",
           "sources": [
@@ -1705,7 +1705,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Capitale fédérale des États-Unis, dans le district de Columbia.",
           "fact": "La ville porte le nom de George Washington, premier président du pays.",
           "sources": [
@@ -1782,7 +1782,7 @@
       "region": "Amérique centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays bordé par l'océan Pacifique et le golfe du Mexique.",
           "fact": "Le Mexique est le pays hispanophone le plus peuplé du monde.",
           "sources": [
@@ -1790,7 +1790,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Capitale du Mexique, bâtie sur le site de l'ancienne Tenochtitlan aztèque.",
           "fact": "La ville se situe à plus de 2 200 mètres d'altitude.",
           "sources": [
@@ -1866,7 +1866,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Le plus grand pays d'Amérique du Sud.",
           "fact": "Le portugais y est la langue officielle.",
           "sources": [
@@ -1874,7 +1874,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Brésil depuis 1960, construite spécialement pour ce rôle.",
           "fact": "Son plan, conçu par Lúcio Costa, évoque la silhouette d'un avion ou d'un oiseau.",
           "sources": [
@@ -1950,7 +1950,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Amérique du Sud qui s'étend des Andes à l'océan Atlantique.",
           "fact": "L'Aconcagua, plus haut sommet des Amériques, se trouve en Argentine.",
           "sources": [
@@ -1958,7 +1958,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de l'Argentine, sur le Río de la Plata.",
           "fact": "Ses habitants sont appelés les « porteños ».",
           "sources": [
@@ -2020,7 +2020,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Amérique du Sud traversé par la cordillère des Andes.",
           "fact": "Le lac Titicaca est partagé avec la Bolivie.",
           "sources": [
@@ -2028,7 +2028,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale du Pérou, sur la côte pacifique.",
           "fact": "Lima a été fondée en 1535 par le conquistador Francisco Pizarro.",
           "sources": [
@@ -2104,7 +2104,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Pays long et étroit entre la cordillère des Andes et l'océan Pacifique.",
           "fact": "Le désert d'Atacama, au nord, est l'un des plus arides du monde.",
           "sources": [
@@ -2112,7 +2112,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale du Chili, au pied de la cordillère des Andes.",
           "fact": "Elle a été fondée en 1541 par Pedro de Valdivia.",
           "sources": [
@@ -2174,7 +2174,7 @@
       "region": "Australie et Nouvelle-Zélande",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Vaste pays de l'hémisphère Sud, entre l'océan Indien et l'océan Pacifique.",
           "fact": "L'Australie est une fédération de six États et de plusieurs territoires.",
           "sources": [
@@ -2182,7 +2182,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de l'Australie, ville entièrement planifiée.",
           "fact": "Son emplacement a été choisi comme compromis entre Sydney et Melbourne.",
           "sources": [
@@ -2258,7 +2258,7 @@
       "region": "Australie et Nouvelle-Zélande",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Pays insulaire du Pacifique Sud composé de deux îles principales.",
           "fact": "En langue māori, le pays est appelé Aotearoa.",
           "sources": [
@@ -2266,7 +2266,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Capitale de la Nouvelle-Zélande, à la pointe sud de l'île du Nord.",
           "fact": "C'est la capitale d'État souverain la plus australe du monde.",
           "sources": [
@@ -2420,7 +2420,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale de l'Andorre, dans une vallée des Pyrénées.",
           "fact": "Située à plus de 1 000 mètres, c'est la plus haute capitale d'Europe.",
           "sources": [
@@ -2466,7 +2466,7 @@
       "region": "Europe centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays alpin enclavé d'Europe centrale traversé par le Danube.",
           "fact": "Les Alpes couvrent une grande partie de son territoire.",
           "sources": [
@@ -2474,7 +2474,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de l'Autriche, sur les rives du Danube.",
           "fact": "La culture des cafés viennois est réputée depuis des siècles.",
           "sources": [
@@ -2536,7 +2536,7 @@
       "region": "Europe de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Europe de l'Ouest ouvert sur la mer du Nord.",
           "fact": "Il a trois langues officielles : le néerlandais, le français et l'allemand.",
           "sources": [
@@ -2544,7 +2544,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de la Belgique, siège de plusieurs institutions de l'Union européenne.",
           "fact": "Le siège de l'OTAN s'y trouve également.",
           "sources": [
@@ -2714,7 +2714,7 @@
       "region": "Europe de l'Est",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays des Balkans ouvert sur la mer Noire.",
           "fact": "La vallée des Roses produit une grande part de l'huile de rose utilisée en parfumerie.",
           "sources": [
@@ -2722,7 +2722,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Bulgarie, au pied du mont Vitocha.",
           "fact": "La cathédrale Alexandre-Nevski, aux coupoles dorées, domine son centre.",
           "sources": [
@@ -2768,7 +2768,7 @@
       "region": "Europe du Sud",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Île de la Méditerranée orientale, au sud de la Turquie.",
           "fact": "Membre de l'Union européenne depuis 2004, l'île est divisée depuis 1974.",
           "sources": [
@@ -2776,7 +2776,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de Chypre, au centre de l'île.",
           "fact": "Elle est traversée par la ligne de démarcation qui divise l'île.",
           "sources": [
@@ -2822,7 +2822,7 @@
       "region": "Europe du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Europe du Sud au long littoral sur la mer Adriatique.",
           "fact": "Sa côte compte plus de 1 000 îles et îlots.",
           "sources": [
@@ -2830,7 +2830,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale de la Croatie, entre le mont Medvednica et la Save.",
           "fact": "Elle se divise en une ville haute historique et une ville basse.",
           "sources": [
@@ -2892,7 +2892,7 @@
       "region": "Europe du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays scandinave formé de la péninsule du Jutland et de nombreuses îles.",
           "fact": "Le jouet Lego a été créé au Danemark.",
           "sources": [
@@ -2900,7 +2900,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale du Danemark, sur l'île de Seeland.",
           "fact": "La statue de la Petite Sirène y rend hommage au conte d'Andersen.",
           "sources": [
@@ -2946,7 +2946,7 @@
       "region": "Europe du Nord",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays balte bordé par la mer Baltique et le golfe de Finlande.",
           "fact": "Le pays est réputé pour ses services publics numériques, dont le vote en ligne.",
           "sources": [
@@ -2954,7 +2954,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de l'Estonie, ancien port de la Ligue hanséatique.",
           "fact": "Sa vieille ville médiévale est inscrite au patrimoine mondial de l'UNESCO.",
           "sources": [
@@ -3000,7 +3000,7 @@
       "region": "Europe du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays nordique aux nombreuses forêts et lacs, au nord de la mer Baltique.",
           "fact": "Elle est souvent surnommée « le pays des mille lacs ».",
           "sources": [
@@ -3008,7 +3008,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale de la Finlande, sur le golfe de Finlande.",
           "fact": "La forteresse maritime de Suomenlinna occupe des îles face au port.",
           "sources": [
@@ -3070,7 +3070,7 @@
       "region": "Europe centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays enclavé d'Europe centrale traversé par le Danube.",
           "fact": "Le lac Balaton est le plus grand lac d'Europe centrale.",
           "sources": [
@@ -3078,7 +3078,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de la Hongrie, née en 1873 de la réunion de Buda, Óbuda et Pest.",
           "fact": "Le Parlement néogothique borde le Danube.",
           "sources": [
@@ -3124,7 +3124,7 @@
       "region": "Europe du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays qui occupe la majeure partie de l'île d'Irlande, à l'ouest de la Grande-Bretagne.",
           "fact": "Ses paysages verdoyants lui valent le surnom d'« île d'émeraude ».",
           "sources": [
@@ -3132,7 +3132,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de l'Irlande, à l'embouchure de la Liffey.",
           "fact": "Le Trinity College conserve le Livre de Kells, manuscrit enluminé médiéval.",
           "sources": [
@@ -3194,7 +3194,7 @@
       "region": "Europe du Nord",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays balte ouvert sur la mer Baltique et le golfe de Riga.",
           "fact": "Les forêts couvrent une grande partie de son territoire.",
           "sources": [
@@ -3202,7 +3202,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Lettonie, à l'embouchure de la Daugava.",
           "fact": "C'est la plus grande ville des pays baltes.",
           "sources": [
@@ -3256,7 +3256,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale du Liechtenstein, au bord du Rhin.",
           "fact": "C'est l'une des plus petites capitales d'Europe.",
           "sources": [
@@ -3302,7 +3302,7 @@
       "region": "Europe du Nord",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Le plus méridional des pays baltes, ouvert sur la mer Baltique.",
           "fact": "En 1990, elle a été la première république soviétique à proclamer son indépendance.",
           "sources": [
@@ -3310,7 +3310,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Lituanie, au confluent de la Neris et de la Vilnia.",
           "fact": "Sa vieille ville baroque est inscrite au patrimoine mondial de l'UNESCO.",
           "sources": [
@@ -3356,7 +3356,7 @@
       "region": "Europe de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Petit pays enclavé entre la Belgique, la France et l'Allemagne.",
           "fact": "C'est le seul grand-duché souverain du monde.",
           "sources": [
@@ -3364,7 +3364,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Luxembourg, qui porte le même nom que le pays.",
           "fact": "Elle accueille la Cour de justice de l'Union européenne.",
           "sources": [
@@ -3464,7 +3464,7 @@
       "region": "Europe du Sud",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Archipel de la Méditerranée au sud de la Sicile.",
           "fact": "Le maltais est la seule langue sémitique officielle de l'Union européenne.",
           "sources": [
@@ -3526,7 +3526,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale de la Moldavie, au centre du pays.",
           "fact": "La ville compte de nombreux parcs et espaces verts.",
           "sources": [
@@ -3572,7 +3572,7 @@
       "region": "Europe de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "epic",
           "discovery": "Cité-État de la Côte d'Azur, enclavée dans le territoire français.",
           "fact": "C'est le deuxième plus petit État du monde après le Vatican.",
           "sources": [
@@ -3580,7 +3580,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "epic",
           "discovery": "Capitale de la principauté de Monaco.",
           "fact": "La vieille ville est perchée sur le Rocher, au-dessus du port.",
           "sources": [
@@ -3634,7 +3634,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale du Monténégro, au confluent de plusieurs rivières.",
           "fact": "Elle s'est appelée Titograd pendant la période yougoslave.",
           "sources": [
@@ -3680,7 +3680,7 @@
       "region": "Europe de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Europe de l'Ouest ouvert sur la mer du Nord, protégé par des digues.",
           "fact": "Une partie importante de son territoire se trouve sous le niveau de la mer.",
           "sources": [
@@ -3688,7 +3688,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale des Pays-Bas, ville de canaux.",
           "fact": "Le gouvernement et le Parlement siègent à La Haye.",
           "sources": [
@@ -3750,7 +3750,7 @@
       "region": "Europe centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Europe centrale ouvert sur la mer Baltique.",
           "fact": "Nicolas Copernic et Marie Curie y sont nés.",
           "sources": [
@@ -3758,7 +3758,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de la Pologne, sur la Vistule.",
           "fact": "Sa vieille ville, détruite en 1944, a été reconstruite après la guerre.",
           "sources": [
@@ -3834,7 +3834,7 @@
       "region": "Europe du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays de l'ouest de la péninsule Ibérique, ouvert sur l'océan Atlantique.",
           "fact": "Le cap da Roca est le point le plus occidental de l'Europe continentale.",
           "sources": [
@@ -3842,7 +3842,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale du Portugal, à l'embouchure du Tage.",
           "fact": "Elle a été en grande partie détruite par le séisme de 1755.",
           "sources": [
@@ -3904,7 +3904,7 @@
       "region": "Europe de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Europe de l'Est traversé par l'arc des Carpates.",
           "fact": "Le Danube se jette dans la mer Noire en formant un vaste delta sur son territoire.",
           "sources": [
@@ -3912,7 +3912,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Roumanie, sur la Dâmbovița.",
           "fact": "Le palais du Parlement est l'un des plus grands bâtiments administratifs du monde.",
           "sources": [
@@ -3974,7 +3974,7 @@
       "region": "Europe du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "État insulaire formé de l'Angleterre, de l'Écosse, du pays de Galles et de l'Irlande du Nord.",
           "fact": "Il est séparé de la France par la Manche.",
           "sources": [
@@ -3982,7 +3982,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Capitale du Royaume-Uni, sur la Tamise.",
           "fact": "Le méridien de Greenwich, référence des longitudes, passe par la ville.",
           "sources": [
@@ -4058,7 +4058,7 @@
       "region": "Europe de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Plus grand pays du monde, qui s'étend de l'Europe de l'Est au Pacifique.",
           "fact": "Son territoire couvre onze fuseaux horaires.",
           "sources": [
@@ -4066,7 +4066,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "legendary",
           "discovery": "Capitale de la Russie, sur la Moskova.",
           "fact": "Le Kremlin et la place Rouge sont inscrits au patrimoine mondial de l'UNESCO.",
           "sources": [
@@ -4150,7 +4150,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale de Saint-Marin, perchée sur le mont Titano.",
           "fact": "Elle porte le même nom que le pays.",
           "sources": [
@@ -4196,7 +4196,7 @@
       "region": "Europe du Sud",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays enclavé des Balkans traversé par le Danube.",
           "fact": "Le serbe s'y écrit à la fois en alphabet cyrillique et en alphabet latin.",
           "sources": [
@@ -4204,7 +4204,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Serbie, au confluent de la Save et du Danube.",
           "fact": "La forteresse de Kalemegdan domine le confluent.",
           "sources": [
@@ -4250,7 +4250,7 @@
       "region": "Europe centrale",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays enclavé d'Europe centrale, dominé au nord par les Hautes Tatras.",
           "fact": "Elle est indépendante depuis la partition de la Tchécoslovaquie en 1993.",
           "sources": [
@@ -4258,7 +4258,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Slovaquie, sur le Danube.",
           "fact": "Elle est frontalière à la fois de l'Autriche et de la Hongrie.",
           "sources": [
@@ -4304,7 +4304,7 @@
       "region": "Europe centrale",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays d'Europe centrale entre les Alpes et la mer Adriatique.",
           "fact": "Son littoral ne mesure qu'une cinquantaine de kilomètres.",
           "sources": [
@@ -4312,7 +4312,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Slovénie, sur la Ljubljanica.",
           "fact": "Le dragon est l'emblème de la ville.",
           "sources": [
@@ -4374,7 +4374,7 @@
       "region": "Europe centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays alpin enclavé d'Europe centrale.",
           "fact": "Elle compte quatre langues nationales : l'allemand, le français, l'italien et le romanche.",
           "sources": [
@@ -4382,7 +4382,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "« Ville fédérale » de la Suisse, siège du gouvernement et du Parlement.",
           "fact": "Sa vieille ville est inscrite au patrimoine mondial de l'UNESCO.",
           "sources": [
@@ -4444,7 +4444,7 @@
       "region": "Europe du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays scandinave entre la Norvège et la mer Baltique.",
           "fact": "Les prix Nobel portent le nom de l'inventeur suédois Alfred Nobel.",
           "sources": [
@@ -4452,7 +4452,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de la Suède, bâtie sur un ensemble d'îles.",
           "fact": "La cérémonie de remise de la plupart des prix Nobel s'y tient chaque année.",
           "sources": [
@@ -4514,7 +4514,7 @@
       "region": "Europe centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays enclavé d'Europe centrale, aussi appelé République tchèque.",
           "fact": "Il est formé des régions historiques de Bohême, de Moravie et d'une partie de la Silésie.",
           "sources": [
@@ -4522,7 +4522,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de la Tchéquie, sur la Vltava.",
           "fact": "Son centre historique est inscrit au patrimoine mondial de l'UNESCO.",
           "sources": [
@@ -4584,7 +4584,7 @@
       "region": "Europe de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Plus grand pays entièrement situé en Europe, ouvert sur la mer Noire.",
           "fact": "Ses terres noires très fertiles en font un grand producteur de céréales.",
           "sources": [
@@ -4592,7 +4592,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de l'Ukraine, sur le Dniepr, aussi écrite Kiev.",
           "fact": "Elle était au Moyen Âge le centre de la Rus' de Kiev.",
           "sources": [
@@ -4654,7 +4654,7 @@
       "region": "Europe du Sud",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "epic",
           "discovery": "Plus petit État du monde, enclavé dans la ville de Rome.",
           "fact": "Il est dirigé par le pape, chef de l'Église catholique.",
           "sources": [
@@ -4662,7 +4662,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "epic",
           "discovery": "La Cité du Vatican est à la fois l'État et sa capitale.",
           "fact": "Son territoire mesure moins d'un demi-kilomètre carré.",
           "sources": [
@@ -4724,7 +4724,7 @@
       "region": "Asie du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays montagneux et enclavé d'Asie, traversé par la chaîne de l'Hindou Kouch.",
           "fact": "Il se trouvait sur plusieurs routes commerciales reliant l'Asie centrale, l'Iran et le sous-continent indien.",
           "sources": [
@@ -4732,7 +4732,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de l'Afghanistan, dans une vallée à environ 1 800 mètres d'altitude.",
           "fact": "Le jardin de Babur y abrite la tombe du fondateur de l'Empire moghol.",
           "sources": [
@@ -4778,7 +4778,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays qui occupe la majeure partie de la péninsule Arabique.",
           "fact": "Il abrite La Mecque et Médine, les deux villes les plus saintes de l'islam.",
           "sources": [
@@ -4786,7 +4786,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale de l'Arabie saoudite, au centre de la péninsule Arabique.",
           "fact": "Le quartier d'At-Turaif, à Diriyah, berceau de la dynastie saoudienne, se trouve en périphérie.",
           "sources": [
@@ -4832,7 +4832,7 @@
       "region": "Caucase",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays montagneux et enclavé du Caucase du Sud.",
           "fact": "Selon la tradition, l'Arménie est le premier État à avoir adopté le christianisme comme religion officielle, vers 301.",
           "sources": [
@@ -4840,7 +4840,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de l'Arménie, l'une des plus anciennes villes habitées du monde.",
           "fact": "Par temps clair, on y voit le mont Ararat, situé en Turquie.",
           "sources": [
@@ -4886,7 +4886,7 @@
       "region": "Caucase",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays du Caucase du Sud bordé par la mer Caspienne.",
           "fact": "Il est surnommé « le pays du feu » en raison de ses émanations naturelles de gaz enflammé.",
           "sources": [
@@ -4894,7 +4894,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de l'Azerbaïdjan, port sur la mer Caspienne.",
           "fact": "C'est la capitale nationale située à la plus basse altitude du monde, sous le niveau de la mer.",
           "sources": [
@@ -4994,7 +4994,7 @@
       "region": "Asie du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Asie du Sud situé sur le delta du Gange et du Brahmapoutre.",
           "fact": "C'est l'un des pays les plus densément peuplés du monde.",
           "sources": [
@@ -5002,7 +5002,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Bangladesh, sur la rivière Buriganga.",
           "fact": "Les cyclo-pousses y sont si nombreux qu'ils sont devenus un symbole de la ville.",
           "sources": [
@@ -5048,7 +5048,7 @@
       "region": "Asie du Sud",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Royaume enclavé de l'Himalaya, entre la Chine et l'Inde.",
           "fact": "Le pays mesure son développement à l'aide d'un indice de « bonheur national brut ».",
           "sources": [
@@ -5056,7 +5056,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale du Bhoutan, dans une vallée himalayenne.",
           "fact": "La ville n'a pas de feux de circulation : un agent règle le trafic au carrefour principal.",
           "sources": [
@@ -5102,7 +5102,7 @@
       "region": "Asie du Sud-Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Asie du Sud-Est ouvert sur le golfe du Bengale et la mer d'Andaman, aussi appelé Myanmar.",
           "fact": "Le fleuve Irrawaddy le traverse du nord au sud.",
           "sources": [
@@ -5110,7 +5110,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale de la Birmanie depuis 2005-2006, construite au centre du pays.",
           "fact": "Elle a succédé à Rangoun, qui reste la plus grande ville du pays.",
           "sources": [
@@ -5156,7 +5156,7 @@
       "region": "Asie du Sud-Est",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Petit sultanat situé sur la côte nord de l'île de Bornéo.",
           "fact": "Son territoire est divisé en deux parties séparées par la Malaisie.",
           "sources": [
@@ -5164,7 +5164,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale du Brunei, au bord de la rivière Brunei.",
           "fact": "Le village sur pilotis de Kampong Ayer s'étend sur l'eau face à la ville.",
           "sources": [
@@ -5210,7 +5210,7 @@
       "region": "Asie de l'Est",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays qui occupe la moitié nord de la péninsule coréenne.",
           "fact": "Il est séparé de la Corée du Sud par une zone démilitarisée.",
           "sources": [
@@ -5218,7 +5218,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Corée du Nord, sur le fleuve Taedong.",
           "fact": "C'est la plus grande ville du pays.",
           "sources": [
@@ -5264,7 +5264,7 @@
       "region": "Caucase",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays du Caucase du Sud bordé par la mer Noire.",
           "fact": "La vinification en jarres d'argile, les qvevris, y est pratiquée depuis des millénaires.",
           "sources": [
@@ -5272,7 +5272,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Géorgie, sur les rives du fleuve Koura.",
           "fact": "Son nom évoque les sources chaudes de la ville.",
           "sources": [
@@ -5334,7 +5334,7 @@
       "region": "Asie du Sud-Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Plus grand archipel du monde, formé de plus de 17 000 îles entre l'Asie et l'Océanie.",
           "fact": "C'est le pays qui compte la plus grande population musulmane du monde.",
           "sources": [
@@ -5342,7 +5342,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de l'Indonésie, sur la côte nord-ouest de Java.",
           "fact": "Un projet prévoit le transfert de la capitale vers Nusantara, sur l'île de Bornéo.",
           "sources": [
@@ -5404,7 +5404,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Asie de l'Ouest traversé par le Tigre et l'Euphrate.",
           "fact": "La Mésopotamie antique, berceau de l'écriture cunéiforme, couvrait une grande partie de son territoire.",
           "sources": [
@@ -5412,7 +5412,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de l'Irak, sur les rives du Tigre.",
           "fact": "Elle a été fondée en 762 par le calife abbasside al-Mansur.",
           "sources": [
@@ -5458,7 +5458,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Asie de l'Ouest entre la mer Caspienne et le golfe Persique.",
           "fact": "Le pays a longtemps été appelé Perse en Occident.",
           "sources": [
@@ -5466,7 +5466,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale de l'Iran, au pied des monts Elbourz.",
           "fact": "C'est la plus grande ville du pays.",
           "sources": [
@@ -5528,7 +5528,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Asie de l'Ouest situé sur la côte orientale de la Méditerranée.",
           "fact": "L'hébreu y a été revitalisé comme langue parlée moderne.",
           "sources": [
@@ -5536,7 +5536,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Ville proclamée capitale par Israël, dont le statut est contesté au niveau international.",
           "fact": "Sa vieille ville abrite des lieux saints du judaïsme, du christianisme et de l'islam.",
           "sources": [
@@ -5582,7 +5582,7 @@
       "region": "Asie centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Asie centrale aux immenses steppes, entre la mer Caspienne et la Chine.",
           "fact": "C'est le plus grand pays enclavé du monde.",
           "sources": [
@@ -5590,7 +5590,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Kazakhstan depuis 1997, sur la rivière Ichim.",
           "fact": "La ville a changé plusieurs fois de nom ; elle s'appelle de nouveau Astana depuis 2022.",
           "sources": [
@@ -5636,7 +5636,7 @@
       "region": "Asie centrale",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Pays montagneux d'Asie centrale dominé par le Tian Shan.",
           "fact": "Les montagnes couvrent la majeure partie de son territoire.",
           "sources": [
@@ -5644,7 +5644,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale du Kirghizistan, au pied des monts Kirghizes.",
           "fact": "La ville s'est appelée Frounzé pendant la période soviétique.",
           "sources": [
@@ -5690,7 +5690,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Petit pays situé au fond du golfe Persique, entre l'Irak et l'Arabie saoudite.",
           "fact": "Il possède d'importantes réserves de pétrole.",
           "sources": [
@@ -5698,7 +5698,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Koweït, qui porte le même nom que le pays.",
           "fact": "Elle s'étend autour de la baie de Koweït.",
           "sources": [
@@ -5744,7 +5744,7 @@
       "region": "Asie du Sud-Est",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Seul pays enclavé d'Asie du Sud-Est, traversé par le Mékong.",
           "fact": "Il est parfois surnommé « le pays du million d'éléphants », d'après le nom d'un ancien royaume.",
           "sources": [
@@ -5798,7 +5798,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays montagneux de la côte orientale de la Méditerranée.",
           "fact": "Un cèdre figure au centre de son drapeau.",
           "sources": [
@@ -5806,7 +5806,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Liban, port sur la Méditerranée.",
           "fact": "La ville a été reconstruite à plusieurs reprises au cours de son histoire.",
           "sources": [
@@ -5852,7 +5852,7 @@
       "region": "Asie du Sud-Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Asie du Sud-Est réparti entre la péninsule Malaise et le nord de Bornéo.",
           "fact": "La mer de Chine méridionale sépare ses deux parties.",
           "sources": [
@@ -5860,7 +5860,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale de la Malaisie, au confluent de deux rivières.",
           "fact": "Une grande partie des services du gouvernement a été transférée à Putrajaya.",
           "sources": [
@@ -5906,7 +5906,7 @@
       "region": "Asie du Sud",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Archipel de l'océan Indien formé d'atolls coralliens, au sud-ouest de l'Inde.",
           "fact": "C'est le pays le plus bas du monde : la plupart des îles s'élèvent à peine au-dessus de la mer.",
           "sources": [
@@ -5960,7 +5960,7 @@
       "region": "Asie de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Vaste pays enclavé d'Asie, entre la Russie et la Chine, aux steppes et déserts étendus.",
           "fact": "Gengis Khan y a fondé l'Empire mongol au XIIIe siècle.",
           "sources": [
@@ -5968,7 +5968,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Mongolie, dans la vallée de la rivière Tuul.",
           "fact": "Elle est souvent citée comme la capitale nationale la plus froide du monde.",
           "sources": [
@@ -6014,7 +6014,7 @@
       "region": "Asie du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays enclavé de l'Himalaya, entre la Chine et l'Inde.",
           "fact": "Son drapeau est le seul drapeau national qui ne soit pas rectangulaire.",
           "sources": [
@@ -6022,7 +6022,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale du Népal, dans une vallée himalayenne.",
           "fact": "La vallée de Katmandou est inscrite au patrimoine mondial de l'UNESCO.",
           "sources": [
@@ -6068,7 +6068,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Sultanat de l'extrémité sud-est de la péninsule Arabique.",
           "fact": "Son exclave de Musandam borde le détroit d'Ormuz.",
           "sources": [
@@ -6076,7 +6076,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale d'Oman, port sur le golfe d'Oman entouré de montagnes.",
           "fact": "Deux forts portugais du XVIe siècle surplombent son vieux port.",
           "sources": [
@@ -6122,7 +6122,7 @@
       "region": "Asie centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Asie centrale traversé par d'anciennes routes de la soie.",
           "fact": "C'est l'un des deux seuls pays doublement enclavés du monde, avec le Liechtenstein.",
           "sources": [
@@ -6130,7 +6130,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de l'Ouzbékistan et plus grande ville d'Asie centrale.",
           "fact": "La ville a été largement reconstruite après le séisme de 1966.",
           "sources": [
@@ -6192,7 +6192,7 @@
       "region": "Asie du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Asie du Sud traversé par l'Indus, de l'Himalaya à la mer d'Arabie.",
           "fact": "Il compte plusieurs des plus hauts sommets du monde, dont le K2.",
           "sources": [
@@ -6200,7 +6200,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Pakistan, construite à partir des années 1960.",
           "fact": "Elle a remplacé Karachi comme capitale.",
           "sources": [
@@ -6262,7 +6262,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Territoires de la Cisjordanie et de la bande de Gaza, dont le statut d'État fait l'objet de débats internationaux.",
           "fact": "La Palestine est un État observateur non membre de l'ONU depuis 2012.",
           "sources": [
@@ -6270,7 +6270,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Siège administratif de l'Autorité palestinienne, en Cisjordanie.",
           "fact": "Les Palestiniens revendiquent Jérusalem-Est comme capitale.",
           "sources": [
@@ -6316,7 +6316,7 @@
       "region": "Asie du Sud-Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Archipel du Pacifique occidental formé de plus de 7 000 îles.",
           "fact": "Le pays doit son nom au roi Philippe II d'Espagne.",
           "sources": [
@@ -6324,7 +6324,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale des Philippines, sur la baie de Manille, sur l'île de Luçon.",
           "fact": "Son quartier fortifié d'Intramuros date de l'époque espagnole.",
           "sources": [
@@ -6370,7 +6370,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Péninsule qui s'avance dans le golfe Persique.",
           "fact": "Le pays a accueilli la Coupe du monde de football en 2022.",
           "sources": [
@@ -6378,7 +6378,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Qatar, sur la côte est de la péninsule.",
           "fact": "Son musée d'Art islamique est installé dans un bâtiment conçu par l'architecte I. M. Pei.",
           "sources": [
@@ -6424,7 +6424,7 @@
       "region": "Asie du Sud-Est",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Cité-État insulaire à l'extrémité sud de la péninsule Malaise.",
           "fact": "Le pays compte quatre langues officielles : l'anglais, le malais, le mandarin et le tamoul.",
           "sources": [
@@ -6432,7 +6432,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale de la cité-État de Singapour.",
           "fact": "Son port compte parmi les plus actifs du monde.",
           "sources": [
@@ -6478,7 +6478,7 @@
       "region": "Asie du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Île de l'océan Indien au sud-est de l'Inde, autrefois appelée Ceylan.",
           "fact": "Le pays est l'un des grands producteurs de thé du monde.",
           "sources": [
@@ -6486,7 +6486,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale officielle du Sri Lanka, dans la banlieue de Colombo.",
           "fact": "Le Parlement y siège, tandis que Colombo reste la capitale commerciale.",
           "sources": [
@@ -6532,7 +6532,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Asie de l'Ouest ouvert sur la Méditerranée.",
           "fact": "Le pays a été le théâtre d'une guerre à partir de 2011.",
           "sources": [
@@ -6540,7 +6540,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Syrie, au pied du mont Qassioun.",
           "fact": "Elle est souvent citée parmi les plus anciennes villes habitées en continu du monde.",
           "sources": [
@@ -6586,7 +6586,7 @@
       "region": "Asie centrale",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Pays montagneux d'Asie centrale dominé par le Pamir.",
           "fact": "Les montagnes couvrent plus de 90 % de son territoire.",
           "sources": [
@@ -6594,7 +6594,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale du Tadjikistan, au bord de la rivière Varzob.",
           "fact": "Son nom signifie « lundi » en tadjik, jour d'un marché qui s'y tenait.",
           "sources": [
@@ -6640,7 +6640,7 @@
       "region": "Asie du Sud-Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Asie du Sud-Est autrefois appelé Siam.",
           "fact": "C'est le seul pays d'Asie du Sud-Est à n'avoir jamais été colonisé par une puissance européenne.",
           "sources": [
@@ -6648,7 +6648,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de la Thaïlande, sur le fleuve Chao Phraya.",
           "fact": "Son nom officiel en thaï compte parmi les plus longs noms de ville du monde.",
           "sources": [
@@ -6710,7 +6710,7 @@
       "region": "Asie du Sud-Est",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Pays qui occupe la moitié orientale de l'île de Timor, aussi appelé Timor-Leste.",
           "fact": "Il est devenu indépendant en 2002.",
           "sources": [
@@ -6718,7 +6718,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale du Timor oriental, sur la côte nord de l'île.",
           "fact": "Une grande statue du Christ domine la ville depuis un cap.",
           "sources": [
@@ -6764,7 +6764,7 @@
       "region": "Asie centrale",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Pays d'Asie centrale bordé par la mer Caspienne et largement occupé par le désert du Karakoum.",
           "fact": "Il possède d'importantes réserves de gaz naturel.",
           "sources": [
@@ -6772,7 +6772,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale du Turkménistan, au pied des monts Kopet-Dag.",
           "fact": "Elle est connue pour ses nombreux bâtiments revêtus de marbre blanc.",
           "sources": [
@@ -6818,7 +6818,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Pays de l'extrémité sud-ouest de la péninsule Arabique.",
           "fact": "Il borde le détroit de Bab-el-Mandeb, entre la mer Rouge et le golfe d'Aden.",
           "sources": [
@@ -6888,7 +6888,7 @@
       "region": "Asie de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Fédération de sept émirats sur la côte du golfe Persique.",
           "fact": "La fédération a été fondée en 1971.",
           "sources": [
@@ -6896,7 +6896,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale des Émirats arabes unis, sur une île du golfe Persique.",
           "fact": "Elle abrite la grande mosquée Cheikh Zayed, aux nombreuses coupoles blanches.",
           "sources": [
@@ -6942,7 +6942,7 @@
       "region": "Afrique du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays du Maghreb bordé par la Méditerranée, dont le territoire est en grande partie occupé par le Sahara.",
           "fact": "C'est le plus grand pays d'Afrique par la superficie depuis la partition du Soudan en 2011.",
           "sources": [
@@ -6950,7 +6950,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Capitale de l'Algérie, port sur la Méditerranée.",
           "fact": "Ses immeubles blancs étagés face à la baie lui valent le surnom d'« Alger la Blanche ».",
           "sources": [
@@ -7012,7 +7012,7 @@
       "region": "Afrique centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Afrique australe et centrale ouvert sur l'océan Atlantique.",
           "fact": "Ancienne colonie portugaise, il est devenu indépendant en 1975 ; le portugais y est la langue officielle.",
           "sources": [
@@ -7020,7 +7020,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale de l'Angola, port sur l'océan Atlantique.",
           "fact": "Fondée par les Portugais au XVIe siècle, c'est l'une des plus anciennes villes coloniales européennes d'Afrique subsaharienne.",
           "sources": [
@@ -7066,7 +7066,7 @@
       "region": "Afrique australe",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Pays enclavé d'Afrique australe, en grande partie couvert par le désert du Kalahari.",
           "fact": "Indépendant depuis 1966, il est devenu l'un des principaux producteurs mondiaux de diamants.",
           "sources": [
@@ -7182,7 +7182,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale politique du Burundi, au centre du pays.",
           "fact": "Elle a remplacé Bujumbura comme capitale politique en 2019 ; Bujumbura reste la capitale économique.",
           "sources": [
@@ -7236,7 +7236,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale officielle du Bénin, au bord d'une lagune proche du golfe de Guinée.",
           "fact": "Le siège du gouvernement et la plupart des institutions se trouvent à Cotonou, la principale ville du pays.",
           "sources": [
@@ -7282,7 +7282,7 @@
       "region": "Afrique centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Afrique centrale ouvert sur le golfe de Guinée, aux paysages très variés.",
           "fact": "Le français et l'anglais y sont les deux langues officielles.",
           "sources": [
@@ -7290,7 +7290,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale du Cameroun, bâtie sur plusieurs collines.",
           "fact": "Douala, principal port du pays, en est la capitale économique.",
           "sources": [
@@ -7336,7 +7336,7 @@
       "region": "Afrique de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Archipel volcanique de l'Atlantique, au large du Sénégal.",
           "fact": "Inhabitées avant l'arrivée des Portugais au XVe siècle, les îles sont indépendantes depuis 1975.",
           "sources": [
@@ -7344,7 +7344,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale du Cap-Vert, sur l'île de Santiago.",
           "fact": "Son centre historique est installé sur un plateau dominant la mer, appelé le Plateau.",
           "sources": [
@@ -7406,7 +7406,7 @@
       "region": "Afrique de l'Est",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Archipel volcanique de l'océan Indien, dans le canal du Mozambique.",
           "fact": "L'arabe, le français et le comorien y sont les trois langues officielles.",
           "sources": [
@@ -7414,7 +7414,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale des Comores, sur l'île de Grande Comore.",
           "fact": "La ville est dominée par le Karthala, un volcan actif.",
           "sources": [
@@ -7460,7 +7460,7 @@
       "region": "Afrique de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Afrique de l'Ouest ouvert sur le golfe de Guinée.",
           "fact": "C'est le premier producteur mondial de cacao.",
           "sources": [
@@ -7514,7 +7514,7 @@
       "region": "Afrique de l'Est",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Petit pays de la Corne de l'Afrique, sur le détroit de Bab-el-Mandeb.",
           "fact": "Sa position entre la mer Rouge et le golfe d'Aden en fait un carrefour maritime majeur.",
           "sources": [
@@ -7522,7 +7522,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale de Djibouti, port sur le golfe de Tadjourah.",
           "fact": "La ville concentre la majorité de la population du pays.",
           "sources": [
@@ -7568,7 +7568,7 @@
       "region": "Afrique australe",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Petit royaume enclavé d'Afrique australe, entre l'Afrique du Sud et le Mozambique.",
           "fact": "Le pays, anciennement appelé Swaziland, a officiellement pris le nom d'Eswatini en 2018.",
           "sources": [
@@ -7576,7 +7576,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale administrative de l'Eswatini, dans les collines de l'ouest.",
           "fact": "Lobamba, toute proche, est la capitale royale et législative.",
           "sources": [
@@ -7622,7 +7622,7 @@
       "region": "Afrique centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Pays d'Afrique centrale traversé par l'équateur.",
           "fact": "La forêt équatoriale couvre la grande majorité de son territoire.",
           "sources": [
@@ -7630,7 +7630,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale du Gabon, sur l'estuaire du Komo.",
           "fact": "Son nom rappelle la fondation de la ville, en 1849, par des esclaves libérés.",
           "sources": [
@@ -7676,7 +7676,7 @@
       "region": "Afrique de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Pays d'Afrique de l'Ouest qui suit les rives du fleuve Gambie.",
           "fact": "C'est le plus petit pays d'Afrique continentale ; il est presque entièrement entouré par le Sénégal.",
           "sources": [
@@ -7684,7 +7684,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale de la Gambie, sur une île à l'embouchure du fleuve.",
           "fact": "La ville s'appelait Bathurst jusqu'en 1973.",
           "sources": [
@@ -7730,7 +7730,7 @@
       "region": "Afrique de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Afrique de l'Ouest ouvert sur le golfe de Guinée.",
           "fact": "En 1957, il est devenu la première colonie d'Afrique subsaharienne à obtenir son indépendance.",
           "sources": [
@@ -7738,7 +7738,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Capitale du Ghana, sur la côte du golfe de Guinée.",
           "fact": "La ville abrite le mausolée de Kwame Nkrumah, premier dirigeant du Ghana indépendant.",
           "sources": [
@@ -7800,7 +7800,7 @@
       "region": "Afrique de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Pays d'Afrique de l'Ouest ouvert sur l'Atlantique, aux reliefs bien arrosés.",
           "fact": "Le Niger, le Sénégal et la Gambie y prennent leur source, d'où son surnom de « château d'eau de l'Afrique de l'Ouest ».",
           "sources": [
@@ -7808,7 +7808,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale de la Guinée, sur la presqu'île de Kaloum.",
           "fact": "C'est le principal port du pays.",
           "sources": [
@@ -7854,7 +7854,7 @@
       "region": "Afrique centrale",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Pays d'Afrique centrale formé d'une partie continentale et d'îles du golfe de Guinée.",
           "fact": "C'est le seul pays d'Afrique ayant l'espagnol comme langue officielle.",
           "sources": [
@@ -7862,7 +7862,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale de la Guinée équatoriale, sur l'île de Bioko.",
           "fact": "Une nouvelle capitale, Ciudad de la Paz, est en construction sur la partie continentale.",
           "sources": [
@@ -7908,7 +7908,7 @@
       "region": "Afrique de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Pays d'Afrique de l'Ouest formé d'une partie continentale et de l'archipel des Bijagos.",
           "fact": "Ancienne colonie portugaise, il a proclamé son indépendance en 1973.",
           "sources": [
@@ -7916,7 +7916,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale de la Guinée-Bissau, sur l'estuaire du Geba.",
           "fact": "C'est le principal port et la plus grande ville du pays.",
           "sources": [
@@ -7962,7 +7962,7 @@
       "region": "Afrique de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Afrique de l'Est traversé par l'équateur et la vallée du Rift.",
           "fact": "Le swahili et l'anglais y sont les langues officielles.",
           "sources": [
@@ -7970,7 +7970,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale du Kenya, sur les hauts plateaux.",
           "fact": "Le parc national de Nairobi, peuplé d'animaux sauvages, s'étend aux portes de la ville.",
           "sources": [
@@ -8032,7 +8032,7 @@
       "region": "Afrique australe",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Royaume montagneux entièrement entouré par l'Afrique du Sud.",
           "fact": "C'est le seul État indépendant dont tout le territoire se trouve à plus de 1 000 mètres d'altitude.",
           "sources": [
@@ -8040,7 +8040,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale du Lesotho, sur la rivière Caledon.",
           "fact": "C'est la plus grande ville du pays.",
           "sources": [
@@ -8094,7 +8094,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale du Liberia, sur la côte atlantique.",
           "fact": "Elle doit son nom au président américain James Monroe.",
           "sources": [
@@ -8140,7 +8140,7 @@
       "region": "Afrique du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Afrique du Nord bordé par la Méditerranée, très largement désertique.",
           "fact": "Le Sahara couvre la plus grande partie de son territoire.",
           "sources": [
@@ -8148,7 +8148,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale de la Libye, port sur la Méditerranée.",
           "fact": "Sa médina est dominée par une ancienne forteresse surnommée le Château rouge.",
           "sources": [
@@ -8194,7 +8194,7 @@
       "region": "Afrique de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Grande île de l'océan Indien, au large du Mozambique.",
           "fact": "C'est l'une des plus grandes îles du monde ; une grande partie de sa faune et de sa flore est endémique.",
           "sources": [
@@ -8272,7 +8272,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale du Malawi, au centre du pays.",
           "fact": "Elle a remplacé Zomba comme capitale en 1975.",
           "sources": [
@@ -8318,7 +8318,7 @@
       "region": "Afrique de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Pays enclavé d'Afrique de l'Ouest, du Sahara au nord à la vallée du Niger au sud.",
           "fact": "Il porte le nom d'un empire médiéval qui domina une grande partie de l'Afrique de l'Ouest.",
           "sources": [
@@ -8326,7 +8326,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale du Mali, sur les rives du fleuve Niger.",
           "fact": "C'est l'une des villes à la croissance la plus rapide d'Afrique.",
           "sources": [
@@ -8466,7 +8466,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale de la Mauritanie, sur la côte atlantique.",
           "fact": "Fondée à la fin des années 1950, elle est devenue la plus grande ville du pays.",
           "sources": [
@@ -8528,7 +8528,7 @@
       "region": "Afrique de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Afrique australe doté d'un long littoral sur l'océan Indien.",
           "fact": "Ancienne colonie portugaise, il est indépendant depuis 1975.",
           "sources": [
@@ -8536,7 +8536,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale du Mozambique, sur la baie de Maputo.",
           "fact": "Elle s'appelait Lourenço Marques jusqu'en 1976.",
           "sources": [
@@ -8582,7 +8582,7 @@
       "region": "Afrique australe",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Pays d'Afrique australe bordé par l'Atlantique et le désert du Namib.",
           "fact": "C'est l'un des pays les moins densément peuplés du monde.",
           "sources": [
@@ -8690,7 +8690,7 @@
       "region": "Afrique de l'Ouest",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays d'Afrique de l'Ouest ouvert sur le golfe de Guinée.",
           "fact": "C'est le pays le plus peuplé d'Afrique.",
           "sources": [
@@ -8698,7 +8698,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Capitale fédérale du Nigeria, au centre du pays.",
           "fact": "Elle a remplacé Lagos comme capitale en 1991.",
           "sources": [
@@ -8760,7 +8760,7 @@
       "region": "Afrique de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays enclavé d'Afrique de l'Est, sur les rives du lac Victoria.",
           "fact": "Il est souvent surnommé « la perle de l'Afrique ».",
           "sources": [
@@ -8768,7 +8768,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale de l'Ouganda, près du lac Victoria.",
           "fact": "La ville s'est développée sur plusieurs collines.",
           "sources": [
@@ -8814,7 +8814,7 @@
       "region": "Afrique de l'Est",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Petit pays enclavé de la région des Grands Lacs, très vallonné.",
           "fact": "Ses nombreuses collines lui valent le surnom de « pays des mille collines ».",
           "sources": [
@@ -8822,7 +8822,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale du Rwanda, au centre du pays.",
           "fact": "Le mémorial de Kigali rend hommage aux victimes du génocide des Tutsi de 1994.",
           "sources": [
@@ -8868,7 +8868,7 @@
       "region": "Afrique centrale",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Pays enclavé situé au cœur du continent africain.",
           "fact": "Le sango y est langue officielle aux côtés du français.",
           "sources": [
@@ -8876,7 +8876,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale de la République centrafricaine, sur la rive de l'Oubangui.",
           "fact": "La ville fait face à la République démocratique du Congo, de l'autre côté de la rivière.",
           "sources": [
@@ -8976,7 +8976,7 @@
       "region": "Afrique centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Afrique centrale, le deuxième plus vaste du continent.",
           "fact": "Il est traversé par le fleuve Congo, l'un des plus puissants du monde par son débit.",
           "sources": [
@@ -8984,7 +8984,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale de la RDC, sur la rive sud du fleuve Congo.",
           "fact": "C'est l'une des plus grandes villes francophones du monde.",
           "sources": [
@@ -9092,7 +9092,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale de la Sierra Leone, sur une péninsule montagneuse.",
           "fact": "Elle a été fondée à la fin du XVIIIe siècle pour accueillir des esclaves libérés.",
           "sources": [
@@ -9192,7 +9192,7 @@
       "region": "Afrique du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Afrique du Nord-Est traversé par le Nil.",
           "fact": "Il compte plus de pyramides que l'Égypte, héritées des royaumes de Koush.",
           "sources": [
@@ -9200,7 +9200,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale du Soudan, au confluent du Nil Blanc et du Nil Bleu.",
           "fact": "Les deux bras du Nil s'y rejoignent pour former le Nil.",
           "sources": [
@@ -9246,7 +9246,7 @@
       "region": "Afrique de l'Est",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Pays enclavé d'Afrique de l'Est traversé par le Nil Blanc.",
           "fact": "Indépendant depuis 2011, c'est le plus jeune État membre de l'ONU.",
           "sources": [
@@ -9254,7 +9254,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale du Soudan du Sud, sur les rives du Nil Blanc.",
           "fact": "C'est la plus grande ville du pays.",
           "sources": [
@@ -9300,7 +9300,7 @@
       "region": "Afrique centrale",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Petit État insulaire du golfe de Guinée, traversé par l'équateur.",
           "fact": "Ancienne colonie portugaise, il est indépendant depuis 1975.",
           "sources": [
@@ -9308,7 +9308,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale de São Tomé-et-Principe, sur l'île de São Tomé.",
           "fact": "C'est la plus grande ville du pays.",
           "sources": [
@@ -9354,7 +9354,7 @@
       "region": "Afrique centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Pays enclavé d'Afrique centrale, du Sahara au nord aux savanes du sud.",
           "fact": "Il doit son nom au lac Tchad, situé à sa frontière occidentale.",
           "sources": [
@@ -9362,7 +9362,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale du Tchad, au confluent du Chari et du Logone.",
           "fact": "Elle s'appelait Fort-Lamy jusqu'en 1973.",
           "sources": [
@@ -9462,7 +9462,7 @@
       "region": "Afrique du Nord",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays du Maghreb bordé par la Méditerranée au nord et à l'est.",
           "fact": "C'est le plus petit pays du Maghreb par la superficie.",
           "sources": [
@@ -9470,7 +9470,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Capitale de la Tunisie, au fond du golfe de Tunis.",
           "fact": "Sa médina est inscrite au patrimoine mondial de l'UNESCO depuis 1979.",
           "sources": [
@@ -9532,7 +9532,7 @@
       "region": "Afrique australe",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Pays enclavé d'Afrique australe traversé par le Zambèze.",
           "fact": "C'est l'un des principaux producteurs de cuivre du continent.",
           "sources": [
@@ -9540,7 +9540,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale de la Zambie, sur un plateau au centre du pays.",
           "fact": "Elle est devenue capitale de la Rhodésie du Nord en 1935.",
           "sources": [
@@ -9586,7 +9586,7 @@
       "region": "Afrique australe",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Pays enclavé d'Afrique australe, entre le Zambèze et le Limpopo.",
           "fact": "Son nom vient des ruines du Grand Zimbabwe, ancienne cité de pierre.",
           "sources": [
@@ -9594,7 +9594,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "uncommon",
           "discovery": "Capitale du Zimbabwe, sur les hauts plateaux du nord-est.",
           "fact": "Elle s'appelait Salisbury jusqu'en 1982.",
           "sources": [
@@ -9640,7 +9640,7 @@
       "region": "Afrique de l'Est",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Pays de la Corne de l'Afrique bordé par la mer Rouge.",
           "fact": "Il est devenu indépendant de l'Éthiopie en 1993.",
           "sources": [
@@ -9648,7 +9648,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Capitale de l'Érythrée, sur un haut plateau.",
           "fact": "Elle est située à plus de 2 300 mètres d'altitude.",
           "sources": [
@@ -9694,7 +9694,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "État insulaire des Petites Antilles formé principalement des îles d'Antigua et de Barbuda.",
           "fact": "Antigua est réputée pour ses nombreuses plages, souvent présentées comme une pour chaque jour de l'année.",
           "sources": [
@@ -9702,7 +9702,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale d'Antigua-et-Barbuda, port sur la côte nord-ouest d'Antigua.",
           "fact": "Sa cathédrale anglicane aux tours blanches domine la ville.",
           "sources": [
@@ -9748,7 +9748,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Archipel de l'Atlantique formé de centaines d'îles et de cayes, au sud-est de la Floride.",
           "fact": "Christophe Colomb y aurait touché terre pour la première fois dans le Nouveau Monde en 1492.",
           "sources": [
@@ -9802,7 +9802,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Île la plus orientale des Petites Antilles, dans l'océan Atlantique.",
           "fact": "Le pays est devenu une république en 2021 tout en restant membre du Commonwealth.",
           "sources": [
@@ -9810,7 +9810,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale de la Barbade, port sur la côte sud-ouest de l'île.",
           "fact": "Son centre historique et sa garnison sont inscrits au patrimoine mondial de l'UNESCO.",
           "sources": [
@@ -9856,7 +9856,7 @@
       "region": "Amérique centrale",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "common",
           "discovery": "Pays d'Amérique centrale ouvert sur la mer des Caraïbes, au sud-est du Mexique.",
           "fact": "C'est le seul pays d'Amérique centrale dont l'anglais est la langue officielle.",
           "sources": [
@@ -9864,7 +9864,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale du Belize, construite à l'intérieur des terres dans les années 1960-1970.",
           "fact": "Elle a remplacé Belize City après les dégâts de l'ouragan Hattie en 1961.",
           "sources": [
@@ -9910,7 +9910,7 @@
       "region": "Amérique centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Amérique centrale bordé par la mer des Caraïbes et l'océan Pacifique.",
           "fact": "Le Costa Rica a aboli son armée en 1948.",
           "sources": [
@@ -9918,7 +9918,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Costa Rica, située dans la vallée centrale.",
           "fact": "Son Théâtre national, inauguré en 1897, est l'un des monuments les plus connus du pays.",
           "sources": [
@@ -9964,7 +9964,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Plus grande île des Caraïbes, située au sud de la Floride.",
           "fact": "L'île est longue de plus de 1 000 kilomètres d'ouest en est.",
           "sources": [
@@ -9972,7 +9972,7 @@
           ]
         },
         "capital": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Capitale de Cuba, port fondé par les Espagnols au XVIe siècle.",
           "fact": "Sa vieille ville et ses fortifications sont inscrites au patrimoine mondial de l'UNESCO.",
           "sources": [
@@ -10034,7 +10034,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Île montagneuse et volcanique des Petites Antilles, entre la Guadeloupe et la Martinique.",
           "fact": "Elle est surnommée « l'île nature » pour ses forêts et ses rivières.",
           "sources": [
@@ -10042,7 +10042,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale de la Dominique, sur la côte sud-ouest de l'île.",
           "fact": "La ville porte le nom de la rivière qui la traverse.",
           "sources": [
@@ -10088,7 +10088,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "État insulaire du sud des Petites Antilles, au nord de Trinité-et-Tobago.",
           "fact": "Elle est surnommée « l'île aux épices ».",
           "sources": [
@@ -10096,7 +10096,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale de la Grenade, port en forme de fer à cheval.",
           "fact": "Ses maisons colorées s'étagent sur les collines qui entourent le port.",
           "sources": [
@@ -10142,7 +10142,7 @@
       "region": "Amérique centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Amérique centrale au sud du Mexique, berceau de la civilisation maya.",
           "fact": "Une grande partie de sa population parle des langues mayas.",
           "sources": [
@@ -10212,7 +10212,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays qui occupe le tiers occidental de l'île d'Hispaniola.",
           "fact": "En 1804, Haïti est devenue la première république noire indépendante du monde.",
           "sources": [
@@ -10320,7 +10320,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Île des Grandes Antilles, au sud de Cuba.",
           "fact": "Le reggae, né sur l'île, est inscrit au patrimoine culturel immatériel de l'UNESCO.",
           "sources": [
@@ -10328,7 +10328,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la Jamaïque, sur la côte sud-est de l'île.",
           "fact": "Son port naturel compte parmi les plus grands du monde.",
           "sources": [
@@ -10444,7 +10444,7 @@
       "region": "Amérique centrale",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Isthme reliant l'Amérique centrale à l'Amérique du Sud.",
           "fact": "Le canal de Panama relie l'océan Atlantique à l'océan Pacifique.",
           "sources": [
@@ -10452,7 +10452,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Panama, sur la côte pacifique, près de l'entrée du canal.",
           "fact": "Son quartier historique, le Casco Viejo, est inscrit au patrimoine mondial de l'UNESCO.",
           "sources": [
@@ -10498,7 +10498,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays qui occupe les deux tiers orientaux de l'île d'Hispaniola, qu'il partage avec Haïti.",
           "fact": "Le pic Duarte y est le point culminant des Caraïbes.",
           "sources": [
@@ -10506,7 +10506,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de la République dominicaine, fondée à la fin du XVe siècle.",
           "fact": "C'est la plus ancienne ville européenne encore habitée des Amériques.",
           "sources": [
@@ -10552,7 +10552,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Fédération de deux îles des Petites Antilles, l'un des plus petits États des Amériques.",
           "fact": "Saint-Christophe est aussi appelée Saint-Kitts.",
           "sources": [
@@ -10560,7 +10560,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale de Saint-Christophe-et-Niévès, sur l'île de Saint-Christophe.",
           "fact": "Elle est l'une des plus anciennes villes des Petites Antilles.",
           "sources": [
@@ -10606,7 +10606,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "État formé de l'île de Saint-Vincent et d'une partie de l'archipel des Grenadines.",
           "fact": "Le volcan de la Soufrière, sur Saint-Vincent, est entré en éruption en 2021.",
           "sources": [
@@ -10614,7 +10614,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale de Saint-Vincent-et-les-Grenadines, sur la côte sud-ouest de Saint-Vincent.",
           "fact": "Son jardin botanique est l'un des plus anciens de l'hémisphère occidental.",
           "sources": [
@@ -10660,7 +10660,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Île volcanique des Petites Antilles, au sud de la Martinique.",
           "fact": "Elle a souvent changé de mains entre la France et la Grande-Bretagne.",
           "sources": [
@@ -10668,7 +10668,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale de Sainte-Lucie, port sur la côte nord-ouest de l'île.",
           "fact": "La ville a été plusieurs fois ravagée par des incendies.",
           "sources": [
@@ -10768,7 +10768,7 @@
       "region": "Caraïbes",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "État formé de deux îles au large du Venezuela, au sud des Petites Antilles.",
           "fact": "C'est le berceau du steelpan, instrument fabriqué à partir de bidons d'acier.",
           "sources": [
@@ -10776,7 +10776,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale de Trinité-et-Tobago, sur la côte nord-ouest de Trinité.",
           "fact": "Elle accueille chaque année l'un des plus grands carnavals des Caraïbes.",
           "sources": [
@@ -10822,7 +10822,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays enclavé d'Amérique du Sud qui s'étend des Andes à l'Amazonie.",
           "fact": "Sucre est la capitale constitutionnelle, tandis que le gouvernement siège à La Paz.",
           "sources": [
@@ -10892,7 +10892,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "epic",
           "discovery": "Pays du nord-ouest de l'Amérique du Sud ouvert sur la mer des Caraïbes et l'océan Pacifique.",
           "fact": "C'est le seul pays d'Amérique du Sud bordé par ces deux étendues d'eau.",
           "sources": [
@@ -10900,7 +10900,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "epic",
           "discovery": "Capitale de la Colombie, perchée à plus de 2 600 mètres d'altitude dans les Andes.",
           "fact": "Son musée de l'Or conserve une vaste collection d'orfèvrerie précolombienne.",
           "sources": [
@@ -10962,7 +10962,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Pays du nord de l'Amérique du Sud couvert en grande partie de forêt tropicale.",
           "fact": "C'est le seul pays d'Amérique du Sud dont l'anglais est la langue officielle.",
           "sources": [
@@ -10970,7 +10970,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale du Guyana, à l'embouchure du fleuve Demerara.",
           "fact": "Sa cathédrale Saint-Georges est l'une des plus hautes églises en bois du monde.",
           "sources": [
@@ -11016,7 +11016,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Pays enclavé d'Amérique du Sud, entre l'Argentine, le Brésil et la Bolivie.",
           "fact": "L'espagnol et le guarani y sont tous deux langues officielles.",
           "sources": [
@@ -11070,7 +11070,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Plus petit pays indépendant d'Amérique du Sud, entre le Guyana et la Guyane française.",
           "fact": "Ancienne colonie néerlandaise, il a le néerlandais pour langue officielle.",
           "sources": [
@@ -11078,7 +11078,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale du Suriname, sur le fleuve Suriname.",
           "fact": "Son centre historique aux maisons de bois est inscrit au patrimoine mondial de l'UNESCO.",
           "sources": [
@@ -11124,7 +11124,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Amérique du Sud entre l'Argentine et le Brésil, ouvert sur le Río de la Plata et l'Atlantique.",
           "fact": "L'Uruguay a remporté la première Coupe du monde de football, en 1930.",
           "sources": [
@@ -11132,7 +11132,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de l'Uruguay, sur la rive nord du Río de la Plata.",
           "fact": "Sa Rambla longe le littoral sur plus de 20 kilomètres.",
           "sources": [
@@ -11178,7 +11178,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays du nord de l'Amérique du Sud ouvert sur la mer des Caraïbes.",
           "fact": "Le fleuve Orénoque le traverse avant de se jeter dans l'Atlantique.",
           "sources": [
@@ -11186,7 +11186,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale du Venezuela, dans une vallée proche de la côte caraïbe.",
           "fact": "C'est la ville natale de Simón Bolívar.",
           "sources": [
@@ -11232,7 +11232,7 @@
       "region": "Amérique du Sud",
       "cards": {
         "country": {
-          "rarity": "common",
+          "rarity": "rare",
           "discovery": "Pays d'Amérique du Sud traversé par la ligne de l'équateur, qui lui donne son nom.",
           "fact": "Il comprend l'archipel des Galápagos, dans l'océan Pacifique.",
           "sources": [
@@ -11240,7 +11240,7 @@
           ]
         },
         "capital": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Capitale de l'Équateur, située à environ 2 850 mètres d'altitude.",
           "fact": "Son centre historique a été parmi les premiers sites inscrits au patrimoine mondial de l'UNESCO, en 1978.",
           "sources": [
@@ -11286,7 +11286,7 @@
       "region": "Mélanésie",
       "cards": {
         "country": {
-          "rarity": "uncommon",
+          "rarity": "rare",
           "discovery": "Archipel du Pacifique Sud formé de plus de 300 îles.",
           "fact": "Son équipe de rugby à sept a remporté l'or olympique en 2016, première médaille olympique du pays.",
           "sources": [
@@ -11294,7 +11294,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale des Fidji, port sur la côte sud-est de Viti Levu.",
           "fact": "C'est l'une des plus grandes villes du Pacifique Sud insulaire.",
           "sources": [
@@ -11340,7 +11340,7 @@
       "region": "Micronésie",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "État insulaire du Pacifique formé d'atolls dispersés de part et d'autre de l'équateur.",
           "fact": "Ses îles de la Ligne comptent parmi les premières terres habitées à passer au Nouvel An.",
           "sources": [
@@ -11348,7 +11348,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale de Kiribati, sur l'atoll de Tarawa.",
           "fact": "Tarawa a été le théâtre d'une bataille en 1943, pendant la guerre du Pacifique.",
           "sources": [
@@ -11394,7 +11394,7 @@
       "region": "Micronésie",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Fédération de quatre États insulaires du Pacifique, officiellement les États fédérés de Micronésie.",
           "fact": "Ses îles s'étendent sur environ 2 700 kilomètres d'ouest en est.",
           "sources": [
@@ -11402,7 +11402,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale de la Micronésie, sur l'île de Pohnpei.",
           "fact": "Elle a remplacé Kolonia comme capitale en 1989.",
           "sources": [
@@ -11448,7 +11448,7 @@
       "region": "Micronésie",
       "cards": {
         "country": {
-          "rarity": "legendary",
+          "rarity": "common",
           "discovery": "Petite île corallienne du Pacifique, l'un des plus petits États du monde.",
           "fact": "Son économie a longtemps reposé sur l'extraction du phosphate.",
           "sources": [
@@ -11456,7 +11456,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Nauru n'a pas de capitale officielle ; le district de Yaren accueille le Parlement et l'administration.",
           "fact": "Le pays ne compte que quelques milliers d'habitants.",
           "sources": [
@@ -11502,7 +11502,7 @@
       "region": "Polynésie",
       "cards": {
         "country": {
-          "rarity": "legendary",
+          "rarity": "common",
           "discovery": "Île corallienne surélevée de Polynésie, librement associée à la Nouvelle-Zélande ; elle n'est pas membre de l'ONU.",
           "fact": "Elle est surnommée « le rocher de Polynésie ».",
           "sources": [
@@ -11510,7 +11510,7 @@
           ]
         },
         "capital": {
-          "rarity": "legendary",
+          "rarity": "common",
           "discovery": "Capitale de Niue, sur la côte ouest de l'île.",
           "fact": "C'est l'une des plus petites capitales du monde par la population.",
           "sources": [
@@ -11556,7 +11556,7 @@
       "region": "Micronésie",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Archipel de Micronésie à l'est des Philippines.",
           "fact": "En 2009, le pays a créé l'un des premiers sanctuaires de requins au monde.",
           "sources": [
@@ -11564,7 +11564,7 @@
           ]
         },
         "capital": {
-          "rarity": "legendary",
+          "rarity": "common",
           "discovery": "Capitale des Palaos depuis 2006, sur l'île de Babeldaob.",
           "fact": "Elle a remplacé Koror, qui reste la plus grande ville du pays.",
           "sources": [
@@ -11618,7 +11618,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "uncommon",
           "discovery": "Capitale de la Papouasie-Nouvelle-Guinée, sur la côte sud-est.",
           "fact": "C'est la plus grande ville du pays.",
           "sources": [
@@ -11664,7 +11664,7 @@
       "region": "Polynésie",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Archipel de Polynésie formé principalement des îles d'Upolu et de Savai'i.",
           "fact": "Fin 2011, le pays a sauté une journée en changeant de côté de la ligne de changement de date.",
           "sources": [
@@ -11672,7 +11672,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale des Samoa, sur la côte nord d'Upolu.",
           "fact": "L'écrivain Robert Louis Stevenson a vécu ses dernières années près de la ville.",
           "sources": [
@@ -11718,7 +11718,7 @@
       "region": "Polynésie",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Royaume de Polynésie formé de plus de 170 îles.",
           "fact": "C'est la seule monarchie du Pacifique insulaire.",
           "sources": [
@@ -11726,7 +11726,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale des Tonga, sur l'île de Tongatapu.",
           "fact": "Le palais royal en bois blanc se dresse face à la mer.",
           "sources": [
@@ -11772,7 +11772,7 @@
       "region": "Polynésie",
       "cards": {
         "country": {
-          "rarity": "legendary",
+          "rarity": "common",
           "discovery": "Archipel de neuf îles basses de Polynésie.",
           "fact": "Ses terres ne dépassent guère quelques mètres d'altitude, ce qui le rend très exposé à la montée des eaux.",
           "sources": [
@@ -11780,7 +11780,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale de Tuvalu, sur l'atoll du même nom.",
           "fact": "La piste de l'aéroport occupe une grande partie de l'île principale.",
           "sources": [
@@ -11826,7 +11826,7 @@
       "region": "Mélanésie",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Archipel de Mélanésie formé de plus de 80 îles.",
           "fact": "Le français, l'anglais et le bichelamar y sont langues officielles.",
           "sources": [
@@ -11834,7 +11834,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale du Vanuatu, sur l'île d'Efate.",
           "fact": "Elle est située au bord d'une baie abritée.",
           "sources": [
@@ -11896,7 +11896,7 @@
       "region": "Polynésie",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Archipel de Polynésie librement associé à la Nouvelle-Zélande ; il n'est pas membre de l'ONU.",
           "fact": "Ses habitants possèdent la nationalité néo-zélandaise.",
           "sources": [
@@ -11904,7 +11904,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale des îles Cook, sur la côte nord de Rarotonga.",
           "fact": "C'est le principal centre administratif et commercial de l'archipel.",
           "sources": [
@@ -11950,7 +11950,7 @@
       "region": "Micronésie",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Archipel de Micronésie formé de deux chaînes d'atolls coralliens.",
           "fact": "Le pays est associé aux États-Unis par un accord de libre association.",
           "sources": [
@@ -11958,7 +11958,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale des îles Marshall, située sur l'atoll du même nom.",
           "fact": "La ville s'étire sur une étroite bande de terre entre l'océan et le lagon.",
           "sources": [
@@ -12004,7 +12004,7 @@
       "region": "Mélanésie",
       "cards": {
         "country": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Archipel de Mélanésie formé de près d'un millier d'îles.",
           "fact": "Il a été le théâtre de la bataille de Guadalcanal en 1942-1943.",
           "sources": [
@@ -12012,7 +12012,7 @@
           ]
         },
         "capital": {
-          "rarity": "rare",
+          "rarity": "common",
           "discovery": "Capitale des îles Salomon, sur l'île de Guadalcanal.",
           "fact": "La ville s'est développée après la Seconde Guerre mondiale.",
           "sources": [

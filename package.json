@@ -19,6 +19,7 @@
     "illustrations:upload": "tsx scripts/upload-illustrations.ts",
     "illustrations:sync": "tsx scripts/sync-illustration-paths.ts",
     "rarities:heritage": "tsx scripts/apply-heritage-rarities.ts",
+    "rarities:geo": "tsx scripts/apply-geo-rarities.ts",
     "test": "jest --selectProjects app content",
     "test:db": "jest --selectProjects db --runInBand",
     "test:all": "jest --runInBand",
