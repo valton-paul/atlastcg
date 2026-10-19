@@ -387,28 +387,34 @@ describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
     expect(secondsUntilNext(state)).toBeCloseTo(600, -1);
   });
 
-  it('attribue au plus un paquet par synchronisation, même après plusieurs intervalles', async () => {
+  it('rattrape tous les intervalles écoulés hors ligne (ex. 20 min → 2 paquets)', async () => {
     const user = await createUser(db);
     await sync(user);
-    await rewindTimer(user, 25);
-    const results = await Promise.all(Array.from({ length: 5 }, () => sync(user)));
-    // Une seule sync « gagne » le paquet dû ; les concurrentes voient l’ancre déjà avancée.
-    expect(results.reduce((sum, r) => sum + r.granted, 0)).toBe(1);
-    expect(await availablePacks(db, user, 'classique')).toHaveLength(3);
+    await rewindTimer(user, 20);
     const state = await sync(user);
-    expect(state).toMatchObject({ available: 3, granted: 0 });
+    expect(state.granted).toBe(2);
+    expect(state.available).toBe(4);
+    expect(await availablePacks(db, user, 'classique')).toHaveLength(4);
+    // Ancre avancée de 2 intervalles exacts → prochain paquet dans ~10 min.
     expect(secondsUntilNext(state)).toBeCloseTo(600, -1);
   });
 
-  it('plafonne la réserve à 15 paquets (un par sync, pas de rattrapage en rafale)', async () => {
+  it('sérialise les syncs concurrentes sans double attribution', async () => {
     const user = await createUser(db);
     await sync(user);
-    for (let i = 0; i < 20; i++) {
-      await rewindTimer(user, 10);
-      await sync(user);
-    }
-    const state = await sync(user);
-    expect(state).toMatchObject({ available: 15, granted: 0, next_at: null });
+    await rewindTimer(user, 12);
+    const results = await Promise.all(Array.from({ length: 5 }, () => sync(user)));
+    expect(results.reduce((sum, r) => sum + r.granted, 0)).toBe(1);
+    expect(await availablePacks(db, user, 'classique')).toHaveLength(3);
+  });
+
+  it('plafonne la réserve à 15 paquets même après une longue absence', async () => {
+    const user = await createUser(db);
+    await sync(user);
+    // 14 × 10 min pour atteindre le plafond (starter = 2).
+    await rewindTimer(user, 10 * 14);
+    const filled = await sync(user);
+    expect(filled).toMatchObject({ available: 15, granted: 13, next_at: null });
     await rewindTimer(user, 60);
     expect(await sync(user)).toMatchObject({ available: 15, granted: 0, next_at: null });
   });
@@ -416,10 +422,8 @@ describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
   it('le temps passé réserve pleine ne produit pas de paquet : ouvrir un paquet relance le minuteur', async () => {
     const user = await createUser(db);
     await sync(user);
-    for (let i = 0; i < 20; i++) {
-      await rewindTimer(user, 10);
-      await sync(user);
-    }
+    await rewindTimer(user, 10 * 20);
+    await sync(user);
     await rewindTimer(user, 60 * 5);
     const [pack] = await availablePacks(db, user);
     await rpc(db, user, 'open_pack', { p_user_pack_id: pack, p_idempotency_key: randomUUID() });
@@ -431,10 +435,8 @@ describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
   it('n’empêche jamais les autres récompenses de dépasser le plafond', async () => {
     const user = await createUser(db);
     await sync(user);
-    for (let i = 0; i < 20; i++) {
-      await rewindTimer(user, 10);
-      await sync(user);
-    }
+    await rewindTimer(user, 10 * 20);
+    await sync(user);
     await grantPack(db, user, 'premium');
     expect(await sync(user)).toMatchObject({ available: 16, granted: 0, next_at: null });
   });

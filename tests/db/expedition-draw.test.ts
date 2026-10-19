@@ -105,4 +105,37 @@ describe('tirage d’expédition', () => {
     expect(state.max_stored).toBe(10);
     expect(state.next_at).toBeTruthy();
   });
+
+  it('rattrape plusieurs charges hors ligne jusqu’au plafond', async () => {
+    const user = await createUser(db);
+
+    await db.admin.query(
+      `update public.player_wallets
+          set expedition_charges = 0,
+              expedition_charge_anchor = now() - interval '3 hours'
+        where user_id = $1`,
+      [user],
+    );
+
+    const state = await rpc<{ charges: number; max_stored: number; next_at: string | null }>(
+      db,
+      user,
+      'sync_expedition_charges',
+    );
+    // 3 h / 30 min = 6 charges.
+    expect(state.charges).toBe(6);
+    expect(state.max_stored).toBe(10);
+    expect(state.next_at).toBeTruthy();
+
+    await db.admin.query(
+      `update public.player_wallets
+          set expedition_charges = 8,
+              expedition_charge_anchor = now() - interval '5 hours'
+        where user_id = $1`,
+      [user],
+    );
+    const capped = await rpc<{ charges: number; next_at: string | null }>(db, user, 'sync_expedition_charges');
+    expect(capped.charges).toBe(10);
+    expect(capped.next_at).toBeNull();
+  });
 });
