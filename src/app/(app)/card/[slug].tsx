@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Share, StyleSheet, View } from 'react-native';
 
 import {
@@ -20,6 +20,7 @@ import {
 import { toCardData } from '@/features/cards/adapters';
 import { packsContaining, shareMessage, useCardContent } from '@/features/cards/api';
 import { AtlasCard } from '@/features/cards/AtlasCard';
+import { CardFullscreenModal } from '@/features/cards/CardFullscreenModal';
 import { CATEGORY_LABELS, CONTINENT_LABELS } from '@/features/catalog/types';
 import { useMarkCardsSeen } from '@/features/player/api';
 import { useAtlasData } from '@/features/player/useAtlasData';
@@ -32,6 +33,7 @@ export default function CardScreen() {
   const data = useAtlasData();
   const router = useRouter();
   const markSeen = useMarkCardsSeen();
+  const [fullscreen, setFullscreen] = useState(false);
   const card = data.status === 'ready' ? data.catalog.cardsBySlug.get(slug) : undefined;
   const owned = card && data.status === 'ready' ? data.player.ownedCards.get(card.id) : undefined;
   const content = useCardContent(card?.id ?? null, !!owned);
@@ -67,7 +69,16 @@ export default function CardScreen() {
     return (
       <Screen back title="Carte à découvrir">
         <View style={styles.center}>
-          <AtlasCard card={cardData} locked size="large" />
+          <AtlasCard
+            card={cardData}
+            locked
+            size="large"
+            accessibilityHint="Agrandit la carte en plein écran"
+            onPress={() => setFullscreen(true)}
+          />
+          <Text variant="caption" color={colors.textFaint} style={styles.hint}>
+            Touchez la carte pour l’agrandir
+          </Text>
         </View>
         <Surface>
           <Text variant="bodyStrong">Vous ne possédez pas encore cette carte</Text>
@@ -89,6 +100,12 @@ export default function CardScreen() {
             onPress={() => router.push(`/country/${country.iso_code}`)}
           />
         ) : null}
+        <CardFullscreenModal
+          visible={fullscreen}
+          card={cardData}
+          locked
+          onClose={() => setFullscreen(false)}
+        />
       </Screen>
     );
   }
@@ -100,7 +117,16 @@ export default function CardScreen() {
   return (
     <Screen back title={card.title} right={<IconButton icon="share" label="Partager cette carte" onPress={share} />}>
       <View style={styles.center}>
-        <AtlasCard card={cardData} size="large" quantity={owned.quantity} />
+        <AtlasCard
+          card={cardData}
+          size="large"
+          quantity={owned.quantity}
+          accessibilityHint="Agrandit la carte en plein écran"
+          onPress={() => setFullscreen(true)}
+        />
+        <Text variant="caption" color={colors.textFaint} style={styles.hint}>
+          Touchez la carte pour l’agrandir
+        </Text>
       </View>
       <View style={styles.meta}>
         <Text variant="caption" color={colors.textMuted}>
@@ -170,12 +196,19 @@ export default function CardScreen() {
         ) : null}
         <Button label="Partager" icon="share" variant="ghost" onPress={share} />
       </View>
+      <CardFullscreenModal
+        visible={fullscreen}
+        card={cardData}
+        quantity={owned.quantity}
+        onClose={() => setFullscreen(false)}
+      />
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  center: { alignItems: 'center', paddingVertical: spacing.md },
+  center: { alignItems: 'center', paddingVertical: spacing.md, gap: spacing.sm },
+  hint: { textAlign: 'center' },
   meta: { gap: spacing.xs },
   sources: { gap: spacing.xxs },
   actions: { gap: spacing.sm },

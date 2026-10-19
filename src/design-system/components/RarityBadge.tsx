@@ -5,8 +5,18 @@ import { decorativeSvgProps } from '../decorative';
 import { radius, rarityStyles, spacing, type RarityKey } from '../tokens';
 import { Text } from './Text';
 
-export function RarityGlyph({ rarity, size = 12 }: { rarity: RarityKey; size?: number }) {
-  const { color, shape } = rarityStyles[rarity];
+export function RarityGlyph({
+  rarity,
+  size = 12,
+  color: colorOverride,
+}: {
+  rarity: RarityKey;
+  size?: number;
+  /** Remplace la couleur de rareté (ex. contraste sur fond teinté). */
+  color?: string;
+}) {
+  const { color: rarityColor, shape } = rarityStyles[rarity];
+  const color = colorOverride ?? rarityColor;
   return (
     <Svg width={size} height={size} viewBox="0 0 12 12" {...decorativeSvgProps}>
       {shape === 'circle' && <Circle cx={6} cy={6} r={4.5} fill={color} />}

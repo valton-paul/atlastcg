@@ -43,6 +43,8 @@ type Props = {
   /** Largeur imposée (grilles adaptatives) ; sinon dérivée de `size`. */
   width?: number;
   onPress?: () => void;
+  /** Remplace le hint d’accessibilité par défaut du bouton. */
+  accessibilityHint?: string;
   testID?: string;
 };
 
@@ -77,6 +79,7 @@ export function AtlasCard({
   size = 'medium',
   width: forcedWidth,
   onPress,
+  accessibilityHint,
   testID,
 }: Props) {
   const { reduceMotion } = usePreferences();
@@ -209,7 +212,9 @@ export function AtlasCard({
       testID={testID}
       accessibilityRole="button"
       accessibilityLabel={label}
-      accessibilityHint={locked ? 'Affiche comment obtenir cette carte' : 'Ouvre la fiche de la carte'}
+      accessibilityHint={
+        accessibilityHint ?? (locked ? 'Affiche comment obtenir cette carte' : 'Ouvre la fiche de la carte')
+      }
       onPress={onPress}
       style={({ pressed }) => pressed && styles.pressed}
     >

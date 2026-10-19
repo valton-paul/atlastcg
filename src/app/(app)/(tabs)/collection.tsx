@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useMemo, useState } from 'react';
-import { FlatList, ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { FlatList, Platform, ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
@@ -19,7 +19,7 @@ import {
   TextField,
 } from '@/design-system';
 import { toCardData } from '@/features/cards/adapters';
-import { AtlasCard } from '@/features/cards/AtlasCard';
+import { AtlasCard, type AtlasCardData } from '@/features/cards/AtlasCard';
 import { CONTINENT_LABELS, CONTINENT_ORDER, type Continent, type Rarity } from '@/features/catalog/types';
 import {
   DEFAULT_FILTERS,
@@ -46,6 +46,47 @@ const SORTS: { key: SortOrder; label: string }[] = [
   { key: 'recent', label: 'Récentes' },
 ];
 
+/** Seuil tablette / desktop : en dessous = téléphone. */
+const DESKTOP_MIN_WIDTH = 700;
+const COLUMNS_PHONE = 2;
+const COLUMNS_DESKTOP = 5;
+/** Fenêtre initiale puis pages du scroll infini. */
+const ROWS_INITIAL = 10;
+const ROWS_PAGE = 3;
+/** Sur grand écran, plafonne la largeur pour éviter des cartes trop énormes. */
+const DESKTOP_MAX_CARD_WIDTH = 168;
+
+type GridItem = {
+  id: string;
+  slug: string;
+  card: AtlasCardData;
+  locked: boolean;
+  isNew: boolean;
+  quantity?: number;
+};
+
+const CollectionCard = memo(function CollectionCard({
+  item,
+  width,
+  onPress,
+}: {
+  item: GridItem;
+  width: number;
+  onPress: (slug: string) => void;
+}) {
+  return (
+    <AtlasCard
+      size={width >= 150 ? 'medium' : 'small'}
+      width={width}
+      onPress={() => onPress(item.slug)}
+      card={item.card}
+      locked={item.locked}
+      isNew={item.isNew}
+      quantity={item.quantity}
+    />
+  );
+});
+
 export default function CollectionScreen() {
   const params = useLocalSearchParams<{ filter?: string }>();
   const data = useAtlasData();
@@ -60,22 +101,60 @@ export default function CollectionScreen() {
     ownership: OWNERSHIP.includes(params.filter as OwnershipFilter) ? (params.filter as OwnershipFilter) : 'owned',
   }));
 
-  const cards = useMemo(
+  const columns = width >= DESKTOP_MIN_WIDTH ? COLUMNS_DESKTOP : COLUMNS_PHONE;
+  const columnGap = spacing.sm;
+  const initialCount = columns * ROWS_INITIAL;
+  const pageCount = columns * ROWS_PAGE;
+  const [visibleCount, setVisibleCount] = useState(initialCount);
+
+  const filtered = useMemo(
     () => (data.status === 'ready' ? filterCards(data.catalog, data.player.ownedCards, filters) : []),
     [data, filters],
   );
+
+  useEffect(() => {
+    setVisibleCount(initialCount);
+  }, [initialCount, filters, view]);
+
+  const visibleItems = useMemo((): GridItem[] => {
+    if (data.status !== 'ready') return [];
+    const { catalog, player } = data;
+    return filtered.slice(0, visibleCount).map((item) => {
+      const owned = player.ownedCards.get(item.id);
+      return {
+        id: item.id,
+        slug: item.slug,
+        card: toCardData(catalog, item),
+        locked: !owned,
+        isNew: !!owned && !owned.seen_at,
+        quantity: owned?.quantity,
+      };
+    });
+  }, [data, filtered, visibleCount]);
+
+  const availableWidth = width - spacing.lg * 2;
+  const rawCardWidth = Math.floor((availableWidth - columnGap * (columns - 1)) / columns);
+  const cardWidth =
+    columns === COLUMNS_DESKTOP ? Math.min(DESKTOP_MAX_CARD_WIDTH, rawCardWidth) : rawCardWidth;
+  const gridWidth = cardWidth * columns + columnGap * (columns - 1);
+  const listPadH = Math.max(spacing.lg, Math.floor((width - gridWidth) / 2));
+  const listBottomPad = MIN_TOUCH + spacing.xxxl + Math.max(insets.bottom, spacing.sm);
+
+  const openCard = useCallback((slug: string) => router.push(`/card/${slug}`), [router]);
+  const loadMore = useCallback(() => {
+    setVisibleCount((n) => Math.min(filtered.length, n + pageCount));
+  }, [filtered.length, pageCount]);
+  const renderItem = useCallback(
+    ({ item }: { item: GridItem }) => <CollectionCard item={item} width={cardWidth} onPress={openCard} />,
+    [cardWidth, openCard],
+  );
+  const keyExtractor = useCallback((item: GridItem) => item.id, []);
 
   if (data.status === 'loading') return <LoadingState />;
   if (data.status === 'error') return <ErrorState message={errorMessage(data.error)} onRetry={data.retry} />;
 
   const { catalog, player } = data;
   const stats = atlasStats(catalog, player.ownedCards, player.expeditions);
-  // Téléphone : 3 colonnes pour des cartes lisibles ; tablette / desktop plus dense.
-  const columns = width >= 1000 ? 7 : width >= 700 ? 5 : 3;
-  const columnGap = spacing.sm;
-  const cardWidth = Math.floor((width - spacing.lg * 2 - columnGap * (columns - 1)) / columns);
-  // Barre d’onglets + safe area : la dernière rangée ne doit plus être coupée.
-  const listBottomPad = MIN_TOUCH + spacing.xxxl + Math.max(insets.bottom, spacing.sm);
   const newIds = [...player.ownedCards.values()].filter((c) => !c.seen_at).map((c) => c.card_id);
   const activeFilterCount = (filters.continent ? 1 : 0) + (filters.sort !== DEFAULT_FILTERS.sort ? 1 : 0);
 
@@ -114,7 +193,7 @@ export default function CollectionScreen() {
             autoCorrect={false}
             returnKeyType="search"
           />
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
+          <View style={styles.chipWrap}>
             {OWNERSHIP.map((o) => (
               <Chip
                 key={o}
@@ -124,8 +203,8 @@ export default function CollectionScreen() {
                 onPress={() => setFilters((f) => ({ ...f, ownership: o }))}
               />
             ))}
-          </ScrollView>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
+          </View>
+          <View style={styles.chipWrap}>
             <Chip
               label="Toutes raretés"
               selected={!filters.rarity}
@@ -136,14 +215,16 @@ export default function CollectionScreen() {
               return (
                 <Chip
                   key={r}
-                  label={`${rarityStyles[r].label} ${progress.owned}/${progress.total}`}
+                  label={rarityStyles[r].label}
                   rarity={r}
+                  iconOnly
+                  countLabel={`${progress.owned}/${progress.total}`}
                   selected={filters.rarity === r}
                   onPress={() => setFilters((f) => ({ ...f, rarity: f.rarity === r ? null : r }))}
                 />
               );
             })}
-          </ScrollView>
+          </View>
           <Button
             label={
               showFilters
@@ -204,7 +285,7 @@ export default function CollectionScreen() {
             />
           ) : null}
           <Text variant="caption" color={colors.textMuted} accessibilityLiveRegion="polite">
-            {cards.length} carte{cards.length > 1 ? 's' : ''}
+            {filtered.length} carte{filtered.length > 1 ? 's' : ''}
           </Text>
         </>
       ) : null}
@@ -217,49 +298,47 @@ export default function CollectionScreen() {
       {view === 'cards' ? (
         <FlatList
           key={columns}
-          data={cards}
-          keyExtractor={(card) => card.id}
+          data={visibleItems}
+          keyExtractor={keyExtractor}
           numColumns={columns}
-          columnWrapperStyle={[styles.columns, { gap: columnGap }]}
-          contentContainerStyle={[styles.list, { paddingBottom: listBottomPad, gap: columnGap }]}
-          ListHeaderComponent={header}
+          columnWrapperStyle={[styles.columns, { gap: columnGap, marginBottom: columnGap, paddingHorizontal: listPadH }]}
+          contentContainerStyle={{ paddingBottom: listBottomPad }}
+          ListHeaderComponent={
+            <View style={[styles.listHeader, { width, paddingHorizontal: spacing.lg }]}>{header}</View>
+          }
+          ListHeaderComponentStyle={styles.listHeaderWrap}
           refreshing={data.refreshing}
           onRefresh={data.refresh}
-          initialNumToRender={12}
-          windowSize={7}
+          onEndReached={loadMore}
+          onEndReachedThreshold={0.4}
+          initialNumToRender={initialCount}
+          maxToRenderPerBatch={pageCount}
+          updateCellsBatchingPeriod={50}
+          windowSize={5}
+          // Sur web, removeClippedSubviews coupe souvent le header (filtres).
+          removeClippedSubviews={Platform.OS === 'android'}
           ListEmptyComponent={
-            stats.cardsOwned === 0 ? (
-              <EmptyState
-                icon="pack"
-                title="Votre collection est vide"
-                message="Ouvrez votre premier paquet pour y ranger vos premières cartes."
-                actionLabel="Mes paquets"
-                onAction={() => router.push('/packs')}
-              />
-            ) : (
-              <EmptyState
-                icon="filter"
-                title="Aucune carte ne correspond"
-                message="Modifiez ou réinitialisez les filtres."
-                actionLabel="Réinitialiser"
-                onAction={() => setFilters(COLLECTION_DEFAULTS)}
-              />
-            )
+            <View style={{ paddingHorizontal: spacing.lg }}>
+              {stats.cardsOwned === 0 ? (
+                <EmptyState
+                  icon="pack"
+                  title="Votre collection est vide"
+                  message="Ouvrez votre premier paquet pour y ranger vos premières cartes."
+                  actionLabel="Mes paquets"
+                  onAction={() => router.push('/packs')}
+                />
+              ) : (
+                <EmptyState
+                  icon="filter"
+                  title="Aucune carte ne correspond"
+                  message="Modifiez ou réinitialisez les filtres."
+                  actionLabel="Réinitialiser"
+                  onAction={() => setFilters(COLLECTION_DEFAULTS)}
+                />
+              )}
+            </View>
           }
-          renderItem={({ item }) => {
-            const owned = player.ownedCards.get(item.id);
-            return (
-              <AtlasCard
-                size={cardWidth >= 150 ? 'medium' : 'small'}
-                width={cardWidth}
-                onPress={() => router.push(`/card/${item.slug}`)}
-                card={toCardData(catalog, item)}
-                locked={!owned}
-                isNew={!!owned && !owned.seen_at}
-                quantity={owned?.quantity}
-              />
-            );
-          }}
+          renderItem={renderItem}
         />
       ) : (
         <ScrollView contentContainerStyle={[styles.list, { paddingBottom: listBottomPad }]}>
@@ -290,14 +369,14 @@ export default function CollectionScreen() {
 
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.night },
+  listHeaderWrap: { width: '100%' },
+  listHeader: { alignSelf: 'center' },
   header: { gap: spacing.md, paddingBottom: spacing.md },
   total: { gap: spacing.xs, paddingVertical: spacing.sm },
   filtersToggle: { alignSelf: 'flex-start' },
-  segment: { flexDirection: 'row', gap: spacing.sm },
-  chips: { gap: spacing.sm },
+  segment: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+  chipWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  row: { flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-end' },
-  flex: { flex: 1 },
   list: { paddingHorizontal: spacing.lg, gap: spacing.lg },
   columns: { gap: spacing.sm },
 });
