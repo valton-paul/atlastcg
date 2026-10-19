@@ -3,13 +3,22 @@ import { useId, useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Svg, { Circle, Defs, G, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 
-import type { CardCategory, Rarity } from '@/features/catalog/types';
 import { colors, rarityStyles } from '@/design-system/tokens';
+import type { CardCategory, Rarity } from '@/features/catalog/types';
 import { getSupabase, isSupabaseConfigured } from '@/lib/supabase';
 
 import silhouettes from './data/silhouettes.json';
 
-const SILHOUETTES = silhouettes as { size: number; paths: Record<string, string> };
+const SILHOUETTES = silhouettes as {
+  size: number;
+  paths: Record<string, string>;
+  capitals?: Record<string, { x: number; y: number }>;
+};
+
+/** Placement de la silhouette dans le viewBox carte 100×150. */
+const MAP_OFFSET_X = 4;
+const MAP_OFFSET_Y = 14;
+const MAP_SCALE = 0.92;
 
 export function illustrationUrl(path: string | null): string | null {
   if (!path || !isSupabaseConfigured()) return null;
@@ -69,7 +78,9 @@ function ProceduralArtwork({
   const accent = locked ? colors.borderStrong : style.color;
   const moon = locked ? colors.border : mix(accent, '#F2F5FA', 0.45);
   const silhouette = isoNumeric ? SILHOUETTES.paths[isoNumeric] : undefined;
+  const capitalPoint = isoNumeric ? SILHOUETTES.capitals?.[isoNumeric] : undefined;
   const gradientId = `sky-${useId().replace(/:/g, '')}`;
+  const oceanId = `ocean-${useId().replace(/:/g, '')}`;
 
   return (
     <View style={StyleSheet.absoluteFill}>
@@ -79,17 +90,34 @@ function ProceduralArtwork({
             <Stop offset="0" stopColor={sky} />
             <Stop offset="1" stopColor={ground} />
           </LinearGradient>
+          <LinearGradient id={oceanId} x1="0" y1="0" x2="1" y2="1">
+            <Stop offset="0" stopColor={locked ? colors.slate : '#0E2438'} />
+            <Stop offset="1" stopColor={locked ? colors.ink : '#16324A'} />
+          </LinearGradient>
         </Defs>
-        <Rect x={0} y={0} width={100} height={150} fill={`url(#${gradientId})`} />
         {category === 'country' || category === 'capital' ? (
-          <CountryFigure
-            silhouette={silhouette}
-            accent={accent}
-            locked={locked}
-            capital={category === 'capital'}
-          />
+          <>
+            <Rect x={0} y={0} width={100} height={150} fill={`url(#${oceanId})`} />
+            {/* Graticule léger — lit comme une carte, pas un simple fond uni. */}
+            <G opacity={locked ? 0.12 : 0.22} stroke={accent} strokeWidth={0.35} fill="none">
+              {[28, 50, 72, 94, 116].map((y) => (
+                <Path key={`h-${y}`} d={`M4 ${y}H96`} />
+              ))}
+              {[18, 36, 54, 72, 90].map((x) => (
+                <Path key={`v-${x}`} d={`M${x} 12V138`} />
+              ))}
+            </G>
+            <CountryFigure
+              silhouette={silhouette}
+              capitalPoint={capitalPoint}
+              accent={accent}
+              locked={locked}
+              showCapital={category === 'capital'}
+            />
+          </>
         ) : (
           <>
+            <Rect x={0} y={0} width={100} height={150} fill={`url(#${gradientId})`} />
             <Circle cx={72} cy={28} r={14} fill={moon} opacity={locked ? 0.35 : 0.85} />
             <Scene category={category} accent={accent} locked={locked} />
           </>
@@ -102,35 +130,67 @@ function ProceduralArtwork({
 
 function CountryFigure({
   silhouette,
+  capitalPoint,
   accent,
   locked,
-  capital,
+  showCapital,
 }: {
   silhouette: string | undefined;
+  capitalPoint: { x: number; y: number } | undefined;
   accent: string;
   locked: boolean;
-  capital: boolean;
+  showCapital: boolean;
 }) {
+  const landFill = locked ? colors.slateRaised : mix(accent, '#1A2A3A', 0.35);
+  const landStroke = locked ? colors.borderStrong : accent;
+  const pin = capitalPoint
+    ? {
+        x: MAP_OFFSET_X + capitalPoint.x * MAP_SCALE,
+        y: MAP_OFFSET_Y + capitalPoint.y * MAP_SCALE,
+      }
+    : { x: 50, y: 68 };
+
   return (
     <G>
       {silhouette ? (
-        <G transform="translate(6 18) scale(0.88)">
+        <G transform={`translate(${MAP_OFFSET_X} ${MAP_OFFSET_Y}) scale(${MAP_SCALE})`}>
+          {/* Ombre portée pour détacher le pays de l’océan. */}
           <Path
             d={silhouette}
-            fill={locked ? colors.slateRaised : accent}
-            fillOpacity={locked ? 0.35 : 0.28}
-            stroke={accent}
-            strokeWidth={1.4}
+            fill={colors.nightDeep}
+            fillOpacity={locked ? 0.15 : 0.35}
+            transform="translate(1.2 1.8)"
+          />
+          <Path
+            d={silhouette}
+            fill={landFill}
+            fillOpacity={locked ? 0.45 : 0.92}
+            stroke={landStroke}
+            strokeWidth={2.1}
+            strokeLinejoin="round"
+            strokeLinecap="round"
+          />
+          {/* Trait intérieur pour renforcer le contour. */}
+          <Path
+            d={silhouette}
+            fill="none"
+            stroke={locked ? colors.border : '#F2F5FA'}
+            strokeOpacity={locked ? 0.2 : 0.28}
+            strokeWidth={0.7}
             strokeLinejoin="round"
           />
         </G>
       ) : (
-        <Circle cx={50} cy={62} r={28} fill="none" stroke={accent} strokeWidth={1.2} opacity={0.5} />
+        <Circle cx={50} cy={68} r={28} fill="none" stroke={accent} strokeWidth={1.2} opacity={0.5} />
       )}
-      {capital && !locked ? (
-        <G transform="translate(50 62)">
-          <Circle r={7} fill={colors.nightDeep} stroke={accent} strokeWidth={1.3} />
-          <Path d="M0 -3.6l1.1 2.3 2.5.3-1.9 1.7.5 2.5L0 1.8l-2.2 1.2.5-2.5-1.9-1.7 2.5-.3z" fill={accent} />
+      {showCapital && !locked ? (
+        <G transform={`translate(${pin.x} ${pin.y})`}>
+          <Circle r={8} fill={colors.nightDeep} opacity={0.45} />
+          <Circle r={6.5} fill={colors.nightDeep} stroke={accent} strokeWidth={1.5} />
+          <Path
+            d="M0 -3.4l1.05 2.15 2.35.3-1.75 1.6.45 2.35L0 1.7l-2.1 1.15.45-2.35-1.75-1.6 2.35-.3z"
+            fill={accent}
+          />
         </G>
       ) : null}
     </G>

@@ -119,16 +119,40 @@ const countries = features.map((f) => {
   };
 });
 
+type CapitalCoord = { lat: number; lng: number };
+const capitalCoords = JSON.parse(
+  readFileSync(join(root, 'scripts', 'data', 'capital-coords.json'), 'utf8'),
+) as Record<string, CapitalCoord>;
+
+/**
+ * Silhouettes calées sur le territoire principal (sans outre-mer éloigné) pour que
+ * la carte soit reconnaissable et que la capitale tombe au bon endroit.
+ */
 const silhouettes: Record<string, string> = {};
+const capitals: Record<string, { x: number; y: number }> = {};
+let capitalsProjected = 0;
 for (const f of features) {
+  const land = mainLandFeature(f);
   const projection = geoNaturalEarth1().fitExtent(
     [
       [6, 6],
       [SILHOUETTE - 6, SILHOUETTE - 6],
     ],
-    f,
+    land,
   );
-  silhouettes[f.id] = geoPath(projection).digits(1)(f) ?? '';
+  silhouettes[f.id] = geoPath(projection).digits(1)(land) ?? '';
+
+  const coord = capitalCoords[f.id];
+  if (coord) {
+    const projected = projection([coord.lng, coord.lat]);
+    if (projected) {
+      capitals[f.id] = {
+        x: Math.round(projected[0] * 10) / 10,
+        y: Math.round(projected[1] * 10) / 10,
+      };
+      capitalsProjected += 1;
+    }
+  }
 }
 
 writeFileSync(
@@ -142,6 +166,13 @@ writeFileSync(
 );
 writeFileSync(
   join(root, 'src', 'features', 'cards', 'data', 'silhouettes.json'),
-  JSON.stringify({ size: SILHOUETTE, paths: silhouettes }),
+  JSON.stringify({
+    size: SILHOUETTE,
+    source: 'Natural Earth (territoire principal) + capitales projetées',
+    paths: silhouettes,
+    capitals,
+  }),
 );
-console.log(`${countries.length} pays générés, dont ${added.length} repris d'une échelle plus fine.`);
+console.log(
+  `${countries.length} pays générés, dont ${added.length} repris d'une échelle plus fine ; ${capitalsProjected} capitales projetées.`,
+);
