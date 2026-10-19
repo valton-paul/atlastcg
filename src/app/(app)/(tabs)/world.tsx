@@ -208,8 +208,8 @@ export default function WorldScreen() {
   const chargeCount = charges.data?.charges ?? 0;
   const chargeMax = charges.data?.maxStored ?? 10;
   const canLaunchDraw = chargeCount > 0 || !!activeExpedition;
-  /** Rouge tant que la destination tirée n’a pas été quittée via « Partir ». */
-  const mapWinner = drawWinner;
+  /** Pendant le spin : uniquement drawWinner (posé en fin de séquence). Sinon rouge si tiré ou expédition en cours. */
+  const mapWinner = drawing ? drawWinner : (drawWinner ?? activeCountryNumeric);
 
   const clearDrawHighlight = () => {
     setDrawPhase('idle');

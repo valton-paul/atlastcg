@@ -54,7 +54,7 @@ type Props = {
   insetBottom?: number;
   /** Pays brièvement illuminé (rouge) pendant le tirage d'expédition. */
   drawHighlight?: string | null;
-  /** Pays retenu (or) à la fin du tirage. */
+  /** Pays retenu / destination d’expédition (rouge). */
   drawWinner?: string | null;
   /** Désactive les taps pays pendant l'animation de tirage. */
   interactionEnabled?: boolean;
@@ -71,12 +71,13 @@ const Countries = memo(function Countries({
   drawHighlight: string | null;
   drawWinner: string | null;
 }) {
+  // Remplissages → frontières → contour actif. Pas de stroke sur le fill
+  // (un trait épais centré « mangeait » les voisins).
   return (
     <>
       {MAP.countries.map((country) => {
         const ownerId = resolveMapCountryId(country.id);
         const tier = tiers.get(ownerId);
-        const isSelected = selected === ownerId;
         const isPulse = drawHighlight === ownerId;
         const isWinner = drawWinner === ownerId;
         const fill = isWinner
@@ -86,25 +87,73 @@ const Countries = memo(function Countries({
             : tier
               ? TIER_FILL[tier]
               : colors.map.graticule;
-        const stroke = isWinner
-          ? colors.gold
-          : isPulse
-            ? colors.map.drawPulse
-            : isSelected
-              ? colors.map.selected
-              : tier
-                ? colors.map.unknownStroke
-                : colors.map.graticule;
         return (
           <Path
-            key={country.id}
+            key={`f-${country.id}`}
             d={country.d}
             fill={fill}
             fillOpacity={isPulse || isWinner ? 1 : tier ? 1 : 0.9}
-            stroke={stroke}
-            strokeWidth={isWinner ? 2 : isPulse || isSelected ? 1.4 : 0.4}
+            stroke="none"
             // Attribut web pour elementsFromPoint ; la sélection passe par Gesture.Tap partout.
             {...(tier ? ({ 'data-country': ownerId } as object) : null)}
+          />
+        );
+      })}
+      {MAP.countries.map((country) => {
+        const ownerId = resolveMapCountryId(country.id);
+        const tier = tiers.get(ownerId);
+        // Micro-pays en tirage : le trait sombre recouvrirait tout le fill rouge.
+        if (drawHighlight === ownerId || drawWinner === ownerId) return null;
+        const stroke = tier ? colors.map.unknownStroke : colors.map.graticule;
+        return (
+          <Path
+            key={`b-${country.id}`}
+            d={country.d}
+            fill="none"
+            stroke={stroke}
+            strokeWidth={0.45}
+            strokeLinejoin="round"
+            pointerEvents="none"
+          />
+        );
+      })}
+      {MAP.countries.map((country) => {
+        const ownerId = resolveMapCountryId(country.id);
+        const isSelected = selected === ownerId;
+        const isPulse = drawHighlight === ownerId;
+        const isWinner = drawWinner === ownerId;
+        if (!isSelected && !isPulse && !isWinner) return null;
+        const stroke = isWinner || isPulse ? colors.map.drawPulse : colors.map.selected;
+        return (
+          <Path
+            key={`o-${country.id}`}
+            d={country.d}
+            fill="none"
+            stroke={stroke}
+            strokeWidth={isWinner || isPulse ? 0.7 : 0.85}
+            strokeLinejoin="round"
+            pointerEvents="none"
+          />
+        );
+      })}
+      {/* Halo rouge sur les micro-États tirés — sinon le fill est illisible. */}
+      {MAP.countries.map((country) => {
+        const ownerId = resolveMapCountryId(country.id);
+        if (ownerId !== country.id) return null;
+        if (!isTinyMapCountry(country)) return null;
+        const lit = drawHighlight === ownerId || drawWinner === ownerId;
+        if (!lit) return null;
+        return (
+          <Circle
+            key={`p-${country.id}`}
+            cx={country.cx}
+            cy={country.cy}
+            r={TINY_MARKER_R}
+            fill={colors.map.drawPulse}
+            fillOpacity={0.55}
+            stroke={colors.map.drawPulse}
+            strokeWidth={0.9}
+            pointerEvents="none"
           />
         );
       })}
@@ -130,16 +179,19 @@ const Countries = memo(function Countries({
   );
 });
 
-/** Zoom de base à la sélection ; les micro-pays montent plus haut pour rester cliquables. */
+/** Zoom de base à la sélection ; les micro-pays montent plus haut (surtout en expédition). */
 const FOCUS_SCALE = 2.5;
 
-function focusScaleForCountry(country: MapCountry): number {
+/** `boost` > 1 pour les destinations d’expédition : un peu plus serré sur les petits pays. */
+function focusScaleForCountry(country: MapCountry, boost = 1): number {
   const area = pathBBoxArea(country.d);
-  if (area < 2) return 7;
-  if (area < 8) return 5.5;
-  if (area < 16) return 4;
-  if (area < 40) return 3.2;
-  return FOCUS_SCALE;
+  let base = FOCUS_SCALE;
+  if (area < 2) base = 10;
+  else if (area < 8) base = 8;
+  else if (area < 16) base = 6;
+  else if (area < 40) base = 4.5;
+  else if (area < 120) base = 3.2;
+  return Math.min(MAX_SCALE, base * boost);
 }
 
 export function WorldMap({
@@ -188,20 +240,23 @@ export function WorldMap({
   };
 
   useEffect(() => {
+    // Destination d’expédition (gagnant du tirage) ou sélection manuelle.
+    const focusId = selected ?? drawWinner;
     const wasSelected = prevSelected.current;
-    prevSelected.current = selected;
+    prevSelected.current = focusId;
 
     // Croix du panneau : même reset que le bouton « Vue d’ensemble ».
-    if (!selected) {
+    if (!focusId) {
       if (wasSelected) animateTo({ scale: 1, ...clampTranslation(1, 0, 0, g) });
       return;
     }
-    const country = mapCountryByNumeric(selected);
+    const country = mapCountryByNumeric(focusId);
     if (!country) return;
+    const expeditionBoost = drawWinner && drawWinner === focusId ? 1.2 : 1;
     const target = focusViewport(
       offsetX + country.cx * ratio,
       offsetY + country.cy * ratio,
-      Math.max(scale.get(), focusScaleForCountry(country)),
+      Math.max(scale.get(), focusScaleForCountry(country, expeditionBoost)),
       geometry(width, height, { contentWidth, contentHeight, insetRight, insetBottom }),
     );
     if (reduceMotion) {
@@ -215,6 +270,7 @@ export function WorldMap({
     }
   }, [
     selected,
+    drawWinner,
     ratio,
     offsetX,
     offsetY,

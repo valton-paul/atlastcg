@@ -4,6 +4,7 @@
  */
 export const MAP_TERRITORY_OF: Readonly<Record<string, string>> = {
   '304': '208', // Groenland → Danemark
+  '630': '840', // Porto Rico → États-Unis
 };
 
 /** Identifiant catalogue utilisé pour le palier, la sélection et le hit-test. */
