@@ -34,7 +34,12 @@ Sans configuration Supabase, l'application démarre sur un écran expliquant quo
    ```
    La CLI mémorise les migrations déjà jouées : relancer `db:push` n'applique que les nouvelles.
 2. Dans Authentification → URL Configuration, autoriser : `atlas://auth/callback`, `atlas://reset-password` (et `exp://**` en développement avec Expo Go).
-3. Les illustrations se déposent dans le bucket public `card-illustrations` (créé par la migration `storage`).
+3. Les illustrations se déposent dans le bucket public `card-illustrations` (créé par la migration `storage`) :
+   ```bash
+   npm run illustrations:monuments   # Wikidata/Commons → content/illustrations + crédits
+   npm run illustrations:upload      # envoi vers le bucket (SUPABASE_SECRET_KEY)
+   npm run content:build             # régénère le seed avec les chemins d’illustration
+   ```
 
 ## Commandes
 
@@ -44,6 +49,8 @@ npm run typecheck       # tsc --noEmit
 npm run format:check    # Prettier
 npm run content:check   # valide content/*.json
 npm run content:build   # valide et régénère supabase/seed.sql
+npm run illustrations:monuments  # photos monuments (Wikidata → WebP)
+npm run illustrations:upload     # upload vers Supabase Storage
 npm test                # tests applicatifs et de contenu (Jest)
 npm run test:db         # migrations, RLS et RPC sur un vrai PostgreSQL embarqué
 npm run export:android  # bundle de production Android

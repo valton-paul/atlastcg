@@ -1,0 +1,27 @@
+{
+  "fetchedAt": "2026-10-19T15:29:19.806Z",
+  "results": [
+    {
+      "slug": "mont-saint-michel",
+      "path": "monuments/mont-saint-michel.webp",
+      "credit": "Gzen92 — CC BY-SA 4.0 (Wikimedia Commons)",
+      "license": "CC BY-SA 4.0",
+      "fileTitle": "File:Abbaye du Mont-Saint-Michel (12).jpg"
+    },
+    {
+      "slug": "olympie",
+      "path": "monuments/olympie.webp",
+      "credit": "Annatsach — CC BY-SA 4.0 (Wikimedia Commons)",
+      "license": "CC BY-SA 4.0",
+      "fileTitle": "File:Archaeological Site of Ancient Olympia - 9.jpg"
+    },
+    {
+      "slug": "arches-de-talava",
+      "path": "monuments/arches-de-talava.webp",
+      "credit": "vuorikari — CC BY-SA 2.0 (Wikimedia Commons)",
+      "license": "CC BY-SA 2.0",
+      "fileTitle": "File:Talava Arches 1, Niue.jpg"
+    }
+  ],
+  "skipped": []
+}

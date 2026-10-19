@@ -1,0 +1,408 @@
+{
+  "$comment": "slug → QID Wikidata (P18) ou { file: \"File:…\" }. Généré / enrichi par illustrations:monuments.",
+  "tour-eiffel": "Q243",
+  "mont-saint-michel": {
+    "file": "File:Abbaye du Mont-Saint-Michel (12).jpg"
+  },
+  "olympie": {
+    "file": "File:Archaeological Site of Ancient Olympia - 9.jpg"
+  },
+  "arches-de-talava": {
+    "file": "File:Talava Arches 1, Niue.jpg"
+  },
+  "colisee": "Q10285",
+  "sagrada-familia": {
+    "file": "File:Sagrada Familia March 2015-19bw.jpg"
+  },
+  "alhambra": "Q47476",
+  "acropole-athenes": {
+    "file": "File:Acropolis Parthenon Athens Greece.jpg"
+  },
+  "porte-de-brandebourg": {
+    "file": "File:Brandenburger Tor morgens.jpg"
+  },
+  "chateau-de-neuschwanstein": {
+    "file": "File:Neuschwanstein Castle from Marienbrücke, 2011 May.jpg"
+  },
+  "taj-mahal": {
+    "file": "File:Taj Mahal, Agra, India edit2.jpg"
+  },
+  "grande-muraille": {
+    "file": "File:The Mutianyu section of the Great Wall of China.jpg"
+  },
+  "chateau-de-versailles": "Q2946",
+  "venise": "Q906255",
+  "pompei": "Q43332",
+  "flamenco": "Q9764",
+  "meteores": {
+    "file": "File:Μετεωρα by night.jpg"
+  },
+  "cathedrale-de-cologne": "Q4176",
+  "aurores-boreales": {
+    "file": "File:Aurore boréale norvégienne.jpg"
+  },
+  "bryggen": "Q153430",
+  "geysir": "Q216846",
+  "thingvellir": "Q107370",
+  "mont-fuji": "Q39231",
+  "itsukushima": "Q191763",
+  "washoku": "Q234138",
+  "cite-interdite": "Q80290",
+  "armee-de-terre-cuite": "Q47672",
+  "ghats-de-varanasi": {
+    "file": "File:Varanasi Munshi Ghat3.jpg"
+  },
+  "hangeul": "Q8222",
+  "gyeongbokgung": "Q482485",
+  "kimjang": "Q5562697",
+  "baie-ha-long": "Q190128",
+  "hoi-an": "Q36160",
+  "angkor": "Q163607",
+  "tonle-sap": "Q199938",
+  "petra": "Q5788",
+  "wadi-rum": "Q40729",
+  "sainte-sophie": "Q684201",
+  "cappadoce": "Q217265",
+  "pyramides-de-gizeh": "Q12508",
+  "abou-simbel": "Q6655437",
+  "medina-de-fes": "Q2072102",
+  "jemaa-el-fna": "Q258348",
+  "ile-de-goree": "Q244347",
+  "lac-rose": {
+    "file": "File:Lac Rose in Senegal.jpg"
+  },
+  "eglises-de-lalibela": {
+    "file": "File:Lalibela-Matériau de construction.jpg"
+  },
+  "ceremonie-du-cafe": "Q716770",
+  "kilimandjaro": "Q328922",
+  "serengeti": "Q7308",
+  "stone-town": "Q844417",
+  "robben-island": "Q192493",
+  "montagne-de-la-table": "Q213360",
+  "chutes-du-niagara": "Q274120",
+  "grand-canyon": "Q118841",
+  "statue-de-la-liberte": "Q9202",
+  "yellowstone": "Q374772",
+  "chichen-itza": "Q5859",
+  "teotihuacan": "Q172613",
+  "jour-des-morts": "Q1033140",
+  "foret-amazonienne": "Q177567",
+  "christ-redempteur": "Q79961",
+  "chutes-d-iguacu": "Q36332",
+  "tango": "Q14390274",
+  "perito-moreno": "Q367943",
+  "machu-picchu": "Q676203",
+  "lignes-de-nazca": "Q2620036",
+  "lac-titicaca": "Q35342",
+  "moai-rapa-nui": {
+    "file": "File:Escultura Rapa Nui (Moai) A74353920250105.jpg"
+  },
+  "desert-d-atacama": "Q47141",
+  "grande-barriere-de-corail": "Q7343",
+  "uluru": "Q33910",
+  "opera-de-sydney": "Q45178",
+  "te-reo-maori": "Q36451",
+  "milford-sound": "Q187197",
+  "haka": "Q714508",
+  "berat": "Q170244",
+  "butrint": "Q188694",
+  "vallee-du-madriu": "Q332800",
+  "chateau-de-schonbrunn": "Q131330",
+  "hallstatt": "Q131633",
+  "grand-place-bruxelles": "Q215429",
+  "bruges": "Q12994",
+  "chateau-de-mir": "Q209643",
+  "pont-de-mostar": {
+    "file": "File:Mostar Old Town Panorama 2007.jpg"
+  },
+  "paphos": "Q180918",
+  "dubrovnik": "Q1722",
+  "chateau-de-kronborg": "Q189358",
+  "vieille-ville-de-tallinn": {
+    "file": "File:🇪🇪 🇪🇺 Ciudad vieja (Tallin, Estonia, 10-6-2015) - Flickr - Juanje Orío.jpg"
+  },
+  "sauna-finlandais": "Q1598293",
+  "suomenlinna": "Q1292442",
+  "rives-du-danube-budapest": {
+    "file": "File:Rive du Danube en hiver à Budapest.jpg"
+  },
+  "falaises-de-moher": "Q239477",
+  "art-nouveau-riga": {
+    "file": "File:Immeuble art nouveau (Riga) (7558514582).jpg"
+  },
+  "chateau-de-vaduz": "Q694782",
+  "isthme-de-courlande": "Q5595",
+  "lac-d-ohrid": "Q156258",
+  "temples-megalithiques-malte": "Q753383",
+  "caves-de-milestii-mici": {
+    "file": "File:Caves Milestii Mici Moldavie.jpg"
+  },
+  "grand-prix-de-monaco": {
+    "file": "File:1936-04-13 Grand Prix de Monaco au virage du quai de plaisance - ordre Sommer, Caracciola et Rosemeyer.jpg"
+  },
+  "bouches-de-kotor": "Q207468",
+  "moulins-de-kinderdijk": {
+    "file": "File:KinderdijkMolens02.jpg"
+  },
+  "canaux-d-amsterdam": "Q340013",
+  "mine-de-sel-de-wieliczka": {
+    "file": "File:Wieliczka, Jana Matejki; Kopalnia soli- kierat konny węgierski; A-580; 01.jpg"
+  },
+  "foret-de-bialowieza": "Q192666",
+  "cracovie": "Q31487",
+  "tour-de-belem": "Q215003",
+  "fado": "Q185676",
+  "delta-du-danube": "Q184429",
+  "stonehenge": "Q39671",
+  "tour-de-londres": "Q62378",
+  "chaussee-des-geants": "Q106187",
+  "lac-baikal": "Q5513",
+  "transsiberien": "Q58767",
+  "saint-petersbourg": "Q656",
+  "mont-titano": "Q158526",
+  "monastere-de-studenica": "Q143042",
+  "chateau-de-spis": "Q205558",
+  "grottes-de-skocjan": "Q500376",
+  "lac-de-bled": "Q648902",
+  "cervin": "Q1374",
+  "glacier-d-aletsch": "Q204658",
+  "vasa": "Q219821",
+  "laponie": "Q5700",
+  "pont-charles": "Q204871",
+  "cesky-krumlov": "Q188082",
+  "sainte-sophie-de-kyiv": "Q830054",
+  "borchtch": {
+    "file": "File:Bowl of Ukrainian Borscht.jpg"
+  },
+  "chapelle-sixtine": "Q2943",
+  "basilique-saint-pierre": "Q12512",
+  "vallee-de-bamiyan": {
+    "file": "File:Cultural Landscape and Archaeological Remains of the Bamiyan Valley-130351.jpg"
+  },
+  "hegra": "Q3357155",
+  "monastere-de-guegharde": {
+    "file": "File:Monasterio de Geghard, Armenia, 2016-10-02, DD 65-74 PAN.jpg"
+  },
+  "vieille-ville-de-bakou": {
+    "file": "File:Fuente en Baku, Azerbaiyán, 2016-09-26, DD 227-229 HDR.jpg"
+  },
+  "qal-at-al-bahrein": "Q740104",
+  "sundarbans": "Q4526",
+  "taktshang": {
+    "file": "File:Paro Taktsang, Bhutan (edited).jpg"
+  },
+  "bagan": "Q29317",
+  "mosquee-omar-ali-saifuddien": {
+    "file": "File:Sultan Omar Ali Saifuddin Mosque 02.jpg"
+  },
+  "mont-paektu": "Q107635",
+  "mtskheta": "Q180810",
+  "borobudur": "Q4119591",
+  "parc-national-de-komodo": "Q4520",
+  "babylone": "Q5684",
+  "persepolis": "Q129072",
+  "place-naqsh-e-jahan": {
+    "file": "File:Naghshe Jahan Square Isfahan modified.jpg"
+  },
+  "massada": "Q1941401",
+  "baikonour": "Q177477",
+  "issyk-koul": {
+    "file": "File:Lake Issyk-Kul, Kyrgyzstan.jpg"
+  },
+  "tours-du-koweit": {
+    "file": "File:1974 world cup qualifying SouthAmerica.png"
+  },
+  "luang-prabang": "Q190165",
+  "baalbek": "Q178835",
+  "tours-petronas": "Q83063",
+  "atolls-des-maldives": "Q757549",
+  "naadam": "Q721133",
+  "everest": "Q513",
+  "aflaj-d-oman": "Q459297",
+  "samarcande": "Q5753",
+  "itchan-kala": "Q535577",
+  "mohenjo-daro": {
+    "file": "File:Mohenjo-daro.jpg"
+  },
+  "k2": "Q43512",
+  "eglise-de-la-nativite": "Q194504",
+  "rizieres-des-cordilleres": "Q1503858",
+  "al-zubarah": "Q2727469",
+  "jardin-botanique-de-singapour": "Q3046409",
+  "sigiriya": "Q272153",
+  "palmyre": "Q5747",
+  "pamir": "Q161750",
+  "ayutthaya": "Q476222",
+  "songkran": "Q215014",
+  "tais": "Q2388788",
+  "cratere-de-darvaza": "Q70458",
+  "shibam": "Q192518",
+  "socotra": "Q18595360",
+  "burj-khalifa": "Q12495",
+  "casbah-d-alger": "Q662102",
+  "tassili-n-ajjer": "Q190048",
+  "mbanza-kongo": "Q500189",
+  "delta-de-l-okavango": "Q650872",
+  "ruines-de-loropeni": "Q1269931",
+  "lac-tanganyika": "Q5511",
+  "palais-royaux-d-abomey": "Q2425839",
+  "mont-cameroun": "Q190562",
+  "cidade-velha": "Q464913",
+  "morna": "Q883305",
+  "karthala": "Q3579376",
+  "basilique-notre-dame-de-la-paix": "Q815584",
+  "lac-assal": "Q81239",
+  "umhlanga": "Q2382828",
+  "parc-national-de-la-lope": "Q9055976",
+  "ile-kunta-kinteh": "Q213188",
+  "chateau-de-cape-coast": {
+    "file": "File:Le principal château des anglois à Cabo Cors de l'un et de l'autre côté - Labat - btv1b85955714.jpg"
+  },
+  "kente": {
+    "file": "File:Kente ewe.jpg"
+  },
+  "mont-nimba": "Q849129",
+  "ile-de-bioko": {
+    "file": "File:Albizia zygia-NMNH-12889907.jpg"
+  },
+  "archipel-des-bijagos": "Q664687",
+  "reserve-du-masai-mara": "Q207724",
+  "mont-kenya": "Q172070",
+  "parc-national-de-sapo": "Q1969043",
+  "leptis-magna": "Q191504",
+  "allee-des-baobabs": "Q788084",
+  "tsingy-de-bemaraha": "Q1405154",
+  "lac-malawi": "Q5532",
+  "grande-mosquee-de-djenne": "Q683632",
+  "tombouctou": "Q9427",
+  "aapravasi-ghat": "Q9276",
+  "le-morne-brabant": "Q1129992",
+  "structure-de-richat": "Q744591",
+  "chinguetti": "Q312357",
+  "ile-de-mozambique": "Q331099",
+  "dunes-de-sossusvlei": "Q1932730",
+  "centre-historique-d-agadez": "Q47800464",
+  "nollywood": "Q21065894",
+  "foret-impenetrable-de-bwindi": "Q500397",
+  "parc-national-des-volcans": "Q932736",
+  "parc-manovo-gounda-saint-floris": {
+    "file": "File:Manovo.jpg"
+  },
+  "parc-national-d-odzala-kokoua": {
+    "file": "File:Primage2.jpg"
+  },
+  "parc-national-des-virunga": "Q223589",
+  "vallee-de-mai": "Q573558",
+  "ile-de-tiwai": {
+    "file": "File:Tiwai Island River.jpg"
+  },
+  "laas-geel": "Q1799347",
+  "pyramides-de-meroe": "Q456939",
+  "sudd": {
+    "file": "File:Juices for Breakfast.jpg"
+  },
+  "pico-cao-grande": "Q2082148",
+  "massif-de-l-ennedi": {
+    "file": "File:Arche de Djoulio, Massif de l’Ennedi.jpg"
+  },
+  "koutammakou": "Q508040",
+  "site-de-carthage": {
+    "file": "File:Archaeological Site of Carthage-130237.jpg"
+  },
+  "amphitheatre-d-el-jem": "Q2914326",
+  "chutes-victoria": "Q43278",
+  "grand-zimbabwe": "Q209217",
+  "asmara-ville-moderniste": {
+    "file": "File:Asmara, cinema impero, 07.JPG"
+  },
+  "chantier-naval-nelson": {
+    "file": "File:Nelson's Dockyard.jpg"
+  },
+  "junkanoo": "Q1612069",
+  "crop-over": {
+    "file": "File:CoxAndSamuelLucasAtThe Anti-Slavery Society Convention, 1840.jpg"
+  },
+  "grand-trou-bleu": "Q86486",
+  "volcan-arenal": "Q641588",
+  "vieille-havane": "Q1165566",
+  "vallee-de-vinales": "Q48108",
+  "boiling-lake": "Q891027",
+  "noix-de-muscade-grenade": "Q83165",
+  "tikal": "Q181172",
+  "antigua-guatemala": "Q212773",
+  "citadelle-laferriere": "Q206194",
+  "copan": "Q214827",
+  "reggae": "Q9794",
+  "blue-mountains": "Q885808",
+  "leon-viejo": "Q1422898",
+  "canal-de-panama": "Q7350",
+  "merengue": "Q4413211",
+  "brimstone-hill": {
+    "file": "File:Plan du siège de Brimstone Hill dans l'isle St. Christophle - btv1b531038084.jpg"
+  },
+  "soufriere-saint-vincent": "Q26544",
+  "pitons-sainte-lucie": "Q639487",
+  "joya-de-ceren": "Q27985",
+  "steelpan": "Q6610630",
+  "salar-d-uyuni": "Q76122",
+  "potosi": "Q238079",
+  "carthagene-des-indes": "Q657461",
+  "cafe-colombien": {
+    "file": "File:Paisaje-Cafetero-Colombiano.png"
+  },
+  "chutes-de-kaieteur": "Q38120",
+  "missions-jesuites-paraguay": "Q465960",
+  "reserve-suriname-central": "Q189934",
+  "colonia-del-sacramento": "Q56064",
+  "salto-angel": "Q80299",
+  "galapagos": "Q38095",
+  "levuka": "Q26692",
+  "iles-phoenix": "Q863815",
+  "nan-madol": "Q846967",
+  "rock-islands": "Q1068224",
+  "to-sua": {
+    "file": "File:To Sua Ocean Trench - Lotofaga village - Samoa.jpg"
+  },
+  "haamonga-a-maui": "Q1433433",
+  "domaine-du-chef-roi-mata": "Q1072369",
+  "atoll-de-bikini": {
+    "file": "File:Operation Crossroads Baker Edit.jpg"
+  },
+  "rennell-est": "Q852433",
+  "monastere-de-rila": "Q207945",
+  "lacs-de-plitvice": "Q189849",
+  "newgrange": "Q339503",
+  "fortifications-de-luxembourg": {
+    "file": "File:Luxembourg (LU), Viaduc de Clausen -- 2023 -- 8131.jpg"
+  },
+  "fjords-de-norvege": {
+    "file": "File:Geirangerfjord from Ørnesvingen, 2013 June.jpg"
+  },
+  "monasteres-de-moldavie": {
+    "file": "File:Gura Mănăstirea Voronet.jpg"
+  },
+  "bosquet-sacre-d-osun-osogbo": {
+    "file": "File:Osun-Osogbo Sacred Grove, Osun State.jpg"
+  },
+  "site-agricole-de-kuk": {
+    "file": "File:Kuk New Guinea 2002.jpg"
+  },
+  "lagon-de-funafuti": "Q34126",
+  "lagon-d-aitutaki": {
+    "file": "File:Aitutaki Atoll by Nick Longrich.jpg"
+  },
+  "saut-du-gaul": {
+    "file": "File:Pentecost Land Diving II.JPG"
+  },
+  "chapeau-basotho": {
+    "file": "File:Mokorotlo.jpg"
+  },
+  "polyphonie-georgienne": "Q1509297",
+  "bilinguisme-canadien": {
+    "file": "File:Bilingual stop sign, Pain Court, Ontario, 2026-05-17 01.jpg"
+  },
+  "plateau-de-topside": {
+    "file": "File:Nauru island aerial photo December 1943.jpg"
+  }
+}
