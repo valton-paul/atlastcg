@@ -62,7 +62,13 @@
     { "slug": "album-pays-oceanie", "title": "Album complet : Océanie", "description": "Complète la collection Pays d'Océanie.", "kind": "collection_completed", "collection": "pays-oceanie", "rewardPack": "premium", "rewardQuantity": 1 },
     { "slug": "album-capitales", "title": "Album complet : Capitales", "description": "Complète la collection Capitales du monde.", "kind": "collection_completed", "collection": "capitales-du-monde", "rewardPack": "legendaire", "rewardQuantity": 1 }
   ],
-  "expeditionReward": { "pack": "classique", "quantity": 1 },
+  "expeditionReward": {
+    "fragments": 30,
+    "xp": 40,
+    "perfectBonusFragments": 15,
+    "perfectBonusXp": 20,
+    "stepXp": 5
+  },
   "settings": {
     "starter_reward": { "value": { "pack_slug": "classique", "quantity": 2 }, "description": "Paquets offerts à la création du compte." },
     "timed_packs": { "value": { "pack_slug": "classique", "interval_seconds": 600, "max_stored": 15 }, "description": "Paquets régénérés : au plus un paquet classique par synchronisation (toutes les 10 min), tant que la réserve est sous le plafond. Pas de rattrapage en rafale." },

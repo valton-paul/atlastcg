@@ -164,18 +164,32 @@ ${Object.entries(game.settings)
 on conflict (key) do update set value = excluded.value, description = excluded.description;`);
 
   push(`
-insert into public.expeditions (slug, country_code, title, summary, status, reward_pack_id, reward_pack_quantity)
-select v.slug, v.country_code, v.title, v.summary, 'published', p.id, ${game.expeditionReward.quantity}
+insert into public.expeditions (
+  slug, country_code, title, summary, status,
+  reward_pack_id, reward_pack_quantity,
+  reward_fragments, reward_xp, perfect_bonus_fragments, perfect_bonus_xp, step_xp
+)
+select
+  v.slug, v.country_code, v.title, v.summary, 'published',
+  null, null,
+  ${game.expeditionReward.fragments}, ${game.expeditionReward.xp},
+  ${game.expeditionReward.perfectBonusFragments}, ${game.expeditionReward.perfectBonusXp},
+  ${game.expeditionReward.stepXp}
   from (values
 ${catalog.expeditions
   .map((e) => `    (${lit(e.slug)}, ${lit(e.countryCode)}, ${lit(e.title)}, ${lit(e.summary)})`)
   .join(',\n')}
   ) as v (slug, country_code, title, summary)
-  join public.pack_definitions p on p.slug = ${lit(game.expeditionReward.pack)}
 on conflict (slug) do update set
   country_code = excluded.country_code, title = excluded.title, summary = excluded.summary,
-  status = excluded.status, reward_pack_id = excluded.reward_pack_id,
-  reward_pack_quantity = excluded.reward_pack_quantity;`);
+  status = excluded.status,
+  reward_pack_id = excluded.reward_pack_id,
+  reward_pack_quantity = excluded.reward_pack_quantity,
+  reward_fragments = excluded.reward_fragments,
+  reward_xp = excluded.reward_xp,
+  perfect_bonus_fragments = excluded.perfect_bonus_fragments,
+  perfect_bonus_xp = excluded.perfect_bonus_xp,
+  step_xp = excluded.step_xp;`);
 
   const steps = catalog.expeditions.flatMap((e) =>
     e.steps.map(

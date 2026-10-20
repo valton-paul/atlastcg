@@ -210,7 +210,7 @@ function expeditionForCountry(country: CountryEntry, all: CountryEntry[]): Catal
       {
         position: 3,
         kind: 'quiz',
-        title: 'Défi de connaissances',
+        title: 'Le défi',
         prompt: quiz.prompt,
         body: null,
         choices: quiz.choices,
@@ -372,8 +372,6 @@ export function parseCatalog(
     }
   });
 
-  if (!packSlugs.has(game.expeditionReward.pack))
-    issues.push({ path: 'game.expeditionReward', message: 'paquet de récompense inconnu' });
   for (const key of ['starter_reward', 'timed_packs']) {
     const setting = game.settings[key];
     if (!setting) {

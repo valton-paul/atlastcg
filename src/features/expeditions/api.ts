@@ -81,6 +81,9 @@ const submitSchema = z.object({
   correct: z.boolean(),
   correct_choice: z.number().nullable().optional(),
   explanation: z.string(),
+  xp_granted: z.number().optional().default(0),
+  country_xp: z.number().optional().default(0),
+  mastery_tier: z.enum(['novice', 'explorer', 'expert', 'master']).optional(),
   state: stateSchema,
 });
 
@@ -101,7 +104,18 @@ export function useCompleteExpedition() {
       callRpc(
         'complete_expedition',
         { p_expedition_id: expeditionId },
-        z.object({ newly_completed: z.boolean(), packs_granted: z.number(), state: stateSchema }),
+        z.object({
+          newly_completed: z.boolean(),
+          packs_granted: z.number(),
+          fragments_granted: z.number(),
+          xp_granted: z.number(),
+          perfect: z.boolean(),
+          fragments_balance: z.number(),
+          exploration_xp: z.number(),
+          country_xp: z.number().optional().default(0),
+          mastery_tier: z.enum(['novice', 'explorer', 'expert', 'master']).optional(),
+          state: stateSchema,
+        }),
       ),
     onSettled: () => client.invalidateQueries({ queryKey: queryKeys.player }),
   });

@@ -91,8 +91,13 @@ export const expeditionSchema = z.object({
   country_code: z.string(),
   title: z.string(),
   summary: z.string(),
-  reward_pack_id: z.string().uuid(),
-  reward_pack_quantity: z.number(),
+  reward_pack_id: z.string().uuid().nullable(),
+  reward_pack_quantity: z.number().nullable(),
+  reward_fragments: z.number(),
+  reward_xp: z.number(),
+  perfect_bonus_fragments: z.number(),
+  perfect_bonus_xp: z.number(),
+  step_xp: z.number(),
 });
 
 export type Country = z.infer<typeof countrySchema>;

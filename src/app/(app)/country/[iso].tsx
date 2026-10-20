@@ -28,6 +28,12 @@ import {
   countryProgress,
 } from '@/features/collection/progress';
 import { sortCards } from '@/features/collection/filters';
+import { useCountryJournal, useCountryMastery } from '@/features/expeditions/journal';
+import {
+  MASTERY_TIER_LABELS,
+  masteryNextThreshold,
+  masteryTier,
+} from '@/features/expeditions/mastery';
 import { useAtlasData } from '@/features/player/useAtlasData';
 import { errorMessage } from '@/lib/errors';
 
@@ -60,6 +66,15 @@ export default function CountryScreen() {
   const discovered = progress.owned > 0;
   const silhouette = SILHOUETTES.paths[country.iso_numeric];
   const displayName = discovered ? country.name : '???';
+  const masteryQuery = useCountryMastery(discovered);
+  const journalQuery = useCountryJournal(country.iso_code, discovered);
+  const masteryXp =
+    masteryQuery.data?.find((m) => m.country_code === country.iso_code)?.xp ?? 0;
+  const masteryCompleted =
+    masteryQuery.data?.find((m) => m.country_code === country.iso_code)?.expeditions_completed ?? 0;
+  const mastery = masteryTier(masteryXp);
+  const nextXp = masteryNextThreshold(masteryXp);
+  const journal = journalQuery.data ?? [];
 
   return (
     <Screen
@@ -95,6 +110,32 @@ export default function CountryScreen() {
         </View>
       </Surface>
 
+      {discovered ? (
+        <>
+          <SectionHeader title="Maîtrise" />
+          <Surface tone="explore">
+            <Text variant="overline" color={colors.turquoise}>
+              {MASTERY_TIER_LABELS[mastery]}
+            </Text>
+            <Text variant="bodyStrong">{masteryXp} XP d’exploration</Text>
+            <Text variant="caption" color={colors.textMuted}>
+              {masteryCompleted === 0
+                ? 'Complétez une expédition pour progresser.'
+                : masteryCompleted === 1
+                  ? '1 expédition réussie dans ce pays.'
+                  : `${masteryCompleted} expéditions réussies dans ce pays.`}
+            </Text>
+            {nextXp != null ? (
+              <ProgressBar label={`Prochain palier (${nextXp} XP)`} value={masteryXp} total={nextXp} />
+            ) : (
+              <Text variant="caption" color={colors.gold}>
+                Palier maximum atteint.
+              </Text>
+            )}
+          </Surface>
+        </>
+      ) : null}
+
       {expedition ? (
         <>
           <SectionHeader title="Expédition" />
@@ -127,6 +168,21 @@ export default function CountryScreen() {
               onPress={() => router.push(`/expedition/${expedition.slug}`)}
             />
           </Surface>
+        </>
+      ) : null}
+
+      {discovered && journal.length > 0 ? (
+        <>
+          <SectionHeader title="Carnet de voyage" />
+          {journal.map((entry) => (
+            <Surface key={entry.id} tone="panel">
+              <Text variant="overline" color={colors.gold}>
+                Découverte
+              </Text>
+              <Text variant="bodyStrong">{entry.title}</Text>
+              <Text color={colors.textMuted}>{entry.body}</Text>
+            </Surface>
+          ))}
         </>
       ) : null}
 

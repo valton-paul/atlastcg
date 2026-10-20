@@ -123,20 +123,45 @@ describe('expéditions', () => {
     );
   });
 
-  it('se finalise une seule fois et attribue la récompense une seule fois', async () => {
+  it('se finalise une seule fois et attribue fragments + XP une seule fois', async () => {
     const user = await startedPlayer();
     await finishSteps(user);
     const packsBefore = (await availablePacks(db, user)).length;
+    const fragmentsBefore = await scalar<number>(
+      db,
+      'select fragments from public.player_wallets where user_id = $1',
+      [user],
+    );
+    const xpBefore = await scalar<number>(db, 'select exploration_xp from public.profiles where id = $1', [user]);
 
-    const first = await rpc<{ newly_completed: boolean; packs_granted: number }>(db, user, 'complete_expedition', {
-      p_expedition_id: expeditionId,
-    });
-    const second = await rpc<{ newly_completed: boolean; packs_granted: number }>(db, user, 'complete_expedition', {
-      p_expedition_id: expeditionId,
-    });
-    expect(first).toMatchObject({ newly_completed: true, packs_granted: 1 });
-    expect(second).toMatchObject({ newly_completed: false, packs_granted: 0 });
-    expect((await availablePacks(db, user)).length).toBe(packsBefore + 1);
+    const first = await rpc<{
+      newly_completed: boolean;
+      packs_granted: number;
+      fragments_granted: number;
+      xp_granted: number;
+      perfect: boolean;
+      mastery_tier: string;
+    }>(db, user, 'complete_expedition', { p_expedition_id: expeditionId });
+    const second = await rpc<{ newly_completed: boolean; packs_granted: number; fragments_granted: number }>(
+      db,
+      user,
+      'complete_expedition',
+      { p_expedition_id: expeditionId },
+    );
+    expect(first.newly_completed).toBe(true);
+    expect(first.packs_granted).toBe(0);
+    expect(first.fragments_granted).toBeGreaterThan(0);
+    expect(first.xp_granted).toBeGreaterThan(0);
+    expect(first.perfect).toBe(true);
+    expect(first.mastery_tier).toBeTruthy();
+    expect(second).toMatchObject({ newly_completed: false, packs_granted: 0, fragments_granted: 0 });
+    expect((await availablePacks(db, user)).length).toBe(packsBefore);
+    expect(await scalar<number>(db, 'select fragments from public.player_wallets where user_id = $1', [user])).toBe(
+      fragmentsBefore + first.fragments_granted,
+    );
+    expect(await scalar<number>(db, 'select exploration_xp from public.profiles where id = $1', [user])).toBe(
+      xpBefore + first.xp_granted,
+    );
     await expect(
       rpc(db, user, 'submit_expedition_step', { p_step_id: (await steps(user))[0].id, p_choice: 0 }),
     ).rejects.toThrow('EXPEDITION_ALREADY_COMPLETED');
@@ -148,14 +173,18 @@ describe('expéditions', () => {
     const packsBefore = (await availablePacks(db, user)).length;
     const results = await Promise.all(
       Array.from({ length: 6 }, () =>
-        rpc<{ newly_completed: boolean; packs_granted: number }>(db, user, 'complete_expedition', {
-          p_expedition_id: expeditionId,
-        }),
+        rpc<{ newly_completed: boolean; packs_granted: number; fragments_granted: number }>(
+          db,
+          user,
+          'complete_expedition',
+          { p_expedition_id: expeditionId },
+        ),
       ),
     );
     expect(results.filter((r) => r.newly_completed)).toHaveLength(1);
-    expect(results.reduce((acc, r) => acc + r.packs_granted, 0)).toBe(1);
-    expect((await availablePacks(db, user)).length).toBe(packsBefore + 1);
+    expect(results.reduce((acc, r) => acc + r.packs_granted, 0)).toBe(0);
+    expect(results.reduce((acc, r) => acc + r.fragments_granted, 0)).toBeGreaterThan(0);
+    expect((await availablePacks(db, user)).length).toBe(packsBefore);
   });
 
   it('interdit de valider une expédition en écrivant directement en base', async () => {

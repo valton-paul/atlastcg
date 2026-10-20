@@ -12,6 +12,7 @@ export const profileSchema = z.object({
   public_code: z.string(),
   collection_visibility: z.enum(['friends', 'private']),
   onboarding_completed_at: z.string().nullable(),
+  exploration_xp: z.number().optional().default(0),
 });
 
 const ownedCardSchema = z.object({
@@ -49,6 +50,7 @@ export type UserExpedition = z.infer<typeof userExpeditionSchema>;
 export type PlayerState = {
   profile: Profile;
   fragments: number;
+  explorationXp: number;
   packs: UserPack[];
   ownedCards: Map<string, OwnedCard>;
   expeditions: Map<string, UserExpedition>;
@@ -68,7 +70,7 @@ export async function fetchPlayerState(userId: string): Promise<PlayerState> {
       'profile',
       db
         .from('profiles')
-        .select('id, display_name, public_code, collection_visibility, onboarding_completed_at')
+        .select('id, display_name, public_code, collection_visibility, onboarding_completed_at, exploration_xp')
         .eq('id', userId)
         .maybeSingle(),
       profileSchema.nullable(),
@@ -125,6 +127,7 @@ export async function fetchPlayerState(userId: string): Promise<PlayerState> {
   return {
     profile: resolvedProfile,
     fragments: wallet?.fragments ?? 0,
+    explorationXp: resolvedProfile.exploration_xp ?? 0,
     packs,
     ownedCards: new Map(cards.map((c) => [c.card_id, c])),
     expeditions: new Map(expeditions.map((e) => [e.expedition_id, e])),

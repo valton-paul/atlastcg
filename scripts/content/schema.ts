@@ -114,7 +114,13 @@ export const gameDocSchema = z.object({
   packs: z.array(packSchema).min(1),
   collections: z.array(collectionSchema),
   objectives: z.array(objectiveSchema),
-  expeditionReward: z.object({ pack: slug, quantity: z.number().int().min(1).max(5) }),
+  expeditionReward: z.object({
+    fragments: z.number().int().min(0).max(500),
+    xp: z.number().int().min(0).max(500),
+    perfectBonusFragments: z.number().int().min(0).max(200),
+    perfectBonusXp: z.number().int().min(0).max(200),
+    stepXp: z.number().int().min(0).max(50),
+  }),
   settings: z.record(
     z.string().regex(/^[a-z_]+$/),
     z.object({ value: z.record(z.string(), z.unknown()), description: text }),

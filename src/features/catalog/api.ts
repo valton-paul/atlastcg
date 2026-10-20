@@ -91,7 +91,11 @@ export async function fetchCatalog(): Promise<Catalog> {
     ),
     selectRows(
       'expeditions',
-      db.from('expeditions').select('id, slug, country_code, title, summary, reward_pack_id, reward_pack_quantity'),
+      db
+        .from('expeditions')
+        .select(
+          'id, slug, country_code, title, summary, reward_pack_id, reward_pack_quantity, reward_fragments, reward_xp, perfect_bonus_fragments, perfect_bonus_xp, step_xp',
+        ),
       z.array(expeditionSchema),
     ),
     selectRows('settings', db.from('economy_settings').select('key, value'), z.array(economySettingSchema)),
