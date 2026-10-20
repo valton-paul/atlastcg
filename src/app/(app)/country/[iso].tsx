@@ -43,12 +43,19 @@ export default function CountryScreen() {
   const { iso } = useLocalSearchParams<{ iso: string }>();
   const data = useAtlasData();
   const router = useRouter();
+  const isoCode = iso?.toUpperCase() ?? '';
+  const country = data.status === 'ready' ? data.catalog.countriesByIso.get(isoCode) : undefined;
+  const discovered =
+    data.status === 'ready' && country
+      ? countryProgress(data.catalog, data.player.ownedCards, country.iso_code).owned > 0
+      : false;
+  const masteryQuery = useCountryMastery(discovered);
+  const journalQuery = useCountryJournal(country?.iso_code ?? '', discovered);
 
   if (data.status === 'loading') return <LoadingState />;
   if (data.status === 'error') return <ErrorState message={errorMessage(data.error)} onRetry={data.retry} />;
 
   const { catalog, player } = data;
-  const country = catalog.countriesByIso.get(iso?.toUpperCase() ?? '');
   if (!country) {
     return (
       <Screen back title="Pays">
@@ -63,11 +70,8 @@ export default function CountryScreen() {
   const cards = sortCards(catalog, player.ownedCards, cardsOfCountry(catalog, country.iso_code), 'country');
   const expedition = catalog.expeditionsByCountry.get(country.iso_code);
   const expeditionState = expedition ? player.expeditions.get(expedition.id) : undefined;
-  const discovered = progress.owned > 0;
   const silhouette = SILHOUETTES.paths[country.iso_numeric];
   const displayName = discovered ? country.name : '???';
-  const masteryQuery = useCountryMastery(discovered);
-  const journalQuery = useCountryJournal(country.iso_code, discovered);
   const masteryXp =
     masteryQuery.data?.find((m) => m.country_code === country.iso_code)?.xp ?? 0;
   const masteryCompleted =
@@ -75,6 +79,8 @@ export default function CountryScreen() {
   const mastery = masteryTier(masteryXp);
   const nextXp = masteryNextThreshold(masteryXp);
   const journal = journalQuery.data ?? [];
+  const canResume = expeditionState?.status === 'in_progress';
+  const canReview = expeditionState?.status === 'completed';
 
   return (
     <Screen
@@ -139,35 +145,60 @@ export default function CountryScreen() {
       {expedition ? (
         <>
           <SectionHeader title="Expédition" />
-          <Surface tone={expeditionState?.status === 'completed' ? 'precious' : 'raised'}>
-            <Text variant="bodyStrong">{expedition.title}</Text>
-            <Text variant="caption" color={colors.textMuted}>
-              {expedition.summary}
-            </Text>
-            {!discovered ? (
+          {!discovered ? (
+            <Surface tone="panel">
+              <Text variant="bodyStrong">???</Text>
               <Text variant="caption" color={colors.textMuted}>
-                Débloquée dès que vous possédez une carte de ce pays.
+                Obtenez une carte de ce pays pour découvrir l’expédition associée. Les destinations se
+                tirent sur la carte du monde.
               </Text>
-            ) : expeditionState?.status === 'completed' ? (
-              <Text variant="caption" color={colors.gold}>
-                Expédition terminée.
+            </Surface>
+          ) : (
+            <Surface tone={canReview ? 'precious' : 'raised'}>
+              <Text variant="bodyStrong">{expedition.title}</Text>
+              <Text variant="caption" color={colors.textMuted}>
+                {expedition.summary}
               </Text>
-            ) : null}
-            <Button
-              label={
-                expeditionState?.status === 'completed'
-                  ? 'Revoir l’expédition'
-                  : expeditionState
-                    ? 'Reprendre l’expédition'
-                    : 'Partir en expédition'
-              }
-              icon="compass"
-              compact
-              disabled={!discovered}
-              variant={expeditionState?.status === 'completed' ? 'secondary' : 'primary'}
-              onPress={() => router.push(`/expedition/${expedition.slug}`)}
-            />
-          </Surface>
+              {canResume ? (
+                <Text variant="caption" color={colors.turquoise}>
+                  Expédition en cours — vous pouvez la reprendre.
+                </Text>
+              ) : canReview ? (
+                <Text variant="caption" color={colors.gold}>
+                  Expédition terminée.
+                </Text>
+              ) : (
+                <Text variant="caption" color={colors.textMuted}>
+                  Les destinations se tirent au sort sur la carte du monde (1 charge). Vous ne choisissez
+                  pas le pays à explorer.
+                </Text>
+              )}
+              {canResume ? (
+                <Button
+                  label="Reprendre l’expédition"
+                  icon="compass"
+                  compact
+                  onPress={() => router.push(`/expedition/${expedition.slug}`)}
+                />
+              ) : canReview ? (
+                <Button
+                  label="Revoir l’expédition"
+                  icon="compass"
+                  compact
+                  variant="secondary"
+                  onPress={() => router.push(`/expedition/${expedition.slug}`)}
+                />
+              ) : (
+                <Button
+                  label="Aller à la carte du monde"
+                  icon="globe"
+                  compact
+                  variant="secondary"
+                  onPress={() => router.push('/world')}
+                />
+              )}
+            </Surface>
+          )}
         </>
       ) : null}
 
