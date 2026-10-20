@@ -72,8 +72,9 @@ describe('accueil', () => {
     expect(screen.getByRole('header', { name: 'Ouvrir un paquet' })).toBeOnTheScreen();
     expect(screen.getByLabelText(/Ouvrir le paquet Classique, 2 en stock/)).toBeOnTheScreen();
     expect(screen.getByText('×2 en stock')).toBeOnTheScreen();
+    expect(await screen.findByText('2 / 15')).toBeOnTheScreen();
     expect(
-      await screen.findByLabelText(/^2 paquets à ouvrir\. Réserve 2 sur 15\. Prochain paquet dans 7:4[1-3]\.$/),
+      await screen.findByLabelText(/^2 sur 15\. Prochain paquet dans 7:4[1-3]\.$/),
     ).toBeOnTheScreen();
 
     await fireEvent.press(screen.getByTestId('home-open-pack'));
@@ -97,7 +98,8 @@ describe('accueil', () => {
     mockData = ready(['a0000000-0000-4000-8000-000000000001']);
     await renderHome();
 
-    expect(await screen.findByText('Réserve pleine : ouvrez un paquet pour relancer la recharge')).toBeOnTheScreen();
+    expect(await screen.findByText('1 / 15')).toBeOnTheScreen();
+    expect(screen.getByText('Réserve pleine')).toBeOnTheScreen();
     expect(screen.queryByText(/Prochain paquet/)).toBeNull();
   });
 });

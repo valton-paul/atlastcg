@@ -94,13 +94,9 @@ export default function HomeScreen() {
   if (data.status === 'loading') return <LoadingState />;
   if (data.status === 'error') return <ErrorState message={errorMessage(data.error)} onRetry={data.retry} />;
 
-  const { catalog, player } = data;
+  const { player } = data;
   const group = groups[selectedIndex] ?? groups[0];
   const total = player.packs.length;
-  const classiqueId = catalog.packs.find((p) => p.slug === 'classique')?.id;
-  const reserveCount = classiqueId
-    ? player.packs.filter((p) => p.pack_id === classiqueId).length
-    : Math.min(total, timed.data?.maxStored ?? total);
 
   function open() {
     if (!group) return;
@@ -232,28 +228,24 @@ export default function HomeScreen() {
         <View
           style={styles.counter}
           accessible
-          accessibilityLabel={counterLabel(total, reserveCount, timed.data, nextPackIn)}
+          accessibilityLabel={counterLabel(total, timed.data, nextPackIn)}
         >
-          <Text variant="title" align="center">
-            {total}
+          <Text variant="bodyStrong" align="center">
+            {total} / {timed.data?.maxStored ?? 15}
           </Text>
-          <Text variant="caption" color={colors.textMuted} align="center">
-            paquet{total > 1 ? 's' : ''} à ouvrir
-          </Text>
-          {timed.data ? (
-            <Text variant="caption" color={colors.textMuted} align="center">
-              Réserve {Math.min(reserveCount, timed.data.maxStored)} / {timed.data.maxStored}
-            </Text>
-          ) : null}
           {timed.data && !timed.data.nextAt ? (
             <Text variant="caption" color={colors.gold} align="center">
-              Réserve pleine : ouvrez un paquet pour relancer la recharge
+              Réserve pleine
             </Text>
           ) : nextPackIn !== null ? (
             <Text variant="caption" color={colors.turquoise} align="center">
               Prochain paquet dans {formatCountdown(nextPackIn)}
             </Text>
-          ) : null}
+          ) : (
+            <Text variant="caption" color={colors.textMuted} align="center">
+              paquets
+            </Text>
+          )}
         </View>
         {timed.isError ? <InlineMessage tone="error" message={errorMessage(timed.error)} /> : null}
       </ScrollView>
@@ -275,18 +267,12 @@ export default function HomeScreen() {
   );
 }
 
-function counterLabel(
-  total: number,
-  reserveCount: number,
-  timed: TimedPacks | undefined,
-  nextPackIn: number | null,
-): string {
-  const packs = `${total} paquet${total > 1 ? 's' : ''} à ouvrir`;
-  if (!timed) return packs;
-  const reserve = `Réserve ${Math.min(reserveCount, timed.maxStored)} sur ${timed.maxStored}`;
-  if (!timed.nextAt) return `${packs}. ${reserve}. Réserve pleine.`;
-  if (nextPackIn !== null) return `${packs}. ${reserve}. Prochain paquet dans ${formatCountdown(nextPackIn)}.`;
-  return `${packs}. ${reserve}.`;
+function counterLabel(total: number, timed: TimedPacks | undefined, nextPackIn: number | null): string {
+  const max = timed?.maxStored ?? 15;
+  const stock = `${total} sur ${max}`;
+  if (timed && !timed.nextAt) return `${stock}. Réserve pleine.`;
+  if (nextPackIn !== null) return `${stock}. Prochain paquet dans ${formatCountdown(nextPackIn)}.`;
+  return stock;
 }
 
 const styles = StyleSheet.create({
@@ -328,10 +314,10 @@ const styles = StyleSheet.create({
   counter: {
     alignSelf: 'center',
     alignItems: 'center',
-    gap: spacing.xs,
-    minWidth: 220,
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.xl,
+    gap: spacing.xxs,
+    minWidth: 200,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
     borderRadius: radius.lg,
     borderWidth: 1,
     borderColor: colors.border,
