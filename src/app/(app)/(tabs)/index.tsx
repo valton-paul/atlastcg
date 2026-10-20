@@ -100,13 +100,22 @@ export default function HomeScreen() {
 
   function open() {
     if (!group) return;
+    openPack(group);
+  }
+
+  function openPack(item: PackGroup) {
     haptic('tap');
-    setOpeningPackId(group.userPackIds[0]);
+    setOpeningPackId(item.userPackIds[0]);
+  }
+
+  function syncCarouselIndex(offsetX: number) {
+    if (screenWidth <= 0 || groups.length === 0) return;
+    const index = Math.round(offsetX / screenWidth);
+    setSelectedIndex((prev) => (index >= 0 && index < groups.length && index !== prev ? index : prev));
   }
 
   function onCarouselScroll(e: NativeSyntheticEvent<NativeScrollEvent>) {
-    const index = Math.round(e.nativeEvent.contentOffset.x / screenWidth);
-    if (index !== selectedIndex && index >= 0 && index < groups.length) setSelectedIndex(index);
+    syncCarouselIndex(e.nativeEvent.contentOffset.x);
   }
 
   return (
@@ -150,34 +159,38 @@ export default function HomeScreen() {
               horizontal
               pagingEnabled
               showsHorizontalScrollIndicator={false}
+              onScroll={onCarouselScroll}
               onMomentumScrollEnd={onCarouselScroll}
+              onScrollEndDrag={onCarouselScroll}
+              scrollEventThrottle={16}
               decelerationRate="fast"
             >
               {groups.map((item) => {
                 const itemTheme = packTheme(item.definition.slug);
                 return (
-                  <Pressable
-                    key={item.packId}
-                    onPress={open}
-                    accessibilityRole="button"
-                    accessibilityLabel={`Ouvrir le paquet ${item.definition.name}, ${item.userPackIds.length} en stock`}
-                    style={[styles.slide, { width: screenWidth }]}
-                    testID={item.packId === group?.packId ? 'home-pack' : undefined}
-                  >
-                    <Animated.View style={[styles.packFloat, floatStyle]}>
-                      <PackVisual
-                        slug={item.definition.slug}
-                        width={PACK_WIDTH}
-                        cardsPerPack={item.definition.cards_per_pack}
-                        animated={!reduceMotion}
-                      />
-                    </Animated.View>
+                  <View key={item.packId} style={[styles.slide, { width: screenWidth }]}>
+                    <Pressable
+                      onPress={() => openPack(item)}
+                      accessibilityRole="button"
+                      accessibilityLabel={`Ouvrir le paquet ${item.definition.name}, ${item.userPackIds.length} en stock`}
+                      style={styles.packHit}
+                      testID={item.packId === group?.packId ? 'home-pack' : undefined}
+                    >
+                      <Animated.View style={[styles.packFloat, floatStyle]}>
+                        <PackVisual
+                          slug={item.definition.slug}
+                          width={PACK_WIDTH}
+                          cardsPerPack={item.definition.cards_per_pack}
+                          animated={!reduceMotion}
+                        />
+                      </Animated.View>
+                    </Pressable>
                     {item.userPackIds.length > 1 ? (
                       <Text variant="caption" color={itemTheme.accent} align="center">
                         ×{item.userPackIds.length} en stock
                       </Text>
                     ) : null}
-                  </Pressable>
+                  </View>
                 );
               })}
             </ScrollView>
@@ -307,6 +320,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xs,
   },
   dot: { width: 8, height: 8, borderRadius: 4 },
+  packHit: { alignItems: 'center' },
   packFloat: { alignItems: 'center', overflow: 'visible' },
   packEmpty: { opacity: 0.35 },
   emptyPack: { alignItems: 'center', gap: spacing.sm, paddingVertical: spacing.md },
