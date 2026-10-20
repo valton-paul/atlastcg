@@ -1,5 +1,5 @@
 export * from './tokens';
-export { AppShell, APP_MAX_WIDTH, useAppContentWidth } from './AppShell';
+export { AppShell, APP_MAX_WIDTH, APP_SIDE_RAIL_MIN, useAppContentWidth } from './AppShell';
 export { decorativeSvgProps } from './decorative';
 export { Button, type ButtonVariant } from './components/Button';
 export { Chip } from './components/Chip';

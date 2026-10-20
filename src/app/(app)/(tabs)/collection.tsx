@@ -133,13 +133,14 @@ export default function CollectionScreen() {
     });
   }, [data, filtered, visibleCount]);
 
-  // Marge latérale un peu plus large à droite pour les lueurs des cartes.
-  const sideInsetLeft = spacing.lg;
-  const sideInsetRight = spacing.lg + spacing.sm;
-  const availableWidth = width - sideInsetLeft - sideInsetRight;
+  // Marge latérale (lueurs) ; la grille est centrée quand les cartes sont plafonnées.
+  const sideInset = spacing.lg;
+  const availableWidth = width - sideInset * 2;
   const rawCardWidth = Math.floor((availableWidth - columnGap * (columns - 1)) / columns);
   const cardWidth =
     columns === COLUMNS_DESKTOP ? Math.min(DESKTOP_MAX_CARD_WIDTH, rawCardWidth) : rawCardWidth;
+  const gridWidth = cardWidth * columns + columnGap * (columns - 1);
+  const listPadH = Math.max(sideInset, Math.floor((width - gridWidth) / 2));
   const listBottomPad = MIN_TOUCH + spacing.xxxl + Math.max(insets.bottom, spacing.sm);
 
   const openCard = useCallback((slug: string) => router.push(`/card/${slug}`), [router]);
@@ -314,13 +315,13 @@ export default function CollectionScreen() {
             {
               gap: columnGap,
               marginBottom: columnGap,
-              paddingLeft: sideInsetLeft,
-              paddingRight: sideInsetRight,
+              justifyContent: 'center',
+              paddingHorizontal: listPadH,
             },
           ]}
           contentContainerStyle={{ paddingBottom: listBottomPad }}
           ListHeaderComponent={
-            <View style={[styles.listHeader, { width, paddingHorizontal: spacing.lg }]}>{header}</View>
+            <View style={[styles.listHeader, { width, paddingHorizontal: listPadH }]}>{header}</View>
           }
           ListHeaderComponentStyle={styles.listHeaderWrap}
           refreshing={data.refreshing}
@@ -397,5 +398,5 @@ const styles = StyleSheet.create({
   chipWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   list: { paddingHorizontal: spacing.lg, gap: spacing.lg },
-  columns: { gap: spacing.sm },
+  columns: { gap: spacing.sm, justifyContent: 'center' },
 });

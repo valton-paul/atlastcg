@@ -5,9 +5,13 @@ import { colors } from './tokens';
 
 /**
  * Largeur max du « cadre » app sur grand écran.
- * Assez large pour rester confortable, assez étroite pour garder les proportions téléphone.
+ * Plus large qu’un téléphone (moins serré), mais laisse des couloirs latéraux
+ * prévus pour de futures pubs (~240 px mini de chaque côté).
  */
-export const APP_MAX_WIDTH = 540;
+export const APP_MAX_WIDTH = 1280;
+
+/** Largeur mini réservée à chaque couloir latéral (pubs plus tard). */
+export const APP_SIDE_RAIL_MIN = 240;
 
 const SCROLLBAR_STYLE_ID = 'atlas-hide-scrollbars';
 
@@ -38,13 +42,13 @@ export function useAppContentWidth() {
 type Props = { children: ReactNode };
 
 /**
- * Sur grand écran (web / tablette), centre l’app dans une colonne avec de grandes allées vides.
- * Sur téléphone, occupe toute la largeur.
+ * Sur grand écran (web / tablette), centre l’app dans une colonne avec des couloirs latéraux.
+ * Sur téléphone / fenêtre étroite, occupe toute la largeur.
  */
 export function AppShell({ children }: Props) {
   useHideWebScrollbars();
   const { width } = useWindowDimensions();
-  const constrain = width > APP_MAX_WIDTH + 48;
+  const constrain = width > APP_MAX_WIDTH + APP_SIDE_RAIL_MIN * 2;
 
   if (!constrain) {
     return <View style={styles.fill}>{children}</View>;
@@ -55,7 +59,10 @@ export function AppShell({ children }: Props) {
       style={[styles.outer, Platform.OS === 'web' ? styles.outerWeb : null]}
       accessibilityElementsHidden={false}
     >
+      {/* Couloirs latéraux : zone libre pour pubs / branding plus tard. */}
+      <View style={styles.rail} accessibilityElementsHidden />
       <View style={styles.frame}>{children}</View>
+      <View style={styles.rail} accessibilityElementsHidden />
     </View>
   );
 }
@@ -64,19 +71,23 @@ const styles = StyleSheet.create({
   fill: { flex: 1, backgroundColor: colors.night },
   outer: {
     flex: 1,
+    flexDirection: 'row',
     backgroundColor: colors.nightDeep,
-    alignItems: 'center',
   },
   outerWeb: {
-    // Fond un peu plus sombre que le cadre pour marquer les allées.
+    backgroundColor: '#050A14',
+  },
+  rail: {
+    flex: 1,
+    minWidth: APP_SIDE_RAIL_MIN,
     backgroundColor: '#050A14',
   },
   frame: {
-    flex: 1,
-    width: '100%',
+    flexGrow: 0,
+    flexShrink: 0,
+    width: APP_MAX_WIDTH,
     maxWidth: APP_MAX_WIDTH,
     backgroundColor: colors.night,
-    // Légère séparation visuelle du fond (web surtout).
     borderLeftWidth: StyleSheet.hairlineWidth,
     borderRightWidth: StyleSheet.hairlineWidth,
     borderColor: colors.border,
