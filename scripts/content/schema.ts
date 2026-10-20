@@ -108,6 +108,10 @@ export const gameDocSchema = z.object({
         rank: z.number().int().min(1).max(RARITIES.length),
         label: text,
         duplicateFragments: z.number().int().min(0),
+        /** XP d’exploration à l’obtention d’une nouvelle carte. */
+        newCardXp: z.number().int().min(0),
+        /** XP d’exploration quand un doublon est détruit / converti. */
+        duplicateXp: z.number().int().min(0),
       }),
     )
     .length(RARITIES.length),

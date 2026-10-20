@@ -427,6 +427,7 @@ export function OpenPackFlow({
             isNew={current.is_new}
             quantity={current.quantity}
             fragments={current.fragments_awarded}
+            xp={current.xp_awarded}
             flipped={state.flipped}
             reduceMotion={reduceMotion}
             onPress={onRevealStep}
@@ -440,9 +441,14 @@ export function OpenPackFlow({
               current.is_new ? (
                 <Text variant="bodyStrong" color={colors.turquoise}>
                   Nouvelle carte
+                  {current.xp_awarded > 0 ? ` · +${current.xp_awarded} XP` : ''}
                 </Text>
               ) : (
-                <Text color={colors.textMuted}>Touche pour continuer</Text>
+                <Text color={colors.textMuted}>
+                  Doublon détruit
+                  {current.fragments_awarded > 0 ? ` · +${current.fragments_awarded} fragments` : ''}
+                  {current.xp_awarded > 0 ? ` · +${current.xp_awarded} XP` : ''}
+                </Text>
               )
             ) : (
               <Text color={colors.textMuted}>Touche pour révéler</Text>
@@ -570,6 +576,7 @@ function Summary({
           color={colors.textMuted}
         />
         <Stat label="fragments" value={summary.fragments_awarded} color={colors.gold} />
+        <Stat label="XP" value={summary.xp_awarded} color={colors.turquoise} />
       </View>
       <View style={styles.grid}>
         {ordered.map((card, i) => (

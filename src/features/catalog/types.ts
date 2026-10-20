@@ -57,6 +57,8 @@ export const raritySchema = z.object({
   rank: z.number(),
   label: z.string(),
   duplicate_fragments: z.number(),
+  new_card_xp: z.number().optional().default(0),
+  duplicate_xp: z.number().optional().default(0),
 });
 
 export const collectionSchema = z.object({

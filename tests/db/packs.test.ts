@@ -19,6 +19,7 @@ interface OpeningCard {
   is_new: boolean;
   quantity: number;
   fragments_awarded: number;
+  xp_awarded: number;
 }
 interface Opening {
   opening_id: string;
@@ -29,6 +30,8 @@ interface Opening {
     duplicate_count: number;
     fragments_awarded: number;
     fragments_balance: number;
+    xp_awarded: number;
+    exploration_xp: number;
     collections: { slug: string; owned: number; total: number }[];
   };
 }
@@ -212,6 +215,38 @@ describe('ouverture des paquets', () => {
         user,
       ]),
     ).toBe(0);
+  });
+
+  it('accorde de l’XP selon la rareté pour les nouvelles cartes et les doublons détruits', async () => {
+    const user = await createUser(db);
+    for (let i = 0; i < 4; i++) await grantPack(db, user, 'classique');
+    const rates = await db.admin.query<{ rarity: string; new_card_xp: number; duplicate_xp: number }>(
+      'select rarity::text, new_card_xp, duplicate_xp from public.rarities',
+    );
+    const xpNew = new Map(rates.rows.map((r) => [r.rarity, r.new_card_xp]));
+    const xpDup = new Map(rates.rows.map((r) => [r.rarity, r.duplicate_xp]));
+    let totalXp = 0;
+    let sawNew = false;
+    let sawDup = false;
+    for (const packId of await availablePacks(db, user)) {
+      const r = await rpc<Opening>(db, user, 'open_pack', { p_user_pack_id: packId, p_idempotency_key: randomUUID() });
+      let packXp = 0;
+      for (const card of r.cards) {
+        const expected = card.is_new ? xpNew.get(card.rarity) : xpDup.get(card.rarity);
+        expect(card.xp_awarded).toBe(expected);
+        packXp += card.xp_awarded;
+        if (card.is_new) sawNew = true;
+        else sawDup = true;
+      }
+      expect(r.summary.xp_awarded).toBe(packXp);
+      totalXp += packXp;
+    }
+    expect(sawNew).toBe(true);
+    expect(sawDup).toBe(true);
+    expect(totalXp).toBeGreaterThan(0);
+    expect(
+      await scalar<number>(db, 'select exploration_xp from public.profiles where id = $1', [user]),
+    ).toBe(totalXp);
   });
 
   it('interdit toute écriture directe sur l’inventaire, les paquets et le solde', async () => {

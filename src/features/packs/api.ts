@@ -21,6 +21,7 @@ export const openingCardSchema = z.object({
   is_new: z.boolean(),
   quantity: z.number(),
   fragments_awarded: z.number(),
+  xp_awarded: z.number().optional().default(0),
 });
 
 export const openingResultSchema = z.object({
@@ -36,6 +37,8 @@ export const openingResultSchema = z.object({
     rare_count: z.number(),
     fragments_awarded: z.number(),
     fragments_balance: z.number(),
+    xp_awarded: z.number().optional().default(0),
+    exploration_xp: z.number().optional(),
     collections: z.array(z.object({ slug: z.string(), title: z.string(), owned: z.number(), total: z.number() })),
   }),
   replayed: z.boolean(),

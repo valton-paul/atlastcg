@@ -27,10 +27,16 @@ export function renderSeedSql(catalog: Catalog): string {
   out.push('begin;', '');
 
   push(`
-insert into public.rarities (rarity, rank, label, duplicate_fragments) values
-${game.rarities.map((r) => `  (${lit(r.rarity)}, ${r.rank}, ${lit(r.label)}, ${r.duplicateFragments})`).join(',\n')}
+insert into public.rarities (rarity, rank, label, duplicate_fragments, new_card_xp, duplicate_xp) values
+${game.rarities
+  .map(
+    (r) =>
+      `  (${lit(r.rarity)}, ${r.rank}, ${lit(r.label)}, ${r.duplicateFragments}, ${r.newCardXp}, ${r.duplicateXp})`,
+  )
+  .join(',\n')}
 on conflict (rarity) do update set
-  rank = excluded.rank, label = excluded.label, duplicate_fragments = excluded.duplicate_fragments;`);
+  rank = excluded.rank, label = excluded.label, duplicate_fragments = excluded.duplicate_fragments,
+  new_card_xp = excluded.new_card_xp, duplicate_xp = excluded.duplicate_xp;`);
 
   push(`
 insert into public.countries (iso_code, iso_numeric, name, name_with_article, name_genitive, capital, continent, region, status) values

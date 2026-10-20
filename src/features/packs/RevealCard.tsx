@@ -55,6 +55,8 @@ type Props = {
   isNew: boolean;
   quantity: number;
   fragments: number;
+  /** XP d’exploration gagnée (nouvelle carte ou doublon détruit). */
+  xp?: number;
   flipped: boolean;
   reduceMotion: boolean;
   onPress: () => void;
@@ -194,6 +196,7 @@ export function RevealCard({
   isNew,
   quantity,
   fragments,
+  xp = 0,
   flipped,
   reduceMotion,
   onPress,
@@ -336,7 +339,11 @@ export function RevealCard({
       {showStandardFx && effect.ring ? <Shockwave color={accent} size={CARD_HEIGHT * 0.95} delay={burstDelay} /> : null}
       {showEffects && isNew ? (
         <View style={styles.statusSlot}>
-          <StatusBadge label="Nouvelle" color={colors.turquoise} delay={burstDelay + 40} />
+          <StatusBadge
+            label={xp > 0 ? `Nouvelle · +${xp} XP` : 'Nouvelle'}
+            color={colors.turquoise}
+            delay={burstDelay + 40}
+          />
         </View>
       ) : null}
       <Animated.View style={popStyle}>

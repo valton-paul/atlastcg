@@ -72,11 +72,12 @@ export function makeCatalog(): Fixture {
     countries,
     cards: Object.values(cards),
     rarities: [
-      { rarity: 'common', rank: 1, label: 'Commune', duplicate_fragments: 5 },
-      { rarity: 'uncommon', rank: 2, label: 'Peu commune', duplicate_fragments: 10 },
-      { rarity: 'rare', rank: 3, label: 'Rare', duplicate_fragments: 25 },
-      { rarity: 'epic', rank: 4, label: 'Épique', duplicate_fragments: 50 },
-      { rarity: 'legendary', rank: 5, label: 'Légendaire', duplicate_fragments: 100 },
+      { rarity: 'common', rank: 1, label: 'Commune', duplicate_fragments: 5, new_card_xp: 5, duplicate_xp: 2 },
+      { rarity: 'uncommon', rank: 2, label: 'Peu commune', duplicate_fragments: 10, new_card_xp: 10, duplicate_xp: 4 },
+      { rarity: 'rare', rank: 3, label: 'Rare', duplicate_fragments: 25, new_card_xp: 20, duplicate_xp: 8 },
+      { rarity: 'epic', rank: 4, label: 'Épique', duplicate_fragments: 50, new_card_xp: 40, duplicate_xp: 15 },
+      { rarity: 'legendary', rank: 5, label: 'Légendaire', duplicate_fragments: 100, new_card_xp: 80, duplicate_xp: 30 },
+      { rarity: 'mythic', rank: 6, label: 'Mythique', duplicate_fragments: 250, new_card_xp: 150, duplicate_xp: 60 },
     ],
     collections: [
       {

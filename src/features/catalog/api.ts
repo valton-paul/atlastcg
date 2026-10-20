@@ -66,6 +66,7 @@ export async function fetchCatalog(): Promise<Catalog> {
     ),
     selectRows(
       'rarities',
+      // XP par rareté : côté serveur (open_pack). Le client n’en a pas besoin pour le catalogue.
       db.from('rarities').select('rarity, rank, label, duplicate_fragments'),
       z.array(raritySchema),
     ),

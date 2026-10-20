@@ -11,6 +11,7 @@ function result(replayed = false): OpeningResult {
     is_new: true,
     quantity: 1,
     fragments_awarded: 0,
+    xp_awarded: 0,
   };
   return {
     opening_id: '00000000-0000-4000-8000-0000000000aa',
@@ -27,6 +28,7 @@ function result(replayed = false): OpeningResult {
       duplicate_count: 0,
       rare_count: 1,
       fragments_awarded: 0,
+      xp_awarded: 0,
       fragments_balance: 0,
       collections: [],
     },

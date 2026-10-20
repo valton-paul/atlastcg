@@ -42,6 +42,7 @@ function openingPayload() {
     is_new: isNew,
     quantity: isNew ? 1 : 2,
     fragments_awarded: isNew ? 0 : 5,
+    xp_awarded: isNew ? 5 : 2,
   });
   return {
     opening_id: '22222222-2222-4222-8222-222222222222',
@@ -56,6 +57,7 @@ function openingPayload() {
       rare_count: 0,
       fragments_awarded: 5,
       fragments_balance: 5,
+      xp_awarded: 7,
       collections: [{ slug: 'pays-europe', title: 'Pays d’Europe', owned: 1, total: 2 }],
     },
     replayed: false,
@@ -110,14 +112,14 @@ describe('parcours d’ouverture d’un paquet', () => {
     });
 
     await fireEvent.press(screen.getByRole('button', { name: 'Révéler' }));
-    expect(screen.getByText('Nouvelle carte')).toBeOnTheScreen();
+    expect(screen.getByText(/Nouvelle carte/)).toBeOnTheScreen();
 
     await fireEvent.press(screen.getByRole('button', { name: 'Passer l’animation et voir toutes les cartes' }));
     expect(screen.getByText('Votre atlas s’agrandit')).toBeOnTheScreen();
     expect(screen.getByLabelText('1 nouvelle')).toBeOnTheScreen();
     expect(screen.getByLabelText('1 doublon')).toBeOnTheScreen();
+    expect(screen.getByLabelText('7 XP')).toBeOnTheScreen();
     expect(screen.getByText('Pays d’Europe')).toBeOnTheScreen();
-    expect(screen.getByText('Expédition disponible : Expédition France')).toBeOnTheScreen();
 
     // La clé d'idempotence est effacée une fois le résultat reçu.
     expect(await AsyncStorage.getAllKeys()).toEqual([]);

@@ -2,15 +2,16 @@
 
 begin;
 
-insert into public.rarities (rarity, rank, label, duplicate_fragments) values
-  ('common', 1, 'Commune', 5),
-  ('uncommon', 2, 'Peu commune', 10),
-  ('rare', 3, 'Rare', 25),
-  ('epic', 4, 'Épique', 50),
-  ('legendary', 5, 'Légendaire', 100),
-  ('mythic', 6, 'Mythique', 250)
+insert into public.rarities (rarity, rank, label, duplicate_fragments, new_card_xp, duplicate_xp) values
+  ('common', 1, 'Commune', 5, 5, 2),
+  ('uncommon', 2, 'Peu commune', 10, 10, 4),
+  ('rare', 3, 'Rare', 25, 20, 8),
+  ('epic', 4, 'Épique', 50, 40, 15),
+  ('legendary', 5, 'Légendaire', 100, 80, 30),
+  ('mythic', 6, 'Mythique', 250, 150, 60)
 on conflict (rarity) do update set
-  rank = excluded.rank, label = excluded.label, duplicate_fragments = excluded.duplicate_fragments;
+  rank = excluded.rank, label = excluded.label, duplicate_fragments = excluded.duplicate_fragments,
+  new_card_xp = excluded.new_card_xp, duplicate_xp = excluded.duplicate_xp;
 
 insert into public.countries (iso_code, iso_numeric, name, name_with_article, name_genitive, capital, continent, region, status) values
   ('FR', '250', 'France', 'la France', 'de la France', 'Paris', 'europe', 'Europe de l''Ouest', 'published'),

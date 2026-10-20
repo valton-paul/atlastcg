@@ -1,12 +1,12 @@
 {
   "$comment": "Réglages de jeu publiés en base (configurables sans nouvelle version de l'application). Voir docs/DECISIONS.md.",
   "rarities": [
-    { "rarity": "common", "rank": 1, "label": "Commune", "duplicateFragments": 5 },
-    { "rarity": "uncommon", "rank": 2, "label": "Peu commune", "duplicateFragments": 10 },
-    { "rarity": "rare", "rank": 3, "label": "Rare", "duplicateFragments": 25 },
-    { "rarity": "epic", "rank": 4, "label": "Épique", "duplicateFragments": 50 },
-    { "rarity": "legendary", "rank": 5, "label": "Légendaire", "duplicateFragments": 100 },
-    { "rarity": "mythic", "rank": 6, "label": "Mythique", "duplicateFragments": 250 }
+    { "rarity": "common", "rank": 1, "label": "Commune", "duplicateFragments": 5, "newCardXp": 5, "duplicateXp": 2 },
+    { "rarity": "uncommon", "rank": 2, "label": "Peu commune", "duplicateFragments": 10, "newCardXp": 10, "duplicateXp": 4 },
+    { "rarity": "rare", "rank": 3, "label": "Rare", "duplicateFragments": 25, "newCardXp": 20, "duplicateXp": 8 },
+    { "rarity": "epic", "rank": 4, "label": "Épique", "duplicateFragments": 50, "newCardXp": 40, "duplicateXp": 15 },
+    { "rarity": "legendary", "rank": 5, "label": "Légendaire", "duplicateFragments": 100, "newCardXp": 80, "duplicateXp": 30 },
+    { "rarity": "mythic", "rank": 6, "label": "Mythique", "duplicateFragments": 250, "newCardXp": 150, "duplicateXp": 60 }
   ],
   "packs": [
     {
