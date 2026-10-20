@@ -230,11 +230,17 @@
   "borobudur": "Q4119591",
   "parc-national-de-komodo": "Q4520",
   "babylone": "Q5684",
-  "persepolis": "Q129072",
+  "persepolis": {
+    "qid": "Q129072",
+    "file": "File:General view of Persepolis, Iran (2).jpg"
+  },
   "place-naqsh-e-jahan": {
     "file": "File:Naghshe Jahan Square Isfahan modified.jpg"
   },
-  "massada": "Q1941401",
+  "massada": {
+    "qid": "Q186312",
+    "file": "File:Israel-2013-Aerial 21-Masada.jpg"
+  },
   "baikonour": "Q177477",
   "issyk-koul": {
     "file": "File:Lake Issyk-Kul, Kyrgyzstan.jpg"

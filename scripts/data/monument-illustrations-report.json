@@ -1,19 +1,19 @@
 {
-  "fetchedAt": "2026-10-19T16:24:13.667Z",
+  "fetchedAt": "2026-10-20T07:33:55.997Z",
   "results": [
     {
-      "slug": "monastere-de-visoki-decani",
-      "path": "monuments/monastere-de-visoki-decani.webp",
-      "credit": "a.dombrowski — CC BY-SA 2.0 (Wikimedia Commons)",
+      "slug": "persepolis",
+      "path": "monuments/persepolis.webp",
+      "credit": "Carole Raddato — CC BY-SA 2.0 (Wikimedia Commons)",
       "license": "CC BY-SA 2.0",
-      "fileTitle": "File:Visoki Dečani monastery, 2008.jpg"
+      "fileTitle": "File:General view of Persepolis, Iran (2).jpg"
     },
     {
-      "slug": "monument-newborn",
-      "path": "monuments/monument-newborn.webp",
-      "credit": "Arild Vågen — CC BY-SA 3.0 (Wikimedia Commons)",
-      "license": "CC BY-SA 3.0",
-      "fileTitle": "File:Newborn Pristina February 2013.jpg"
+      "slug": "massada",
+      "path": "monuments/massada.webp",
+      "credit": "Godot13 — CC BY-SA 4.0 (Wikimedia Commons)",
+      "license": "CC BY-SA 4.0",
+      "fileTitle": "File:Israel-2013-Aerial 21-Masada.jpg"
     }
   ],
   "skipped": []

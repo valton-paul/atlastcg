@@ -5,10 +5,11 @@
  *   npm run illustrations:monuments
  *   npm run illustrations:monuments -- --dry-run
  *   npm run illustrations:monuments -- --limit=20
+ *   npm run illustrations:monuments -- --force=massada,persepolis
  *
  * Licences acceptées : Public Domain / CC0 / CC BY / CC BY-SA.
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 import sharp from 'sharp';
@@ -40,6 +41,16 @@ type FetchResult = {
 const dryRun = process.argv.includes('--dry-run');
 const limitArg = process.argv.find((a) => a.startsWith('--limit='));
 const limit = limitArg ? Number(limitArg.split('=')[1]) : Infinity;
+const forceArg = process.argv.find((a) => a.startsWith('--force='));
+const forceSlugs = new Set(
+  forceArg
+    ? forceArg
+        .slice('--force='.length)
+        .split(',')
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : [],
+);
 
 function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
@@ -279,10 +290,18 @@ async function collectCandidates(
 
 async function main() {
   const mapping = loadMapping();
-  const cards = listHeritageCards().filter((c) => !c.illustration);
+  const all = listHeritageCards();
+  const cards =
+    forceSlugs.size > 0
+      ? all.filter((c) => forceSlugs.has(c.slug))
+      : all.filter((c) => !c.illustration);
   const todo = cards.slice(0, Number.isFinite(limit) ? limit : cards.length);
 
-  console.log(`${cards.length} carte(s) sans illustration — traitement de ${todo.length}.`);
+  console.log(
+    forceSlugs.size > 0
+      ? `Force ${todo.length} carte(s) : ${[...forceSlugs].join(', ')}.`
+      : `${all.filter((c) => !c.illustration).length} carte(s) sans illustration — traitement de ${todo.length}.`,
+  );
 
   const results: FetchResult[] = [];
   const skipped: { slug: string; reason: string }[] = [];
@@ -340,7 +359,8 @@ async function main() {
         mapping[card.slug] = picked.resolved.mappingUpdate;
       }
 
-      if (!dryRun && !existsSync(abs)) {
+      if (!dryRun && (forceSlugs.has(card.slug) || !existsSync(abs))) {
+        if (forceSlugs.has(card.slug) && existsSync(abs)) unlinkSync(abs);
         await downloadWebp(picked.info.thumbUrl, abs);
       } else if (!dryRun) {
         process.stdout.write('(déjà présent) ');
