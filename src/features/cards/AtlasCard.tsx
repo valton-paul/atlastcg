@@ -131,7 +131,9 @@ export function AtlasCard({
           <Rect width={100} height={150} fill={`url(#${scrimId})`} />
         </Svg>
       </View>
-      {!reduceMotion && !locked && rarity.shine ? <ShineSweep gradientId={shineId} /> : null}
+      {!reduceMotion && !locked && rarity.shine ? (
+        <ShineSweep gradientId={shineId} cardWidth={width} cardHeight={height} />
+      ) : null}
       {!reduceMotion && !locked && rarity.embers ? <RisingEmbers color={rarity.color} /> : null}
 
       {stamp ? (
@@ -223,7 +225,22 @@ export function AtlasCard({
   );
 }
 
-function ShineSweep({ gradientId }: { gradientId: string }) {
+function ShineSweep({
+  gradientId,
+  cardWidth,
+  cardHeight,
+}: {
+  gradientId: string;
+  cardWidth: number;
+  cardHeight: number;
+}) {
+  // Bande proportionnelle à la carte : trop courte en plein écran, on voyait le bout du rectangle.
+  const stripWidth = Math.max(64, Math.round(cardWidth * 0.24));
+  const stripHeight = Math.round(cardHeight * 2.6);
+  const fromX = -stripWidth * 1.4;
+  const toX = cardWidth + stripWidth * 0.6;
+  const top = Math.round(-(stripHeight - cardHeight) / 2);
+
   const sweep = useSharedValue(0);
   useEffect(() => {
     sweep.set(
@@ -239,12 +256,12 @@ function ShineSweep({ gradientId }: { gradientId: string }) {
     return () => cancelAnimation(sweep);
   }, [sweep]);
   const style = useAnimatedStyle(() => ({
-    transform: [{ translateX: interpolate(sweep.get(), [0, 1], [-80, 220]) }, { rotate: '18deg' }],
+    transform: [{ translateX: interpolate(sweep.get(), [0, 1], [fromX, toX]) }, { rotate: '18deg' }],
     opacity: sweep.get() === 0 ? 0 : 1,
   }));
   return (
-    <Animated.View pointerEvents="none" style={[styles.shine, style]}>
-      <Svg width={56} height={640}>
+    <Animated.View pointerEvents="none" style={[styles.shine, { top }, style]}>
+      <Svg width={stripWidth} height={stripHeight}>
         <Defs>
           <LinearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0">
             <Stop offset="0" stopColor="#FFFFFF" stopOpacity={0} />
@@ -252,7 +269,7 @@ function ShineSweep({ gradientId }: { gradientId: string }) {
             <Stop offset="1" stopColor="#FFFFFF" stopOpacity={0} />
           </LinearGradient>
         </Defs>
-        <Rect width={56} height={640} fill={`url(#${gradientId})`} />
+        <Rect width={stripWidth} height={stripHeight} fill={`url(#${gradientId})`} />
       </Svg>
     </Animated.View>
   );
@@ -371,7 +388,7 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
   dots: { flexDirection: 'row', gap: 3, alignItems: 'center' },
   dot: { width: 5, height: 5, borderRadius: 2.5 },
-  shine: { position: 'absolute', top: -80, left: 0 },
+  shine: { position: 'absolute', left: 0 },
   ember: {
     position: 'absolute',
     width: 4,

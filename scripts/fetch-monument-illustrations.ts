@@ -57,13 +57,29 @@ function sleep(ms: number) {
 }
 
 async function wikiJson(url: string, attempt = 1): Promise<unknown> {
-  const res = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'application/json' } });
-  if (res.status === 429 && attempt < 6) {
-    await sleep(attempt * 3000);
-    return wikiJson(url, attempt + 1);
+  try {
+    const res = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'application/json' } });
+    if ((res.status === 429 || res.status === 503) && attempt < 8) {
+      await sleep(attempt * 5000);
+      return wikiJson(url, attempt + 1);
+    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    if (!text.trimStart().startsWith('{') && !text.trimStart().startsWith('[')) {
+      if (attempt < 8) {
+        await sleep(attempt * 8000);
+        return wikiJson(url, attempt + 1);
+      }
+      throw new Error(`Réponse non-JSON (rate-limit Wikimedia ?)`);
+    }
+    return JSON.parse(text) as unknown;
+  } catch (error) {
+    if (attempt < 8 && !(error as Error).message.startsWith('HTTP ')) {
+      await sleep(attempt * 4000);
+      return wikiJson(url, attempt + 1);
+    }
+    throw error;
   }
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.json();
 }
 
 async function primaryImageTitle(qid: string): Promise<string | null> {
@@ -237,11 +253,7 @@ function patchCountriesJson(results: FetchResult[]): number {
 
 type ResolvedFile = { fileTitle: string; mappingUpdate?: MappingEntry };
 
-/** Collecte plusieurs candidats Commons : mapping → P18 Wikidata → recherche. */
-async function collectCandidates(
-  card: HeritageCard,
-  entry: MappingEntry | undefined,
-): Promise<ResolvedFile[]> {
+async function collectMappedCandidates(entry: MappingEntry | undefined): Promise<ResolvedFile[]> {
   const out: ResolvedFile[] = [];
   const seen = new Set<string>();
   const push = (item: ResolvedFile) => {
@@ -249,20 +261,28 @@ async function collectCandidates(
     seen.add(item.fileTitle);
     out.push(item);
   };
-
-  if (entry) {
-    const qid = typeof entry === 'string' ? entry : entry.qid;
-    const forced = typeof entry === 'string' ? undefined : entry.file;
-    if (forced) {
-      push({ fileTitle: forced.startsWith('File:') ? forced : `File:${forced}` });
-    }
-    if (qid) {
-      const file = await primaryImageTitle(qid);
-      await sleep(400);
-      if (file) push({ fileTitle: file });
-    }
+  if (!entry) return out;
+  const qid = typeof entry === 'string' ? entry : entry.qid;
+  const forced = typeof entry === 'string' ? undefined : entry.file;
+  if (forced) {
+    push({ fileTitle: forced.startsWith('File:') ? forced : `File:${forced}` });
   }
+  if (qid) {
+    const file = await primaryImageTitle(qid);
+    await sleep(700);
+    if (file) push({ fileTitle: file });
+  }
+  return out;
+}
 
+async function collectSearchCandidates(card: HeritageCard): Promise<ResolvedFile[]> {
+  const out: ResolvedFile[] = [];
+  const seen = new Set<string>();
+  const push = (item: ResolvedFile) => {
+    if (seen.has(item.fileTitle)) return;
+    seen.add(item.fileTitle);
+    out.push(item);
+  };
   const queries = [
     `${card.title} ${card.country}`,
     card.title,
@@ -271,20 +291,19 @@ async function collectCandidates(
 
   for (const query of queries) {
     const qids = await searchWikidata(query);
-    await sleep(500);
-    for (const qid of qids.slice(0, 4)) {
+    await sleep(900);
+    for (const qid of qids.slice(0, 3)) {
       const file = await primaryImageTitle(qid);
-      await sleep(400);
+      await sleep(700);
       if (file) push({ fileTitle: file, mappingUpdate: qid });
     }
   }
 
   for (const query of queries) {
     const files = await searchCommons(query);
-    await sleep(500);
+    await sleep(900);
     for (const file of files) push({ fileTitle: file, mappingUpdate: { file } });
   }
-
   return out;
 }
 
@@ -312,40 +331,46 @@ async function main() {
     process.stdout.write(`• ${card.slug} (${card.category})… `);
 
     try {
-      const candidates = await collectCandidates(card, mapping[card.slug]);
-      if (candidates.length === 0) {
-        console.log('introuvable');
-        skipped.push({ slug: card.slug, reason: 'introuvable' });
-        await sleep(800);
-        continue;
-      }
-
-      let picked: { resolved: ResolvedFile; info: CommonsInfo } | null = null;
       const licenseNotes: string[] = [];
-      for (const resolved of candidates) {
-        try {
-          const info = await commonsInfo(resolved.fileTitle);
-          await sleep(500);
-          if (!licenseOk(info.license)) {
-            licenseNotes.push(info.license);
-            continue;
+      const triedFiles = new Set<string>();
+
+      const tryCandidates = async (
+        list: ResolvedFile[],
+      ): Promise<{ resolved: ResolvedFile; info: CommonsInfo } | null> => {
+        for (const resolved of list) {
+          if (triedFiles.has(resolved.fileTitle)) continue;
+          triedFiles.add(resolved.fileTitle);
+          try {
+            const info = await commonsInfo(resolved.fileTitle);
+            await sleep(800);
+            if (!licenseOk(info.license)) {
+              licenseNotes.push(info.license);
+              continue;
+            }
+            if (!imageLooksUsable(resolved.fileTitle, info.artist)) {
+              licenseNotes.push('image-inutile');
+              continue;
+            }
+            return { resolved, info };
+          } catch {
+            await sleep(1200);
           }
-          if (!imageLooksUsable(resolved.fileTitle, info.artist)) {
-            licenseNotes.push('image-inutile');
-            continue;
-          }
-          picked = { resolved, info };
-          break;
-        } catch {
-          await sleep(800);
         }
+        return null;
+      };
+
+      // 1) mapping Wikidata/Commons (peu d’appels) puis 2) recherche si besoin
+      let chosen = await tryCandidates(await collectMappedCandidates(mapping[card.slug]));
+      if (!chosen) {
+        chosen = await tryCandidates(await collectSearchCandidates(card));
       }
 
-      if (!picked) {
+      if (!chosen) {
         const reason =
           licenseNotes.length > 0 ? `licence:${licenseNotes.join('|')}` : 'introuvable';
         console.log(reason.startsWith('licence:') ? `licence refusée (${licenseNotes[0]})` : 'introuvable');
         skipped.push({ slug: card.slug, reason });
+        await sleep(1500);
         continue;
       }
 
@@ -355,35 +380,38 @@ async function main() {
         typeof existing === 'object' && existing && typeof existing.file === 'string'
           ? existing.file
           : null;
-      if (picked.resolved.mappingUpdate && !forcedFile) {
-        mapping[card.slug] = picked.resolved.mappingUpdate;
+      if (chosen.resolved.mappingUpdate && !forcedFile) {
+        mapping[card.slug] = chosen.resolved.mappingUpdate;
       }
 
       if (!dryRun && (forceSlugs.has(card.slug) || !existsSync(abs))) {
         if (forceSlugs.has(card.slug) && existsSync(abs)) unlinkSync(abs);
-        await downloadWebp(picked.info.thumbUrl, abs);
+        await downloadWebp(chosen.info.thumbUrl, abs);
       } else if (!dryRun) {
         process.stdout.write('(déjà présent) ');
       }
 
-      const credit = `${picked.info.artist} — ${picked.info.license} (Wikimedia Commons)`;
+      const credit = `${chosen.info.artist} — ${chosen.info.license} (Wikimedia Commons)`;
       results.push({
         slug: card.slug,
         path: rel,
         credit,
-        license: picked.info.license,
-        fileTitle: picked.resolved.fileTitle,
+        license: chosen.info.license,
+        fileTitle: chosen.resolved.fileTitle,
       });
-      console.log(`ok [${picked.info.license}]`);
-      await sleep(900);
+      console.log(`ok [${chosen.info.license}]`);
+      await sleep(1500);
     } catch (error) {
       console.log(`échec : ${(error as Error).message}`);
       skipped.push({ slug: card.slug, reason: (error as Error).message });
       await sleep(2000);
     }
 
-    // Sauvegarde progressive du mapping (reprises possibles).
-    if (!dryRun && results.length % 10 === 0) saveMapping(mapping);
+    // Sauvegarde progressive (reprises possibles après interruption).
+    if (!dryRun && results.length > 0 && results.length % 5 === 0) {
+      saveMapping(mapping);
+      patchCountriesJson(results);
+    }
   }
 
   if (!dryRun) {

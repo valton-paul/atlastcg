@@ -1,0 +1,2961 @@
+{
+  "existingSlugs": [
+    "aapravasi-ghat",
+    "abou-simbel",
+    "acropole-athenes",
+    "aflaj-d-oman",
+    "al-zubarah",
+    "alhambra",
+    "allee-des-baobabs",
+    "amphitheatre-d-el-jem",
+    "angkor",
+    "antigua-guatemala",
+    "arches-de-talava",
+    "archipel-des-bijagos",
+    "armee-de-terre-cuite",
+    "art-nouveau-riga",
+    "asmara-ville-moderniste",
+    "atoll-de-bikini",
+    "atolls-des-maldives",
+    "aurores-boreales",
+    "ayutthaya",
+    "baalbek",
+    "babylone",
+    "bagan",
+    "baie-ha-long",
+    "baikonour",
+    "basilique-notre-dame-de-la-paix",
+    "basilique-saint-pierre",
+    "berat",
+    "bilinguisme-canadien",
+    "blue-mountains",
+    "boiling-lake",
+    "borchtch",
+    "borobudur",
+    "bosquet-sacre-d-osun-osogbo",
+    "bouches-de-kotor",
+    "brimstone-hill",
+    "bruges",
+    "bryggen",
+    "burj-khalifa",
+    "butrint",
+    "cafe-colombien",
+    "canal-de-panama",
+    "canaux-d-amsterdam",
+    "cappadoce",
+    "carthagene-des-indes",
+    "casbah-d-alger",
+    "cathedrale-de-cologne",
+    "caves-de-milestii-mici",
+    "centre-historique-d-agadez",
+    "ceremonie-du-cafe",
+    "cervin",
+    "cesky-krumlov",
+    "chantier-naval-nelson",
+    "chapeau-basotho",
+    "chapelle-sixtine",
+    "chateau-de-cape-coast",
+    "chateau-de-kronborg",
+    "chateau-de-mir",
+    "chateau-de-neuschwanstein",
+    "chateau-de-schonbrunn",
+    "chateau-de-spis",
+    "chateau-de-vaduz",
+    "chateau-de-versailles",
+    "chaussee-des-geants",
+    "chichen-itza",
+    "chinguetti",
+    "christ-redempteur",
+    "chutes-d-iguacu",
+    "chutes-de-kaieteur",
+    "chutes-du-niagara",
+    "chutes-victoria",
+    "cidade-velha",
+    "citadelle-laferriere",
+    "cite-interdite",
+    "colisee",
+    "colonia-del-sacramento",
+    "copan",
+    "cracovie",
+    "cratere-de-darvaza",
+    "crop-over",
+    "delta-de-l-okavango",
+    "delta-du-danube",
+    "desert-d-atacama",
+    "domaine-du-chef-roi-mata",
+    "dubrovnik",
+    "dunes-de-sossusvlei",
+    "eglise-de-la-nativite",
+    "eglises-de-lalibela",
+    "everest",
+    "fado",
+    "falaises-de-moher",
+    "fjords-de-norvege",
+    "flamenco",
+    "foret-amazonienne",
+    "foret-de-bialowieza",
+    "foret-impenetrable-de-bwindi",
+    "fortifications-de-luxembourg",
+    "galapagos",
+    "geysir",
+    "ghats-de-varanasi",
+    "glacier-d-aletsch",
+    "gorge-de-taroko",
+    "grand-canyon",
+    "grand-place-bruxelles",
+    "grand-prix-de-monaco",
+    "grand-trou-bleu",
+    "grand-zimbabwe",
+    "grande-barriere-de-corail",
+    "grande-mosquee-de-djenne",
+    "grande-muraille",
+    "grottes-de-skocjan",
+    "gyeongbokgung",
+    "haamonga-a-maui",
+    "haka",
+    "hallstatt",
+    "hangeul",
+    "hegra",
+    "hoi-an",
+    "ile-de-bioko",
+    "ile-de-goree",
+    "ile-de-mozambique",
+    "ile-de-tiwai",
+    "ile-kunta-kinteh",
+    "iles-phoenix",
+    "issyk-koul",
+    "isthme-de-courlande",
+    "itchan-kala",
+    "itsukushima",
+    "jardin-botanique-de-singapour",
+    "jemaa-el-fna",
+    "jour-des-morts",
+    "joya-de-ceren",
+    "junkanoo",
+    "k2",
+    "karthala",
+    "kente",
+    "kilimandjaro",
+    "kimjang",
+    "koutammakou",
+    "laas-geel",
+    "lac-assal",
+    "lac-baikal",
+    "lac-d-ohrid",
+    "lac-de-bled",
+    "lac-malawi",
+    "lac-rose",
+    "lac-tanganyika",
+    "lac-titicaca",
+    "lacs-de-plitvice",
+    "lagon-d-aitutaki",
+    "lagon-de-funafuti",
+    "laponie",
+    "le-morne-brabant",
+    "leon-viejo",
+    "leptis-magna",
+    "levuka",
+    "lignes-de-nazca",
+    "luang-prabang",
+    "machu-picchu",
+    "massada",
+    "massif-de-l-ennedi",
+    "mbanza-kongo",
+    "medina-de-fes",
+    "merengue",
+    "meteores",
+    "milford-sound",
+    "mine-de-sel-de-wieliczka",
+    "missions-jesuites-paraguay",
+    "moai-rapa-nui",
+    "mohenjo-daro",
+    "monastere-de-guegharde",
+    "monastere-de-rila",
+    "monastere-de-studenica",
+    "monastere-de-visoki-decani",
+    "monasteres-de-moldavie",
+    "mont-cameroun",
+    "mont-fuji",
+    "mont-kenya",
+    "mont-nimba",
+    "mont-paektu",
+    "mont-saint-michel",
+    "mont-titano",
+    "montagne-de-la-table",
+    "monument-newborn",
+    "morna",
+    "mosquee-omar-ali-saifuddien",
+    "moulins-de-kinderdijk",
+    "mtskheta",
+    "naadam",
+    "nan-madol",
+    "newgrange",
+    "noix-de-muscade-grenade",
+    "nollywood",
+    "olympie",
+    "opera-de-sydney",
+    "palais-royaux-d-abomey",
+    "palmyre",
+    "pamir",
+    "paphos",
+    "parc-manovo-gounda-saint-floris",
+    "parc-national-d-odzala-kokoua",
+    "parc-national-de-komodo",
+    "parc-national-de-la-lope",
+    "parc-national-de-sapo",
+    "parc-national-des-virunga",
+    "parc-national-des-volcans",
+    "perito-moreno",
+    "persepolis",
+    "petra",
+    "pico-cao-grande",
+    "pitons-sainte-lucie",
+    "place-naqsh-e-jahan",
+    "plateau-de-topside",
+    "polyphonie-georgienne",
+    "pompei",
+    "pont-charles",
+    "pont-de-mostar",
+    "porte-de-brandebourg",
+    "potosi",
+    "pyramides-de-gizeh",
+    "pyramides-de-meroe",
+    "qal-at-al-bahrein",
+    "reggae",
+    "rennell-est",
+    "reserve-du-masai-mara",
+    "reserve-suriname-central",
+    "rives-du-danube-budapest",
+    "rizieres-des-cordilleres",
+    "robben-island",
+    "rock-islands",
+    "ruines-de-loropeni",
+    "sagrada-familia",
+    "saint-petersbourg",
+    "sainte-sophie",
+    "sainte-sophie-de-kyiv",
+    "salar-d-uyuni",
+    "salto-angel",
+    "samarcande",
+    "sauna-finlandais",
+    "saut-du-gaul",
+    "serengeti",
+    "shibam",
+    "sigiriya",
+    "site-agricole-de-kuk",
+    "site-de-carthage",
+    "socotra",
+    "songkran",
+    "soufriere-saint-vincent",
+    "statue-de-la-liberte",
+    "steelpan",
+    "stone-town",
+    "stonehenge",
+    "structure-de-richat",
+    "sudd",
+    "sundarbans",
+    "suomenlinna",
+    "taipei-101",
+    "tais",
+    "taj-mahal",
+    "taktshang",
+    "tango",
+    "tassili-n-ajjer",
+    "te-reo-maori",
+    "temples-megalithiques-malte",
+    "teotihuacan",
+    "thingvellir",
+    "tikal",
+    "to-sua",
+    "tombouctou",
+    "tonle-sap",
+    "tour-de-belem",
+    "tour-de-londres",
+    "tour-eiffel",
+    "tours-du-koweit",
+    "tours-petronas",
+    "transsiberien",
+    "tsingy-de-bemaraha",
+    "uluru",
+    "umhlanga",
+    "vallee-de-bamiyan",
+    "vallee-de-mai",
+    "vallee-de-vinales",
+    "vallee-du-madriu",
+    "vasa",
+    "venise",
+    "vieille-havane",
+    "vieille-ville-de-bakou",
+    "vieille-ville-de-tallinn",
+    "volcan-arenal",
+    "wadi-rum",
+    "washoku",
+    "yellowstone"
+  ],
+  "need": [
+    {
+      "iso": "IS",
+      "name": "Islande",
+      "continent": "europe",
+      "region": "Europe du Nord",
+      "heritage": {
+        "slug": "geysir",
+        "title": "Geysir",
+        "category": "geography"
+      },
+      "extras": [
+        {
+          "slug": "thingvellir",
+          "title": "Þingvellir",
+          "category": "history"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "IN",
+      "name": "Inde",
+      "continent": "asia",
+      "region": "Asie du Sud",
+      "heritage": {
+        "slug": "taj-mahal",
+        "title": "Taj Mahal",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "ghats-de-varanasi",
+          "title": "Ghats de Varanasi",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "VN",
+      "name": "Viêt Nam",
+      "continent": "asia",
+      "region": "Asie du Sud-Est",
+      "heritage": {
+        "slug": "baie-ha-long",
+        "title": "Baie d'Hạ Long",
+        "category": "geography"
+      },
+      "extras": [
+        {
+          "slug": "hoi-an",
+          "title": "Hội An",
+          "category": "monument"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "KH",
+      "name": "Cambodge",
+      "continent": "asia",
+      "region": "Asie du Sud-Est",
+      "heritage": {
+        "slug": "angkor",
+        "title": "Angkor",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "tonle-sap",
+          "title": "Tonlé Sap",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "JO",
+      "name": "Jordanie",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "petra",
+        "title": "Pétra",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "wadi-rum",
+          "title": "Wadi Rum",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "TR",
+      "name": "Turquie",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "sainte-sophie",
+        "title": "Sainte-Sophie",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "cappadoce",
+          "title": "Cappadoce",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "EG",
+      "name": "Égypte",
+      "continent": "africa",
+      "region": "Afrique du Nord",
+      "heritage": {
+        "slug": "pyramides-de-gizeh",
+        "title": "Pyramides de Gizeh",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "abou-simbel",
+          "title": "Abou Simbel",
+          "category": "monument"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "MA",
+      "name": "Maroc",
+      "continent": "africa",
+      "region": "Afrique du Nord",
+      "heritage": {
+        "slug": "medina-de-fes",
+        "title": "Médina de Fès",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "jemaa-el-fna",
+          "title": "Place Jemaa el-Fna",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "SN",
+      "name": "Sénégal",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "ile-de-goree",
+        "title": "Île de Gorée",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "lac-rose",
+          "title": "Lac Rose",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "ET",
+      "name": "Éthiopie",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "eglises-de-lalibela",
+        "title": "Églises de Lalibela",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "ceremonie-du-cafe",
+          "title": "Cérémonie du café",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "ZA",
+      "name": "Afrique du Sud",
+      "continent": "africa",
+      "region": "Afrique australe",
+      "heritage": {
+        "slug": "robben-island",
+        "title": "Robben Island",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "montagne-de-la-table",
+          "title": "Montagne de la Table",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "CA",
+      "name": "Canada",
+      "continent": "north_america",
+      "region": "Amérique septentrionale",
+      "heritage": {
+        "slug": "bilinguisme-canadien",
+        "title": "Bilinguisme canadien",
+        "category": "culture"
+      },
+      "extras": [
+        {
+          "slug": "chutes-du-niagara",
+          "title": "Chutes du Niagara",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "AR",
+      "name": "Argentine",
+      "continent": "south_america",
+      "region": "Amérique du Sud",
+      "heritage": {
+        "slug": "tango",
+        "title": "Tango",
+        "category": "culture"
+      },
+      "extras": [
+        {
+          "slug": "perito-moreno",
+          "title": "Glacier Perito Moreno",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "CL",
+      "name": "Chili",
+      "continent": "south_america",
+      "region": "Amérique du Sud",
+      "heritage": {
+        "slug": "moai-rapa-nui",
+        "title": "Moaï de Rapa Nui",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "desert-d-atacama",
+          "title": "Désert d'Atacama",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "AL",
+      "name": "Albanie",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "berat",
+        "title": "Berat",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "butrint",
+          "title": "Butrint",
+          "category": "history"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "AD",
+      "name": "Andorre",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "vallee-du-madriu",
+        "title": "Vallée du Madriu-Perafita-Claror",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "AT",
+      "name": "Autriche",
+      "continent": "europe",
+      "region": "Europe centrale",
+      "heritage": {
+        "slug": "chateau-de-schonbrunn",
+        "title": "Château de Schönbrunn",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "hallstatt",
+          "title": "Hallstatt",
+          "category": "history"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "BE",
+      "name": "Belgique",
+      "continent": "europe",
+      "region": "Europe de l'Ouest",
+      "heritage": {
+        "slug": "grand-place-bruxelles",
+        "title": "Grand-Place de Bruxelles",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "bruges",
+          "title": "Bruges",
+          "category": "monument"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "BY",
+      "name": "Biélorussie",
+      "continent": "europe",
+      "region": "Europe de l'Est",
+      "heritage": {
+        "slug": "chateau-de-mir",
+        "title": "Château de Mir",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BA",
+      "name": "Bosnie-Herzégovine",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "pont-de-mostar",
+        "title": "Vieux pont de Mostar",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BG",
+      "name": "Bulgarie",
+      "continent": "europe",
+      "region": "Europe de l'Est",
+      "heritage": {
+        "slug": "monastere-de-rila",
+        "title": "Monastère de Rila",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "CY",
+      "name": "Chypre",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "paphos",
+        "title": "Paphos",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "HR",
+      "name": "Croatie",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "dubrovnik",
+        "title": "Dubrovnik",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "lacs-de-plitvice",
+          "title": "Lacs de Plitvice",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "DK",
+      "name": "Danemark",
+      "continent": "europe",
+      "region": "Europe du Nord",
+      "heritage": {
+        "slug": "chateau-de-kronborg",
+        "title": "Château de Kronborg",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "EE",
+      "name": "Estonie",
+      "continent": "europe",
+      "region": "Europe du Nord",
+      "heritage": {
+        "slug": "vieille-ville-de-tallinn",
+        "title": "Vieille ville de Tallinn",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "FI",
+      "name": "Finlande",
+      "continent": "europe",
+      "region": "Europe du Nord",
+      "heritage": {
+        "slug": "sauna-finlandais",
+        "title": "Sauna finlandais",
+        "category": "culture"
+      },
+      "extras": [
+        {
+          "slug": "suomenlinna",
+          "title": "Suomenlinna",
+          "category": "history"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "HU",
+      "name": "Hongrie",
+      "continent": "europe",
+      "region": "Europe centrale",
+      "heritage": {
+        "slug": "rives-du-danube-budapest",
+        "title": "Rives du Danube",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "IE",
+      "name": "Irlande",
+      "continent": "europe",
+      "region": "Europe du Nord",
+      "heritage": {
+        "slug": "newgrange",
+        "title": "Newgrange",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "falaises-de-moher",
+          "title": "Falaises de Moher",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "LV",
+      "name": "Lettonie",
+      "continent": "europe",
+      "region": "Europe du Nord",
+      "heritage": {
+        "slug": "art-nouveau-riga",
+        "title": "Art nouveau de Riga",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "LI",
+      "name": "Liechtenstein",
+      "continent": "europe",
+      "region": "Europe centrale",
+      "heritage": {
+        "slug": "chateau-de-vaduz",
+        "title": "Château de Vaduz",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "LT",
+      "name": "Lituanie",
+      "continent": "europe",
+      "region": "Europe du Nord",
+      "heritage": {
+        "slug": "isthme-de-courlande",
+        "title": "Isthme de Courlande",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "LU",
+      "name": "Luxembourg",
+      "continent": "europe",
+      "region": "Europe de l'Ouest",
+      "heritage": {
+        "slug": "fortifications-de-luxembourg",
+        "title": "Fortifications de Luxembourg",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "MK",
+      "name": "Macédoine du Nord",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "lac-d-ohrid",
+        "title": "Lac d'Ohrid",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "MT",
+      "name": "Malte",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "temples-megalithiques-malte",
+        "title": "Temples mégalithiques",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "MD",
+      "name": "Moldavie",
+      "continent": "europe",
+      "region": "Europe de l'Est",
+      "heritage": {
+        "slug": "caves-de-milestii-mici",
+        "title": "Caves de Mileștii Mici",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "MC",
+      "name": "Monaco",
+      "continent": "europe",
+      "region": "Europe de l'Ouest",
+      "heritage": {
+        "slug": "grand-prix-de-monaco",
+        "title": "Grand Prix de Monaco",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "ME",
+      "name": "Monténégro",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "bouches-de-kotor",
+        "title": "Bouches de Kotor",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "NL",
+      "name": "Pays-Bas",
+      "continent": "europe",
+      "region": "Europe de l'Ouest",
+      "heritage": {
+        "slug": "moulins-de-kinderdijk",
+        "title": "Moulins de Kinderdijk",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "canaux-d-amsterdam",
+          "title": "Canaux d'Amsterdam",
+          "category": "monument"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "PT",
+      "name": "Portugal",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "tour-de-belem",
+        "title": "Tour de Belém",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "fado",
+          "title": "Fado",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "RO",
+      "name": "Roumanie",
+      "continent": "europe",
+      "region": "Europe de l'Est",
+      "heritage": {
+        "slug": "delta-du-danube",
+        "title": "Delta du Danube",
+        "category": "geography"
+      },
+      "extras": [
+        {
+          "slug": "monasteres-de-moldavie",
+          "title": "Églises peintes de Moldavie",
+          "category": "monument"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "SM",
+      "name": "Saint-Marin",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "mont-titano",
+        "title": "Mont Titano",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "RS",
+      "name": "Serbie",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "monastere-de-studenica",
+        "title": "Monastère de Studenica",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "XK",
+      "name": "Kosovo",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "monastere-de-visoki-decani",
+        "title": "Monastère de Visoki Dečani",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "monument-newborn",
+          "title": "Monument Newborn",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "SK",
+      "name": "Slovaquie",
+      "continent": "europe",
+      "region": "Europe centrale",
+      "heritage": {
+        "slug": "chateau-de-spis",
+        "title": "Château de Spiš",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SI",
+      "name": "Slovénie",
+      "continent": "europe",
+      "region": "Europe centrale",
+      "heritage": {
+        "slug": "grottes-de-skocjan",
+        "title": "Grottes de Škocjan",
+        "category": "geography"
+      },
+      "extras": [
+        {
+          "slug": "lac-de-bled",
+          "title": "Lac de Bled",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "CH",
+      "name": "Suisse",
+      "continent": "europe",
+      "region": "Europe centrale",
+      "heritage": {
+        "slug": "cervin",
+        "title": "Cervin",
+        "category": "geography"
+      },
+      "extras": [
+        {
+          "slug": "glacier-d-aletsch",
+          "title": "Glacier d'Aletsch",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "SE",
+      "name": "Suède",
+      "continent": "europe",
+      "region": "Europe du Nord",
+      "heritage": {
+        "slug": "vasa",
+        "title": "Vasa",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "laponie",
+          "title": "Laponie",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "CZ",
+      "name": "Tchéquie",
+      "continent": "europe",
+      "region": "Europe centrale",
+      "heritage": {
+        "slug": "pont-charles",
+        "title": "Pont Charles",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "cesky-krumlov",
+          "title": "Český Krumlov",
+          "category": "monument"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "UA",
+      "name": "Ukraine",
+      "continent": "europe",
+      "region": "Europe de l'Est",
+      "heritage": {
+        "slug": "sainte-sophie-de-kyiv",
+        "title": "Cathédrale Sainte-Sophie",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "borchtch",
+          "title": "Bortsch ukrainien",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "VA",
+      "name": "Vatican",
+      "continent": "europe",
+      "region": "Europe du Sud",
+      "heritage": {
+        "slug": "chapelle-sixtine",
+        "title": "Chapelle Sixtine",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "basilique-saint-pierre",
+          "title": "Basilique Saint-Pierre",
+          "category": "monument"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "AF",
+      "name": "Afghanistan",
+      "continent": "asia",
+      "region": "Asie du Sud",
+      "heritage": {
+        "slug": "vallee-de-bamiyan",
+        "title": "Vallée de Bamiyan",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SA",
+      "name": "Arabie saoudite",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "hegra",
+        "title": "Hégra",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "AM",
+      "name": "Arménie",
+      "continent": "asia",
+      "region": "Caucase",
+      "heritage": {
+        "slug": "monastere-de-guegharde",
+        "title": "Monastère de Guéghard",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "AZ",
+      "name": "Azerbaïdjan",
+      "continent": "asia",
+      "region": "Caucase",
+      "heritage": {
+        "slug": "vieille-ville-de-bakou",
+        "title": "Vieille ville de Bakou",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BH",
+      "name": "Bahreïn",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "qal-at-al-bahrein",
+        "title": "Qal'at al-Bahreïn",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BD",
+      "name": "Bangladesh",
+      "continent": "asia",
+      "region": "Asie du Sud",
+      "heritage": {
+        "slug": "sundarbans",
+        "title": "Sundarbans",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BT",
+      "name": "Bhoutan",
+      "continent": "asia",
+      "region": "Asie du Sud",
+      "heritage": {
+        "slug": "taktshang",
+        "title": "Monastère de Taktshang",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "MM",
+      "name": "Birmanie",
+      "continent": "asia",
+      "region": "Asie du Sud-Est",
+      "heritage": {
+        "slug": "bagan",
+        "title": "Bagan",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BN",
+      "name": "Brunei",
+      "continent": "asia",
+      "region": "Asie du Sud-Est",
+      "heritage": {
+        "slug": "mosquee-omar-ali-saifuddien",
+        "title": "Mosquée Omar Ali Saifuddien",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "KP",
+      "name": "Corée du Nord",
+      "continent": "asia",
+      "region": "Asie de l'Est",
+      "heritage": {
+        "slug": "mont-paektu",
+        "title": "Mont Paektu",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "GE",
+      "name": "Géorgie",
+      "continent": "asia",
+      "region": "Caucase",
+      "heritage": {
+        "slug": "mtskheta",
+        "title": "Mtskheta",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "polyphonie-georgienne",
+          "title": "Chant polyphonique géorgien",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "ID",
+      "name": "Indonésie",
+      "continent": "asia",
+      "region": "Asie du Sud-Est",
+      "heritage": {
+        "slug": "borobudur",
+        "title": "Borobudur",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "parc-national-de-komodo",
+          "title": "Parc national de Komodo",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "IQ",
+      "name": "Irak",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "babylone",
+        "title": "Babylone",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "IR",
+      "name": "Iran",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "persepolis",
+        "title": "Persépolis",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "place-naqsh-e-jahan",
+          "title": "Place Naqsh-e Jahan",
+          "category": "monument"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "IL",
+      "name": "Israël",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "massada",
+        "title": "Massada",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "KZ",
+      "name": "Kazakhstan",
+      "continent": "asia",
+      "region": "Asie centrale",
+      "heritage": {
+        "slug": "baikonour",
+        "title": "Cosmodrome de Baïkonour",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "KG",
+      "name": "Kirghizistan",
+      "continent": "asia",
+      "region": "Asie centrale",
+      "heritage": {
+        "slug": "issyk-koul",
+        "title": "Lac Issyk-Koul",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "KW",
+      "name": "Koweït",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "tours-du-koweit",
+        "title": "Tours du Koweït",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "LA",
+      "name": "Laos",
+      "continent": "asia",
+      "region": "Asie du Sud-Est",
+      "heritage": {
+        "slug": "luang-prabang",
+        "title": "Luang Prabang",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "LB",
+      "name": "Liban",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "baalbek",
+        "title": "Baalbek",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "MY",
+      "name": "Malaisie",
+      "continent": "asia",
+      "region": "Asie du Sud-Est",
+      "heritage": {
+        "slug": "tours-petronas",
+        "title": "Tours Petronas",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "MV",
+      "name": "Maldives",
+      "continent": "asia",
+      "region": "Asie du Sud",
+      "heritage": {
+        "slug": "atolls-des-maldives",
+        "title": "Atolls des Maldives",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "MN",
+      "name": "Mongolie",
+      "continent": "asia",
+      "region": "Asie de l'Est",
+      "heritage": {
+        "slug": "naadam",
+        "title": "Naadam",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "NP",
+      "name": "Népal",
+      "continent": "asia",
+      "region": "Asie du Sud",
+      "heritage": {
+        "slug": "everest",
+        "title": "Everest",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "OM",
+      "name": "Oman",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "aflaj-d-oman",
+        "title": "Aflaj",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "UZ",
+      "name": "Ouzbékistan",
+      "continent": "asia",
+      "region": "Asie centrale",
+      "heritage": {
+        "slug": "samarcande",
+        "title": "Samarcande",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "itchan-kala",
+          "title": "Itchan Kala",
+          "category": "monument"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "PK",
+      "name": "Pakistan",
+      "continent": "asia",
+      "region": "Asie du Sud",
+      "heritage": {
+        "slug": "mohenjo-daro",
+        "title": "Mohenjo-daro",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "k2",
+          "title": "K2",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "PS",
+      "name": "Palestine",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "eglise-de-la-nativite",
+        "title": "Église de la Nativité",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "PH",
+      "name": "Philippines",
+      "continent": "asia",
+      "region": "Asie du Sud-Est",
+      "heritage": {
+        "slug": "rizieres-des-cordilleres",
+        "title": "Rizières en terrasses des Cordillères",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "QA",
+      "name": "Qatar",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "al-zubarah",
+        "title": "Al-Zubarah",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SG",
+      "name": "Singapour",
+      "continent": "asia",
+      "region": "Asie du Sud-Est",
+      "heritage": {
+        "slug": "jardin-botanique-de-singapour",
+        "title": "Jardin botanique de Singapour",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "LK",
+      "name": "Sri Lanka",
+      "continent": "asia",
+      "region": "Asie du Sud",
+      "heritage": {
+        "slug": "sigiriya",
+        "title": "Sigiriya",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SY",
+      "name": "Syrie",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "palmyre",
+        "title": "Palmyre",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "TW",
+      "name": "Taïwan",
+      "continent": "asia",
+      "region": "Asie de l'Est",
+      "heritage": {
+        "slug": "taipei-101",
+        "title": "Taipei 101",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "gorge-de-taroko",
+          "title": "Gorge de Taroko",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "TJ",
+      "name": "Tadjikistan",
+      "continent": "asia",
+      "region": "Asie centrale",
+      "heritage": {
+        "slug": "pamir",
+        "title": "Pamir",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "TH",
+      "name": "Thaïlande",
+      "continent": "asia",
+      "region": "Asie du Sud-Est",
+      "heritage": {
+        "slug": "ayutthaya",
+        "title": "Ayutthaya",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "songkran",
+          "title": "Songkran",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "TL",
+      "name": "Timor oriental",
+      "continent": "asia",
+      "region": "Asie du Sud-Est",
+      "heritage": {
+        "slug": "tais",
+        "title": "Tais",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "TM",
+      "name": "Turkménistan",
+      "continent": "asia",
+      "region": "Asie centrale",
+      "heritage": {
+        "slug": "cratere-de-darvaza",
+        "title": "Cratère de Darvaza",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "YE",
+      "name": "Yémen",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "shibam",
+        "title": "Shibam",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "socotra",
+          "title": "Socotra",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "AE",
+      "name": "Émirats arabes unis",
+      "continent": "asia",
+      "region": "Asie de l'Ouest",
+      "heritage": {
+        "slug": "burj-khalifa",
+        "title": "Burj Khalifa",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "DZ",
+      "name": "Algérie",
+      "continent": "africa",
+      "region": "Afrique du Nord",
+      "heritage": {
+        "slug": "casbah-d-alger",
+        "title": "Casbah d'Alger",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "tassili-n-ajjer",
+          "title": "Tassili n'Ajjer",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "AO",
+      "name": "Angola",
+      "continent": "africa",
+      "region": "Afrique centrale",
+      "heritage": {
+        "slug": "mbanza-kongo",
+        "title": "Mbanza Kongo",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BW",
+      "name": "Botswana",
+      "continent": "africa",
+      "region": "Afrique australe",
+      "heritage": {
+        "slug": "delta-de-l-okavango",
+        "title": "Delta de l'Okavango",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BF",
+      "name": "Burkina Faso",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "ruines-de-loropeni",
+        "title": "Ruines de Loropéni",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BI",
+      "name": "Burundi",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "lac-tanganyika",
+        "title": "Lac Tanganyika",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BJ",
+      "name": "Bénin",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "palais-royaux-d-abomey",
+        "title": "Palais royaux d'Abomey",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "CM",
+      "name": "Cameroun",
+      "continent": "africa",
+      "region": "Afrique centrale",
+      "heritage": {
+        "slug": "mont-cameroun",
+        "title": "Mont Cameroun",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "CV",
+      "name": "Cap-Vert",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "cidade-velha",
+        "title": "Cidade Velha",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "morna",
+          "title": "La morna",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "KM",
+      "name": "Comores",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "karthala",
+        "title": "Karthala",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "CI",
+      "name": "Côte d'Ivoire",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "basilique-notre-dame-de-la-paix",
+        "title": "Basilique Notre-Dame-de-la-Paix",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "DJ",
+      "name": "Djibouti",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "lac-assal",
+        "title": "Lac Assal",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SZ",
+      "name": "Eswatini",
+      "continent": "africa",
+      "region": "Afrique australe",
+      "heritage": {
+        "slug": "umhlanga",
+        "title": "Umhlanga",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "GA",
+      "name": "Gabon",
+      "continent": "africa",
+      "region": "Afrique centrale",
+      "heritage": {
+        "slug": "parc-national-de-la-lope",
+        "title": "Parc national de la Lopé",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "GM",
+      "name": "Gambie",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "ile-kunta-kinteh",
+        "title": "Île Kunta Kinteh",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "GH",
+      "name": "Ghana",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "chateau-de-cape-coast",
+        "title": "Château de Cape Coast",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "kente",
+          "title": "Le kente",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "GN",
+      "name": "Guinée",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "mont-nimba",
+        "title": "Mont Nimba",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "GQ",
+      "name": "Guinée équatoriale",
+      "continent": "africa",
+      "region": "Afrique centrale",
+      "heritage": {
+        "slug": "ile-de-bioko",
+        "title": "Île de Bioko",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "GW",
+      "name": "Guinée-Bissau",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "archipel-des-bijagos",
+        "title": "Archipel des Bijagos",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "KE",
+      "name": "Kenya",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "reserve-du-masai-mara",
+        "title": "Réserve nationale du Masai Mara",
+        "category": "geography"
+      },
+      "extras": [
+        {
+          "slug": "mont-kenya",
+          "title": "Mont Kenya",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "LS",
+      "name": "Lesotho",
+      "continent": "africa",
+      "region": "Afrique australe",
+      "heritage": {
+        "slug": "chapeau-basotho",
+        "title": "Chapeau basotho",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "LR",
+      "name": "Liberia",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "parc-national-de-sapo",
+        "title": "Parc national de Sapo",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "LY",
+      "name": "Libye",
+      "continent": "africa",
+      "region": "Afrique du Nord",
+      "heritage": {
+        "slug": "leptis-magna",
+        "title": "Leptis Magna",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "MG",
+      "name": "Madagascar",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "allee-des-baobabs",
+        "title": "Allée des Baobabs",
+        "category": "geography"
+      },
+      "extras": [
+        {
+          "slug": "tsingy-de-bemaraha",
+          "title": "Tsingy de Bemaraha",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "MW",
+      "name": "Malawi",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "lac-malawi",
+        "title": "Lac Malawi",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "ML",
+      "name": "Mali",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "grande-mosquee-de-djenne",
+        "title": "Grande Mosquée de Djenné",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "tombouctou",
+          "title": "Tombouctou",
+          "category": "history"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "MU",
+      "name": "Maurice",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "aapravasi-ghat",
+        "title": "Aapravasi Ghat",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "le-morne-brabant",
+          "title": "Le Morne Brabant",
+          "category": "history"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "MR",
+      "name": "Mauritanie",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "structure-de-richat",
+        "title": "Structure de Richat",
+        "category": "geography"
+      },
+      "extras": [
+        {
+          "slug": "chinguetti",
+          "title": "Chinguetti",
+          "category": "history"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "MZ",
+      "name": "Mozambique",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "ile-de-mozambique",
+        "title": "Île de Mozambique",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "NA",
+      "name": "Namibie",
+      "continent": "africa",
+      "region": "Afrique australe",
+      "heritage": {
+        "slug": "dunes-de-sossusvlei",
+        "title": "Dunes de Sossusvlei",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "NE",
+      "name": "Niger",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "centre-historique-d-agadez",
+        "title": "Centre historique d'Agadez",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "NG",
+      "name": "Nigeria",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "bosquet-sacre-d-osun-osogbo",
+        "title": "Bosquet sacré d'Osun-Osogbo",
+        "category": "culture"
+      },
+      "extras": [
+        {
+          "slug": "nollywood",
+          "title": "Nollywood",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "UG",
+      "name": "Ouganda",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "foret-impenetrable-de-bwindi",
+        "title": "Forêt impénétrable de Bwindi",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "RW",
+      "name": "Rwanda",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "parc-national-des-volcans",
+        "title": "Parc national des Volcans",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "CF",
+      "name": "République centrafricaine",
+      "continent": "africa",
+      "region": "Afrique centrale",
+      "heritage": {
+        "slug": "parc-manovo-gounda-saint-floris",
+        "title": "Parc national du Manovo-Gounda St Floris",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "CG",
+      "name": "République du Congo",
+      "continent": "africa",
+      "region": "Afrique centrale",
+      "heritage": {
+        "slug": "parc-national-d-odzala-kokoua",
+        "title": "Parc national d'Odzala-Kokoua",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "CD",
+      "name": "République démocratique du Congo",
+      "continent": "africa",
+      "region": "Afrique centrale",
+      "heritage": {
+        "slug": "parc-national-des-virunga",
+        "title": "Parc national des Virunga",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SC",
+      "name": "Seychelles",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "vallee-de-mai",
+        "title": "Vallée de Mai",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SL",
+      "name": "Sierra Leone",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "ile-de-tiwai",
+        "title": "Île de Tiwai",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SO",
+      "name": "Somalie",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "laas-geel",
+        "title": "Laas Geel",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SD",
+      "name": "Soudan",
+      "continent": "africa",
+      "region": "Afrique du Nord",
+      "heritage": {
+        "slug": "pyramides-de-meroe",
+        "title": "Pyramides de Méroé",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SS",
+      "name": "Soudan du Sud",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "sudd",
+        "title": "Le Sudd",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "ST",
+      "name": "São Tomé-et-Principe",
+      "continent": "africa",
+      "region": "Afrique centrale",
+      "heritage": {
+        "slug": "pico-cao-grande",
+        "title": "Pico Cão Grande",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "TD",
+      "name": "Tchad",
+      "continent": "africa",
+      "region": "Afrique centrale",
+      "heritage": {
+        "slug": "massif-de-l-ennedi",
+        "title": "Massif de l'Ennedi",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "TG",
+      "name": "Togo",
+      "continent": "africa",
+      "region": "Afrique de l'Ouest",
+      "heritage": {
+        "slug": "koutammakou",
+        "title": "Koutammakou",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "TN",
+      "name": "Tunisie",
+      "continent": "africa",
+      "region": "Afrique du Nord",
+      "heritage": {
+        "slug": "site-de-carthage",
+        "title": "Site de Carthage",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "amphitheatre-d-el-jem",
+          "title": "Amphithéâtre d'El Jem",
+          "category": "monument"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "ZM",
+      "name": "Zambie",
+      "continent": "africa",
+      "region": "Afrique australe",
+      "heritage": {
+        "slug": "chutes-victoria",
+        "title": "Chutes Victoria",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "ZW",
+      "name": "Zimbabwe",
+      "continent": "africa",
+      "region": "Afrique australe",
+      "heritage": {
+        "slug": "grand-zimbabwe",
+        "title": "Grand Zimbabwe",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "ER",
+      "name": "Érythrée",
+      "continent": "africa",
+      "region": "Afrique de l'Est",
+      "heritage": {
+        "slug": "asmara-ville-moderniste",
+        "title": "Asmara, ville moderniste",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "AG",
+      "name": "Antigua-et-Barbuda",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "chantier-naval-nelson",
+        "title": "Chantier naval de Nelson",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BS",
+      "name": "Bahamas",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "junkanoo",
+        "title": "Junkanoo",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BB",
+      "name": "Barbade",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "crop-over",
+        "title": "Crop Over",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BZ",
+      "name": "Belize",
+      "continent": "north_america",
+      "region": "Amérique centrale",
+      "heritage": {
+        "slug": "grand-trou-bleu",
+        "title": "Grand Trou bleu",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "CR",
+      "name": "Costa Rica",
+      "continent": "north_america",
+      "region": "Amérique centrale",
+      "heritage": {
+        "slug": "volcan-arenal",
+        "title": "Volcan Arenal",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "CU",
+      "name": "Cuba",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "vieille-havane",
+        "title": "Vieille Havane",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "vallee-de-vinales",
+          "title": "Vallée de Viñales",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "DM",
+      "name": "Dominique",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "boiling-lake",
+        "title": "Boiling Lake",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "GD",
+      "name": "Grenade",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "noix-de-muscade-grenade",
+        "title": "Noix de muscade",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "GT",
+      "name": "Guatemala",
+      "continent": "north_america",
+      "region": "Amérique centrale",
+      "heritage": {
+        "slug": "tikal",
+        "title": "Tikal",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "antigua-guatemala",
+          "title": "Antigua Guatemala",
+          "category": "monument"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "HT",
+      "name": "Haïti",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "citadelle-laferriere",
+        "title": "Citadelle Laferrière",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "HN",
+      "name": "Honduras",
+      "continent": "north_america",
+      "region": "Amérique centrale",
+      "heritage": {
+        "slug": "copan",
+        "title": "Copán",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "JM",
+      "name": "Jamaïque",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "reggae",
+        "title": "Reggae",
+        "category": "culture"
+      },
+      "extras": [
+        {
+          "slug": "blue-mountains",
+          "title": "Blue Mountains",
+          "category": "geography"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "NI",
+      "name": "Nicaragua",
+      "continent": "north_america",
+      "region": "Amérique centrale",
+      "heritage": {
+        "slug": "leon-viejo",
+        "title": "Ruines de León Viejo",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "PA",
+      "name": "Panama",
+      "continent": "north_america",
+      "region": "Amérique centrale",
+      "heritage": {
+        "slug": "canal-de-panama",
+        "title": "Canal de Panama",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "DO",
+      "name": "République dominicaine",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "merengue",
+        "title": "Merengue",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "KN",
+      "name": "Saint-Christophe-et-Niévès",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "brimstone-hill",
+        "title": "Forteresse de Brimstone Hill",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "VC",
+      "name": "Saint-Vincent-et-les-Grenadines",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "soufriere-saint-vincent",
+        "title": "La Soufrière",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "LC",
+      "name": "Sainte-Lucie",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "pitons-sainte-lucie",
+        "title": "Pitons",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SV",
+      "name": "Salvador",
+      "continent": "north_america",
+      "region": "Amérique centrale",
+      "heritage": {
+        "slug": "joya-de-ceren",
+        "title": "Joya de Cerén",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "TT",
+      "name": "Trinité-et-Tobago",
+      "continent": "north_america",
+      "region": "Caraïbes",
+      "heritage": {
+        "slug": "steelpan",
+        "title": "Steelpan",
+        "category": "culture"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "BO",
+      "name": "Bolivie",
+      "continent": "south_america",
+      "region": "Amérique du Sud",
+      "heritage": {
+        "slug": "salar-d-uyuni",
+        "title": "Salar d'Uyuni",
+        "category": "geography"
+      },
+      "extras": [
+        {
+          "slug": "potosi",
+          "title": "Potosí",
+          "category": "history"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "CO",
+      "name": "Colombie",
+      "continent": "south_america",
+      "region": "Amérique du Sud",
+      "heritage": {
+        "slug": "carthagene-des-indes",
+        "title": "Carthagène des Indes",
+        "category": "monument"
+      },
+      "extras": [
+        {
+          "slug": "cafe-colombien",
+          "title": "Paysage culturel du café",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "GY",
+      "name": "Guyana",
+      "continent": "south_america",
+      "region": "Amérique du Sud",
+      "heritage": {
+        "slug": "chutes-de-kaieteur",
+        "title": "Chutes de Kaieteur",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "PY",
+      "name": "Paraguay",
+      "continent": "south_america",
+      "region": "Amérique du Sud",
+      "heritage": {
+        "slug": "missions-jesuites-paraguay",
+        "title": "Missions jésuites",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SR",
+      "name": "Suriname",
+      "continent": "south_america",
+      "region": "Amérique du Sud",
+      "heritage": {
+        "slug": "reserve-suriname-central",
+        "title": "Réserve naturelle du Suriname central",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "UY",
+      "name": "Uruguay",
+      "continent": "south_america",
+      "region": "Amérique du Sud",
+      "heritage": {
+        "slug": "colonia-del-sacramento",
+        "title": "Colonia del Sacramento",
+        "category": "monument"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "VE",
+      "name": "Venezuela",
+      "continent": "south_america",
+      "region": "Amérique du Sud",
+      "heritage": {
+        "slug": "salto-angel",
+        "title": "Salto Ángel",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "EC",
+      "name": "Équateur",
+      "continent": "south_america",
+      "region": "Amérique du Sud",
+      "heritage": {
+        "slug": "galapagos",
+        "title": "Îles Galápagos",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "FJ",
+      "name": "Fidji",
+      "continent": "oceania",
+      "region": "Mélanésie",
+      "heritage": {
+        "slug": "levuka",
+        "title": "Levuka",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "KI",
+      "name": "Kiribati",
+      "continent": "oceania",
+      "region": "Micronésie",
+      "heritage": {
+        "slug": "iles-phoenix",
+        "title": "Aire protégée des îles Phoenix",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "FM",
+      "name": "Micronésie",
+      "continent": "oceania",
+      "region": "Micronésie",
+      "heritage": {
+        "slug": "nan-madol",
+        "title": "Nan Madol",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "NR",
+      "name": "Nauru",
+      "continent": "oceania",
+      "region": "Micronésie",
+      "heritage": {
+        "slug": "plateau-de-topside",
+        "title": "Plateau central de Nauru",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "NU",
+      "name": "Niue",
+      "continent": "oceania",
+      "region": "Polynésie",
+      "heritage": {
+        "slug": "arches-de-talava",
+        "title": "Arches de Talava",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "PW",
+      "name": "Palaos",
+      "continent": "oceania",
+      "region": "Micronésie",
+      "heritage": {
+        "slug": "rock-islands",
+        "title": "Rock Islands",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "PG",
+      "name": "Papouasie-Nouvelle-Guinée",
+      "continent": "oceania",
+      "region": "Mélanésie",
+      "heritage": {
+        "slug": "site-agricole-de-kuk",
+        "title": "Site agricole ancien de Kuk",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "WS",
+      "name": "Samoa",
+      "continent": "oceania",
+      "region": "Polynésie",
+      "heritage": {
+        "slug": "to-sua",
+        "title": "To Sua",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "TO",
+      "name": "Tonga",
+      "continent": "oceania",
+      "region": "Polynésie",
+      "heritage": {
+        "slug": "haamonga-a-maui",
+        "title": "Ha'amonga 'a Maui",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "TV",
+      "name": "Tuvalu",
+      "continent": "oceania",
+      "region": "Polynésie",
+      "heritage": {
+        "slug": "lagon-de-funafuti",
+        "title": "Lagon de Funafuti",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "VU",
+      "name": "Vanuatu",
+      "continent": "oceania",
+      "region": "Mélanésie",
+      "heritage": {
+        "slug": "domaine-du-chef-roi-mata",
+        "title": "Domaine du chef Roi Mata",
+        "category": "history"
+      },
+      "extras": [
+        {
+          "slug": "saut-du-gaul",
+          "title": "Saut du Gaul",
+          "category": "culture"
+        }
+      ],
+      "slots": 1
+    },
+    {
+      "iso": "CK",
+      "name": "Îles Cook",
+      "continent": "oceania",
+      "region": "Polynésie",
+      "heritage": {
+        "slug": "lagon-d-aitutaki",
+        "title": "Lagon d'Aitutaki",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "MH",
+      "name": "Îles Marshall",
+      "continent": "oceania",
+      "region": "Micronésie",
+      "heritage": {
+        "slug": "atoll-de-bikini",
+        "title": "Atoll de Bikini",
+        "category": "history"
+      },
+      "extras": [],
+      "slots": 2
+    },
+    {
+      "iso": "SB",
+      "name": "Îles Salomon",
+      "continent": "oceania",
+      "region": "Mélanésie",
+      "heritage": {
+        "slug": "rennell-est",
+        "title": "Rennell Est",
+        "category": "geography"
+      },
+      "extras": [],
+      "slots": 2
+    }
+  ]
+}

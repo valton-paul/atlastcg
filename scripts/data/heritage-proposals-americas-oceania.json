@@ -1,0 +1,1385 @@
+[
+  {
+    "iso": "CA",
+    "qid": "Q41858",
+    "commonsFile": "File:Moraine Lake 17092005.jpg",
+    "card": {
+      "slug": "parc-national-de-banff",
+      "title": "Parc national de Banff",
+      "subtitle": "Alberta",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Parc des Rocheuses canadiennes aux lacs turquoise et aux sommets enneigés.",
+      "fact": "Créé en 1885, c'est le plus ancien parc national du Canada.",
+      "sources": [
+        "UNESCO — Parc des Rocheuses canadiennes",
+        "Parcs Canada — Banff"
+      ]
+    }
+  },
+  {
+    "iso": "AR",
+    "qid": "Q28061",
+    "commonsFile": "File:Jujuy-Purmamarca-P3120033.JPG",
+    "card": {
+      "slug": "quebrada-de-humahuaca",
+      "title": "Quebrada de Humahuaca",
+      "subtitle": "Jujuy",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Vallée andine aux collines colorées, route caravanière depuis des millénaires.",
+      "fact": "Elle est inscrite au patrimoine mondial de l'UNESCO depuis 2003.",
+      "sources": [
+        "UNESCO — Quebrada de Humahuaca"
+      ]
+    }
+  },
+  {
+    "iso": "CL",
+    "qid": "Q901646",
+    "commonsFile": "File:Torres del Paine, Laguna Azul 09.jpg",
+    "card": {
+      "slug": "torres-del-paine",
+      "title": "Torres del Paine",
+      "subtitle": "Patagonie",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Massif de granite et lacs glaciaires au cœur de la Patagonie chilienne.",
+      "fact": "Le parc national figure parmi les plus visités du Chili.",
+      "sources": [
+        "Encyclopædia Britannica — Torres del Paine",
+        "CONAF — Torres del Paine"
+      ]
+    }
+  },
+  {
+    "iso": "AG",
+    "qid": "Q5267070",
+    "commonsFile": "File:Devils Bridge, Antigua.JPG",
+    "card": {
+      "slug": "devil-s-bridge-antigua",
+      "title": "Pont du Diable",
+      "subtitle": "Antigua",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Arche naturelle de calcaire battue par les vagues de l'Atlantique.",
+      "fact": "Elle se trouve sur la côte est d'Antigua, près de Willikies.",
+      "sources": [
+        "Encyclopædia Britannica — Antigua and Barbuda"
+      ]
+    }
+  },
+  {
+    "iso": "AG",
+    "qid": "Q2912539",
+    "commonsFile": "File:Plantation sugar mills.jpg",
+    "card": {
+      "slug": "betty-s-hope",
+      "title": "Betty's Hope",
+      "subtitle": "Antigua",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Ancienne plantation sucrière dont les moulins à vent dominent encore la plaine.",
+      "fact": "Fondée au XVIIe siècle, elle illustre l'économie de plantation des Antilles.",
+      "sources": [
+        "UNESCO Tentative — Betty's Hope",
+        "Encyclopædia Britannica — Antigua and Barbuda"
+      ]
+    }
+  },
+  {
+    "iso": "BS",
+    "qid": "Q5422508",
+    "commonsFile": "File:Is the Bahamian version of a national park- preserving a series of islands (3425475257).jpg",
+    "card": {
+      "slug": "exumas",
+      "title": "Exumas",
+      "subtitle": "Bahamas",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Chapelet d'îlots aux eaux turquoise au cœur de l'archipel bahaméen.",
+      "fact": "Les Exumas abritent une aire marine protégée et des plages isolées.",
+      "sources": [
+        "Encyclopædia Britannica — The Bahamas"
+      ]
+    }
+  },
+  {
+    "iso": "BS",
+    "qid": "Q5470909",
+    "commonsFile": "File:Fort Charlotte, Nassau, The Bahamas.jpg",
+    "card": {
+      "slug": "fort-charlotte-nassau",
+      "title": "Fort Charlotte",
+      "subtitle": "Nassau",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Fort britannique du XVIIIe siècle dominant le port de Nassau.",
+      "fact": "Il a été nommé en l'honneur de la reine Charlotte, épouse de George III.",
+      "sources": [
+        "Encyclopædia Britannica — Nassau"
+      ]
+    }
+  },
+  {
+    "iso": "BB",
+    "qid": "Q36168",
+    "commonsFile": "File:Bridgetown aerial.JPG",
+    "card": {
+      "slug": "bridgetown-historique",
+      "title": "Bridgetown historique",
+      "subtitle": "Barbade",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Centre colonial et garnison militaire inscrits au patrimoine mondial.",
+      "fact": "Le site « Historic Bridgetown and its Garrison » est classé UNESCO depuis 2011.",
+      "sources": [
+        "UNESCO — Historic Bridgetown and its Garrison"
+      ]
+    }
+  },
+  {
+    "iso": "BB",
+    "qid": "Q5665387",
+    "commonsFile": "File:Harrisons Cave (6976862065).jpg",
+    "card": {
+      "slug": "harrison-s-cave",
+      "title": "Grotte de Harrison",
+      "subtitle": "Barbade",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Réseau de grottes calcaires aux stalactites et rivières souterraines.",
+      "fact": "C'est l'une des attractions naturelles les plus visitées de l'île.",
+      "sources": [
+        "Encyclopædia Britannica — Barbados"
+      ]
+    }
+  },
+  {
+    "iso": "BZ",
+    "qid": "Q1646630",
+    "commonsFile": "File:Xunantunich Belize 1 19.jpg",
+    "card": {
+      "slug": "xunantunich",
+      "title": "Xunantunich",
+      "subtitle": "Cayo",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Cité maya couronnée par la pyramide El Castillo, près de la rivière Mopan.",
+      "fact": "Son nom maya est souvent traduit par « pierre de la femme » ou « dame de pierre ».",
+      "sources": [
+        "Encyclopædia Britannica — Xunantunich"
+      ]
+    }
+  },
+  {
+    "iso": "BZ",
+    "qid": "Q28361",
+    "commonsFile": "File:Belize Barrier Reef from space.png",
+    "card": {
+      "slug": "barriere-de-corail-du-belize",
+      "title": "Barrière de corail du Belize",
+      "subtitle": "Belize",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Plus long récif corallien de l'hémisphère nord, inscrit au patrimoine mondial.",
+      "fact": "Il fait partie du système récifal mésoaméricain.",
+      "sources": [
+        "UNESCO — Belize Barrier Reef Reserve System"
+      ]
+    }
+  },
+  {
+    "iso": "CR",
+    "qid": "Q864538",
+    "commonsFile": "File:Monteverde puente.jpg",
+    "card": {
+      "slug": "monteverde",
+      "title": "Monteverde",
+      "subtitle": "Puntarenas",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Forêt de nuages d'altitude réputée pour sa biodiversité et ses ponts suspendus.",
+      "fact": "La réserve abrite notamment l'inséparable quetzal resplendissant.",
+      "sources": [
+        "Encyclopædia Britannica — Monteverde"
+      ]
+    }
+  },
+  {
+    "iso": "CR",
+    "qid": "Q215081",
+    "commonsFile": "File:Isla del Coco-chatham beach.jpg",
+    "card": {
+      "slug": "ile-coco",
+      "title": "Île Cocos",
+      "subtitle": "Pacifique",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Île océanique isolée, sanctuaire de requins et de forêts tropicales.",
+      "fact": "Elle est inscrite au patrimoine mondial de l'UNESCO depuis 1997.",
+      "sources": [
+        "UNESCO — Cocos Island National Park"
+      ]
+    }
+  },
+  {
+    "iso": "CU",
+    "qid": "Q319272",
+    "commonsFile": "File:Trinidad (Kuba) 02.jpg",
+    "card": {
+      "slug": "trinidad-cuba",
+      "title": "Trinidad",
+      "subtitle": "Cuba",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Ville coloniale aux places pavées et maisons colorées du centre de Cuba.",
+      "fact": "Trinidad et la vallée des Ingenios sont inscrites à l'UNESCO depuis 1988.",
+      "sources": [
+        "UNESCO — Trinidad and the Valley de los Ingenios"
+      ]
+    }
+  },
+  {
+    "iso": "DM",
+    "qid": "Q629436",
+    "commonsFile": "File:Valley of desolation.jpg",
+    "card": {
+      "slug": "morne-trois-pitons",
+      "title": "Morne Trois Pitons",
+      "subtitle": "Dominique",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Parc national volcanique de forêts tropicales, lacs et fumerolles.",
+      "fact": "Il est inscrit au patrimoine mondial de l'UNESCO depuis 1997.",
+      "sources": [
+        "UNESCO — Morne Trois Pitons National Park"
+      ]
+    }
+  },
+  {
+    "iso": "DM",
+    "qid": "Q5039330",
+    "commonsFile": "File:Dominica IMG 5451.jpg",
+    "card": {
+      "slug": "kalinago-territoire",
+      "title": "Territoire kalinago",
+      "subtitle": "Dominique",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Territoire du peuple autochtone kalinago sur la côte est de l'île.",
+      "fact": "C'est l'un des derniers espaces communautaires kalinago des Petites Antilles.",
+      "sources": [
+        "Encyclopædia Britannica — Dominica"
+      ]
+    }
+  },
+  {
+    "iso": "GD",
+    "qid": null,
+    "commonsFile": "File:Mona monkey - Grand Etang Lake - Grenada - 3.jpg",
+    "card": {
+      "slug": "parc-du-grand-etang",
+      "title": "Parc du Grand Étang",
+      "subtitle": "Grenade",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Parc national d'altitude autour d'un lac de cratère au centre de Grenade.",
+      "fact": "La forêt tropicale y abrite une faune variée, dont des singes mona introduits.",
+      "sources": [
+        "Encyclopædia Britannica — Grenada"
+      ]
+    }
+  },
+  {
+    "iso": "GD",
+    "qid": "Q65129375",
+    "commonsFile": "File:St Georges Grenada Fort - panoramio.jpg",
+    "card": {
+      "slug": "fort-george-grenade",
+      "title": "Fort George",
+      "subtitle": "Saint-Georges",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Fort colonial dominant le port de Saint-Georges.",
+      "fact": "Construit au début du XVIIIe siècle, il reste un symbole de la capitale.",
+      "sources": [
+        "Encyclopædia Britannica — Saint George's"
+      ]
+    }
+  },
+  {
+    "iso": "GT",
+    "qid": "Q273276",
+    "commonsFile": "File:Lago de Atitlan seen from orbit.jpg",
+    "card": {
+      "slug": "lac-atitlan",
+      "title": "Lac Atitlán",
+      "subtitle": "Sololá",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Lac de caldeira entouré de volcans dans les hautes terres mayas.",
+      "fact": "Aldous Huxley le décrivait comme l'un des plus beaux lacs du monde.",
+      "sources": [
+        "Encyclopædia Britannica — Lake Atitlán"
+      ]
+    }
+  },
+  {
+    "iso": "HT",
+    "qid": "Q930795",
+    "commonsFile": "File:Sans-Souci Palace front.jpg",
+    "card": {
+      "slug": "palais-sans-souci",
+      "title": "Palais Sans-Souci",
+      "subtitle": "Milot",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Palais royal du roi Henri Christophe au pied de la citadelle.",
+      "fact": "Avec la citadelle et Ramiers, il forme un site UNESCO.",
+      "sources": [
+        "UNESCO — National History Park – Citadel, Sans Souci, Ramiers"
+      ]
+    }
+  },
+  {
+    "iso": "HT",
+    "qid": "Q923362",
+    "commonsFile": "File:JacmelView.jpg",
+    "card": {
+      "slug": "carnaval-de-jacmel",
+      "title": "Carnaval de Jacmel",
+      "subtitle": "Jacmel",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Carnaval réputé pour ses masques en papier mâché et ses défilés colorés.",
+      "fact": "Jacmel est aussi connue pour son architecture et son artisanat.",
+      "sources": [
+        "UNESCO — Jacmel",
+        "Encyclopædia Britannica — Haiti"
+      ]
+    }
+  },
+  {
+    "iso": "HN",
+    "qid": "Q752181",
+    "commonsFile": "File:Rio platano.jpg",
+    "card": {
+      "slug": "biosphere-rio-platano",
+      "title": "Réserve du Río Plátano",
+      "subtitle": "Mosquitia",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Vaste réserve de forêt tropicale sur la côte caraïbe du Honduras.",
+      "fact": "Elle est inscrite au patrimoine mondial de l'UNESCO depuis 1982.",
+      "sources": [
+        "UNESCO — Río Plátano Biosphere Reserve"
+      ]
+    }
+  },
+  {
+    "iso": "HN",
+    "qid": "Q751725",
+    "commonsFile": "File:Islas de la bahia 001.jpg",
+    "card": {
+      "slug": "iles-de-la-baie",
+      "title": "Îles de la Baie",
+      "subtitle": "Honduras",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Archipel caraïbe aux récifs coralliens, dont Roatán et Utila.",
+      "fact": "Les îles appartiennent au système récifal mésoaméricain.",
+      "sources": [
+        "Encyclopædia Britannica — Bay Islands"
+      ]
+    }
+  },
+  {
+    "iso": "JM",
+    "qid": "Q1266226",
+    "commonsFile": "File:Dunns River Falls climb.JPG",
+    "card": {
+      "slug": "chutes-de-dunn",
+      "title": "Chutes de Dunn",
+      "subtitle": "Ocho Rios",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Cascades de travertin que les visiteurs montent souvent en file.",
+      "fact": "Elles se jettent près de la mer des Caraïbes, à Ocho Rios.",
+      "sources": [
+        "Encyclopædia Britannica — Jamaica"
+      ]
+    }
+  },
+  {
+    "iso": "NI",
+    "qid": "Q950875",
+    "commonsFile": "File:ISS006-E-33030 - View of Nicaragua.jpg",
+    "card": {
+      "slug": "ile-d-ometepe",
+      "title": "Île d'Ometepe",
+      "subtitle": "Lac Nicaragua",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Île formée de deux volcans au milieu du lac Nicaragua.",
+      "fact": "Son nom nahuatl évoque « deux montagnes ».",
+      "sources": [
+        "Encyclopædia Britannica — Ometepe"
+      ]
+    }
+  },
+  {
+    "iso": "NI",
+    "qid": "Q205648",
+    "commonsFile": "File:Nicaragua 2017-03-15 (33978834325).jpg",
+    "card": {
+      "slug": "grenade-nicaragua",
+      "title": "Grenade",
+      "subtitle": "Nicaragua",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Ville coloniale colorée sur les rives du lac Nicaragua.",
+      "fact": "Fondée au XVIe siècle, elle compte parmi les plus anciennes cités d'Amérique centrale.",
+      "sources": [
+        "Encyclopædia Britannica — Granada Nicaragua"
+      ]
+    }
+  },
+  {
+    "iso": "PA",
+    "qid": "Q712335",
+    "commonsFile": "File:Torre de Panama Viejo.jpg",
+    "card": {
+      "slug": "panama-viejo",
+      "title": "Panamá Viejo",
+      "subtitle": "Panama",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Ruines de la première ville de Panama, détruite en 1671.",
+      "fact": "Avec le Casco Antiguo, le site est inscrit au patrimoine mondial de l'UNESCO.",
+      "sources": [
+        "UNESCO — Archaeological Site of Panamá Viejo and Historic District of Panamá"
+      ]
+    }
+  },
+  {
+    "iso": "PA",
+    "qid": "Q741636",
+    "commonsFile": "File:Coiba.JPG",
+    "card": {
+      "slug": "parc-national-de-coiba",
+      "title": "Parc national de Coiba",
+      "subtitle": "Pacifique",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Archipel et réserve marine au large de la côte pacifique.",
+      "fact": "Il est inscrit au patrimoine mondial de l'UNESCO depuis 2005.",
+      "sources": [
+        "UNESCO — Coiba National Park and its Special Zone of Marine Protection"
+      ]
+    }
+  },
+  {
+    "iso": "DO",
+    "qid": "Q2470834",
+    "commonsFile": "File:Aerial view Ciudad Colonial Santo Domingo 09 2019 0067.jpg",
+    "card": {
+      "slug": "zone-coloniale-saint-domingue",
+      "title": "Zone coloniale de Saint-Domingue",
+      "subtitle": "Saint-Domingue",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Premier siège colonial permanent en Amérique, aux rues pavées et fortifications.",
+      "fact": "La ville coloniale est inscrite au patrimoine mondial depuis 1990.",
+      "sources": [
+        "UNESCO — Colonial City of Santo Domingo"
+      ]
+    }
+  },
+  {
+    "iso": "DO",
+    "qid": "Q1464758",
+    "commonsFile": "File:Lago Enriquillo.jpg",
+    "card": {
+      "slug": "lac-enriquillo",
+      "title": "Lac Enriquillo",
+      "subtitle": "Sud-ouest",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Lac salé en dépression, habitat de crocodiles américains et d'iguanes.",
+      "fact": "C'est le plus grand lac des Caraïbes.",
+      "sources": [
+        "Encyclopædia Britannica — Lake Enriquillo"
+      ]
+    }
+  },
+  {
+    "iso": "KN",
+    "qid": "Q1982346",
+    "commonsFile": "File:Nevispeak1.jpg",
+    "card": {
+      "slug": "nevis-peak",
+      "title": "Nevis Peak",
+      "subtitle": "Niévès",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Cône volcanique souvent couronné de nuages au centre de Niévès.",
+      "fact": "Il culmine à environ 985 mètres.",
+      "sources": [
+        "Encyclopædia Britannica — Nevis"
+      ]
+    }
+  },
+  {
+    "iso": "KN",
+    "qid": "Q41295",
+    "commonsFile": "File:Basseterre.jpeg",
+    "card": {
+      "slug": "basseterre",
+      "title": "Basseterre",
+      "subtitle": "Saint-Christophe",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Capitale de Saint-Christophe-et-Niévès, fondée par les Français au XVIIe siècle.",
+      "fact": "Son centre conserve un héritage colonial autour de The Circus et Independence Square.",
+      "sources": [
+        "Encyclopædia Britannica — Basseterre"
+      ]
+    }
+  },
+  {
+    "iso": "VC",
+    "qid": "Q2117248",
+    "commonsFile": "File:Tobago Cays (49988711817).jpg",
+    "card": {
+      "slug": "tobago-cays",
+      "title": "Tobago Cays",
+      "subtitle": "Grenadines",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Îlots inhabités aux récifs protégés au cœur des Grenadines.",
+      "fact": "Ils forment un parc marin prisé des plongeurs et des voiliers.",
+      "sources": [
+        "Encyclopædia Britannica — Saint Vincent and the Grenadines"
+      ]
+    }
+  },
+  {
+    "iso": "VC",
+    "qid": "Q28448431",
+    "commonsFile": "File:Entrance to Fort Charlotte, Kingstown, St. Vincent.jpg",
+    "card": {
+      "slug": "fort-charlotte-kingstown",
+      "title": "Fort Charlotte",
+      "subtitle": "Kingstown",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Fort britannique dominant la capitale Kingstown.",
+      "fact": "Il a été construit à la fin du XVIIIe siècle pour défendre le port.",
+      "sources": [
+        "Encyclopædia Britannica — Kingstown"
+      ]
+    }
+  },
+  {
+    "iso": "LC",
+    "qid": "Q7193299",
+    "commonsFile": "File:St. Lucia - Pigeon Island.jpg",
+    "card": {
+      "slug": "pigeon-island",
+      "title": "Pigeon Island",
+      "subtitle": "Sainte-Lucie",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Ancienne île fortifiée reliée à la côte nord par une chaussée.",
+      "fact": "Elle abrite les vestiges du fort Rodney et un panorama sur Rodney Bay.",
+      "sources": [
+        "Encyclopædia Britannica — Saint Lucia"
+      ]
+    }
+  },
+  {
+    "iso": "LC",
+    "qid": "Q3412754",
+    "commonsFile": "File:View north from Gros Piton.jpg",
+    "card": {
+      "slug": "qualibou",
+      "title": "Qualibou",
+      "subtitle": "Soufrière",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Caldeira volcanique abritant les sources soufrées de Sainte-Lucie.",
+      "fact": "Le site géothermique est souvent appelé « volcan drivable ».",
+      "sources": [
+        "Encyclopædia Britannica — Saint Lucia"
+      ]
+    }
+  },
+  {
+    "iso": "SV",
+    "qid": "Q690372",
+    "commonsFile": "File:El Tazumal, Chalchuapa.jpg",
+    "card": {
+      "slug": "tazumal",
+      "title": "Tazumal",
+      "subtitle": "Chalchuapa",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Complexe archéologique maya aux pyramides de pierre et stèles.",
+      "fact": "C'est l'un des sites préhispaniques majeurs du Salvador.",
+      "sources": [
+        "Encyclopædia Britannica — El Salvador"
+      ]
+    }
+  },
+  {
+    "iso": "SV",
+    "qid": "Q3045228",
+    "commonsFile": "File:Teopan.jpg",
+    "card": {
+      "slug": "lac-de-coatepeque",
+      "title": "Lac de Coatepeque",
+      "subtitle": "Santa Ana",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Lac de cratère aux eaux turquoise dans l'ouest du Salvador.",
+      "fact": "Il s'est formé dans la caldeira d'un volcan.",
+      "sources": [
+        "Encyclopædia Britannica — El Salvador"
+      ]
+    }
+  },
+  {
+    "iso": "TT",
+    "qid": "Q717351",
+    "commonsFile": "File:Pitch Lake.JPG",
+    "card": {
+      "slug": "lac-de-brai-de-la-breea",
+      "title": "Lac de brai de La Brea",
+      "subtitle": "Trinité",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Plus grand dépôt naturel d'asphalte du monde, près de La Brea.",
+      "fact": "Son bitume a longtemps servi à paver des routes, jusqu'à Londres.",
+      "sources": [
+        "Encyclopædia Britannica — Pitch Lake"
+      ]
+    }
+  },
+  {
+    "iso": "TT",
+    "qid": "Q3345975",
+    "commonsFile": "File:Orange Carnival Masqueraders in Trinidad.jpg",
+    "card": {
+      "slug": "carnaval-de-trinite",
+      "title": "Carnaval de Trinité",
+      "subtitle": "Port-d'Espagne",
+      "category": "culture",
+      "rarity": "rare",
+      "discovery": "Grand carnaval caribéen de calypso, de soca et de costumes.",
+      "fact": "Il précède le carême et attire des défilés massifs à Port-d'Espagne.",
+      "sources": [
+        "Encyclopædia Britannica — Carnival"
+      ]
+    }
+  },
+  {
+    "iso": "BO",
+    "qid": "Q61750",
+    "commonsFile": "File:Zonnepoort tiwanaku.jpg",
+    "card": {
+      "slug": "tiwanaku",
+      "title": "Tiwanaku",
+      "subtitle": "La Paz",
+      "category": "history",
+      "rarity": "epic",
+      "discovery": "Capitale cérémonielle préinca aux monoliths et portes de pierre.",
+      "fact": "Le site est inscrit au patrimoine mondial de l'UNESCO depuis 2000.",
+      "sources": [
+        "UNESCO — Tiwanaku: Spiritual and Political Centre of the Tiwanaku Culture"
+      ]
+    }
+  },
+  {
+    "iso": "CO",
+    "qid": "Q1094367",
+    "commonsFile": "File:Lost City Ruins.jpg",
+    "card": {
+      "slug": "cite-perdue",
+      "title": "Cité perdue",
+      "subtitle": "Sierra Nevada de Santa Marta",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Cité tayrona de terrasses de pierre enfouie dans la forêt tropicale.",
+      "fact": "Elle est aussi appelée Teyuna et précède Machu Picchu de plusieurs siècles.",
+      "sources": [
+        "Encyclopædia Britannica — Colombia"
+      ]
+    }
+  },
+  {
+    "iso": "GY",
+    "qid": "Q7595794",
+    "commonsFile": "File:Starboek Market (23132264799).jpg",
+    "card": {
+      "slug": "georgetown-stabroek",
+      "title": "Marché de Stabroek",
+      "subtitle": "Georgetown",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Grand marché couvert au cœur de Georgetown, capitale du Guyana.",
+      "fact": "Son horloge et ses halles sont un repère urbain depuis l'époque coloniale.",
+      "sources": [
+        "Encyclopædia Britannica — Georgetown Guyana"
+      ]
+    }
+  },
+  {
+    "iso": "GY",
+    "qid": "Q6100966",
+    "commonsFile": "File:Iwokrama Rainforest, Guyana (12179003713).jpg",
+    "card": {
+      "slug": "foret-d-iwokrama",
+      "title": "Forêt d'Iwokrama",
+      "subtitle": "Guyana",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Réserve de forêt tropicale dédiée à la conservation et à la recherche.",
+      "fact": "Elle s'étend sur près d'un million d'acres au centre du pays.",
+      "sources": [
+        "Encyclopædia Britannica — Guyana"
+      ]
+    }
+  },
+  {
+    "iso": "PY",
+    "qid": "Q157603",
+    "commonsFile": "File:Pantanal, south-central South America 5170.jpg",
+    "card": {
+      "slug": "pantanal",
+      "title": "Pantanal",
+      "subtitle": "Bassin du Paraguay",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Plus grande zone humide tropicale du monde, partagée avec le Brésil et la Bolivie.",
+      "fact": "Le Pantanal paraguayen accueille une faune abondante en saison des pluies.",
+      "sources": [
+        "UNESCO — Pantanal Conservation Area",
+        "Encyclopædia Britannica — Pantanal"
+      ]
+    }
+  },
+  {
+    "iso": "PY",
+    "qid": "Q2571350",
+    "commonsFile": "File:Lago1.jpg",
+    "card": {
+      "slug": "lac-ypacarai",
+      "title": "Lac Ypacaraí",
+      "subtitle": "Central",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Lac d'eau douce près d'Asunción, bordé de villes balnéaires.",
+      "fact": "Il inspire chansons et folklore paraguayens depuis le XIXe siècle.",
+      "sources": [
+        "Encyclopædia Britannica — Paraguay"
+      ]
+    }
+  },
+  {
+    "iso": "SR",
+    "qid": "Q3001",
+    "commonsFile": "File:Waterkant Paramaribo with the Unesco Heritage Buildings.jpg",
+    "card": {
+      "slug": "paramaribo-historique",
+      "title": "Paramaribo historique",
+      "subtitle": "Paramaribo",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Centre-ville colonial en bois inscrit au patrimoine mondial.",
+      "fact": "Son architecture mêle influences néerlandaises et créoles.",
+      "sources": [
+        "UNESCO — Historic Inner City of Paramaribo"
+      ]
+    }
+  },
+  {
+    "iso": "SR",
+    "qid": "Q1903204",
+    "commonsFile": "File:Maroon women with washing Suriname River 1955.jpg",
+    "card": {
+      "slug": "culture-marron-suriname",
+      "title": "Culture marronne",
+      "subtitle": "Suriname",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Héritage des communautés afro-descendantes échappées des plantations.",
+      "fact": "Leurs langues, arts et villages de l'intérieur marquent l'identité du pays.",
+      "sources": [
+        "UNESCO — Maroon Heritage",
+        "Encyclopædia Britannica — Suriname"
+      ]
+    }
+  },
+  {
+    "iso": "UY",
+    "qid": "Q1033073",
+    "commonsFile": "File:Desfile de Llamadas 2020 - Barrio Sur - Montevideo - Uruguay 200214-1020898-jikatu (49538521121).jpg",
+    "card": {
+      "slug": "candombe",
+      "title": "Candombe",
+      "subtitle": "Uruguay",
+      "category": "culture",
+      "rarity": "rare",
+      "discovery": "Tradition afro-uruguyenne de tambours et de défilés de carnaval.",
+      "fact": "Elle est inscrite au patrimoine culturel immatériel de l'UNESCO depuis 2009.",
+      "sources": [
+        "UNESCO — Candombe and its socio-cultural space"
+      ]
+    }
+  },
+  {
+    "iso": "UY",
+    "qid": "Q56069",
+    "commonsFile": "File:Panorama Punta Drone - 200510-0899-jikatu-Pano.jpg",
+    "card": {
+      "slug": "punta-del-este",
+      "title": "Punta del Este",
+      "subtitle": "Maldonado",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Péninsule balnéaire à la rencontre du Río de la Plata et de l'Atlantique.",
+      "fact": "La Main (La Mano) y est devenue un symbole photographique.",
+      "sources": [
+        "Encyclopædia Britannica — Punta del Este"
+      ]
+    }
+  },
+  {
+    "iso": "VE",
+    "qid": "Q4777",
+    "commonsFile": "File:Roraima3 (79).JPG",
+    "card": {
+      "slug": "mont-roraima",
+      "title": "Mont Roraima",
+      "subtitle": "Guayana",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Tepuy aux parois verticales à la frontière du Venezuela, du Brésil et du Guyana.",
+      "fact": "Il aurait inspiré Le Monde perdu d'Arthur Conan Doyle.",
+      "sources": [
+        "Encyclopædia Britannica — Mount Roraima"
+      ]
+    }
+  },
+  {
+    "iso": "VE",
+    "qid": "Q318678",
+    "commonsFile": "File:Gran roque.jpg",
+    "card": {
+      "slug": "archipel-los-roques",
+      "title": "Los Roques",
+      "subtitle": "Venezuela",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Archipel corallien aux eaux turquoise au nord de Caracas.",
+      "fact": "Il forme un parc national marin depuis 1972.",
+      "sources": [
+        "Encyclopædia Britannica — Los Roques"
+      ]
+    }
+  },
+  {
+    "iso": "EC",
+    "qid": "Q2900",
+    "commonsFile": "File:FACHADA ASAMBLEA NACIONAL. QUITO, 20 DE FEBRERO 2020. 01.jpg",
+    "card": {
+      "slug": "quito-historique",
+      "title": "Quito historique",
+      "subtitle": "Quito",
+      "category": "history",
+      "rarity": "epic",
+      "discovery": "Centre colonial des Andes inscrit parmi les premiers sites UNESCO.",
+      "fact": "Il a été classé patrimoine mondial en 1978.",
+      "sources": [
+        "UNESCO — City of Quito"
+      ]
+    }
+  },
+  {
+    "iso": "EC",
+    "qid": "Q181476",
+    "commonsFile": "File:Vólcan Cotopaxi.jpg",
+    "card": {
+      "slug": "cotopaxi",
+      "title": "Cotopaxi",
+      "subtitle": "Andes",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Stratovolcan enneigé parmi les plus hauts du monde encore actif.",
+      "fact": "Il culmine à environ 5 897 mètres.",
+      "sources": [
+        "Encyclopædia Britannica — Cotopaxi"
+      ]
+    }
+  },
+  {
+    "iso": "FJ",
+    "qid": "Q7511961",
+    "commonsFile": "File:A177, Sigatoka Sand Dunes National Park, Viti Levu, Fiji, 2007.JPG",
+    "card": {
+      "slug": "sigatoka-sand-dunes",
+      "title": "Dunes de Sigatoka",
+      "subtitle": "Viti Levu",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Dunes côtières protégées sur la côte sud de Viti Levu.",
+      "fact": "Le parc national livre aussi des vestiges archéologiques.",
+      "sources": [
+        "Encyclopædia Britannica — Fiji"
+      ]
+    }
+  },
+  {
+    "iso": "FJ",
+    "qid": "Q6810549",
+    "commonsFile": "File:Fiji. \"\"Meke-Meke\"\" (National Dance) (NBY 441324).jpg",
+    "card": {
+      "slug": "meke",
+      "title": "Meke",
+      "subtitle": "Fidji",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Danse narrative fidjienne mêlant chant, percussion et gestes codifiés.",
+      "fact": "Elle raconte souvent des légendes, des guerres ou des rites de passage.",
+      "sources": [
+        "Encyclopædia Britannica — Fiji"
+      ]
+    }
+  },
+  {
+    "iso": "KI",
+    "qid": "Q2486",
+    "commonsFile": "File:Tarawa, Kiribati ESA22224800.jpeg",
+    "card": {
+      "slug": "tarawa",
+      "title": "Tarawa",
+      "subtitle": "Kiribati",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Atoll capitale, théâtre d'une bataille décisive de la Seconde Guerre mondiale.",
+      "fact": "South Tarawa concentre aujourd'hui une grande part de la population.",
+      "sources": [
+        "Encyclopædia Britannica — Tarawa"
+      ]
+    }
+  },
+  {
+    "iso": "KI",
+    "qid": "Q1727364",
+    "commonsFile": "File:Maneaba in Arorae, Kiribati.jpg",
+    "card": {
+      "slug": "maneaba",
+      "title": "Maneaba",
+      "subtitle": "Kiribati",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Maison commune à toit de pandanus, cœur de la vie villageoise gilbertine.",
+      "fact": "Les décisions communautaires s'y prennent encore souvent.",
+      "sources": [
+        "Encyclopædia Britannica — Kiribati"
+      ]
+    }
+  },
+  {
+    "iso": "FM",
+    "qid": "Q3593555",
+    "commonsFile": "File:Chuuk Islands from ISS.jpg",
+    "card": {
+      "slug": "lagoon-de-chuuk",
+      "title": "Lagon de Chuuk",
+      "subtitle": "Micronésie",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Lagon où reposent de nombreux épaves de la flotte japonaise de 1944.",
+      "fact": "C'est l'un des sites de plongée sur épaves les plus célèbres au monde.",
+      "sources": [
+        "Encyclopædia Britannica — Chuuk"
+      ]
+    }
+  },
+  {
+    "iso": "FM",
+    "qid": "Q917019",
+    "commonsFile": "File:Yap Stone Money.jpg",
+    "card": {
+      "slug": "monnaie-de-pierre-de-yap",
+      "title": "Monnaie de pierre de Yap",
+      "subtitle": "Yap",
+      "category": "culture",
+      "rarity": "rare",
+      "discovery": "Disques de calcite géants utilisés comme monnaie traditionnelle à Yap.",
+      "fact": "Certaines pierres mesurent plusieurs mètres de diamètre.",
+      "sources": [
+        "Encyclopædia Britannica — Yap"
+      ]
+    }
+  },
+  {
+    "iso": "NR",
+    "qid": "Q328733",
+    "commonsFile": "File:Nauru(32).jpg",
+    "card": {
+      "slug": "baie-d-anibare",
+      "title": "Baie d'Anibare",
+      "subtitle": "Nauru",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Large baie de la côte est, l'une des plages les plus ouvertes de Nauru.",
+      "fact": "Elle contraste avec le plateau central longtemps exploité pour le phosphate.",
+      "sources": [
+        "Encyclopædia Britannica — Nauru"
+      ]
+    }
+  },
+  {
+    "iso": "NR",
+    "qid": "Q2667931",
+    "commonsFile": "File:Nauru-WWIIrelic.jpg",
+    "card": {
+      "slug": "command-ridge",
+      "title": "Command Ridge",
+      "subtitle": "Nauru",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Point culminant de l'île, ancien poste d'observation de la Seconde Guerre mondiale.",
+      "fact": "Il culmine à environ 70 mètres.",
+      "sources": [
+        "Encyclopædia Britannica — Nauru"
+      ]
+    }
+  },
+  {
+    "iso": "NU",
+    "qid": "Q136704256",
+    "commonsFile": "File:Rock arch at Limu Pools.jpg",
+    "card": {
+      "slug": "limu-pools",
+      "title": "Limu Pools",
+      "subtitle": "Niue",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Piscines naturelles creusées dans le calcaire de la côte nord-ouest.",
+      "fact": "Par marée basse, elles forment des bassins limpides prisés des baigneurs.",
+      "sources": [
+        "Encyclopædia Britannica — Niue"
+      ]
+    }
+  },
+  {
+    "iso": "NU",
+    "qid": "Q3045995",
+    "commonsFile": "File:Avaiki, Niue.jpg",
+    "card": {
+      "slug": "grotte-d-avaiki",
+      "title": "Grotte d'Avaiki",
+      "subtitle": "Niue",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Grotte marine aux piscines naturelles sur la côte ouest.",
+      "fact": "Selon la tradition, elle est liée aux origines du peuplement de Niue.",
+      "sources": [
+        "Encyclopædia Britannica — Niue"
+      ]
+    }
+  },
+  {
+    "iso": "PW",
+    "qid": "Q263422",
+    "commonsFile": "File:Jellyfish Lake aerial (March 2008).jpg",
+    "card": {
+      "slug": "lac-aux-meduses",
+      "title": "Lac aux méduses",
+      "subtitle": "Palaos",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Lac marin où évoluent des millions de méduses quasi inoffensives.",
+      "fact": "Il se trouve sur l'île d'Eil Malk, dans les Rock Islands.",
+      "sources": [
+        "Encyclopædia Britannica — Palau"
+      ]
+    }
+  },
+  {
+    "iso": "PW",
+    "qid": "Q746861",
+    "commonsFile": "File:Beach-in-melekeok20071222.jpg",
+    "card": {
+      "slug": "babeldaob",
+      "title": "Babeldaob",
+      "subtitle": "Palaos",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Plus grande île de Palaos, aux collines, mangroves et sites traditionnels.",
+      "fact": "Elle concentre la plupart des États de la République de Palaos.",
+      "sources": [
+        "Encyclopædia Britannica — Palau"
+      ]
+    }
+  },
+  {
+    "iso": "PG",
+    "qid": "Q1424748",
+    "commonsFile": "File:Kokoda track Papua New Guinea.JPG",
+    "card": {
+      "slug": "piste-de-kokoda",
+      "title": "Piste de Kokoda",
+      "subtitle": "Papouasie",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Sentier de montagne théâtre de combats décisifs en 1942.",
+      "fact": "Il relie la côte sud à Kokoda à travers la cordillère Owen Stanley.",
+      "sources": [
+        "Encyclopædia Britannica — Kokoda Track"
+      ]
+    }
+  },
+  {
+    "iso": "PG",
+    "qid": "Q848308",
+    "commonsFile": "File:Sepik 0057.jpg",
+    "card": {
+      "slug": "art-du-sepik",
+      "title": "Art du Sepik",
+      "subtitle": "Sepik",
+      "category": "culture",
+      "rarity": "rare",
+      "discovery": "Tradition de masques, gambles et maisons des hommes le long du fleuve Sepik.",
+      "fact": "Elle compte parmi les expressions artistiques les plus célèbres de Mélanésie.",
+      "sources": [
+        "Encyclopædia Britannica — Sepik River"
+      ]
+    }
+  },
+  {
+    "iso": "WS",
+    "qid": "Q3322165",
+    "commonsFile": "File:Round Samoan houses with blue roofs, Lepea village with Mt Vaea beyond.JPG",
+    "card": {
+      "slug": "tombeau-de-robert-louis-stevenson",
+      "title": "Tombeau de Robert Louis Stevenson",
+      "subtitle": "Mount Vaea",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Tombe de l'écrivain écossais au sommet du mont Vaea, près d'Apia.",
+      "fact": "Stevenson vécut ses dernières années à Vailima, à Samoa.",
+      "sources": [
+        "Encyclopædia Britannica — Robert Louis Stevenson"
+      ]
+    }
+  },
+  {
+    "iso": "WS",
+    "qid": "Q5427520",
+    "commonsFile": "File:Samoan fale, Lelepa village, Savaii, Samoa 2009.JPG",
+    "card": {
+      "slug": "fa-a-samoa",
+      "title": "Fa'a Samoa",
+      "subtitle": "Samoa",
+      "category": "culture",
+      "rarity": "rare",
+      "discovery": "Mode de vie samoan fondé sur la famille élargie, le respect et le service.",
+      "fact": "Le matai, chef de famille, joue un rôle central dans la vie villageoise.",
+      "sources": [
+        "Encyclopædia Britannica — Samoa"
+      ]
+    }
+  },
+  {
+    "iso": "TO",
+    "qid": null,
+    "commonsFile": "File:TO-Mapu a Vaea.JPG",
+    "card": {
+      "slug": "mapu-a-vaca",
+      "title": "Mapuʻa ʻa Vaca",
+      "subtitle": "Tongatapu",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Alignement de souffleurs marins où l'océan jaillit à travers le calcaire.",
+      "fact": "Le site se trouve sur la côte sud de Tongatapu.",
+      "sources": [
+        "Encyclopædia Britannica — Tonga"
+      ]
+    }
+  },
+  {
+    "iso": "TO",
+    "qid": "Q38834",
+    "commonsFile": "File:Royal Palace, Nuku'alofa, Nov 18.jpg",
+    "card": {
+      "slug": "palais-royal-de-nuku-alofa",
+      "title": "Palais royal de Nukuʻalofa",
+      "subtitle": "Nukuʻalofa",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Résidence royale en bois blanc face au front de mer de la capitale.",
+      "fact": "Elle date de 1867 et reste un symbole de la monarchie tongienne.",
+      "sources": [
+        "Encyclopædia Britannica — Nuku'alofa"
+      ]
+    }
+  },
+  {
+    "iso": "TV",
+    "qid": "Q174618",
+    "commonsFile": "File:Nanumea.jpg",
+    "card": {
+      "slug": "nanumea",
+      "title": "Nanumea",
+      "subtitle": "Tuvalu",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Atoll le plus septentrional de Tuvalu, aux îlots de cocotiers et récifs.",
+      "fact": "Comme le reste de l'archipel, il est très vulnérable à la montée des eaux.",
+      "sources": [
+        "Encyclopædia Britannica — Tuvalu"
+      ]
+    }
+  },
+  {
+    "iso": "TV",
+    "qid": "Q17048829",
+    "commonsFile": "File:Fatele Funafuti Tuvalu.jpg",
+    "card": {
+      "slug": "fatele",
+      "title": "Fatele",
+      "subtitle": "Tuvalu",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Danse et chant traditionnels tuvaluans exécutés lors des fêtes communautaires.",
+      "fact": "Les danseurs frappent souvent des boîtes en métal pour rythmer la musique.",
+      "sources": [
+        "Encyclopædia Britannica — Tuvalu"
+      ]
+    }
+  },
+  {
+    "iso": "VU",
+    "qid": "Q392766",
+    "commonsFile": "File:Mount Yasur eruption 2006, Tanna Island, Vanuatu, VAN 0516.jpg",
+    "card": {
+      "slug": "mont-yasur",
+      "title": "Mont Yasur",
+      "subtitle": "Tanna",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Volcan actif aux explosions stromboliennes presque permanentes.",
+      "fact": "Il est accessible depuis l'île de Tanna et brille la nuit.",
+      "sources": [
+        "Encyclopædia Britannica — Yasur"
+      ]
+    }
+  },
+  {
+    "iso": "CK",
+    "qid": "Q498069",
+    "commonsFile": "File:CookIslands-Rarotonga-TeManga-mgl20030609-01.jpg",
+    "card": {
+      "slug": "te-manga",
+      "title": "Te Manga",
+      "subtitle": "Rarotonga",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Point culminant de Rarotonga, île principale des îles Cook.",
+      "fact": "Il culmine à environ 652 mètres au centre montagneux de l'île.",
+      "sources": [
+        "Encyclopædia Britannica — Cook Islands"
+      ]
+    }
+  },
+  {
+    "iso": "CK",
+    "qid": "Q108044396",
+    "commonsFile": "File:Muri Beach, Rarotonga, Cook Islands.jpg",
+    "card": {
+      "slug": "lagon-de-muri",
+      "title": "Lagon de Muri",
+      "subtitle": "Rarotonga",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Lagon peu profond bordé d'îlots de sable sur la côte sud-est de Rarotonga.",
+      "fact": "C'est l'un des sites de baignade et de voile les plus fréquentés de l'île.",
+      "sources": [
+        "Encyclopædia Britannica — Cook Islands"
+      ]
+    }
+  },
+  {
+    "iso": "MH",
+    "qid": "Q12919",
+    "commonsFile": "File:Majuro Satellite.PNG",
+    "card": {
+      "slug": "majuro",
+      "title": "Majuro",
+      "subtitle": "Îles Marshall",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Atoll-capitale formant une longue bande de terre autour d'un lagon.",
+      "fact": "Il concentre l'administration et une grande part de la population.",
+      "sources": [
+        "Encyclopædia Britannica — Majuro"
+      ]
+    }
+  },
+  {
+    "iso": "MH",
+    "qid": "Q2325507",
+    "commonsFile": "File:Micronesian navigational chart.jpg",
+    "card": {
+      "slug": "cartes-a-batons-marshallaises",
+      "title": "Cartes à bâtons",
+      "subtitle": "Îles Marshall",
+      "category": "culture",
+      "rarity": "rare",
+      "discovery": "Cartes de navigation en bâtonnets représentant houles et atolls.",
+      "fact": "Les navigateurs marshallais s'en servaient pour enseigner les routes océaniques.",
+      "sources": [
+        "Encyclopædia Britannica — Marshall Islands"
+      ]
+    }
+  },
+  {
+    "iso": "SB",
+    "qid": "Q6772429",
+    "commonsFile": "File:Inter-Island Transport Marovo Lagoon (1992).jpg",
+    "card": {
+      "slug": "lagoon-de-marovo",
+      "title": "Lagon de Marovo",
+      "subtitle": "Nouvelle-Géorgie",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "L'un des plus grands lagons salés bordés de récifs au monde.",
+      "fact": "Il se trouve dans la Province occidentale des Salomon.",
+      "sources": [
+        "Encyclopædia Britannica — Solomon Islands"
+      ]
+    }
+  },
+  {
+    "iso": "SB",
+    "qid": "Q192767",
+    "commonsFile": "File:Visale, Solomon Islands.JPG",
+    "card": {
+      "slug": "guadalcanal",
+      "title": "Guadalcanal",
+      "subtitle": "Îles Salomon",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Île théâtre de la campagne décisive du Pacifique en 1942-1943.",
+      "fact": "Honiara, la capitale, s'y trouve aujourd'hui.",
+      "sources": [
+        "Encyclopædia Britannica — Guadalcanal"
+      ]
+    }
+  }
+]

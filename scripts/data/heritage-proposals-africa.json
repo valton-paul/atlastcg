@@ -1,0 +1,1566 @@
+[
+  {
+    "iso": "EG",
+    "qid": "Q522862",
+    "commonsFile": null,
+    "card": {
+      "slug": "temple-de-karnak",
+      "title": "Temple de Karnak",
+      "subtitle": "Louxor",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Vaste complexe cultuel de Thèbes antique, sur la rive orientale du Nil.",
+      "fact": "Ses salles hypostyles et ses obélisques en font l’un des plus grands ensembles religieux de l’Égypte pharaonique.",
+      "sources": [
+        "UNESCO — Ancient Thebes with its Necropolis",
+        "Britannica — Karnak"
+      ]
+    }
+  },
+  {
+    "iso": "MA",
+    "qid": "Q309436",
+    "commonsFile": null,
+    "card": {
+      "slug": "ait-ben-haddou",
+      "title": "Ksar d’Aït-Ben-Haddou",
+      "subtitle": "Ouarzazate",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Village fortifié en pisé au pied du Haut Atlas, étape historique des caravanes sahariennes.",
+      "fact": "Inscrit au patrimoine mondial, il a servi de décor à de nombreux films pour ses kasbahs de terre.",
+      "sources": [
+        "UNESCO — Ksar of Ait-Ben-Haddou"
+      ]
+    }
+  },
+  {
+    "iso": "SN",
+    "qid": "Q1114640",
+    "commonsFile": null,
+    "card": {
+      "slug": "ile-de-saint-louis",
+      "title": "Île de Saint-Louis",
+      "subtitle": "Saint-Louis",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Ancienne capitale coloniale située sur une île du fleuve Sénégal, au nord du pays.",
+      "fact": "Son plan urbain colonial et ses façades colorées sont inscrits au patrimoine mondial depuis 2000.",
+      "sources": [
+        "UNESCO — Island of Saint-Louis"
+      ]
+    }
+  },
+  {
+    "iso": "ET",
+    "qid": "Q5832",
+    "commonsFile": null,
+    "card": {
+      "slug": "axoum",
+      "title": "Axoum",
+      "subtitle": "Tigré",
+      "category": "history",
+      "rarity": "epic",
+      "discovery": "Ancienne capitale du royaume d’Aksoum, haut lieu du christianisme éthiopien.",
+      "fact": "Ses stèles monolithiques et ses tombes royales témoignent d’une puissance africaine antique liée au commerce de la mer Rouge.",
+      "sources": [
+        "UNESCO — Aksum",
+        "Britannica — Aksum"
+      ]
+    }
+  },
+  {
+    "iso": "ZA",
+    "qid": "Q1130112",
+    "commonsFile": null,
+    "card": {
+      "slug": "berceau-de-l-humanite",
+      "title": "Berceau de l’humanité",
+      "subtitle": "Gauteng",
+      "category": "history",
+      "rarity": "legendary",
+      "discovery": "Ensemble de sites fossilifères autour de Sterkfontein, au nord-ouest de Johannesburg.",
+      "fact": "On y a découvert des restes d’australopithèques, dont le célèbre « Little Foot », clés de l’évolution humaine.",
+      "sources": [
+        "UNESCO — Fossil Hominid Sites of South Africa",
+        "Britannica — Cradle of Humankind"
+      ]
+    }
+  },
+  {
+    "iso": "DZ",
+    "qid": "Q459629",
+    "commonsFile": null,
+    "card": {
+      "slug": "timgad",
+      "title": "Timgad",
+      "subtitle": "Aurès",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Cité romaine fondée sous Trajan dans les Aurès, au nord-est de l’Algérie.",
+      "fact": "Son plan en damier, son arc de triomphe et son théâtre illustrent l’urbanisme romain en Afrique du Nord.",
+      "sources": [
+        "UNESCO — Timgad"
+      ]
+    }
+  },
+  {
+    "iso": "AO",
+    "qid": "Q10330512",
+    "commonsFile": null,
+    "card": {
+      "slug": "miradouro-da-lua",
+      "title": "Miradouro da Lua",
+      "subtitle": "Province de Luanda",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Falaises d’argile rouge érodées offrant un panorama lunaire au sud de Luanda.",
+      "fact": "Le vent et la pluie y ont sculpté des formations rappelant un paysage de cratères.",
+      "sources": [
+        "Britannica — Angola"
+      ]
+    }
+  },
+  {
+    "iso": "AO",
+    "qid": "Q1408988",
+    "commonsFile": null,
+    "card": {
+      "slug": "fortaleza-de-sao-miguel",
+      "title": "Forteresse de São Miguel",
+      "subtitle": "Luanda",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Citadelle portugaise du XVIe siècle dominant la baie de Luanda.",
+      "fact": "Elle abrite aujourd’hui le Musée des Forces Armées et rappelle le rôle de Luanda dans la traite atlantique.",
+      "sources": [
+        "Britannica — Luanda"
+      ]
+    }
+  },
+  {
+    "iso": "BW",
+    "qid": "Q214007",
+    "commonsFile": null,
+    "card": {
+      "slug": "tsodilo",
+      "title": "Collines de Tsodilo",
+      "subtitle": "Nord-Ouest",
+      "category": "history",
+      "rarity": "epic",
+      "discovery": "Massif de quartzite du désert du Kalahari, lieu sacré des peuples San.",
+      "fact": "Plus de 4 500 peintures rupestres y ont été recensées ; le site est inscrit au patrimoine mondial.",
+      "sources": [
+        "UNESCO — Tsodilo"
+      ]
+    }
+  },
+  {
+    "iso": "BW",
+    "qid": "Q859389",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-chobe",
+      "title": "Parc national de Chobe",
+      "subtitle": "Nord du Botswana",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Parc frontalier du fleuve Chobe, célèbre pour ses densités d’éléphants.",
+      "fact": "En saison sèche, des centaines d’éléphants se rassemblent le long du fleuve pour s’abreuver.",
+      "sources": [
+        "Britannica — Chobe National Park"
+      ]
+    }
+  },
+  {
+    "iso": "BF",
+    "qid": "Q65685157",
+    "commonsFile": null,
+    "card": {
+      "slug": "sites-de-metallurgie-ancienne",
+      "title": "Sites de métallurgie ancienne",
+      "subtitle": "Centre et Nord",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Ensemble de bas-fourneaux et de vestiges sidérurgiques répartis dans plusieurs provinces.",
+      "fact": "Ils documentent une tradition du fer vieille de plus de 2 500 ans, inscrite au patrimoine mondial en 2019.",
+      "sources": [
+        "UNESCO — Ancient Ferrous Metallurgy Sites of Burkina Faso"
+      ]
+    }
+  },
+  {
+    "iso": "BF",
+    "qid": "Q105708736",
+    "commonsFile": null,
+    "card": {
+      "slug": "grande-mosquee-de-bobo-dioulasso",
+      "title": "Grande Mosquée de Bobo-Dioulasso",
+      "subtitle": "Bobo-Dioulasso",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Mosquée soudanaise en banco du début du XXe siècle, au cœur de Sya.",
+      "fact": "Ses tours et ses poutres saillantes illustrent l’architecture de terre ouest-africaine.",
+      "sources": [
+        "Britannica — Bobo Dioulasso"
+      ]
+    }
+  },
+  {
+    "iso": "BI",
+    "qid": "Q96213183",
+    "commonsFile": null,
+    "card": {
+      "slug": "tambours-sacres-du-burundi",
+      "title": "Tambours sacrés du Burundi",
+      "subtitle": "Gitega",
+      "category": "culture",
+      "rarity": "rare",
+      "discovery": "Ensemble rituel de percussions royales, patrimoine culturel immatériel de l’UNESCO.",
+      "fact": "Les batteurs du karyenda accompagnent jadis les cérémonies de la cour et aujourd’hui les grandes fêtes nationales.",
+      "sources": [
+        "UNESCO — Le rituel du tambour royal du Burundi"
+      ]
+    }
+  },
+  {
+    "iso": "BI",
+    "qid": "Q3084668",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-la-kibira",
+      "title": "Parc national de la Kibira",
+      "subtitle": "Nord-Ouest",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Forêt de montagne couvrant une partie de la crête Congo-Nil.",
+      "fact": "C’est l’un des derniers grands massifs forestiers du Burundi, refuge de chimpanzés et d’oiseaux endémiques.",
+      "sources": [
+        "Britannica — Burundi"
+      ]
+    }
+  },
+  {
+    "iso": "BJ",
+    "qid": null,
+    "commonsFile": null,
+    "card": {
+      "slug": "porte-du-non-retour",
+      "title": "Porte du Non-Retour",
+      "subtitle": "Ouidah",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Monument au bord de l’Atlantique, sur la Route de l’Esclave à Ouidah.",
+      "fact": "Elle symbolise le départ forcé de captifs vers les Amériques depuis l’ancien royaume du Dahomey.",
+      "sources": [
+        "UNESCO — Slave Route Project",
+        "Britannica — Ouidah"
+      ]
+    }
+  },
+  {
+    "iso": "BJ",
+    "qid": "Q1493703",
+    "commonsFile": null,
+    "card": {
+      "slug": "ganvie",
+      "title": "Ganvié",
+      "subtitle": "Lac Nokoué",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Cité lacustre de maisons sur pilotis, au nord de Cotonou.",
+      "fact": "Fondée par des réfugiés toffin fuyant les razzias, elle est parfois appelée « Venise de l’Afrique ».",
+      "sources": [
+        "Britannica — Ganvié"
+      ]
+    }
+  },
+  {
+    "iso": "CM",
+    "qid": "Q2629132",
+    "commonsFile": null,
+    "card": {
+      "slug": "chefferie-de-bandjoun",
+      "title": "Chefferie de Bandjoun",
+      "subtitle": "Ouest",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Palais traditionnel bamiléké et case patrimoniale au cœur des Hauts-Plateaux.",
+      "fact": "Ses toits coniques et ses sculptures sur bois incarnent l’autorité des chefferies de l’Ouest camerounais.",
+      "sources": [
+        "Britannica — Bamileke"
+      ]
+    }
+  },
+  {
+    "iso": "CM",
+    "qid": "Q1751924",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-waza",
+      "title": "Parc national de Waza",
+      "subtitle": "Extrême-Nord",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Réserve de savane sahélienne près du lac Tchad, l’une des plus anciennes d’Afrique centrale.",
+      "fact": "Éléphants, girafes et lions y fréquentent les mares en saison sèche.",
+      "sources": [
+        "Britannica — Waza National Park"
+      ]
+    }
+  },
+  {
+    "iso": "CV",
+    "qid": "Q499108",
+    "commonsFile": null,
+    "card": {
+      "slug": "pico-do-fogo",
+      "title": "Pico do Fogo",
+      "subtitle": "Île de Fogo",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Stratovolcan actif culminant à près de 2 800 m, point culminant du Cap-Vert.",
+      "fact": "Une éruption en 2014–2015 a détruit des villages dans la caldeira de Chã das Caldeiras.",
+      "sources": [
+        "Britannica — Fogo",
+        "Smithsonian GVP — Fogo"
+      ]
+    }
+  },
+  {
+    "iso": "KM",
+    "qid": "Q3901",
+    "commonsFile": null,
+    "card": {
+      "slug": "medina-de-moroni",
+      "title": "Médina de Moroni",
+      "subtitle": "Grande Comore",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Vieille ville de la capitale, autour de la mosquée du Vendredi et du port.",
+      "fact": "Ses ruelles et ses maisons de pierre volcanique témoignent d’un héritage swahili et arabo-islamique.",
+      "sources": [
+        "Britannica — Moroni"
+      ]
+    }
+  },
+  {
+    "iso": "KM",
+    "qid": null,
+    "commonsFile": null,
+    "card": {
+      "slug": "lac-sale-de-dziani",
+      "title": "Lac salé de Dziani",
+      "subtitle": "Grande Comore",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Cratère lacustre aux eaux alcalines, près de Mitsamiouli.",
+      "fact": "Sa couleur change selon les saisons et les colonies de micro-algues.",
+      "sources": [
+        "Britannica — Comoros"
+      ]
+    }
+  },
+  {
+    "iso": "CI",
+    "qid": "Q582922",
+    "commonsFile": null,
+    "card": {
+      "slug": "grand-bassam",
+      "title": "Grand-Bassam",
+      "subtitle": "Sud-Comoé",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Première capitale coloniale de Côte d’Ivoire, au bord de la lagune et de l’Atlantique.",
+      "fact": "Son quartier France, ses bâtiments administratifs et ses maisons de commerce sont inscrits au patrimoine mondial.",
+      "sources": [
+        "UNESCO — Historic Town of Grand-Bassam"
+      ]
+    }
+  },
+  {
+    "iso": "CI",
+    "qid": "Q328577",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-tai",
+      "title": "Parc national de Taï",
+      "subtitle": "Sud-Ouest",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "L’une des dernières forêts primaires d’Afrique de l’Ouest, refuge de chimpanzés et d’éléphants de forêt.",
+      "fact": "Inscrit au patrimoine mondial, il conserve une biodiversité exceptionnelle menacée par le braconnage et la déforestation.",
+      "sources": [
+        "UNESCO — Taï National Park"
+      ]
+    }
+  },
+  {
+    "iso": "DJ",
+    "qid": "Q306194",
+    "commonsFile": null,
+    "card": {
+      "slug": "lac-abbe",
+      "title": "Lac Abbé",
+      "subtitle": "Région de Dikhil",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Lac salé à la frontière éthiopienne, bordé de cheminées de carbonate de calcium.",
+      "fact": "Ses paysages lunaires et ses flamants roses en font un site emblématique du rift afar.",
+      "sources": [
+        "Britannica — Lake Abbe"
+      ]
+    }
+  },
+  {
+    "iso": "DJ",
+    "qid": "Q141549",
+    "commonsFile": null,
+    "card": {
+      "slug": "foret-du-day",
+      "title": "Forêt du Day",
+      "subtitle": "Monts Goda",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Dernier grand massif forestier de Djibouti, sur les pentes des monts Goda.",
+      "fact": "On y trouve encore le genévrier d’Afrique et une avifaune rare dans la Corne de l’Afrique.",
+      "sources": [
+        "Britannica — Djibouti"
+      ]
+    }
+  },
+  {
+    "iso": "SZ",
+    "qid": "Q7506963",
+    "commonsFile": null,
+    "card": {
+      "slug": "rocher-de-sibebe",
+      "title": "Rocher de Sibebe",
+      "subtitle": "Hhohho",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Immense dôme de granit près de Mbabane, l’un des plus grands monolithes du monde.",
+      "fact": "Ses pentes lisses attirent randonneurs et grimpeurs surplombant la vallée du Mbuluzi.",
+      "sources": [
+        "Britannica — Eswatini"
+      ]
+    }
+  },
+  {
+    "iso": "SZ",
+    "qid": "Q6744480",
+    "commonsFile": null,
+    "card": {
+      "slug": "reserve-de-malolotja",
+      "title": "Réserve de Malolotja",
+      "subtitle": "Nord-Ouest",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Plus grande aire protégée d’Eswatini, vallées et plateaux du Highveld.",
+      "fact": "Ses cascades et sa flore de montagne abritent antilopes et oiseaux endémiques.",
+      "sources": [
+        "Britannica — Malolotja"
+      ]
+    }
+  },
+  {
+    "iso": "GA",
+    "qid": "Q9055979",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-d-ivindo",
+      "title": "Parc national d’Ivindo",
+      "subtitle": "Nord-Est",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Parc de forêt dense centré sur le fleuve Ivindo et les chutes de Kongou.",
+      "fact": "Inscrit au patrimoine mondial en 2021 pour ses écosystèmes intacts et ses clairières à éléphants.",
+      "sources": [
+        "UNESCO — Ivindo National Park"
+      ]
+    }
+  },
+  {
+    "iso": "GA",
+    "qid": "Q1756690",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-loango",
+      "title": "Parc national de Loango",
+      "subtitle": "Ogooué-Maritime",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Parc côtier où savane, lagune et océan se rencontrent.",
+      "fact": "On y observe parfois des éléphants et des buffles marchant sur la plage.",
+      "sources": [
+        "Britannica — Loango National Park"
+      ]
+    }
+  },
+  {
+    "iso": "GM",
+    "qid": "Q846901",
+    "commonsFile": null,
+    "card": {
+      "slug": "cercles-de-pierres-de-senegambie",
+      "title": "Cercles de pierres de Sénégambie",
+      "subtitle": "Wassu et Kerbatch",
+      "category": "history",
+      "rarity": "epic",
+      "discovery": "Alignements mégalithiques partagés avec le Sénégal, datés du IIIe siècle av. J.-C. au XVIe siècle.",
+      "fact": "Les cercles de Wassu et Kerbatch sont inscrits au patrimoine mondial pour leur densité exceptionnelle.",
+      "sources": [
+        "UNESCO — Stone Circles of Senegambia"
+      ]
+    }
+  },
+  {
+    "iso": "GM",
+    "qid": "Q1711203",
+    "commonsFile": null,
+    "card": {
+      "slug": "musee-de-la-traite-de-juffureh",
+      "title": "Musée de la traite de Juffureh",
+      "subtitle": "Juffureh",
+      "category": "history",
+      "rarity": "common",
+      "discovery": "Village et musée associés à l’île Kunta Kinteh, sur la rive nord de la Gambie.",
+      "fact": "Le site fait partie du bien UNESCO « Île Kunta Kinteh et sites associés », mémoire de la traite.",
+      "sources": [
+        "UNESCO — Kunta Kinteh Island and Related Sites"
+      ]
+    }
+  },
+  {
+    "iso": "GH",
+    "qid": "Q55264655",
+    "commonsFile": null,
+    "card": {
+      "slug": "chateau-d-elmina",
+      "title": "Château d’Elmina",
+      "subtitle": "Côte centrale",
+      "category": "history",
+      "rarity": "epic",
+      "discovery": "Plus ancienne forteresse européenne d’Afrique subsaharienne, fondée par les Portugais en 1482.",
+      "fact": "Devenue comptoir de la traite, elle fait partie des Forts et châteaux du Ghana inscrits à l’UNESCO.",
+      "sources": [
+        "UNESCO — Forts and Castles of Ghana",
+        "Britannica — Elmina Castle"
+      ]
+    }
+  },
+  {
+    "iso": "GN",
+    "qid": "Q850245",
+    "commonsFile": null,
+    "card": {
+      "slug": "fouta-djalon",
+      "title": "Fouta-Djalon",
+      "subtitle": "Moyenne-Guinée",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Massif de plateaux et de falaises, « château d’eau » de l’Afrique de l’Ouest.",
+      "fact": "Les sources du Sénégal, de la Gambie et du Niger y prennent naissance.",
+      "sources": [
+        "Britannica — Fouta Djallon"
+      ]
+    }
+  },
+  {
+    "iso": "GN",
+    "qid": "Q254925",
+    "commonsFile": null,
+    "card": {
+      "slug": "grande-mosquee-de-conakry",
+      "title": "Grande Mosquée de Conakry",
+      "subtitle": "Conakry",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Vaste mosquée inaugurée en 1982, l’une des plus grandes d’Afrique de l’Ouest.",
+      "fact": "Financée avec l’aide de l’Arabie saoudite, elle peut accueillir des dizaines de milliers de fidèles.",
+      "sources": [
+        "Britannica — Conakry"
+      ]
+    }
+  },
+  {
+    "iso": "GQ",
+    "qid": "Q6904640",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-monte-alen",
+      "title": "Parc national de Monte Alén",
+      "subtitle": "Río Muni",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Plus grand parc de Guinée équatoriale, forêt atlantique d’Afrique centrale.",
+      "fact": "Il protège gorilles, chimpanzés et éléphants de forêt sur les monts de Niefang.",
+      "sources": [
+        "Britannica — Monte Alén National Park"
+      ]
+    }
+  },
+  {
+    "iso": "GQ",
+    "qid": "Q8342845",
+    "commonsFile": null,
+    "card": {
+      "slug": "cathedrale-sainte-elisabeth-de-malabo",
+      "title": "Cathédrale Sainte-Élisabeth",
+      "subtitle": "Malabo",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Cathédrale néogothique édifiée au début du XXe siècle sur l’île de Bioko.",
+      "fact": "Ses flèches blanches marquent le centre historique de la capitale.",
+      "sources": [
+        "Britannica — Malabo"
+      ]
+    }
+  },
+  {
+    "iso": "GW",
+    "qid": "Q1002807",
+    "commonsFile": null,
+    "card": {
+      "slug": "fortaleza-de-cacheu",
+      "title": "Forteresse de Cacheu",
+      "subtitle": "Cacheu",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Comptoir portugais du XVIe siècle sur le fleuve Cacheu, lié à la traite atlantique.",
+      "fact": "Le fort abrite un musée sur l’histoire de la traite et la résistance locale.",
+      "sources": [
+        "Britannica — Cacheu"
+      ]
+    }
+  },
+  {
+    "iso": "GW",
+    "qid": null,
+    "commonsFile": null,
+    "card": {
+      "slug": "carnaval-de-bissau",
+      "title": "Carnaval de Bissau",
+      "subtitle": "Bissau",
+      "category": "culture",
+      "rarity": "common",
+      "discovery": "Fête populaire annuelle mêlant masques, danses et défilés de quartiers.",
+      "fact": "Les groupes de jeunes rivalisent de créativité en costumes colorés dans les rues de la capitale.",
+      "sources": [
+        "Britannica — Guinea-Bissau"
+      ]
+    }
+  },
+  {
+    "iso": "KE",
+    "qid": "Q783117",
+    "commonsFile": null,
+    "card": {
+      "slug": "ville-ancienne-de-lamu",
+      "title": "Ville ancienne de Lamu",
+      "subtitle": "Archipel de Lamu",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Plus ancienne cité swahilie encore habitée, sur une île de la côte indienne.",
+      "fact": "Ses ruelles sans voitures, ses maisons de corail et sa culture musulmane sont inscrits au patrimoine mondial.",
+      "sources": [
+        "UNESCO — Lamu Old Town"
+      ]
+    }
+  },
+  {
+    "iso": "LS",
+    "qid": "Q2408243",
+    "commonsFile": null,
+    "card": {
+      "slug": "thaba-bosiu",
+      "title": "Thaba Bosiu",
+      "subtitle": "Maseru",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Montagne-plateau fortifiée, berceau du royaume basotho sous Moshoeshoe Ier.",
+      "fact": "Jamais prise militairement, elle reste un lieu de mémoire nationale du Lesotho.",
+      "sources": [
+        "Britannica — Thaba Bosiu"
+      ]
+    }
+  },
+  {
+    "iso": "LS",
+    "qid": "Q37683",
+    "commonsFile": null,
+    "card": {
+      "slug": "chutes-de-maletsunyane",
+      "title": "Chutes de Maletsunyane",
+      "subtitle": "Semonkong",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Cascade d’environ 192 m, l’une des plus hautes d’Afrique australe à chute unique.",
+      "fact": "Elle alimente un canyon spectaculaire dans les montagnes du Maloti.",
+      "sources": [
+        "Britannica — Lesotho"
+      ]
+    }
+  },
+  {
+    "iso": "LR",
+    "qid": "Q27459317",
+    "commonsFile": null,
+    "card": {
+      "slug": "providence-island-monrovia",
+      "title": "Providence Island",
+      "subtitle": "Monrovia",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Îlot sur la Mesurado où débarquèrent les premiers colons afro-américains en 1822.",
+      "fact": "Il symbolise la fondation de la colonie qui deviendra le Liberia indépendant.",
+      "sources": [
+        "Britannica — Liberia",
+        "Britannica — Monrovia"
+      ]
+    }
+  },
+  {
+    "iso": "LR",
+    "qid": null,
+    "commonsFile": null,
+    "card": {
+      "slug": "chutes-de-kpatawee",
+      "title": "Chutes de Kpatawee",
+      "subtitle": "Comté de Bong",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Cascades en forêt près de Gbarnga, site naturel populaire du centre du Liberia.",
+      "fact": "Deux chutes successives y alimentent des bassins naturels fréquentés par les visiteurs.",
+      "sources": [
+        "Britannica — Liberia"
+      ]
+    }
+  },
+  {
+    "iso": "LY",
+    "qid": "Q192918",
+    "commonsFile": null,
+    "card": {
+      "slug": "sabratha",
+      "title": "Sabratha",
+      "subtitle": "Tripolitaine",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Cité antique punique puis romaine sur la côte méditerranéenne, à l’ouest de Tripoli.",
+      "fact": "Son théâtre restauré et ses temples témoignent du commerce saharien et maritime de la Tripolitaine.",
+      "sources": [
+        "UNESCO — Archaeological Site of Sabratha"
+      ]
+    }
+  },
+  {
+    "iso": "LY",
+    "qid": "Q192237",
+    "commonsFile": null,
+    "card": {
+      "slug": "ghadames",
+      "title": "Ghadamès",
+      "subtitle": "Ouest libyen",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Oasis fortifiée du Sahara, « perle du désert », à la frontière algérienne et tunisienne.",
+      "fact": "Son tissu urbain couvert et ses maisons à patio sont inscrits au patrimoine mondial.",
+      "sources": [
+        "UNESCO — Old Town of Ghadamès"
+      ]
+    }
+  },
+  {
+    "iso": "MG",
+    "qid": "Q458167",
+    "commonsFile": null,
+    "card": {
+      "slug": "colline-royale-d-ambohimanga",
+      "title": "Colline royale d’Ambohimanga",
+      "subtitle": "Hauts Plateaux",
+      "category": "history",
+      "rarity": "epic",
+      "discovery": "Colline sacrée et résidence royale merina, au nord d’Antananarivo.",
+      "fact": "Palais, enceintes et lieux de culte y incarnent l’identité politique et spirituelle du royaume merina.",
+      "sources": [
+        "UNESCO — Royal Hill of Ambohimanga"
+      ]
+    }
+  },
+  {
+    "iso": "MW",
+    "qid": "Q832262",
+    "commonsFile": null,
+    "card": {
+      "slug": "art-rupestre-de-chongoni",
+      "title": "Art rupestre de Chongoni",
+      "subtitle": "Plateau central",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Plus grand ensemble de peintures rupestres d’Afrique centrale, lié aux Chewa et Akafula.",
+      "fact": "Inscrit au patrimoine mondial, le site compte plus de 120 abris ornés.",
+      "sources": [
+        "UNESCO — Chongoni Rock-Art Area"
+      ]
+    }
+  },
+  {
+    "iso": "MW",
+    "qid": "Q1510436",
+    "commonsFile": null,
+    "card": {
+      "slug": "mont-mulanje",
+      "title": "Mont Mulanje",
+      "subtitle": "Sud du Malawi",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Massif granitique culminant à 3 002 m, point culminant du Malawi.",
+      "fact": "Ses plateaux brumeux abritent des forêts de cèdres du Mulanje, espèce endémique menacée.",
+      "sources": [
+        "Britannica — Mulanje Massif"
+      ]
+    }
+  },
+  {
+    "iso": "ML",
+    "qid": "Q650546",
+    "commonsFile": null,
+    "card": {
+      "slug": "falaise-de-bandiagara",
+      "title": "Falaise de Bandiagara",
+      "subtitle": "Pays dogon",
+      "category": "culture",
+      "rarity": "legendary",
+      "discovery": "Escarpement de grès du pays dogon, villages perchés et sanctuaires rupestres.",
+      "fact": "Architecture, masques et cosmogonie dogon y forment un paysage culturel inscrit au patrimoine mondial.",
+      "sources": [
+        "UNESCO — Cliff of Bandiagara (Land of the Dogons)",
+        "Britannica — Dogon"
+      ]
+    }
+  },
+  {
+    "iso": "MU",
+    "qid": "Q4115152",
+    "commonsFile": null,
+    "card": {
+      "slug": "terres-des-sept-couleurs",
+      "title": "Terres des Sept Couleurs",
+      "subtitle": "Chamarel",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Dunes de sables latéritiques aux teintes naturelles contrastées, dans le sud-ouest de Maurice.",
+      "fact": "L’oxydation du fer et de l’aluminium y crée des bandes ocre, violettes et rouges sans se mélanger.",
+      "sources": [
+        "Britannica — Mauritius"
+      ]
+    }
+  },
+  {
+    "iso": "MR",
+    "qid": "Q539518",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-du-banc-d-arguin",
+      "title": "Parc national du Banc d’Arguin",
+      "subtitle": "Côte atlantique",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Immense parc côtier de dunes, îles et vasières entre Nouadhibou et Cap Timiris.",
+      "fact": "Halte majeure pour les oiseaux migrateurs paléarctiques, inscrit au patrimoine mondial.",
+      "sources": [
+        "UNESCO — Banc d'Arguin National Park"
+      ]
+    }
+  },
+  {
+    "iso": "MZ",
+    "qid": "Q113952",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-gorongosa",
+      "title": "Parc national de Gorongosa",
+      "subtitle": "Province de Sofala",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Parc de savane et de forêt au pied du mont Gorongosa, relancé après la guerre civile.",
+      "fact": "Sa restauration écologique en a fait un modèle de conservation communautaire en Afrique australe.",
+      "sources": [
+        "Britannica — Gorongosa National Park"
+      ]
+    }
+  },
+  {
+    "iso": "MZ",
+    "qid": "Q1546990",
+    "commonsFile": null,
+    "card": {
+      "slug": "archipel-des-quirimbas",
+      "title": "Archipel des Quirimbas",
+      "subtitle": "Cabo Delgado",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Chaîne d’îles coralliennes du nord du Mozambique, parc national marin et terrestre.",
+      "fact": "Récifs, mangroves et villages swahilis y coexistent le long de la côte de l’océan Indien.",
+      "sources": [
+        "Britannica — Quirimbas Islands"
+      ]
+    }
+  },
+  {
+    "iso": "NA",
+    "qid": "Q754791",
+    "commonsFile": null,
+    "card": {
+      "slug": "twyfelfontein",
+      "title": "Twyfelfontein",
+      "subtitle": "Kunene",
+      "category": "history",
+      "rarity": "epic",
+      "discovery": "Site d’art rupestre du Damaraland, parmi les plus riches d’Afrique australe.",
+      "fact": "Plus de 2 000 gravures sur grès y représentent animaux et empreintes ; inscrites à l’UNESCO.",
+      "sources": [
+        "UNESCO — Twyfelfontein or /Ui-//aes"
+      ]
+    }
+  },
+  {
+    "iso": "NA",
+    "qid": "Q675633",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-d-etosha",
+      "title": "Parc national d’Etosha",
+      "subtitle": "Nord de la Namibie",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Parc centré sur l’immense pan salé d’Etosha, point d’eau vital en saison sèche.",
+      "fact": "Éléphants, lions, rhinocéros et antilopes s’y concentrent autour des waterholes.",
+      "sources": [
+        "Britannica — Etosha National Park"
+      ]
+    }
+  },
+  {
+    "iso": "NE",
+    "qid": "Q794643",
+    "commonsFile": null,
+    "card": {
+      "slug": "reserves-de-l-air-et-du-tenere",
+      "title": "Réserves de l’Aïr et du Ténéré",
+      "subtitle": "Nord du Niger",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Immense réserve saharienne alliant massif de l’Aïr et dunes du Ténéré.",
+      "fact": "Inscrite au patrimoine mondial, elle abrite addax, gazelles et art rupestre touareg.",
+      "sources": [
+        "UNESCO — Air and Ténéré Natural Reserves"
+      ]
+    }
+  },
+  {
+    "iso": "NE",
+    "qid": "Q781652",
+    "commonsFile": null,
+    "card": {
+      "slug": "girafes-de-koure",
+      "title": "Girafes de Kouré",
+      "subtitle": "Région de Tillabéri",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Dernière population de girafes d’Afrique de l’Ouest vivant librement en zone peuplée.",
+      "fact": "La sous-espèce peralta a été sauvée près de Niamey grâce à une protection communautaire.",
+      "sources": [
+        "Britannica — Niger",
+        "UICN — Giraffa camelopardalis peralta"
+      ]
+    }
+  },
+  {
+    "iso": "NG",
+    "qid": "Q1123956",
+    "commonsFile": null,
+    "card": {
+      "slug": "paysage-culturel-de-sukur",
+      "title": "Paysage culturel de Sukur",
+      "subtitle": "Monts Mandara",
+      "category": "culture",
+      "rarity": "rare",
+      "discovery": "Village fortifié et terrasses agricoles des monts Mandara, dans l’État d’Adamawa.",
+      "fact": "Premier site culturel nigérian inscrit à l’UNESCO, il illustre une société montagnarde sidérurgique.",
+      "sources": [
+        "UNESCO — Sukur Cultural Landscape"
+      ]
+    }
+  },
+  {
+    "iso": "UG",
+    "qid": "Q309426",
+    "commonsFile": null,
+    "card": {
+      "slug": "tombes-des-kasubi",
+      "title": "Tombes des Kasubi",
+      "subtitle": "Kampala",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Enceinte royale baganda abritant les tombeaux de quatre kabakas, à Kampala.",
+      "fact": "Le grand toit de chaume du Muzibu Azaala Mpanga est un chef-d’œuvre d’architecture en matériaux végétaux.",
+      "sources": [
+        "UNESCO — Tombs of Buganda Kings at Kasubi"
+      ]
+    }
+  },
+  {
+    "iso": "UG",
+    "qid": "Q495475",
+    "commonsFile": null,
+    "card": {
+      "slug": "chutes-de-murchison",
+      "title": "Chutes de Murchison",
+      "subtitle": "Nord de l’Ouganda",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Réduction spectaculaire du Nil Victoria en un étroit goulot, au cœur d’un parc national.",
+      "fact": "Crocodiles et hippopotames peuplent le fleuve en contrebas des cascades.",
+      "sources": [
+        "Britannica — Murchison Falls"
+      ]
+    }
+  },
+  {
+    "iso": "RW",
+    "qid": "Q6405906",
+    "commonsFile": null,
+    "card": {
+      "slug": "sites-memoriels-du-genocide",
+      "title": "Sites mémoriels du génocide",
+      "subtitle": "Kigali et provinces",
+      "category": "history",
+      "rarity": "legendary",
+      "discovery": "Ensemble de lieux de mémoire (Nyamata, Murambi, Gisozi, Bisesero) inscrits à l’UNESCO en 2023.",
+      "fact": "Ils documentent le génocide des Tutsi de 1994 et le travail de réconciliation du Rwanda.",
+      "sources": [
+        "UNESCO — Memorial sites of the Genocide"
+      ]
+    }
+  },
+  {
+    "iso": "RW",
+    "qid": "Q22039472",
+    "commonsFile": null,
+    "card": {
+      "slug": "danse-intore",
+      "title": "Danse intore",
+      "subtitle": "Tout le Rwanda",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Danse guerrière traditionnelle des Intore, autrefois liée à la cour royale.",
+      "fact": "Danses, chants et tambours expriment encore la fierté et l’unité culturelle rwandaise.",
+      "sources": [
+        "Britannica — Rwanda"
+      ]
+    }
+  },
+  {
+    "iso": "CF",
+    "qid": "Q1138067",
+    "commonsFile": null,
+    "card": {
+      "slug": "reserve-de-dzanga-sangha",
+      "title": "Réserve de Dzanga-Sangha",
+      "subtitle": "Sud-Ouest",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Complexe forestier frontalier du Cameroun et du Congo, riche en éléphants et gorilles.",
+      "fact": "La clairière de Dzanga Bai concentre des dizaines d’éléphants de forêt autour d’un marais salé.",
+      "sources": [
+        "UNESCO — Sangha Trinational",
+        "Britannica — Dzanga-Sangha"
+      ]
+    }
+  },
+  {
+    "iso": "CF",
+    "qid": "Q15208031",
+    "commonsFile": null,
+    "card": {
+      "slug": "cathedrale-notre-dame-de-bangui",
+      "title": "Cathédrale Notre-Dame de Bangui",
+      "subtitle": "Bangui",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Cathédrale de la capitale centrafricaine, édifice religieux majeur du centre-ville.",
+      "fact": "Elle a accueilli la visite du pape François en 2015, symbole d’espoir en période de crise.",
+      "sources": [
+        "Britannica — Bangui"
+      ]
+    }
+  },
+  {
+    "iso": "CG",
+    "qid": "Q2887058",
+    "commonsFile": null,
+    "card": {
+      "slug": "basilique-sainte-anne-du-congo",
+      "title": "Basilique Sainte-Anne du Congo",
+      "subtitle": "Brazzaville",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Grande église de style romano-byzantin construite de 1943 à 1949 à Brazzaville.",
+      "fact": "Sa flèche verte et sa nef spacieuse en font un repère de la capitale congolaise.",
+      "sources": [
+        "Britannica — Brazzaville"
+      ]
+    }
+  },
+  {
+    "iso": "CG",
+    "qid": "Q3015170",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-nouabale-ndoki",
+      "title": "Parc national de Nouabalé-Ndoki",
+      "subtitle": "Nord du Congo",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Forêt primaire du nord du Congo, composante du Trinational de la Sangha.",
+      "fact": "Gorilles des plaines, chimpanzés et éléphants de forêt y vivent dans un milieu peu perturbé.",
+      "sources": [
+        "UNESCO — Sangha Trinational"
+      ]
+    }
+  },
+  {
+    "iso": "CD",
+    "qid": "Q457324",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-kahuzi-biega",
+      "title": "Parc national de Kahuzi-Biega",
+      "subtitle": "Sud-Kivu",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Parc des monts Kahuzi et Biega, refuge des gorilles de Grauer.",
+      "fact": "Inscrit au patrimoine mondial, il est gravement menacé par l’insécurité et l’exploitation minière.",
+      "sources": [
+        "UNESCO — Kahuzi-Biega National Park"
+      ]
+    }
+  },
+  {
+    "iso": "CD",
+    "qid": "Q19558",
+    "commonsFile": null,
+    "card": {
+      "slug": "chutes-d-inga",
+      "title": "Chutes d’Inga",
+      "subtitle": "Fleuve Congo",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Rapides du bas Congo parmi les plus puissants du monde par leur débit.",
+      "fact": "Le site concentre un potentiel hydroélectrique exceptionnel sur le second fleuve d’Afrique.",
+      "sources": [
+        "Britannica — Congo River",
+        "Britannica — Inga Falls"
+      ]
+    }
+  },
+  {
+    "iso": "SC",
+    "qid": "Q272768",
+    "commonsFile": null,
+    "card": {
+      "slug": "atoll-d-aldabra",
+      "title": "Atoll d’Aldabra",
+      "subtitle": "Groupe d’Aldabra",
+      "category": "geography",
+      "rarity": "legendary",
+      "discovery": "L’un des plus grands atolls coralliens élevés du monde, au sud-ouest des Seychelles.",
+      "fact": "Il abrite la plus grande population de tortues géantes des Seychelles, inscrite au patrimoine mondial.",
+      "sources": [
+        "UNESCO — Aldabra Atoll"
+      ]
+    }
+  },
+  {
+    "iso": "SC",
+    "qid": "Q30744625",
+    "commonsFile": null,
+    "card": {
+      "slug": "anse-source-d-argent",
+      "title": "Anse Source d’Argent",
+      "subtitle": "Île de La Digue",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Plage bordée de blocs de granite sculptés par l’érosion, sur La Digue.",
+      "fact": "Ses rochers et son lagon peu profond en font l’une des images les plus célèbres des Seychelles.",
+      "sources": [
+        "Britannica — Seychelles"
+      ]
+    }
+  },
+  {
+    "iso": "SL",
+    "qid": "Q1004939",
+    "commonsFile": null,
+    "card": {
+      "slug": "ile-de-bunce",
+      "title": "Île de Bunce",
+      "subtitle": "Estuaire du Sierra Leone",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Ancien comptoir britannique de traite des esclaves, au nord de Freetown.",
+      "fact": "Ses ruines de fort et d’entrepôts rappellent le rôle de la Sierra Leone dans la traite atlantique.",
+      "sources": [
+        "Britannica — Bunce Island"
+      ]
+    }
+  },
+  {
+    "iso": "SL",
+    "qid": "Q602200",
+    "commonsFile": null,
+    "card": {
+      "slug": "arbre-a-coton-de-freetown",
+      "title": "Arbre à coton de Freetown",
+      "subtitle": "Freetown",
+      "category": "history",
+      "rarity": "common",
+      "discovery": "Fromager historique du centre de Freetown, lieu de mémoire des affranchis.",
+      "fact": "Selon la tradition, les premiers colons noirs s’y rassemblèrent à la fondation de la ville en 1787.",
+      "sources": [
+        "Britannica — Freetown"
+      ]
+    }
+  },
+  {
+    "iso": "SO",
+    "qid": "Q186169",
+    "commonsFile": null,
+    "card": {
+      "slug": "mosquee-de-fakhr-ad-din",
+      "title": "Mosquée de Fakhr ad-Din",
+      "subtitle": "Mogadiscio",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Mosquée historique du quartier Hamar Weyne, parmi les plus anciennes de Mogadiscio.",
+      "fact": "Elle témoigne du rayonnement islamique et commercial de la côte somalie au Moyen Âge.",
+      "sources": [
+        "Britannica — Mogadishu"
+      ]
+    }
+  },
+  {
+    "iso": "SO",
+    "qid": "Q1145030",
+    "commonsFile": null,
+    "card": {
+      "slug": "cap-gardafui",
+      "title": "Cap Gardafui",
+      "subtitle": "Puntland",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Pointe extrême nord-est de la Corne de l’Afrique, entre golfe d’Aden et océan Indien.",
+      "fact": "Les navigateurs antiques le connaissaient comme un repère majeur de la route de l’encens.",
+      "sources": [
+        "Britannica — Cape Guardafui"
+      ]
+    }
+  },
+  {
+    "iso": "SD",
+    "qid": "Q499019",
+    "commonsFile": null,
+    "card": {
+      "slug": "gebel-barkal",
+      "title": "Gebel Barkal",
+      "subtitle": "Région napatéenne",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Montagne sacrée et temples koushites près de Karima, cœur religieux de Napata.",
+      "fact": "Avec les sites de la région napatéenne, elle est inscrite au patrimoine mondial.",
+      "sources": [
+        "UNESCO — Gebel Barkal and the Sites of the Napatan Region"
+      ]
+    }
+  },
+  {
+    "iso": "SD",
+    "qid": "Q1107569",
+    "commonsFile": null,
+    "card": {
+      "slug": "kerma",
+      "title": "Kerma",
+      "subtitle": "Nord du Soudan",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Capitale de l’un des plus anciens royaumes d’Afrique, en amont de la troisième cataracte.",
+      "fact": "Son deffufa de briques crues et ses nécropoles révèlent une civilisation contemporaine de l’Égypte pharaonique.",
+      "sources": [
+        "Britannica — Kerma"
+      ]
+    }
+  },
+  {
+    "iso": "SS",
+    "qid": "Q891743",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-boma",
+      "title": "Parc national de Boma",
+      "subtitle": "Est du Soudan du Sud",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Vaste parc de savane connu pour la migration des antilopes tiang et des gazelles de Mongalla.",
+      "fact": "Après des décennies de conflit, il reste l’un des grands réservoirs de faune d’Afrique de l’Est.",
+      "sources": [
+        "Britannica — South Sudan",
+        "African Parks — Boma"
+      ]
+    }
+  },
+  {
+    "iso": "SS",
+    "qid": "Q212106",
+    "commonsFile": null,
+    "card": {
+      "slug": "culture-dinka",
+      "title": "Culture dinka",
+      "subtitle": "Nilotique",
+      "category": "culture",
+      "rarity": "common",
+      "discovery": "Peuple pastoral nilotique du Soudan du Sud, lié aux troupeaux de zébus.",
+      "fact": "Chants, scarifications et cycles saisonniers de transhumance structurent encore la vie sociale dinka.",
+      "sources": [
+        "Britannica — Dinka"
+      ]
+    }
+  },
+  {
+    "iso": "ST",
+    "qid": "Q2943640",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-naturel-d-obo",
+      "title": "Parc naturel d’Ôbo",
+      "subtitle": "São Tomé et Príncipe",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Aire protégée couvrant forêts de montagne et côtes des deux îles principales.",
+      "fact": "Elle abrite une avifaune endémique exceptionnelle dans les forêts guinéennes du Golfe de Guinée.",
+      "sources": [
+        "Britannica — São Tomé and Príncipe"
+      ]
+    }
+  },
+  {
+    "iso": "ST",
+    "qid": null,
+    "commonsFile": null,
+    "card": {
+      "slug": "roca-agostinho-neto",
+      "title": "Roça Agostinho Neto",
+      "subtitle": "São Tomé",
+      "category": "history",
+      "rarity": "common",
+      "discovery": "Ancienne plantation coloniale de cacao, parmi les plus vastes de l’île.",
+      "fact": "Ses bâtiments et son hôpital témoignent de l’économie de plantation qui façonna l’archipel.",
+      "sources": [
+        "Britannica — São Tomé and Príncipe"
+      ]
+    }
+  },
+  {
+    "iso": "TD",
+    "qid": "Q547375",
+    "commonsFile": null,
+    "card": {
+      "slug": "lacs-d-ounianga",
+      "title": "Lacs d’Ounianga",
+      "subtitle": "Ennedi / BET",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Série de lacs dans le Sahara tchadien, alimentés par des nappes fossiles.",
+      "fact": "Inscrits au patrimoine mondial, ils forment un paysage d’eau turquoise au milieu des dunes.",
+      "sources": [
+        "UNESCO — Lakes of Ounianga"
+      ]
+    }
+  },
+  {
+    "iso": "TD",
+    "qid": "Q1561524",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-zakouma",
+      "title": "Parc national de Zakouma",
+      "subtitle": "Sud-Est du Tchad",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Parc de savane du bassin du Salamat, sauvé du braconnage au XXIe siècle.",
+      "fact": "Ses troupeaux d’éléphants et ses oiseaux d’eau en font un joyau de conservation sahélienne.",
+      "sources": [
+        "Britannica — Zakouma National Park",
+        "African Parks"
+      ]
+    }
+  },
+  {
+    "iso": "TG",
+    "qid": null,
+    "commonsFile": null,
+    "card": {
+      "slug": "marche-des-fetiches-d-akodessewa",
+      "title": "Marché des fétiches d’Akodésséwa",
+      "subtitle": "Lomé",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Grand marché vodoun de Lomé, connu pour ses amulettes et objets rituels.",
+      "fact": "Il illustre la vitalité des pratiques religieuses ouest-africaines dans la capitale togolaise.",
+      "sources": [
+        "Britannica — Lomé",
+        "Britannica — Vodou"
+      ]
+    }
+  },
+  {
+    "iso": "TG",
+    "qid": "Q144029",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-fazao-malfakassa",
+      "title": "Parc national de Fazao-Malfakassa",
+      "subtitle": "Centre-Ouest",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Plus grand parc du Togo, forêts et savanes entre Fazao et Malfakassa.",
+      "fact": "Il protège éléphants, buffles et une avifaune diversifiée sur les contreforts de l’Atakora.",
+      "sources": [
+        "Britannica — Togo"
+      ]
+    }
+  },
+  {
+    "iso": "TN",
+    "qid": "Q1255269",
+    "commonsFile": null,
+    "card": {
+      "slug": "grande-mosquee-de-kairouan",
+      "title": "Grande Mosquée de Kairouan",
+      "subtitle": "Kairouan",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Mosquée fondatrice de l’Ifriqiya, modèle de l’architecture maghrébine.",
+      "fact": "Son minaret et sa cour à colonnades font de Kairouan l’une des villes saintes de l’islam sunnite.",
+      "sources": [
+        "UNESCO — Kairouan",
+        "Britannica — Kairouan"
+      ]
+    }
+  },
+  {
+    "iso": "ZM",
+    "qid": "Q1973215",
+    "commonsFile": null,
+    "card": {
+      "slug": "parc-national-de-south-luangwa",
+      "title": "Parc national de South Luangwa",
+      "subtitle": "Est de la Zambie",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Parc de la vallée du Luangwa, berceau du walking safari moderne.",
+      "fact": "Hippopotames, lions et éléphants y abondent le long des méandres du fleuve.",
+      "sources": [
+        "Britannica — South Luangwa National Park"
+      ]
+    }
+  },
+  {
+    "iso": "ZM",
+    "qid": "Q477525",
+    "commonsFile": null,
+    "card": {
+      "slug": "ceremonie-du-kuomboka",
+      "title": "Cérémonie du Kuomboka",
+      "subtitle": "Barotseland",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Migration rituelle annuelle du roi lozi hors de la plaine inondable du Zambèze.",
+      "fact": "La pirogue royale Nalikwanda conduit la cour de Lealui vers Limulunga au rythme des tambours.",
+      "sources": [
+        "Britannica — Kuomboka",
+        "Britannica — Lozi"
+      ]
+    }
+  },
+  {
+    "iso": "ZW",
+    "qid": "Q693254",
+    "commonsFile": null,
+    "card": {
+      "slug": "mana-pools",
+      "title": "Mana Pools",
+      "subtitle": "Vallée du Zambèze",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Parc de la vallée du Zambèze, fameux pour ses forêts de mahoganys et ses mares saisonnières.",
+      "fact": "Inscrit au patrimoine mondial avec les collines de Sapi et Chewore pour sa faune exceptionnelle.",
+      "sources": [
+        "UNESCO — Mana Pools National Park"
+      ]
+    }
+  },
+  {
+    "iso": "ZW",
+    "qid": "Q1778838",
+    "commonsFile": null,
+    "card": {
+      "slug": "collines-de-matobo",
+      "title": "Collines de Matobo",
+      "subtitle": "Matabeleland Sud",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Paysage de chaos granitiques au sud de Bulawayo, sacré pour les Ndebele et les San.",
+      "fact": "Art rupestre, tombe de Cecil Rhodes et aigles noirs y coexistent dans un parc national UNESCO.",
+      "sources": [
+        "UNESCO — Matobo Hills"
+      ]
+    }
+  },
+  {
+    "iso": "ER",
+    "qid": "Q4236500",
+    "commonsFile": null,
+    "card": {
+      "slug": "qohaito",
+      "title": "Qohaito",
+      "subtitle": "Hauts plateaux",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Site archéologique pré-aksoumite et aksoumite sur les hauts plateaux érythréens.",
+      "fact": "Temples, digues et inscriptions rappellent une occupation millénaire sur la route de la mer Rouge.",
+      "sources": [
+        "UNESCO — Qohaito (liste indicative)",
+        "Britannica — Eritrea"
+      ]
+    }
+  },
+  {
+    "iso": "ER",
+    "qid": "Q275635",
+    "commonsFile": null,
+    "card": {
+      "slug": "port-de-massawa",
+      "title": "Port de Massawa",
+      "subtitle": "Mer Rouge",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Ancien port ottoman puis italien, aux îles et façades coralliennes de la mer Rouge.",
+      "fact": "Son architecture ottomane et Art déco témoigne des empires qui se sont disputé la Corne.",
+      "sources": [
+        "Britannica — Massawa"
+      ]
+    }
+  }
+]

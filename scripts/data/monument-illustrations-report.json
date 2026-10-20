@@ -1,19 +1,40 @@
 {
-  "fetchedAt": "2026-10-20T07:33:55.997Z",
+  "fetchedAt": "2026-10-20T09:48:14.188Z",
   "results": [
     {
-      "slug": "persepolis",
-      "path": "monuments/persepolis.webp",
-      "credit": "Carole Raddato — CC BY-SA 2.0 (Wikimedia Commons)",
-      "license": "CC BY-SA 2.0",
-      "fileTitle": "File:General view of Persepolis, Iran (2).jpg"
+      "slug": "lac-sale-de-dziani",
+      "path": "monuments/lac-sale-de-dziani.webp",
+      "credit": "David Stanley from Nanaimo, Canada — CC BY 2.0 (Wikimedia Commons)",
+      "license": "CC BY 2.0",
+      "fileTitle": "File:Lac Sale (10934891926).jpg"
     },
     {
-      "slug": "massada",
-      "path": "monuments/massada.webp",
-      "credit": "Godot13 — CC BY-SA 4.0 (Wikimedia Commons)",
+      "slug": "rocher-de-sibebe",
+      "path": "monuments/rocher-de-sibebe.webp",
+      "credit": "theswazigirl — CC BY-SA 3.0 (Wikimedia Commons)",
+      "license": "CC BY-SA 3.0",
+      "fileTitle": "File:Granite monolith.jpg"
+    },
+    {
+      "slug": "chutes-de-kpatawee",
+      "path": "monuments/chutes-de-kpatawee.webp",
+      "credit": "Bethel. Anthony Chisom — CC BY-SA 4.0 (Wikimedia Commons)",
       "license": "CC BY-SA 4.0",
-      "fileTitle": "File:Israel-2013-Aerial 21-Masada.jpg"
+      "fileTitle": "File:Front View of Kpatawee Falls.jpg"
+    },
+    {
+      "slug": "marche-des-fetiches-d-akodessewa",
+      "path": "monuments/marche-des-fetiches-d-akodessewa.webp",
+      "credit": "Alexander Sarlay — CC BY-SA 4.0 (Wikimedia Commons)",
+      "license": "CC BY-SA 4.0",
+      "fileTitle": "File:Akodessawa Fetish Market 2005.jpg"
+    },
+    {
+      "slug": "ceremonie-du-kuomboka",
+      "path": "monuments/ceremonie-du-kuomboka.webp",
+      "credit": "Sungaphiri — CC BY-SA 4.0 (Wikimedia Commons)",
+      "license": "CC BY-SA 4.0",
+      "fileTitle": "File:Kuomboka ceremony.jpg"
     }
   ],
   "skipped": []

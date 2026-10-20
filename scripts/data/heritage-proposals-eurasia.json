@@ -1,0 +1,2404 @@
+[
+  {
+    "iso": "IS",
+    "qid": "Q179734",
+    "commonsFile": "File:Vatnajökull.jpeg",
+    "card": {
+      "slug": "vatnajokull",
+      "title": "Vatnajökull",
+      "subtitle": "Sud-est islandais",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Plus grand glacier d'Europe, couvrant environ 8 % de la surface de l'Islande.",
+      "fact": "Le parc national du Vatnajökull, créé en 2008, est l'un des plus vastes d'Europe.",
+      "sources": [
+        "UNESCO — Vatnajökull National Park",
+        "Encyclopædia Britannica — Vatnajökull"
+      ]
+    }
+  },
+  {
+    "iso": "IN",
+    "qid": "Q45957",
+    "commonsFile": "File:Delhi fort.jpg",
+    "card": {
+      "slug": "fort-rouge",
+      "title": "Fort Rouge",
+      "subtitle": "Delhi",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Citadelle moghole de grès rouge édifiée par Shah Jahan au XVIIe siècle.",
+      "fact": "Le Premier ministre hisse le drapeau indien depuis ses remparts chaque 15 août.",
+      "sources": [
+        "UNESCO — Red Fort Complex",
+        "Encyclopædia Britannica — Red Fort"
+      ]
+    }
+  },
+  {
+    "iso": "VN",
+    "qid": "Q10769129",
+    "commonsFile": "File:Đại nội.jpg",
+    "card": {
+      "slug": "cite-imperiale-de-hue",
+      "title": "Cité impériale de Huế",
+      "subtitle": "Huế",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Ensemble de palais et de temples de la dynastie Nguyễn, au bord de la rivière des Parfums.",
+      "fact": "Le complexe des monuments de Huế est inscrit au patrimoine mondial depuis 1993.",
+      "sources": [
+        "UNESCO — Complex of Hué Monuments",
+        "Encyclopædia Britannica — Hue"
+      ]
+    }
+  },
+  {
+    "iso": "KH",
+    "qid": "Q45949",
+    "commonsFile": "File:03 Prasat Preah Vihear-nX-06478.jpg",
+    "card": {
+      "slug": "preah-vihear",
+      "title": "Preah Vihear",
+      "subtitle": "Dangrek",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Temple hindou khmer perché sur une falaise dominant la frontière thaïlandaise.",
+      "fact": "Inscrit au patrimoine mondial de l'UNESCO en 2008.",
+      "sources": [
+        "UNESCO — Temple of Preah Vihear",
+        "Encyclopædia Britannica — Preah Vihear"
+      ]
+    }
+  },
+  {
+    "iso": "JO",
+    "qid": "Q23883",
+    "commonsFile": "File:Dead Sea beach 00.JPG",
+    "card": {
+      "slug": "mer-morte",
+      "title": "Mer Morte",
+      "subtitle": "Vallée du Jourdain",
+      "category": "geography",
+      "rarity": "epic",
+      "discovery": "Lac salé situé à près de 430 mètres sous le niveau de la mer, le point le plus bas de la Terre émergée.",
+      "fact": "Sa salinité, d'environ 34 %, empêche presque toute vie aquatique.",
+      "sources": [
+        "Encyclopædia Britannica — Dead Sea",
+        "UNESCO — Baptism Site “Bethany Beyond the Jordan”"
+      ]
+    }
+  },
+  {
+    "iso": "TR",
+    "qid": "Q80541",
+    "commonsFile": "File:Istanbul (34223582516) (cropped).jpg",
+    "card": {
+      "slug": "mosquee-bleue",
+      "title": "Mosquée Bleue",
+      "subtitle": "Istanbul",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Mosquée ottomane du sultan Ahmed Ier, célèbre pour ses six minarets et ses faïences d'İznik.",
+      "fact": "Elle fait partie des zones historiques d'Istanbul inscrites à l'UNESCO depuis 1985.",
+      "sources": [
+        "UNESCO — Historic Areas of Istanbul",
+        "Encyclopædia Britannica — Blue Mosque"
+      ]
+    }
+  },
+  {
+    "iso": "AL",
+    "qid": "Q173690",
+    "commonsFile": "File:Gjirokaster 2016-2017.jpg",
+    "card": {
+      "slug": "gjirokaster",
+      "title": "Gjirokastër",
+      "subtitle": "Sud albanais",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Ville ottomane aux toits de pierre, dominée par une forteresse médiévale.",
+      "fact": "Son centre historique est inscrit au patrimoine mondial avec Berat depuis 2005.",
+      "sources": [
+        "UNESCO — Historic Centres of Berat and Gjirokastra",
+        "Encyclopædia Britannica — Gjirokastër"
+      ]
+    }
+  },
+  {
+    "iso": "AD",
+    "qid": "Q1046548",
+    "commonsFile": "File:Casa de la Vall 2015-10.JPG",
+    "card": {
+      "slug": "casa-de-la-vall",
+      "title": "Casa de la Vall",
+      "subtitle": "Andorre-la-Vieille",
+      "category": "history",
+      "rarity": "common",
+      "discovery": "Maison seigneuriale du XVIe siècle qui a longtemps abrité le Conseil général d'Andorre.",
+      "fact": "Elle symbolise les institutions co-principales du plus petit État des Pyrénées.",
+      "sources": [
+        "Encyclopædia Britannica — Andorra",
+        "UNESCO — Madriu-Perafita-Claror Valley"
+      ]
+    }
+  },
+  {
+    "iso": "AD",
+    "qid": "Q3781320",
+    "commonsFile": "File:Església de Sant Joan de Caselles - 10.jpg",
+    "card": {
+      "slug": "sant-joan-de-caselles",
+      "title": "Sant Joan de Caselles",
+      "subtitle": "Canillo",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Église romane andorrane du XIIe siècle, typique de l'art religieux pyrénéen.",
+      "fact": "Elle conserve un retable baroque et des peintures murales médiévales remarquables.",
+      "sources": [
+        "Encyclopædia Britannica — Andorra",
+        "UNESCO — Madriu-Perafita-Claror Valley"
+      ]
+    }
+  },
+  {
+    "iso": "AT",
+    "qid": "Q34713",
+    "commonsFile": "File:Salzburg (48489551981).jpg",
+    "card": {
+      "slug": "salzbourg",
+      "title": "Salzbourg",
+      "subtitle": "Land de Salzbourg",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Ville baroque natale de Mozart, dominée par la forteresse Hohensalzburg.",
+      "fact": "Son centre historique est inscrit au patrimoine mondial depuis 1996.",
+      "sources": [
+        "UNESCO — Historic Centre of the City of Salzburg",
+        "Encyclopædia Britannica — Salzburg"
+      ]
+    }
+  },
+  {
+    "iso": "BE",
+    "qid": "Q180901",
+    "commonsFile": "File:The Atomium during civil twilight (DSCF1135).jpg",
+    "card": {
+      "slug": "atomium",
+      "title": "Atomium",
+      "subtitle": "Bruxelles",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Structure en forme de cristal de fer agrandi 165 milliards de fois, conçue pour l'Expo 58.",
+      "fact": "Ses neuf sphères reliées par des tubes abritent expositions et un panorama sur Bruxelles.",
+      "sources": [
+        "Encyclopædia Britannica — Atomium",
+        "UNESCO — Major Town Houses of the Architect Victor Horta"
+      ]
+    }
+  },
+  {
+    "iso": "BY",
+    "qid": "Q719422",
+    "commonsFile": "File:Нясвіж і Нясвіжскі замак 12.jpg",
+    "card": {
+      "slug": "chateau-de-nesvizh",
+      "title": "Château de Nesvij",
+      "subtitle": "Minsk",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Résidence des Radziwiłł, ensemble architectural Renaissance et baroque.",
+      "fact": "Le site culturel et architectural de Nesvij est inscrit à l'UNESCO depuis 2005.",
+      "sources": [
+        "UNESCO — Architectural, Residential and Cultural Complex of the Radziwiłł Family at Nesvizh",
+        "Encyclopædia Britannica — Belarus"
+      ]
+    }
+  },
+  {
+    "iso": "BY",
+    "qid": "Q13469680",
+    "commonsFile": "File:BelarusBNP09.JPG",
+    "card": {
+      "slug": "reserve-de-bielewieza",
+      "title": "Réserve de Biełaviežskaja",
+      "subtitle": "Frontière polonaise",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Reliquat de forêt primaire d'Europe, refuge des bisons d'Europe.",
+      "fact": "Le site transfrontalier est inscrit au patrimoine mondial avec la Pologne.",
+      "sources": [
+        "UNESCO — Białowieża Forest",
+        "Encyclopædia Britannica — Belovezhskaya Pushcha"
+      ]
+    }
+  },
+  {
+    "iso": "BA",
+    "qid": "Q629641",
+    "commonsFile": "File:Sarajevo Bascarsija from Trebevic.JPG",
+    "card": {
+      "slug": "bascarsija",
+      "title": "Baščaršija",
+      "subtitle": "Sarajevo",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Vieux bazar ottoman au cœur de Sarajevo, avec mosquées, ateliers et cafés.",
+      "fact": "Fondée au XVe siècle, elle reste le symbole culturel de la capitale bosniaque.",
+      "sources": [
+        "Encyclopædia Britannica — Sarajevo",
+        "UNESCO — Mehmed Paša Sokolović Bridge"
+      ]
+    }
+  },
+  {
+    "iso": "BA",
+    "qid": "Q63724",
+    "commonsFile": "File:Bosniangraves bosniska gravar februari 2007 stecak stecci3.jpg",
+    "card": {
+      "slug": "stecci",
+      "title": "Stećci",
+      "subtitle": "Hauts plateaux bosniaques",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Pierres tombales médiévales sculptées, propres aux Balkans occidentaux.",
+      "fact": "Les nécropoles de stećci sont inscrites au patrimoine mondial depuis 2016.",
+      "sources": [
+        "UNESCO — Stećci Medieval Tombstones Graveyards",
+        "Encyclopædia Britannica — Bosnia and Herzegovina"
+      ]
+    }
+  },
+  {
+    "iso": "BG",
+    "qid": "Q193241",
+    "commonsFile": "File:Nessebar Bulgaria.jpg",
+    "card": {
+      "slug": "nessebar",
+      "title": "Nessebar",
+      "subtitle": "Mer Noire",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Ancienne cité grecque puis byzantine, densément parsemée d'églises médiévales.",
+      "fact": "La ville antique de Nessebar est inscrite au patrimoine mondial depuis 1983.",
+      "sources": [
+        "UNESCO — Ancient City of Nessebar",
+        "Encyclopædia Britannica — Nesebŭr"
+      ]
+    }
+  },
+  {
+    "iso": "BG",
+    "qid": "Q3042478",
+    "commonsFile": "File:Област Видин - Белоградчик - Белоградчишки скали - (12).jpg",
+    "card": {
+      "slug": "rochers-de-belogradchik",
+      "title": "Rochers de Belogradchik",
+      "subtitle": "Nord-ouest bulgare",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Formations de grès rouge façonnées par l'érosion, dominées par une forteresse.",
+      "fact": "Leurs silhouettes évoquent des figures humaines et animales, d'où de nombreuses légendes.",
+      "sources": [
+        "Encyclopædia Britannica — Bulgaria",
+        "UNESCO — Boyana Church"
+      ]
+    }
+  },
+  {
+    "iso": "CY",
+    "qid": "Q385086",
+    "commonsFile": "File:Khirokitia near Larnaca 01-2017 img7.jpg",
+    "card": {
+      "slug": "choirokoitia",
+      "title": "Choirokoitia",
+      "subtitle": "District de Larnaca",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Village néolithique fortifié parmi les mieux préservés de Méditerranée orientale.",
+      "fact": "Le site est inscrit au patrimoine mondial depuis 1998.",
+      "sources": [
+        "UNESCO — Choirokoitia",
+        "Encyclopædia Britannica — Cyprus"
+      ]
+    }
+  },
+  {
+    "iso": "CY",
+    "qid": "Q462702",
+    "commonsFile": "File:Asinou - Kirche Narthex 4 Kuppel.jpg",
+    "card": {
+      "slug": "eglises-peintes-du-troodos",
+      "title": "Églises peintes du Troodos",
+      "subtitle": "Monts Troodos",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Ensemble d'églises byzantines aux fresques exceptionnellement conservées.",
+      "fact": "Dix églises du massif sont inscrites au patrimoine mondial de l'UNESCO.",
+      "sources": [
+        "UNESCO — Painted Churches in the Troodos Region",
+        "Encyclopædia Britannica — Troodos Mountains"
+      ]
+    }
+  },
+  {
+    "iso": "HR",
+    "qid": "Q322287",
+    "commonsFile": "File:Croatia-01239 - The Peristil (9551533404).jpg",
+    "card": {
+      "slug": "palais-de-diocletien",
+      "title": "Palais de Dioclétien",
+      "subtitle": "Split",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Palais-forteresse romain du IVe siècle, devenu le cœur de la ville de Split.",
+      "fact": "Le centre historique de Split, autour du palais, est inscrit à l'UNESCO depuis 1979.",
+      "sources": [
+        "UNESCO — Historical Complex of Split with the Palace of Diocletian",
+        "Encyclopædia Britannica — Split"
+      ]
+    }
+  },
+  {
+    "iso": "DK",
+    "qid": "Q723999",
+    "commonsFile": "File:Runesten i Jelling.jpg",
+    "card": {
+      "slug": "pierres-de-jelling",
+      "title": "Pierres de Jelling",
+      "subtitle": "Jutland",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Pierres runiques et tumulus marquant la christianisation du Danemark au Xe siècle.",
+      "fact": "Le site des tumulus, église et pierres de Jelling est inscrit à l'UNESCO depuis 1994.",
+      "sources": [
+        "UNESCO — Jelling Mounds, Runic Stones and Church",
+        "Encyclopædia Britannica — Jelling"
+      ]
+    }
+  },
+  {
+    "iso": "DK",
+    "qid": "Q943946",
+    "commonsFile": "File:The Nyhavn Canal 3.jpg",
+    "card": {
+      "slug": "nyhavn",
+      "title": "Nyhavn",
+      "subtitle": "Copenhague",
+      "category": "culture",
+      "rarity": "common",
+      "discovery": "Canal bordé de maisons colorées du XVIIe siècle, symbole vivant de Copenhague.",
+      "fact": "Hans Christian Andersen y a vécu ; le quai reste l'un des plus photographiés du pays.",
+      "sources": [
+        "Encyclopædia Britannica — Copenhagen",
+        "UNESCO — Kronborg Castle"
+      ]
+    }
+  },
+  {
+    "iso": "EE",
+    "qid": "Q1132561",
+    "commonsFile": "File:Viru Bog at winter.jpg",
+    "card": {
+      "slug": "parc-national-de-lahemaa",
+      "title": "Parc national de Lahemaa",
+      "subtitle": "Nord estonien",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Premier parc national d'Estonie, mosaïque de forêts, tourbières et manoirs côtiers.",
+      "fact": "Créé en 1971, il protège plus de 700 km² de paysages baltiques.",
+      "sources": [
+        "Encyclopædia Britannica — Estonia",
+        "UNESCO — Historic Centre of Tallinn"
+      ]
+    }
+  },
+  {
+    "iso": "EE",
+    "qid": "Q633506",
+    "commonsFile": "File:XXV laulupidu (3).jpg",
+    "card": {
+      "slug": "fete-de-la-chanson-estonienne",
+      "title": "Fête de la chanson estonienne",
+      "subtitle": "Tallinn",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Grand rassemblement choral qui célèbre l'identité nationale depuis 1869.",
+      "fact": "Avec la fête de la danse, elle est inscrite au patrimoine culturel immatériel de l'UNESCO.",
+      "sources": [
+        "UNESCO — Baltic song and dance celebrations",
+        "Encyclopædia Britannica — Estonia"
+      ]
+    }
+  },
+  {
+    "iso": "FI",
+    "qid": "Q738015",
+    "commonsFile": "File:Kirkko3.png",
+    "card": {
+      "slug": "cathedrale-d-helsinki",
+      "title": "Cathédrale d'Helsinki",
+      "subtitle": "Helsinki",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Cathédrale luthérienne néoclassique blanche dominant la place du Sénat.",
+      "fact": "Conçue par Carl Ludvig Engel, elle est l'emblème architectural de la capitale finlandaise.",
+      "sources": [
+        "Encyclopædia Britannica — Helsinki",
+        "UNESCO — Fortress of Suomenlinna"
+      ]
+    }
+  },
+  {
+    "iso": "HU",
+    "qid": "Q11819",
+    "commonsFile": "File:Hungarian Parliament Building from across the Danube, 2025-01-11.jpg",
+    "card": {
+      "slug": "parlement-de-budapest",
+      "title": "Parlement de Budapest",
+      "subtitle": "Pest",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Édifice néogothique majestueux sur la rive du Danube, siège de l'Assemblée nationale.",
+      "fact": "Achevé en 1902, il compte 691 salles et une coupole de 96 mètres.",
+      "sources": [
+        "UNESCO — Budapest, including the Banks of the Danube",
+        "Encyclopædia Britannica — Budapest"
+      ]
+    }
+  },
+  {
+    "iso": "HU",
+    "qid": "Q61757",
+    "commonsFile": "File:Hortobagy-ziehbrunnen.jpg",
+    "card": {
+      "slug": "hortobagy",
+      "title": "Hortobágy",
+      "subtitle": "Grande Plaine",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Plus vaste steppe d'Europe centrale, berceau de la culture pastorale hongroise.",
+      "fact": "Le parc national de Hortobágy est inscrit au patrimoine mondial depuis 1999.",
+      "sources": [
+        "UNESCO — Hortobágy National Park — the Puszta",
+        "Encyclopædia Britannica — Hortobágy"
+      ]
+    }
+  },
+  {
+    "iso": "IE",
+    "qid": "Q204221",
+    "commonsFile": "File:KellsFol032vChristEnthroned.jpg",
+    "card": {
+      "slug": "livre-de-kells",
+      "title": "Livre de Kells",
+      "subtitle": "Dublin",
+      "category": "culture",
+      "rarity": "rare",
+      "discovery": "Manuscrit enluminé celtique du IXe siècle conservé au Trinity College de Dublin.",
+      "fact": "Ses Evangiles sont considérés comme un chef-d'œuvre de l'art insulaire médiéval.",
+      "sources": [
+        "Encyclopædia Britannica — Book of Kells",
+        "UNESCO — Brú na Bóinne"
+      ]
+    }
+  },
+  {
+    "iso": "LV",
+    "qid": "Q1123987",
+    "commonsFile": "File:Rundale Palace (6483271573).jpg",
+    "card": {
+      "slug": "palais-de-rundale",
+      "title": "Palais de Rundāle",
+      "subtitle": "Zemgale",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Palais baroque conçu par Rastrelli, parfois surnommé le Versailles letton.",
+      "fact": "Ses jardins à la française et ses salons dorés attirent des visiteurs du monde entier.",
+      "sources": [
+        "Encyclopædia Britannica — Latvia",
+        "UNESCO — Historic Centre of Riga"
+      ]
+    }
+  },
+  {
+    "iso": "LV",
+    "qid": "Q743754",
+    "commonsFile": "File:Ergeljuklintis424aug037qg.jpg",
+    "card": {
+      "slug": "parc-national-de-la-gauja",
+      "title": "Parc national de la Gauja",
+      "subtitle": "Vidzeme",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Vallée encaissée de grès rouge, châteaux médiévaux et forêts de Lettonie centrale.",
+      "fact": "Créé en 1973, c'est le plus ancien et le plus visité des parcs nationaux lettons.",
+      "sources": [
+        "Encyclopædia Britannica — Latvia",
+        "UNESCO — Historic Centre of Riga"
+      ]
+    }
+  },
+  {
+    "iso": "LI",
+    "qid": "Q13142473",
+    "commonsFile": "File:Hoechst-Rhine-Lustenau-Sankt Margrethen-Au-Rinevalley-02ASD.jpg",
+    "card": {
+      "slug": "vallee-du-rhin-liechtensteinois",
+      "title": "Vallée du Rhin",
+      "subtitle": "Oberland",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Plaine alpine du Rhin séparant le Liechtenstein de la Suisse.",
+      "fact": "Elle concentre villages, vignobles et la majeure partie de la population du principauté.",
+      "sources": [
+        "Encyclopædia Britannica — Liechtenstein",
+        "UNESCO — Swiss Alps Jungfrau-Aletsch"
+      ]
+    }
+  },
+  {
+    "iso": "LI",
+    "qid": "Q2251899",
+    "commonsFile": "File:Malbun seen from Augstenberg (valo139).jpg",
+    "card": {
+      "slug": "malbun",
+      "title": "Malbun",
+      "subtitle": "Triesenberg",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Station de montagne nichée dans les Alpes rhétiques, unique station de ski du pays.",
+      "fact": "Située à plus de 1 600 mètres, elle offre un panorama sur les crêtes frontalières.",
+      "sources": [
+        "Encyclopædia Britannica — Liechtenstein"
+      ]
+    }
+  },
+  {
+    "iso": "LT",
+    "qid": "Q1482013",
+    "commonsFile": "File:Traku pilis by Augustas Didzgalvis.jpg",
+    "card": {
+      "slug": "chateau-de-trakai",
+      "title": "Château de Trakai",
+      "subtitle": "Trakai",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Château de brique rouge sur une île du lac Galvė, ancienne résidence des Grands-ducs.",
+      "fact": "Il fut l'un des centres politiques du Grand-duché de Lituanie au Moyen Âge.",
+      "sources": [
+        "Encyclopædia Britannica — Trakai",
+        "UNESCO — Kernavė Archaeological Site"
+      ]
+    }
+  },
+  {
+    "iso": "LT",
+    "qid": "Q223726",
+    "commonsFile": "File:Kryžių kalnas (Góra Krzyży).JPG",
+    "card": {
+      "slug": "colline-des-croix",
+      "title": "Colline des Croix",
+      "subtitle": "Šiauliai",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Colline couverte de dizaines de milliers de croix, symbole de dévotion et de résistance.",
+      "fact": "Malgré les tentatives soviétiques de destruction, les croix ont toujours réapparu.",
+      "sources": [
+        "Encyclopædia Britannica — Lithuania",
+        "UNESCO — Vilnius Historic Centre"
+      ]
+    }
+  },
+  {
+    "iso": "LU",
+    "qid": "Q1014402",
+    "commonsFile": "File:Burg Vianden, Luxemburg.jpg",
+    "card": {
+      "slug": "chateau-de-vianden",
+      "title": "Château de Vianden",
+      "subtitle": "Vianden",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "L'un des plus grands châteaux fortifiés à l'ouest du Rhin, restauré au XXe siècle.",
+      "fact": "Victor Hugo y séjourna en exil et en dessina plusieurs croquis.",
+      "sources": [
+        "Encyclopædia Britannica — Luxembourg",
+        "UNESCO — City of Luxembourg"
+      ]
+    }
+  },
+  {
+    "iso": "LU",
+    "qid": "Q1762154",
+    "commonsFile": "File:Mullerthal.jpg",
+    "card": {
+      "slug": "mullerthal",
+      "title": "Mullerthal",
+      "subtitle": "Petite Suisse luxembourgeoise",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Région de grès aux gorges étroites, cascades et sentiers forestiers.",
+      "fact": "Surnommée la Petite Suisse, la région est un haut lieu de randonnée du Grand-Duché.",
+      "sources": [
+        "Encyclopædia Britannica — Luxembourg"
+      ]
+    }
+  },
+  {
+    "iso": "MK",
+    "qid": "Q2278990",
+    "commonsFile": "File:Matka Canyon Skopje 3.jpg",
+    "card": {
+      "slug": "canyon-de-matka",
+      "title": "Canyon de Matka",
+      "subtitle": "près de Skopje",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Gorge profonde de la rivière Treska, ponctuée de monastères et de grottes.",
+      "fact": "On y trouve l'une des plus profondes grottes sous-marines d'Europe.",
+      "sources": [
+        "Encyclopædia Britannica — North Macedonia",
+        "UNESCO — Natural and Cultural Heritage of the Ohrid region"
+      ]
+    }
+  },
+  {
+    "iso": "MK",
+    "qid": "Q1142395",
+    "commonsFile": "File:Ancientbitola.jpg",
+    "card": {
+      "slug": "heraclee-lyncestis",
+      "title": "Héraclée Lyncestis",
+      "subtitle": "Bitola",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Cité antique fondée par Philippe II de Macédoine, célèbre pour ses mosaïques.",
+      "fact": "Ses thermes et son théâtre romain témoignent d'une longue occupation jusqu'au Moyen Âge.",
+      "sources": [
+        "Encyclopædia Britannica — Bitola",
+        "UNESCO — Natural and Cultural Heritage of the Ohrid region"
+      ]
+    }
+  },
+  {
+    "iso": "MT",
+    "qid": "Q23800",
+    "commonsFile": "File:St Sebastian Curtain (cropped).jpg",
+    "card": {
+      "slug": "valletta",
+      "title": "La Valette",
+      "subtitle": "Malte",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Capitale fortifiée des Hospitaliers, tracée sur la péninsule du Grand Port.",
+      "fact": "Son centre historique dense est inscrit au patrimoine mondial depuis 1980.",
+      "sources": [
+        "UNESCO — City of Valletta",
+        "Encyclopædia Britannica — Valletta"
+      ]
+    }
+  },
+  {
+    "iso": "MT",
+    "qid": "Q755514",
+    "commonsFile": "File:Photo Ellis Hal Salflieni.jpg",
+    "card": {
+      "slug": "hypogee-hal-saflieni",
+      "title": "Hypogée Ħal Saflieni",
+      "subtitle": "Paola",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Nécropole souterraine néolithique creusée dans le calcaire il y a plus de 5 000 ans.",
+      "fact": "Inscrit au patrimoine mondial, l'accès est strictement limité pour préserver le site.",
+      "sources": [
+        "UNESCO — Ħal Saflieni Hypogeum",
+        "Encyclopædia Britannica — Malta"
+      ]
+    }
+  },
+  {
+    "iso": "MD",
+    "qid": "Q2382751",
+    "commonsFile": "File:Stanca deasupra Rautului Butuceni.jpg",
+    "card": {
+      "slug": "orheiul-vechi",
+      "title": "Orheiul Vechi",
+      "subtitle": "Râut",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Complexe archéologique de grottes monastiques et de vestiges médiévaux sur un méandre.",
+      "fact": "Le site concentre plus de 2 000 ans d'occupation humaine en Moldavie.",
+      "sources": [
+        "Encyclopædia Britannica — Moldova",
+        "UNESCO — Struve Geodetic Arc"
+      ]
+    }
+  },
+  {
+    "iso": "MD",
+    "qid": "Q3815738",
+    "commonsFile": null,
+    "card": {
+      "slug": "monastere-de-tipova",
+      "title": "Monastère de Tipova",
+      "subtitle": "Nistru",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Monastère rupestre orthodoxe creusé dans une falaise dominant le Dniestr.",
+      "fact": "Ses cellules et églises troglodytes sont parmi les plus impressionnantes du pays.",
+      "sources": [
+        "Encyclopædia Britannica — Moldova"
+      ]
+    }
+  },
+  {
+    "iso": "MC",
+    "qid": "Q851527",
+    "commonsFile": "File:Monaco BW 2011-06-07 17-50-43.jpg",
+    "card": {
+      "slug": "musee-oceanographique-de-monaco",
+      "title": "Musée océanographique",
+      "subtitle": "Rocher de Monaco",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Institution fondée par Albert Ier, accrochée à la falaise surplombant la Méditerranée.",
+      "fact": "Son aquarium et ses collections rappellent l'engagement monégasque pour les océans.",
+      "sources": [
+        "Encyclopædia Britannica — Monaco",
+        "UNESCO — Historic Centre of Menton"
+      ]
+    }
+  },
+  {
+    "iso": "MC",
+    "qid": "Q3351922",
+    "commonsFile": "File:Monaco Ville from Tête de Chien - panoramio.jpg",
+    "card": {
+      "slug": "rocher-de-monaco",
+      "title": "Rocher de Monaco",
+      "subtitle": "Monaco-Ville",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Promontoire fortifié abritant le Palais princier et la vieille ville.",
+      "fact": "C'est le noyau historique de la principauté, peuplé depuis l'Antiquité.",
+      "sources": [
+        "Encyclopædia Britannica — Monaco"
+      ]
+    }
+  },
+  {
+    "iso": "ME",
+    "qid": "Q212836",
+    "commonsFile": "File:Durmitor.jpg",
+    "card": {
+      "slug": "durmitor",
+      "title": "Durmitor",
+      "subtitle": "Nord monténégrin",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Massif karstique aux lacs glaciaires et aux gorges du Tara, parmi les plus profondes d'Europe.",
+      "fact": "Le parc national du Durmitor est inscrit au patrimoine mondial depuis 1980.",
+      "sources": [
+        "UNESCO — Durmitor National Park",
+        "Encyclopædia Britannica — Durmitor"
+      ]
+    }
+  },
+  {
+    "iso": "ME",
+    "qid": "Q203811",
+    "commonsFile": "File:Skadarsko Jezero.jpg",
+    "card": {
+      "slug": "lac-de-skadar",
+      "title": "Lac de Skadar",
+      "subtitle": "Frontière albanaise",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Plus grand lac des Balkans, partage entre Monténégro et Albanie.",
+      "fact": "Sa biodiversité exceptionnelle en fait une réserve de biosphère et un parc national.",
+      "sources": [
+        "Encyclopædia Britannica — Lake Scutari",
+        "UNESCO — Natural and Culturo-Historical Region of Kotor"
+      ]
+    }
+  },
+  {
+    "iso": "NL",
+    "qid": "Q18769666",
+    "commonsFile": "File:26Y 1599 2.jpg",
+    "card": {
+      "slug": "keukenhof",
+      "title": "Keukenhof",
+      "subtitle": "Lisse",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Parc floral mondialement connu pour ses millions de tulipes au printemps.",
+      "fact": "Ouvert seulement quelques semaines par an, il attire plus d'un million de visiteurs.",
+      "sources": [
+        "Encyclopædia Britannica — Netherlands",
+        "UNESCO — Mill Network at Kinderdijk-Elshout"
+      ]
+    }
+  },
+  {
+    "iso": "PT",
+    "qid": "Q190187",
+    "commonsFile": "File:Sintra - Palacio da Pena (20332995770) (cropped2).jpg",
+    "card": {
+      "slug": "sintra",
+      "title": "Sintra",
+      "subtitle": "Région de Lisbonne",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Ville de collines aux palais romantiques, dont le coloré palais de Pena.",
+      "fact": "Le paysage culturel de Sintra est inscrit au patrimoine mondial depuis 1995.",
+      "sources": [
+        "UNESCO — Cultural Landscape of Sintra",
+        "Encyclopædia Britannica — Sintra"
+      ]
+    }
+  },
+  {
+    "iso": "RO",
+    "qid": "Q390275",
+    "commonsFile": "File:Castelul Bran2.jpg",
+    "card": {
+      "slug": "chateau-de-bran",
+      "title": "Château de Bran",
+      "subtitle": "Transylvanie",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Forteresse médiévale liée à la légende de Dracula, au seuil des Carpates.",
+      "fact": "Bien que Vlad Țepeș n'y ait sans doute pas vécu, le château incarne le mythe en Europe.",
+      "sources": [
+        "Encyclopædia Britannica — Bran Castle",
+        "UNESCO — Villages with Fortified Churches in Transylvania"
+      ]
+    }
+  },
+  {
+    "iso": "SM",
+    "qid": "Q2287080",
+    "commonsFile": "File:View of Mount Titano - San Marino.jpg",
+    "card": {
+      "slug": "trois-tours-de-saint-marin",
+      "title": "Trois tours de Saint-Marin",
+      "subtitle": "Mont Titano",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Trio de tours médiévales — Guaita, Cesta et Montale — emblème de la République.",
+      "fact": "Elles figurent sur le drapeau et les armoiries de Saint-Marin.",
+      "sources": [
+        "UNESCO — San Marino Historic Centre and Mount Titano",
+        "Encyclopædia Britannica — San Marino"
+      ]
+    }
+  },
+  {
+    "iso": "SM",
+    "qid": "Q810102",
+    "commonsFile": "File:Cathedral San Marino - Exterior.jpg",
+    "card": {
+      "slug": "basilique-de-saint-marin",
+      "title": "Basilique de Saint-Marin",
+      "subtitle": "Città",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Église néoclassique dédiée à saint Marinus, fondateur légendaire de la République.",
+      "fact": "Elle abrite les reliques du saint et domine la place de la Liberté.",
+      "sources": [
+        "UNESCO — San Marino Historic Centre and Mount Titano",
+        "Encyclopædia Britannica — San Marino"
+      ]
+    }
+  },
+  {
+    "iso": "RS",
+    "qid": "Q1409017",
+    "commonsFile": "File:P037152-661920 - Belgrade fortress stand at the downtown of Belgrade.jpg",
+    "card": {
+      "slug": "kalemegdan",
+      "title": "Kalemegdan",
+      "subtitle": "Belgrade",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Forteresse dominant le confluent de la Save et du Danube, cœur historique de Belgrade.",
+      "fact": "Ses remparts ont été remodelés par Romains, Byzantins, Ottomans puis Autrichiens.",
+      "sources": [
+        "Encyclopædia Britannica — Belgrade",
+        "UNESCO — Studenica Monastery"
+      ]
+    }
+  },
+  {
+    "iso": "RS",
+    "qid": "Q207376",
+    "commonsFile": "File:Danube near Iron Gate 2006.JPG",
+    "card": {
+      "slug": "portes-de-fer",
+      "title": "Portes de Fer",
+      "subtitle": "Danube",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Gorges spectaculaires du Danube entre Serbie et Roumanie.",
+      "fact": "Le parc national de Đerdap protège ce passage fluvial stratégique depuis l'Antiquité.",
+      "sources": [
+        "Encyclopædia Britannica — Iron Gate",
+        "UNESCO — Gamzigrad-Romuliana"
+      ]
+    }
+  },
+  {
+    "iso": "XK",
+    "qid": "Q200061",
+    "commonsFile": "File:37 Prizreni - Xhamia e Sinan Pashës - The Sinan Pasha Moscue.JPG",
+    "card": {
+      "slug": "prizren",
+      "title": "Prizren",
+      "subtitle": "Sud du Kosovo",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Ville ottomane au pied des montagnes de Sharri, riche en mosquées et églises.",
+      "fact": "Elle fut longtemps un foyer culturel et administratif des Balkans occidentaux.",
+      "sources": [
+        "Encyclopædia Britannica — Prizren",
+        "UNESCO — Medieval Monuments in Kosovo"
+      ]
+    }
+  },
+  {
+    "iso": "SK",
+    "qid": "Q690323",
+    "commonsFile": "File:Tatry Panorama01xxx.jpg",
+    "card": {
+      "slug": "hautes-tatras",
+      "title": "Hautes Tatras",
+      "subtitle": "Nord slovaque",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Plus haut massif des Carpates, partagé avec la Pologne.",
+      "fact": "Le parc national des Tatras protège lacs glaciaires, chamois et pins nains.",
+      "sources": [
+        "Encyclopædia Britannica — High Tatras",
+        "UNESCO — Caves of Aggtelek Karst and Slovak Karst"
+      ]
+    }
+  },
+  {
+    "iso": "SK",
+    "qid": "Q593311",
+    "commonsFile": "File:Bratislava - Burg (b).JPG",
+    "card": {
+      "slug": "chateau-de-bratislava",
+      "title": "Château de Bratislava",
+      "subtitle": "Bratislava",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Château quadrangulaire dominant le Danube et la capitale slovaque.",
+      "fact": "Il servit de résidence des rois de Hongrie et abrite aujourd'hui des musées nationaux.",
+      "sources": [
+        "Encyclopædia Britannica — Bratislava",
+        "UNESCO — Historic Town of Banská Štiavnica"
+      ]
+    }
+  },
+  {
+    "iso": "SI",
+    "qid": "Q79217",
+    "commonsFile": "File:Höhlenburg Predjama in Slovenien.jpg",
+    "card": {
+      "slug": "chateau-de-predjama",
+      "title": "Château de Predjama",
+      "subtitle": "Postojna",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Château renaissance incrusté dans une falaise karstique au-dessus d'une grotte.",
+      "fact": "Il est considéré comme l'un des plus grands châteaux troglodytes du monde.",
+      "sources": [
+        "Encyclopædia Britannica — Slovenia",
+        "UNESCO — Škocjan Caves"
+      ]
+    }
+  },
+  {
+    "iso": "CH",
+    "qid": "Q372647",
+    "commonsFile": "File:001 Chateau de Chillon and Dents du Midi Photo by Giles Laurent.jpg",
+    "card": {
+      "slug": "chateau-de-chillon",
+      "title": "Château de Chillon",
+      "subtitle": "Léman",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Château médiéval sur un îlot rocheux du lac Léman, près de Montreux.",
+      "fact": "Lord Byron y situa son poème « Le Prisonnier de Chillon », rendant le lieu célèbre.",
+      "sources": [
+        "Encyclopædia Britannica — Chillon Castle",
+        "UNESCO — Lavaux, Vineyard Terraces"
+      ]
+    }
+  },
+  {
+    "iso": "SE",
+    "qid": "Q208559",
+    "commonsFile": "File:Drottningholm kollage 2011abc.jpg",
+    "card": {
+      "slug": "drottningholm",
+      "title": "Drottningholm",
+      "subtitle": "près de Stockholm",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Résidence royale baroque avec théâtre de cour intact du XVIIIe siècle.",
+      "fact": "Le domaine royal de Drottningholm est inscrit au patrimoine mondial depuis 1991.",
+      "sources": [
+        "UNESCO — Royal Domain of Drottningholm",
+        "Encyclopædia Britannica — Drottningholm"
+      ]
+    }
+  },
+  {
+    "iso": "CZ",
+    "qid": "Q193369",
+    "commonsFile": "File:Prague Castle panoramic view from Petrin tower.jpg",
+    "card": {
+      "slug": "chateau-de-prague",
+      "title": "Château de Prague",
+      "subtitle": "Hradčany",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Vaste complexe de palais et d'églises dominant la Vltava, siège du pouvoir tchèque.",
+      "fact": "Il est souvent présenté comme le plus grand château ancien du monde encore habité.",
+      "sources": [
+        "UNESCO — Historic Centre of Prague",
+        "Encyclopædia Britannica — Prague Castle"
+      ]
+    }
+  },
+  {
+    "iso": "UA",
+    "qid": "Q36036",
+    "commonsFile": "File:Латинський кафедральний собор (Львів) 16.jpg",
+    "card": {
+      "slug": "lviv",
+      "title": "Lviv",
+      "subtitle": "Ukraine occidentale",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Ville aux influences polonaises, autrichiennes et ukrainiennes, riche en architecture.",
+      "fact": "Son centre historique est inscrit au patrimoine mondial depuis 1998.",
+      "sources": [
+        "UNESCO — L'viv – the Ensemble of the Historic Centre",
+        "Encyclopædia Britannica — Lviv"
+      ]
+    }
+  },
+  {
+    "iso": "VA",
+    "qid": "Q182955",
+    "commonsFile": null,
+    "card": {
+      "slug": "musees-du-vatican",
+      "title": "Musées du Vatican",
+      "subtitle": "Cité du Vatican",
+      "category": "culture",
+      "rarity": "epic",
+      "discovery": "Ensemble de musées abritant les collections des papes, dont la chapelle Sixtine.",
+      "fact": "Ils comptent parmi les musées les plus visités au monde.",
+      "sources": [
+        "UNESCO — Vatican City",
+        "Encyclopædia Britannica — Vatican Museums"
+      ]
+    }
+  },
+  {
+    "iso": "AF",
+    "qid": "Q192981",
+    "commonsFile": "File:Jam afghan architecture harirud brick.jpg",
+    "card": {
+      "slug": "minaret-de-djam",
+      "title": "Minaret de Djam",
+      "subtitle": "Ghor",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Minaret de brique du XIIe siècle, haut de 65 mètres, isolé dans une vallée reculée.",
+      "fact": "Il est inscrit au patrimoine mondial et sur la Liste du patrimoine en péril.",
+      "sources": [
+        "UNESCO — Minaret and Archaeological Remains of Jam",
+        "Encyclopædia Britannica — Afghanistan"
+      ]
+    }
+  },
+  {
+    "iso": "AF",
+    "qid": "Q613251",
+    "commonsFile": "File:Afghanistan's Grand Canyon.jpg",
+    "card": {
+      "slug": "band-e-amir",
+      "title": "Band-e Amir",
+      "subtitle": "Bamiyan",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Chaîne de lacs turquoise d'origine naturelle au cœur des montagnes centrales.",
+      "fact": "Premier parc national d'Afghanistan, créé en 2009.",
+      "sources": [
+        "Encyclopædia Britannica — Afghanistan",
+        "UNESCO — Cultural Landscape and Archaeological Remains of the Bamiyan Valley"
+      ]
+    }
+  },
+  {
+    "iso": "SA",
+    "qid": "Q277505",
+    "commonsFile": null,
+    "card": {
+      "slug": "diriyah",
+      "title": "Diriyah",
+      "subtitle": "près de Riyad",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Berceau historique de la dynastie saoudienne, quartier d'at-Turaif en pisé.",
+      "fact": "Le site d'at-Turaif à Diriyah est inscrit au patrimoine mondial depuis 2010.",
+      "sources": [
+        "UNESCO — At-Turaif District in ad-Dir'iyah",
+        "Encyclopædia Britannica — Saudi Arabia"
+      ]
+    }
+  },
+  {
+    "iso": "SA",
+    "qid": "Q27242",
+    "commonsFile": "File:Al Ula (6748577917).jpg",
+    "card": {
+      "slug": "al-ula",
+      "title": "Al-Ula",
+      "subtitle": "Hedjaz",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Oasis et vallée de grès sculptés, porte d'entrée vers le site nabatéen d'Hégra.",
+      "fact": "La région abrite aussi des inscriptions dadanites et lihyanites millénaires.",
+      "sources": [
+        "UNESCO — Al-Hijr Archaeological Site (Madâin Sâlih)",
+        "Encyclopædia Britannica — Al-ʿUlā"
+      ]
+    }
+  },
+  {
+    "iso": "AM",
+    "qid": "Q684072",
+    "commonsFile": "File:Garni temple 2021 drone.jpg",
+    "card": {
+      "slug": "temple-de-garni",
+      "title": "Temple de Garni",
+      "subtitle": "Kotayk",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Seul temple gréco-romain intact d'Arménie, perché au-dessus d'une gorge basaltique.",
+      "fact": "Dédié probablement au dieu solaire Mihr, il fut reconstruit après le séisme de 1679.",
+      "sources": [
+        "Encyclopædia Britannica — Garni",
+        "UNESCO — Monasteries of Haghpat and Sanahin"
+      ]
+    }
+  },
+  {
+    "iso": "AM",
+    "qid": "Q181932",
+    "commonsFile": "File:Lake Sevan Armenia.jpg",
+    "card": {
+      "slug": "lac-sevan",
+      "title": "Lac Sevan",
+      "subtitle": "Gegharkunik",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Vaste lac d'altitude d'Arménie, bordé de monastères dont Sevanavank.",
+      "fact": "Situé à près de 1 900 mètres, c'est l'un des plus grands lacs de haute montagne d'Eurasie.",
+      "sources": [
+        "Encyclopædia Britannica — Lake Sevan",
+        "UNESCO — Cathedral and Churches of Echmiatsin"
+      ]
+    }
+  },
+  {
+    "iso": "AZ",
+    "qid": "Q318181",
+    "commonsFile": "File:Qobustan giriş qayası 2026 (1).jpg",
+    "card": {
+      "slug": "gobustan",
+      "title": "Gobustan",
+      "subtitle": "près de Bakou",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Réserve de pétroglyphes et de mud volcanoes témoignant de millénaires d'occupation.",
+      "fact": "Le paysage culturel d'art rupestre de Gobustan est inscrit à l'UNESCO depuis 2007.",
+      "sources": [
+        "UNESCO — Gobustan Rock Art Cultural Landscape",
+        "Encyclopædia Britannica — Gobustan"
+      ]
+    }
+  },
+  {
+    "iso": "AZ",
+    "qid": "Q917489",
+    "commonsFile": "File:Yanar Dagh.JPG",
+    "card": {
+      "slug": "yanar-dag",
+      "title": "Yanar Dağ",
+      "subtitle": "Absheron",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Colline où brûle en permanence une flamme de gaz naturel s'échappant du sol.",
+      "fact": "Ce « mont qui brûle » illustre le surnom de terre du feu donné à l'Azerbaïdjan.",
+      "sources": [
+        "Encyclopædia Britannica — Azerbaijan",
+        "UNESCO — Walled City of Baku"
+      ]
+    }
+  },
+  {
+    "iso": "BH",
+    "qid": "Q1542275",
+    "commonsFile": "File:Tree of Life, Bahrain - ജീവന്റെ മരം, ബഹ്റൈൻ 01.JPG",
+    "card": {
+      "slug": "arbre-de-vie-de-bahrein",
+      "title": "Arbre de vie",
+      "subtitle": "Désert de Bahreïn",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Prosopis solitaire vieux de plusieurs siècles, poussant sans source d'eau visible.",
+      "fact": "Il est devenu un symbole national dans un paysage aride presque sans végétation.",
+      "sources": [
+        "Encyclopædia Britannica — Bahrain",
+        "UNESCO — Qal’at al-Bahrain"
+      ]
+    }
+  },
+  {
+    "iso": "BH",
+    "qid": "Q1889313",
+    "commonsFile": "File:Muharraq Bayt Siyadi 1.jpg",
+    "card": {
+      "slug": "voie-des-perles",
+      "title": "Voie des perles",
+      "subtitle": "Muharraq",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Itinéraire urbain évoquant l'économie perlière qui fit la richesse de Bahreïn.",
+      "fact": "Le site est inscrit au patrimoine mondial depuis 2012.",
+      "sources": [
+        "UNESCO — Pearling, Testimony of an Island Economy",
+        "Encyclopædia Britannica — Bahrain"
+      ]
+    }
+  },
+  {
+    "iso": "BD",
+    "qid": "Q305044",
+    "commonsFile": "File:Paharpur Buddhist Bihar.jpg",
+    "card": {
+      "slug": "paharpur",
+      "title": "Paharpur",
+      "subtitle": "Naogaon",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Ruines du grand monastère bouddhique de Somapura Mahavihara (VIIIe–XIIe siècles).",
+      "fact": "Le site est inscrit au patrimoine mondial depuis 1985.",
+      "sources": [
+        "UNESCO — Ruins of the Buddhist Vihara at Paharpur",
+        "Encyclopædia Britannica — Bangladesh"
+      ]
+    }
+  },
+  {
+    "iso": "BD",
+    "qid": "Q949746",
+    "commonsFile": "File:A dusk at Cox's Bazar sea beach.jpg",
+    "card": {
+      "slug": "cox-s-bazar",
+      "title": "Cox's Bazar",
+      "subtitle": "Golfe du Bengale",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Longue plage de sable souvent citée parmi les plus étendues du monde en continu.",
+      "fact": "Elle s'étire sur plus de 120 kilomètres le long du golfe du Bengale.",
+      "sources": [
+        "Encyclopædia Britannica — Bangladesh",
+        "UNESCO — The Sundarbans"
+      ]
+    }
+  },
+  {
+    "iso": "BT",
+    "qid": "Q4383728",
+    "commonsFile": "File:Punakha Dzong, Bhutan 02.jpg",
+    "card": {
+      "slug": "punakha-dzong",
+      "title": "Punakha Dzong",
+      "subtitle": "Punakha",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Forteresse-monastère à la confluence du Pho Chhu et du Mo Chhu.",
+      "fact": "Elle fut la capitale d'hiver du Bhoutan et reste un lieu de cérémonies royales.",
+      "sources": [
+        "Encyclopædia Britannica — Bhutan",
+        "UNESCO — Tentative List — Bhutan"
+      ]
+    }
+  },
+  {
+    "iso": "BT",
+    "qid": "Q652784",
+    "commonsFile": null,
+    "card": {
+      "slug": "vallee-de-paro",
+      "title": "Vallée de Paro",
+      "subtitle": "Ouest bhoutanais",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Vallée fertile abritant l'aéroport international et de nombreux dzongs.",
+      "fact": "C'est le point d'entrée habituel des visiteurs vers le Royaume du Dragon-Tonnerre.",
+      "sources": [
+        "Encyclopædia Britannica — Paro",
+        "UNESCO — Taktsang Monastery context"
+      ]
+    }
+  },
+  {
+    "iso": "MM",
+    "qid": "Q464535",
+    "commonsFile": "File:Shwedagon Pagoda 2017.jpg",
+    "card": {
+      "slug": "shwedagon",
+      "title": "Shwedagon",
+      "subtitle": "Yangon",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Pagode dorée de Yangon, le plus sacré des stūpas de Birmanie.",
+      "fact": "Sa flèche est ornée de milliers de diamants et d'un diamant de 76 carats au sommet.",
+      "sources": [
+        "Encyclopædia Britannica — Shwe Dagon",
+        "UNESCO — Bagan"
+      ]
+    }
+  },
+  {
+    "iso": "MM",
+    "qid": "Q1043461",
+    "commonsFile": "File:Inle Lake (Myanmar).jpg",
+    "card": {
+      "slug": "lac-inle",
+      "title": "Lac Inlé",
+      "subtitle": "État Shan",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Lac d'altitude peuplé de villages sur pilotis et de jardins flottants.",
+      "fact": "Les pêcheurs Intha sont célèbres pour ramer d'une jambe sur leur embarcation.",
+      "sources": [
+        "Encyclopædia Britannica — Inle Lake",
+        "UNESCO — Bagan"
+      ]
+    }
+  },
+  {
+    "iso": "BN",
+    "qid": "Q1990199",
+    "commonsFile": "File:Kampong Ayer Brunei Darussalam.jpg",
+    "card": {
+      "slug": "kampong-ayer",
+      "title": "Kampong Ayer",
+      "subtitle": "Bandar Seri Begawan",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Cité lacustre sur pilotis, parfois appelée Venise de l'Orient.",
+      "fact": "Des milliers d'habitants y vivent encore, reliés par passerelles et bateaux-taxis.",
+      "sources": [
+        "Encyclopædia Britannica — Bandar Seri Begawan",
+        "UNESCO — Tentative List — Brunei"
+      ]
+    }
+  },
+  {
+    "iso": "BN",
+    "qid": "Q9055985",
+    "commonsFile": "File:Long way to go....jpg",
+    "card": {
+      "slug": "ulu-temburong",
+      "title": "Ulu Temburong",
+      "subtitle": "Temburong",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Parc national de forêt tropicale primaire, accessible surtout par bateau.",
+      "fact": "Il protège l'une des portions de forêt les mieux préservées de Bornéo.",
+      "sources": [
+        "Encyclopædia Britannica — Brunei"
+      ]
+    }
+  },
+  {
+    "iso": "KP",
+    "qid": "Q277525",
+    "commonsFile": null,
+    "card": {
+      "slug": "tombes-de-koguryo",
+      "title": "Tombes de Koguryŏ",
+      "subtitle": "Pyongyang et Nampo",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Ensemble de tombes à fresques du royaume de Koguryŏ (IIIe–VIIe siècles).",
+      "fact": "Le complexe est inscrit au patrimoine mondial depuis 2004.",
+      "sources": [
+        "UNESCO — Complex of Koguryo Tombs",
+        "Encyclopædia Britannica — Koguryŏ"
+      ]
+    }
+  },
+  {
+    "iso": "KP",
+    "qid": "Q209676",
+    "commonsFile": "File:Vítězný oblouk - panoramio (1).jpg",
+    "card": {
+      "slug": "arc-de-triomphe-de-pyongyang",
+      "title": "Arc de triomphe de Pyongyang",
+      "subtitle": "Pyongyang",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Monument commémoratif inauguré en 1982 pour le retour de Kim Il-sung en 1945.",
+      "fact": "Haut de 60 mètres, il dépasse légèrement l'Arc de triomphe parisien.",
+      "sources": [
+        "Encyclopædia Britannica — Pyongyang"
+      ]
+    }
+  },
+  {
+    "iso": "GE",
+    "qid": "Q19044",
+    "commonsFile": "File:Ushguli Svaneti Georgia.jpg",
+    "card": {
+      "slug": "svaneti",
+      "title": "Svanétie",
+      "subtitle": "Caucase",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Région de haute montagne aux tours de pierre défensives et villages isolés.",
+      "fact": "La Haute Svanétie est inscrite au patrimoine mondial depuis 1996.",
+      "sources": [
+        "UNESCO — Upper Svaneti",
+        "Encyclopædia Britannica — Svaneti"
+      ]
+    }
+  },
+  {
+    "iso": "ID",
+    "qid": "Q47721",
+    "commonsFile": "File:Prambanan Temple Yogyakarta Indonesia.jpg",
+    "card": {
+      "slug": "prambanan",
+      "title": "Prambanan",
+      "subtitle": "Java central",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Plus grand temple hindou d'Indonésie, dédié à la trimūrti Shiva-Vishnu-Brahma.",
+      "fact": "Le complexe est inscrit au patrimoine mondial depuis 1991.",
+      "sources": [
+        "UNESCO — Prambanan Temple Compounds",
+        "Encyclopædia Britannica — Prambanan"
+      ]
+    }
+  },
+  {
+    "iso": "IQ",
+    "qid": "Q206236",
+    "commonsFile": "File:Hawler Castle.jpg",
+    "card": {
+      "slug": "citadelle-d-erbil",
+      "title": "Citadelle d'Erbil",
+      "subtitle": "Kurdistan irakien",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Tell urbain occupé depuis plus de 6 000 ans, parmi les plus anciens du monde.",
+      "fact": "La citadelle est inscrite au patrimoine mondial depuis 2014.",
+      "sources": [
+        "UNESCO — Erbil Citadel",
+        "Encyclopædia Britannica — Erbil"
+      ]
+    }
+  },
+  {
+    "iso": "IQ",
+    "qid": "Q3290315",
+    "commonsFile": "File:Chibaish Marches, Iraq - An Nasiriyah.jpg",
+    "card": {
+      "slug": "marais-mesopotamiens",
+      "title": "Marais mésopotamiens",
+      "subtitle": "Sud irakien",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Vastes zones humides du Tigre et de l'Euphrate, berceau de la culture madan.",
+      "fact": "Les Ahwar de l'Irak austral sont inscrits au patrimoine mondial depuis 2016.",
+      "sources": [
+        "UNESCO — The Ahwar of Southern Iraq",
+        "Encyclopædia Britannica — Mesopotamia"
+      ]
+    }
+  },
+  {
+    "iso": "IR",
+    "qid": "Q182394",
+    "commonsFile": "File:Iran 1343 Yazd (8665215641).jpg",
+    "card": {
+      "slug": "yazd",
+      "title": "Yazd",
+      "subtitle": "Désert central",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Ville de terre crue aux badgirs (tours à vent) et au quartier zoroastrien.",
+      "fact": "La ville historique de Yazd est inscrite au patrimoine mondial depuis 2017.",
+      "sources": [
+        "UNESCO — Historic City of Yazd",
+        "Encyclopædia Britannica — Yazd"
+      ]
+    }
+  },
+  {
+    "iso": "IL",
+    "qid": "Q159070",
+    "commonsFile": "File:Zina Dizengoff Circle in the 1940s.jpg",
+    "card": {
+      "slug": "ville-blanche-de-tel-aviv",
+      "title": "Ville blanche de Tel-Aviv",
+      "subtitle": "Tel-Aviv",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Concentration unique de bâtiments modernistes Bauhaus des années 1930.",
+      "fact": "Inscrite au patrimoine mondial depuis 2003.",
+      "sources": [
+        "UNESCO — White City of Tel-Aviv",
+        "Encyclopædia Britannica — Tel Aviv–Yafo"
+      ]
+    }
+  },
+  {
+    "iso": "IL",
+    "qid": "Q319242",
+    "commonsFile": "File:Caesarea.JPG",
+    "card": {
+      "slug": "cesaree-maritime",
+      "title": "Césarée maritime",
+      "subtitle": "Côte méditerranéenne",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Port hérédien puis romain, avec théâtre, hippodrome et aqueduc.",
+      "fact": "Hérode le Grand y fonda une cité majeure dédiée à César Auguste.",
+      "sources": [
+        "Encyclopædia Britannica — Caesarea",
+        "UNESCO — Biblical Tels"
+      ]
+    }
+  },
+  {
+    "iso": "KZ",
+    "qid": "Q2231598",
+    "commonsFile": "File:Charyn Canyon, Kazakhstan 03.jpg",
+    "card": {
+      "slug": "canyon-de-charyn",
+      "title": "Canyon de Charyn",
+      "subtitle": "près d'Almaty",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Canyon de grès rouge souvent comparé à une version kazakhe du Grand Canyon.",
+      "fact": "Ses formations de la « Vallée des châteaux » s'étendent sur plusieurs kilomètres.",
+      "sources": [
+        "Encyclopædia Britannica — Kazakhstan",
+        "UNESCO — Saryarka – Steppe and Lakes of Northern Kazakhstan"
+      ]
+    }
+  },
+  {
+    "iso": "KZ",
+    "qid": "Q46069",
+    "commonsFile": "File:Маузолеј Ходже Ахмеда Јасавија (град Туркестан, Казахстан).jpg",
+    "card": {
+      "slug": "mausolee-de-yasawi",
+      "title": "Mausolée de Yasawi",
+      "subtitle": "Turkestan",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Mausolée timouride du XIIe–XIVe siècle dédié au soufi Khoja Ahmed Yasawi.",
+      "fact": "Il est inscrit au patrimoine mondial depuis 2003.",
+      "sources": [
+        "UNESCO — Mausoleum of Khoja Ahmed Yasawi",
+        "Encyclopædia Britannica — Turkistan"
+      ]
+    }
+  },
+  {
+    "iso": "KG",
+    "qid": "Q750190",
+    "commonsFile": "File:Osh 03-2016 img06 Sulayman Mountain.jpg",
+    "card": {
+      "slug": "sulaiman-too",
+      "title": "Sulaiman-Too",
+      "subtitle": "Och",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Montagne sacrée dominant Och, lieu de pèlerinage depuis l'Antiquité.",
+      "fact": "Le site est inscrit au patrimoine mondial depuis 2009.",
+      "sources": [
+        "UNESCO — Sulaiman-Too Sacred Mountain",
+        "Encyclopædia Britannica — Kyrgyzstan"
+      ]
+    }
+  },
+  {
+    "iso": "KG",
+    "qid": "Q852032",
+    "commonsFile": "File:Burana Tower, Kyrgyzstan.jpg",
+    "card": {
+      "slug": "tour-de-burana",
+      "title": "Tour de Burana",
+      "subtitle": "près de Tokmok",
+      "category": "history",
+      "rarity": "common",
+      "discovery": "Minaret du XIe siècle, vestige de la cité de Balasagun sur la Route de la soie.",
+      "fact": "Elle s'élève encore à environ 24 mètres malgré les séismes et restaurations.",
+      "sources": [
+        "Encyclopædia Britannica — Kyrgyzstan",
+        "UNESCO — Silk Roads"
+      ]
+    }
+  },
+  {
+    "iso": "KW",
+    "qid": "Q1392962",
+    "commonsFile": "File:Beach at Failaka Island.jpg",
+    "card": {
+      "slug": "ile-failaka",
+      "title": "Île Failaka",
+      "subtitle": "Golfe Persique",
+      "category": "history",
+      "rarity": "common",
+      "discovery": "Île archéologique aux traces dilmoun, hellénistiques et islamiques.",
+      "fact": "Alexandre le Grand y établit une garnison connue sous le nom d'Ikaros.",
+      "sources": [
+        "Encyclopædia Britannica — Kuwait",
+        "UNESCO — Tentative List — Failaka"
+      ]
+    }
+  },
+  {
+    "iso": "KW",
+    "qid": "Q1432832",
+    "commonsFile": "File:Kuwait City Grand Mosque Exterior South Facade 5.jpg",
+    "card": {
+      "slug": "grande-mosquee-du-koweit",
+      "title": "Grande Mosquée",
+      "subtitle": "Koweït City",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Principale mosquée du pays, inaugurée en 1986, à la coupole bleue distinctive.",
+      "fact": "Elle peut accueillir des milliers de fidèles dans sa salle de prière principale.",
+      "sources": [
+        "Encyclopædia Britannica — Kuwait"
+      ]
+    }
+  },
+  {
+    "iso": "LA",
+    "qid": "Q579860",
+    "commonsFile": "File:Champasak, Laos, Wat Poo 03.jpg",
+    "card": {
+      "slug": "vat-phou",
+      "title": "Vat Phou",
+      "subtitle": "Champassak",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Ensemble de temples hindous puis bouddhiques au pied du mont Phou Kao.",
+      "fact": "Le paysage culturel de Champassak est inscrit à l'UNESCO depuis 2001.",
+      "sources": [
+        "UNESCO — Vat Phou and Associated Ancient Settlements",
+        "Encyclopædia Britannica — Laos"
+      ]
+    }
+  },
+  {
+    "iso": "LA",
+    "qid": "Q870258",
+    "commonsFile": "File:Plainofjars 2.jpg",
+    "card": {
+      "slug": "plaine-des-jarres",
+      "title": "Plaine des Jarres",
+      "subtitle": "Xieng Khouang",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Plateaux parsemés de jarres de pierre millénaires à la fonction encore débattue.",
+      "fact": "Le site est inscrit au patrimoine mondial depuis 2019.",
+      "sources": [
+        "UNESCO — Megalithic Jar Sites in Xiengkhuang",
+        "Encyclopædia Britannica — Plain of Jars"
+      ]
+    }
+  },
+  {
+    "iso": "LB",
+    "qid": "Q173532",
+    "commonsFile": "File:Byblos Libanon 2003.JPG",
+    "card": {
+      "slug": "byblos",
+      "title": "Byblos",
+      "subtitle": "Mont-Liban",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "L'une des plus anciennes villes continûment habitées, port phénicien majeur.",
+      "fact": "Byblos est inscrite au patrimoine mondial depuis 1984.",
+      "sources": [
+        "UNESCO — Byblos",
+        "Encyclopædia Britannica — Byblos"
+      ]
+    }
+  },
+  {
+    "iso": "LB",
+    "qid": "Q60945",
+    "commonsFile": "File:Forest of The cedars of God.jpg",
+    "card": {
+      "slug": "cedres-du-liban",
+      "title": "Cèdres du Liban",
+      "subtitle": "Bcharré",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Reliques de forêts de cèdres célébrés depuis l'Antiquité biblique et phénicienne.",
+      "fact": "La forêt des Cèdres de Dieu fait partie du site UNESCO de la vallée de Qadisha.",
+      "sources": [
+        "UNESCO — Ouadi Qadisha and the Forest of the Cedars of God",
+        "Encyclopædia Britannica — Cedar of Lebanon"
+      ]
+    }
+  },
+  {
+    "iso": "MY",
+    "qid": "Q61092",
+    "commonsFile": "File:Skyline of George Town, Penang at night Nov2024-29-17.jpg",
+    "card": {
+      "slug": "george-town",
+      "title": "George Town",
+      "subtitle": "Penang",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Ville portuaire au métissage malais, chinois, indien et européen.",
+      "fact": "Avec Malacca, elle est inscrite au patrimoine mondial depuis 2008.",
+      "sources": [
+        "UNESCO — Melaka and George Town",
+        "Encyclopædia Britannica — George Town"
+      ]
+    }
+  },
+  {
+    "iso": "MY",
+    "qid": "Q60967",
+    "commonsFile": "File:Kinabalu Sabah Borneo Kampong Kundasang panorama 2.jpg",
+    "card": {
+      "slug": "mont-kinabalu",
+      "title": "Mont Kinabalu",
+      "subtitle": "Sabah",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Plus haut sommet de la Malaisie, culminant à 4 095 mètres à Bornéo.",
+      "fact": "Le parc du Kinabalu est inscrit au patrimoine mondial pour sa biodiversité.",
+      "sources": [
+        "UNESCO — Kinabalu Park",
+        "Encyclopædia Britannica — Mount Kinabalu"
+      ]
+    }
+  },
+  {
+    "iso": "MV",
+    "qid": "Q4385992",
+    "commonsFile": "File:Male' Hukuru Miskiy 1.jpg",
+    "card": {
+      "slug": "mosquee-du-vendredi-de-male",
+      "title": "Mosquée du Vendredi",
+      "subtitle": "Malé",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Mosquée de corail du XVIIe siècle au cœur de la capitale maldivienne.",
+      "fact": "Ses murs de corail taillé en font un exemple rare d'architecture islamique océanique.",
+      "sources": [
+        "Encyclopædia Britannica — Maldives",
+        "UNESCO — Tentative List — Male Friday Mosque"
+      ]
+    }
+  },
+  {
+    "iso": "MV",
+    "qid": null,
+    "commonsFile": null,
+    "card": {
+      "slug": "recifs-coralliens-des-maldives",
+      "title": "Récifs coralliens",
+      "subtitle": "Océan Indien",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Barrières et platiers coralliens formant l'archipel d'atolls des Maldives.",
+      "fact": "Ils abritent une biodiversité marine exceptionnelle menacée par le réchauffement.",
+      "sources": [
+        "Encyclopædia Britannica — Maldives",
+        "UNESCO — Biosphere Reserve — Baa Atoll"
+      ]
+    }
+  },
+  {
+    "iso": "MN",
+    "qid": "Q1453235",
+    "commonsFile": "File:Orchon-mongolei.JPG",
+    "card": {
+      "slug": "vallee-de-l-orkhon",
+      "title": "Vallée de l'Orkhon",
+      "subtitle": "Centre mongol",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Paysage culturel des steppes, berceau de plusieurs empires nomades.",
+      "fact": "Le site est inscrit au patrimoine mondial depuis 2004.",
+      "sources": [
+        "UNESCO — Orkhon Valley Cultural Landscape",
+        "Encyclopædia Britannica — Orkhon River"
+      ]
+    }
+  },
+  {
+    "iso": "MN",
+    "qid": "Q42070",
+    "commonsFile": "File:Gobi Desert.jpg",
+    "card": {
+      "slug": "desert-de-gobi",
+      "title": "Désert de Gobi",
+      "subtitle": "Sud mongol",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Vaste désert froid d'Asie centrale, célèbre pour ses dunes et fossiles de dinosaures.",
+      "fact": "Il s'étend sur plus d'un million de kilomètres carrés entre Mongolie et Chine.",
+      "sources": [
+        "Encyclopædia Britannica — Gobi",
+        "UNESCO — Uvs Nuur Basin"
+      ]
+    }
+  },
+  {
+    "iso": "NP",
+    "qid": "Q9213",
+    "commonsFile": "File:BRP Lumbini Mayadevi temple.jpg",
+    "card": {
+      "slug": "lumbini",
+      "title": "Lumbini",
+      "subtitle": "Terai",
+      "category": "history",
+      "rarity": "epic",
+      "discovery": "Lieu de naissance traditionnel du Bouddha Siddhartha Gautama.",
+      "fact": "Le site est inscrit au patrimoine mondial depuis 1997.",
+      "sources": [
+        "UNESCO — Lumbini, the Birthplace of the Lord Buddha",
+        "Encyclopædia Britannica — Lumbini"
+      ]
+    }
+  },
+  {
+    "iso": "NP",
+    "qid": "Q6122177",
+    "commonsFile": "File:Basantapurpalace.JPG",
+    "card": {
+      "slug": "place-durbar-de-katmandou",
+      "title": "Place Durbar de Katmandou",
+      "subtitle": "Katmandou",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Place des palais royaux néwar, densément ornée de temples et de statues.",
+      "fact": "Elle fait partie de la vallée de Katmandou inscrite à l'UNESCO depuis 1979.",
+      "sources": [
+        "UNESCO — Kathmandu Valley",
+        "Encyclopædia Britannica — Kathmandu"
+      ]
+    }
+  },
+  {
+    "iso": "OM",
+    "qid": "Q7042280",
+    "commonsFile": "File:Nizwa (5).jpg",
+    "card": {
+      "slug": "fort-de-nizwa",
+      "title": "Fort de Nizwa",
+      "subtitle": "Dakhiliyah",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Imposante forteresse omanaise du XVIIe siècle au cœur de l'ancienne capitale.",
+      "fact": "Sa tour circulaire massive domine le souk et les palmeraies environnantes.",
+      "sources": [
+        "Encyclopædia Britannica — Nizwā",
+        "UNESCO — Bahla Fort"
+      ]
+    }
+  },
+  {
+    "iso": "OM",
+    "qid": "Q3409476",
+    "commonsFile": null,
+    "card": {
+      "slug": "wadi-shab",
+      "title": "Wadi Shab",
+      "subtitle": "Sharqiyah",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Vallée escarpée menant à une piscine naturelle et une grotte derrière une cascade.",
+      "fact": "C'est l'un des wadis les plus emblématiques de la randonnée au Sultanat.",
+      "sources": [
+        "Encyclopædia Britannica — Oman",
+        "UNESCO — Land of Frankincense"
+      ]
+    }
+  },
+  {
+    "iso": "UZ",
+    "qid": "Q5764",
+    "commonsFile": "File:Kalon-Ensemble Buchara.jpg",
+    "card": {
+      "slug": "boukhara",
+      "title": "Boukhara",
+      "subtitle": "Ouzbékistan",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Cité oasis de la Route de la soie, densément parsemée de médersas et de mosquées.",
+      "fact": "Le centre historique de Boukhara est inscrit au patrimoine mondial depuis 1993.",
+      "sources": [
+        "UNESCO — Historic Centre of Bukhara",
+        "Encyclopædia Britannica — Bukhara"
+      ]
+    }
+  },
+  {
+    "iso": "PK",
+    "qid": "Q613720",
+    "commonsFile": "File:Lahore Fort view from Baradari.jpg",
+    "card": {
+      "slug": "fort-de-lahore",
+      "title": "Fort de Lahore",
+      "subtitle": "Pendjab",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Citadelle moghole et ses jardins de Shalimar, chef-d'œuvre d'art islamique.",
+      "fact": "Le fort et les jardins de Shalimar sont inscrits à l'UNESCO depuis 1981.",
+      "sources": [
+        "UNESCO — Fort and Shalamar Gardens in Lahore",
+        "Encyclopædia Britannica — Lahore"
+      ]
+    }
+  },
+  {
+    "iso": "PS",
+    "qid": "Q168225",
+    "commonsFile": "File:BTS Hebron Tour 280215 24.jpg",
+    "card": {
+      "slug": "hebron-al-khalil",
+      "title": "Hébron / Al-Khalīl",
+      "subtitle": "Cisjordanie",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Ville sainte autour du Tombeau des Patriarches, riche en architecture mamelouke.",
+      "fact": "La vieille ville d'Hébron/Al-Khalīl est inscrite au patrimoine mondial depuis 2017.",
+      "sources": [
+        "UNESCO — Hebron/Al-Khalil Old Town",
+        "Encyclopædia Britannica — Hebron"
+      ]
+    }
+  },
+  {
+    "iso": "PS",
+    "qid": "Q5687",
+    "commonsFile": "File:Tell es-sultan.jpg",
+    "card": {
+      "slug": "jericho",
+      "title": "Jéricho",
+      "subtitle": "Vallée du Jourdain",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "L'une des plus anciennes cités du monde, autour du tell d'es-Sultan.",
+      "fact": "Tell es-Sultan / Jéricho antique est inscrit au patrimoine mondial depuis 2023.",
+      "sources": [
+        "UNESCO — Ancient Jericho/Tell es-Sultan",
+        "Encyclopædia Britannica — Jericho"
+      ]
+    }
+  },
+  {
+    "iso": "PH",
+    "qid": "Q977422",
+    "commonsFile": "File:Chocolate Hills Bohol.JPG",
+    "card": {
+      "slug": "collines-de-chocolat",
+      "title": "Collines de Chocolat",
+      "subtitle": "Bohol",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Milliers de collines coniques qui brunissent en saison sèche, d'où leur nom.",
+      "fact": "Elles constituent l'un des paysages naturels les plus reconnaissables des Philippines.",
+      "sources": [
+        "Encyclopædia Britannica — Bohol",
+        "UNESCO — Puerto-Princesa Subterranean River"
+      ]
+    }
+  },
+  {
+    "iso": "PH",
+    "qid": "Q824602",
+    "commonsFile": "File:Puerto-Princesa Subterranean River National Park-112012.jpg",
+    "card": {
+      "slug": "riviere-souterraine-de-puerto-princesa",
+      "title": "Rivière souterraine de Puerto Princesa",
+      "subtitle": "Palawan",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Fleuve navigable sous une montagne karstique avant de rejoindre la mer de Chine méridionale.",
+      "fact": "Le parc est inscrit au patrimoine mondial et figure parmi les Nouvelles 7 Merveilles de la nature.",
+      "sources": [
+        "UNESCO — Puerto-Princesa Subterranean River National Park",
+        "Encyclopædia Britannica — Palawan"
+      ]
+    }
+  },
+  {
+    "iso": "QA",
+    "qid": "Q1148353",
+    "commonsFile": "File:Museum of Islamic Art in Doha, Qatar (32673171432).jpg",
+    "card": {
+      "slug": "musee-d-art-islamique-de-doha",
+      "title": "Musée d'art islamique",
+      "subtitle": "Doha",
+      "category": "culture",
+      "rarity": "uncommon",
+      "discovery": "Musée conçu par I. M. Pei sur une île artificielle face à la corniche de Doha.",
+      "fact": "Ses collections couvrent quatorze siècles d'art islamique, de l'Espagne à l'Asie centrale.",
+      "sources": [
+        "Encyclopædia Britannica — Qatar",
+        "UNESCO — Al Zubarah Archaeological Site"
+      ]
+    }
+  },
+  {
+    "iso": "QA",
+    "qid": "Q4117959",
+    "commonsFile": "File:Souq Waqif, Doha, Catar, 2013-08-05, DD 84.JPG",
+    "card": {
+      "slug": "souq-waqif",
+      "title": "Souq Waqif",
+      "subtitle": "Doha",
+      "category": "culture",
+      "rarity": "common",
+      "discovery": "Marché traditionnel restauré, cœur vivant du commerce et de la vie nocturne qatarie.",
+      "fact": "Son nom évoque un marché « debout » où les marchands vendaient leurs marchandises à pied.",
+      "sources": [
+        "Encyclopædia Britannica — Doha",
+        "UNESCO — Al Zubarah Archaeological Site"
+      ]
+    }
+  },
+  {
+    "iso": "SG",
+    "qid": "Q630135",
+    "commonsFile": "File:Supertree Grove, Gardens by the Bay, Singapore - 20120712-02.jpg",
+    "card": {
+      "slug": "gardens-by-the-bay",
+      "title": "Gardens by the Bay",
+      "subtitle": "Marina Bay",
+      "category": "geography",
+      "rarity": "rare",
+      "discovery": "Parc urbain futuriste aux « Supertrees » et serres climatisées géantes.",
+      "fact": "Inauguré en 2012, il incarne la stratégie de cité-jardin de Singapour.",
+      "sources": [
+        "Encyclopædia Britannica — Singapore",
+        "UNESCO — Singapore Botanic Gardens"
+      ]
+    }
+  },
+  {
+    "iso": "SG",
+    "qid": "Q208760",
+    "commonsFile": "File:Singapore Skyline 2019-10.jpg",
+    "card": {
+      "slug": "merlion",
+      "title": "Merlion",
+      "subtitle": "Marina Bay",
+      "category": "culture",
+      "rarity": "common",
+      "discovery": "Créature mythique mi-lion mi-poisson, emblème moderne de Singapour.",
+      "fact": "La statue originale de 1972 crache de l'eau vers le détroit de Marina.",
+      "sources": [
+        "Encyclopædia Britannica — Singapore"
+      ]
+    }
+  },
+  {
+    "iso": "LK",
+    "qid": "Q289175",
+    "commonsFile": "File:SL Kandy asv2020-01 img33 Sacred Tooth Temple.jpg",
+    "card": {
+      "slug": "temple-de-la-dent",
+      "title": "Temple de la Dent",
+      "subtitle": "Kandy",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Temple bouddhique abritant une relique de la dent du Bouddha.",
+      "fact": "La ville sainte de Kandy est inscrite au patrimoine mondial depuis 1988.",
+      "sources": [
+        "UNESCO — Sacred City of Kandy",
+        "Encyclopædia Britannica — Temple of the Tooth"
+      ]
+    }
+  },
+  {
+    "iso": "LK",
+    "qid": "Q2507050",
+    "commonsFile": "File:Galle Fort.jpg",
+    "card": {
+      "slug": "fort-de-galle",
+      "title": "Fort de Galle",
+      "subtitle": "Côte sud",
+      "category": "monument",
+      "rarity": "uncommon",
+      "discovery": "Place forte coloniale portugaise puis hollandaise face à l'océan Indien.",
+      "fact": "La vieille ville fortifiée de Galle est inscrite à l'UNESCO depuis 1988.",
+      "sources": [
+        "UNESCO — Old Town of Galle and its Fortifications",
+        "Encyclopædia Britannica — Galle"
+      ]
+    }
+  },
+  {
+    "iso": "SY",
+    "qid": "Q177549",
+    "commonsFile": "File:KRAK DES CHEVALIERS - GAR - 6-00.jpg",
+    "card": {
+      "slug": "crac-des-chevaliers",
+      "title": "Crac des Chevaliers",
+      "subtitle": "près de Homs",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Forteresse des Hospitaliers, l'un des châteaux croisés les mieux conservés.",
+      "fact": "Avec Qal'at Salah El-Din, il est inscrit au patrimoine mondial depuis 2006.",
+      "sources": [
+        "UNESCO — Crac des Chevaliers and Qal’at Salah El-Din",
+        "Encyclopædia Britannica — Krak des Chevaliers"
+      ]
+    }
+  },
+  {
+    "iso": "SY",
+    "qid": "Q183562",
+    "commonsFile": "File:Umayyad Mosque, Damascus.jpg",
+    "card": {
+      "slug": "grande-mosquee-des-omeyyades",
+      "title": "Grande Mosquée des Omeyyades",
+      "subtitle": "Damas",
+      "category": "monument",
+      "rarity": "rare",
+      "discovery": "Mosquée du VIIIe siècle au cœur de la vieille ville de Damas.",
+      "fact": "Elle compte parmi les plus anciennes et prestigieuses mosquées du monde islamique.",
+      "sources": [
+        "UNESCO — Ancient City of Damascus",
+        "Encyclopædia Britannica — Great Mosque of Damascus"
+      ]
+    }
+  },
+  {
+    "iso": "TW",
+    "qid": "Q716206",
+    "commonsFile": "File:Sun Moon Lake Taiwan.jpg",
+    "card": {
+      "slug": "lac-du-soleil-et-de-la-lune",
+      "title": "Lac du Soleil et de la Lune",
+      "subtitle": "Nantou",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Plus grand lac de Taïwan, entouré de montagnes et de villages autochtones.",
+      "fact": "Son nom évoque la forme ronde d'une partie et croissante de l'autre.",
+      "sources": [
+        "Encyclopædia Britannica — Taiwan"
+      ]
+    }
+  },
+  {
+    "iso": "TJ",
+    "qid": "Q422929",
+    "commonsFile": "File:Sarazm,area12-W.jpg",
+    "card": {
+      "slug": "sarazm",
+      "title": "Sarazm",
+      "subtitle": "Sughd",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Site proto-urbain d'Asie centrale (IVe–IIIe millénaires av. J.-C.).",
+      "fact": "Il est inscrit au patrimoine mondial depuis 2010.",
+      "sources": [
+        "UNESCO — Proto-urban Site of Sarazm",
+        "Encyclopædia Britannica — Tajikistan"
+      ]
+    }
+  },
+  {
+    "iso": "TJ",
+    "qid": "Q2478596",
+    "commonsFile": "File:Iskander-kul, Tajikistan.JPG",
+    "card": {
+      "slug": "iskanderkul",
+      "title": "Iskanderkul",
+      "subtitle": "Fann",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Lac de montagne nommé d'après Alexandre le Grand, dans les monts Fann.",
+      "fact": "Situé à plus de 2 000 mètres, il est un haut lieu de randonnée tadjike.",
+      "sources": [
+        "Encyclopædia Britannica — Tajikistan",
+        "UNESCO — Tajik National Park"
+      ]
+    }
+  },
+  {
+    "iso": "TH",
+    "qid": "Q873769",
+    "commonsFile": "File:Grand Palace Bangkok.jpg",
+    "card": {
+      "slug": "grand-palais-de-bangkok",
+      "title": "Grand Palais de Bangkok",
+      "subtitle": "Bangkok",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Complexe de palais et de temples royaux, dont le Wat Phra Kaew et son Bouddha d'émeraude.",
+      "fact": "Construit à partir de 1782, il reste le cadre des cérémonies royales majeures.",
+      "sources": [
+        "Encyclopædia Britannica — Bangkok",
+        "UNESCO — Historic City of Ayutthaya"
+      ]
+    }
+  },
+  {
+    "iso": "TL",
+    "qid": "Q680813",
+    "commonsFile": "File:Christ Dili.jpg",
+    "card": {
+      "slug": "cristo-rei-de-dili",
+      "title": "Cristo Rei de Dili",
+      "subtitle": "Dili",
+      "category": "monument",
+      "rarity": "common",
+      "discovery": "Statue du Christ Roi dominant la baie de Dili depuis une colline côtière.",
+      "fact": "Inaugurée en 1996, elle est devenue un symbole visuel de Timor oriental.",
+      "sources": [
+        "Encyclopædia Britannica — East Timor"
+      ]
+    }
+  },
+  {
+    "iso": "TL",
+    "qid": "Q753794",
+    "commonsFile": "File:Atauro coast 2.jpg",
+    "card": {
+      "slug": "ile-d-atauro",
+      "title": "Île d'Atauro",
+      "subtitle": "au large de Dili",
+      "category": "geography",
+      "rarity": "common",
+      "discovery": "Île volcanique aux récifs coralliens parmi les plus riches du Triangle de corail.",
+      "fact": "Ses eaux protégées en font un haut lieu d'observation de la biodiversité marine.",
+      "sources": [
+        "Encyclopædia Britannica — East Timor",
+        "UNESCO — Tentative List — Timor-Leste"
+      ]
+    }
+  },
+  {
+    "iso": "TM",
+    "qid": "Q193325",
+    "commonsFile": "File:Turkmenistan Merv city.jpg",
+    "card": {
+      "slug": "merv",
+      "title": "Merv",
+      "subtitle": "Mary",
+      "category": "history",
+      "rarity": "rare",
+      "discovery": "Oasis de la Route de la soie, l'une des plus grandes cités du monde médiéval.",
+      "fact": "Le parc national historique et culturel de l'ancienne Merv est inscrit à l'UNESCO.",
+      "sources": [
+        "UNESCO — State Historical and Cultural Park “Ancient Merv”",
+        "Encyclopædia Britannica — Merv"
+      ]
+    }
+  },
+  {
+    "iso": "TM",
+    "qid": "Q854672",
+    "commonsFile": "File:Nisa Turkmenistan.JPG",
+    "card": {
+      "slug": "nisa",
+      "title": "Nisa",
+      "subtitle": "près d'Achgabat",
+      "category": "history",
+      "rarity": "uncommon",
+      "discovery": "Ancienne capitale parthe aux forteresses de pisé et trésors hellénistiques.",
+      "fact": "La forteresse parthe de Nisa est inscrite au patrimoine mondial depuis 2007.",
+      "sources": [
+        "UNESCO — Parthian Fortresses of Nisa",
+        "Encyclopædia Britannica — Nisa"
+      ]
+    }
+  },
+  {
+    "iso": "YE",
+    "qid": "Q2471",
+    "commonsFile": "File:Sana'a (2286825748).jpg",
+    "card": {
+      "slug": "sanaa",
+      "title": "Sanaa",
+      "subtitle": "Yémen",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Vieille ville aux maisons-tours de brique crue ornées de motifs de plâtre blanc.",
+      "fact": "Le centre historique de Sanaa est inscrit au patrimoine mondial depuis 1986.",
+      "sources": [
+        "UNESCO — Old City of Sana'a",
+        "Encyclopædia Britannica — Sanaa"
+      ]
+    }
+  },
+  {
+    "iso": "AE",
+    "qid": "Q695604",
+    "commonsFile": "File:Sheikh Zayed Mosque view.jpg",
+    "card": {
+      "slug": "mosquee-sheikh-zayed",
+      "title": "Mosquée Sheikh Zayed",
+      "subtitle": "Abou Dabi",
+      "category": "monument",
+      "rarity": "epic",
+      "discovery": "Grande mosquée de marbre blanc aux dômes et minarets monumentaux.",
+      "fact": "Elle peut accueillir plus de 40 000 fidèles et abrite l'un des plus grands tapis du monde.",
+      "sources": [
+        "Encyclopædia Britannica — Abu Dhabi",
+        "UNESCO — Cultural Sites of Al Ain"
+      ]
+    }
+  },
+  {
+    "iso": "AE",
+    "qid": "Q4703456",
+    "commonsFile": "File:Alley in Al Ain Oasis.JPG",
+    "card": {
+      "slug": "oasis-d-al-ain",
+      "title": "Oasis d'Al Aïn",
+      "subtitle": "Abou Dabi",
+      "category": "geography",
+      "rarity": "uncommon",
+      "discovery": "Ensemble d'oasis irriguées par aflaj, au pied du djebel Hafeet.",
+      "fact": "Les sites culturels d'Al Aïn sont inscrits au patrimoine mondial depuis 2011.",
+      "sources": [
+        "UNESCO — Cultural Sites of Al Ain",
+        "Encyclopædia Britannica — Al-ʿAyn"
+      ]
+    }
+  }
+]
