@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { StyleSheet, useWindowDimensions, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import {
   colors,
@@ -11,6 +11,7 @@ import {
   spacing,
   Surface,
   Text,
+  useAppContentWidth,
 } from '@/design-system';
 import { toCardData } from '@/features/cards/adapters';
 import { AtlasCard } from '@/features/cards/AtlasCard';
@@ -22,7 +23,7 @@ export default function AlbumScreen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
   const data = useAtlasData();
   const router = useRouter();
-  const { width } = useWindowDimensions();
+  const width = useAppContentWidth();
 
   if (data.status === 'loading') return <LoadingState />;
   if (data.status === 'error') return <ErrorState message={errorMessage(data.error)} onRetry={data.retry} />;

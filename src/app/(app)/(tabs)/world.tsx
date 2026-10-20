@@ -49,6 +49,8 @@ import { useQueryClient } from '@tanstack/react-query';
 
 const SIDE_PANEL_MIN_FRAME = 700;
 const SIDE_PANEL_WIDTH = 360;
+/** Place réservée sous le panneau pour le CTA tirage / reprendre (jamais masqué). */
+const DRAW_BAR_SPACE = MIN_TOUCH + spacing.md * 2;
 
 type DrawPhase = 'idle' | 'spinning' | 'winner' | 'reveal';
 
@@ -203,13 +205,21 @@ export default function WorldScreen() {
   const side = frame ? frame.width >= SIDE_PANEL_MIN_FRAME : false;
   const panelWidth = frame ? Math.min(SIDE_PANEL_WIDTH, frame.width * 0.42) : 0;
   const panelOpen = !!(selectedCountry && selectedTier) && drawPhase !== 'spinning';
+  const drawBarVisible = drawPhase !== 'reveal';
+  const panelBottomPad =
+    drawBarVisible && !side ? DRAW_BAR_SPACE + spacing.md : spacing.md;
   const insetRight = panelOpen && side ? panelWidth + spacing.md * 2 : 0;
-  const insetBottom = panelOpen && !side ? panelHeight + spacing.md * 2 : 0;
+  const insetBottom = panelOpen && !side ? panelHeight + panelBottomPad : drawBarVisible ? DRAW_BAR_SPACE : 0;
   const chargeCount = charges.data?.charges ?? 0;
   const chargeMax = charges.data?.maxStored ?? 10;
   const canLaunchDraw = chargeCount > 0 || !!activeExpedition;
-  /** Pendant le spin : uniquement drawWinner (posé en fin de séquence). Sinon rouge si tiré ou expédition en cours. */
-  const mapWinner = drawing ? drawWinner : (drawWinner ?? activeCountryNumeric);
+  /**
+   * Rouge / zoom cible :
+   * - idle → pays de l’expédition active ;
+   * - tirage → uniquement `drawWinner` (posé à la dernière étape), jamais le pays
+   *   déjà écrit en base au début du tirage (sinon zoom anticipé pendant le spin).
+   */
+  const mapWinner = drawPhase === 'idle' ? activeCountryNumeric : drawWinner;
 
   const clearDrawHighlight = () => {
     setDrawPhase('idle');
@@ -262,7 +272,7 @@ export default function WorldScreen() {
             />
           ) : null}
 
-          {drawPhase !== 'reveal' ? (
+          {drawBarVisible ? (
             <View style={styles.drawBar} pointerEvents="box-none">
               {drawing ? (
                 <Button label="Passer" variant="secondary" compact onPress={skipDraw} />
@@ -279,6 +289,7 @@ export default function WorldScreen() {
                   }
                   icon="compass"
                   disabled={!canLaunchDraw}
+                  testID={activeExpedition ? 'resume-expedition' : 'launch-expedition'}
                   onPress={() => {
                     if (activeExpedition && drawPhase === 'idle') {
                       const def = catalog.expeditions.find((e) => e.id === activeExpedition.expedition_id);
@@ -321,6 +332,8 @@ export default function WorldScreen() {
                 onPress={() => {
                   setDrawPhase('idle');
                   setDrawResult(null);
+                  // Garde le rouge via activeCountryNumeric (expédition déjà créée au tirage).
+                  setDrawWinner(null);
                 }}
               />
             </Surface>
@@ -355,7 +368,12 @@ export default function WorldScreen() {
               style={
                 side
                   ? { top: spacing.md, right: spacing.md, bottom: spacing.md, width: panelWidth }
-                  : { left: spacing.md, right: spacing.md, bottom: spacing.md, maxHeight: frame.height * 0.6 }
+                  : {
+                      left: spacing.md,
+                      right: spacing.md,
+                      bottom: panelBottomPad,
+                      maxHeight: frame.height * 0.55,
+                    }
               }
             />
           ) : null}
@@ -429,6 +447,8 @@ const styles = StyleSheet.create({
     bottom: spacing.md,
     gap: spacing.sm,
     alignItems: 'stretch',
+    // Au-dessus du panneau pays : le CTA reprendre / lancer reste toujours accessible.
+    zIndex: 30,
   },
   revealCard: {
     position: 'absolute',

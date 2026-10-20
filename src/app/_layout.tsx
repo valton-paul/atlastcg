@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { AppShell } from '@/design-system/AppShell';
 import { colors } from '@/design-system/tokens';
 import { AuthProvider } from '@/features/auth/AuthProvider';
 import { PreferencesProvider } from '@/lib/preferences';
@@ -51,21 +52,23 @@ export default function RootLayout() {
   if (!ready) return null;
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.night }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.nightDeep }}>
       <SafeAreaProvider>
         <QueryClientProvider client={queryClient}>
           <PreferencesProvider>
             <AuthProvider>
               <ThemeProvider value={navigationTheme}>
                 <StatusBar style="light" />
-                <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.night } }}>
-                  <Stack.Screen name="(app)" />
-                  <Stack.Screen name="(auth)" />
-                  <Stack.Screen name="auth/callback" />
-                  <Stack.Screen name="reset-password" />
-                  <Stack.Screen name="verify-email" />
-                  <Stack.Screen name="legal" options={{ presentation: 'modal' }} />
-                </Stack>
+                <AppShell>
+                  <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.night } }}>
+                    <Stack.Screen name="(app)" />
+                    <Stack.Screen name="(auth)" />
+                    <Stack.Screen name="auth/callback" />
+                    <Stack.Screen name="reset-password" />
+                    <Stack.Screen name="verify-email" />
+                    <Stack.Screen name="legal" options={{ presentation: 'modal' }} />
+                  </Stack>
+                </AppShell>
               </ThemeProvider>
             </AuthProvider>
           </PreferencesProvider>

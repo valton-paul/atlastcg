@@ -98,10 +98,10 @@ export default function ExpeditionScreen() {
   const { catalog } = data;
   const country = catalog.countriesByIso.get(expedition.country_code);
   const unlocked = countryProgress(catalog, data.player.ownedCards, expedition.country_code).owned > 0;
-  const rewardSummary = `${expedition.reward_fragments} fragments · ${expedition.reward_xp} XP`;
+  const rewardSummary = `+${expedition.reward_fragments} Fragments · +${expedition.reward_xp} XP`;
   const perfectHint =
     expedition.perfect_bonus_fragments > 0 || expedition.perfect_bonus_xp > 0
-      ? `Sans faute : +${expedition.perfect_bonus_fragments} fragments · +${expedition.perfect_bonus_xp} XP`
+      ? `Sans faute : +${expedition.perfect_bonus_fragments} Fragments · +${expedition.perfect_bonus_xp} XP`
       : null;
 
   if (!userExpedition) {
@@ -204,7 +204,7 @@ export default function ExpeditionScreen() {
               <Icon name="fragment" size={18} color={colors.gold} />
               <Text variant="heading">+{fragments}</Text>
               <Text variant="caption" color={colors.textMuted}>
-                fragments
+                Fragments
               </Text>
             </View>
             <View style={styles.finaleChip}>
@@ -267,7 +267,7 @@ export default function ExpeditionScreen() {
                   });
                   setShowScore(true);
                   AccessibilityInfo.announceForAccessibility(
-                    `Récompense reçue : ${r.fragments_granted} fragments et ${r.xp_granted} XP.`,
+                    `Récompense reçue : ${r.fragments_granted} Fragments et ${r.xp_granted} XP.`,
                   );
                 },
               })

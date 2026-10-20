@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
-import { FlatList, Platform, ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { FlatList, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
@@ -17,6 +17,7 @@ import {
   Surface,
   Text,
   TextField,
+  useAppContentWidth,
 } from '@/design-system';
 import { toCardData } from '@/features/cards/adapters';
 import { AtlasCard, type AtlasCardData } from '@/features/cards/AtlasCard';
@@ -93,7 +94,7 @@ export default function CollectionScreen() {
   const router = useRouter();
   const markSeen = useMarkCardsSeen();
   const insets = useSafeAreaInsets();
-  const { width } = useWindowDimensions();
+  const width = useAppContentWidth();
   const [view, setView] = useState<View_>('cards');
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState<CardFilters>(() => ({
@@ -132,12 +133,13 @@ export default function CollectionScreen() {
     });
   }, [data, filtered, visibleCount]);
 
-  const availableWidth = width - spacing.lg * 2;
+  // Marge latérale un peu plus large à droite pour les lueurs des cartes.
+  const sideInsetLeft = spacing.lg;
+  const sideInsetRight = spacing.lg + spacing.sm;
+  const availableWidth = width - sideInsetLeft - sideInsetRight;
   const rawCardWidth = Math.floor((availableWidth - columnGap * (columns - 1)) / columns);
   const cardWidth =
     columns === COLUMNS_DESKTOP ? Math.min(DESKTOP_MAX_CARD_WIDTH, rawCardWidth) : rawCardWidth;
-  const gridWidth = cardWidth * columns + columnGap * (columns - 1);
-  const listPadH = Math.max(spacing.lg, Math.floor((width - gridWidth) / 2));
   const listBottomPad = MIN_TOUCH + spacing.xxxl + Math.max(insets.bottom, spacing.sm);
 
   const openCard = useCallback((slug: string) => router.push(`/card/${slug}`), [router]);
@@ -301,7 +303,16 @@ export default function CollectionScreen() {
           data={visibleItems}
           keyExtractor={keyExtractor}
           numColumns={columns}
-          columnWrapperStyle={[styles.columns, { gap: columnGap, marginBottom: columnGap, paddingHorizontal: listPadH }]}
+          showsVerticalScrollIndicator={false}
+          columnWrapperStyle={[
+            styles.columns,
+            {
+              gap: columnGap,
+              marginBottom: columnGap,
+              paddingLeft: sideInsetLeft,
+              paddingRight: sideInsetRight,
+            },
+          ]}
           contentContainerStyle={{ paddingBottom: listBottomPad }}
           ListHeaderComponent={
             <View style={[styles.listHeader, { width, paddingHorizontal: spacing.lg }]}>{header}</View>
@@ -341,7 +352,10 @@ export default function CollectionScreen() {
           renderItem={renderItem}
         />
       ) : (
-        <ScrollView contentContainerStyle={[styles.list, { paddingBottom: listBottomPad }]}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={[styles.list, { paddingBottom: listBottomPad }]}
+        >
           {header}
           {catalog.collections.map((collection) => {
             const progress = collectionProgress(collection, player.ownedCards);

@@ -25,7 +25,6 @@ export type IconName =
   | 'list'
   | 'map'
   | 'fragment'
-  | 'coin'
   | 'compass'
   | 'trophy'
   | 'refresh'
@@ -162,13 +161,6 @@ function renderGlyph(name: IconName, c: Common, color: string) {
       return <Path {...c} d="M9 4 3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5zM9 4v13.5M15 6.5V20" />;
     case 'fragment':
       return <Path {...c} d="M7 4h10l4 5-9 11L3 9zM3 9h18M12 20 8.5 9 10 4M12 20l3.5-11L14 4" />;
-    case 'coin':
-      return (
-        <>
-          <Circle {...c} cx={12} cy={12} r={9} />
-          <Path {...c} d="M12 7v10M9.5 9.5c.6-1 1.5-1.5 2.5-1.5 1.4 0 2.5.8 2.5 2s-1.1 2-2.5 2c-1.4 0-2.5.8-2.5 2s1.1 2 2.5 2c1 0 1.9-.5 2.5-1.5" />
-        </>
-      );
     case 'compass':
       return (
         <>

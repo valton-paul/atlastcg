@@ -28,7 +28,16 @@ type Props = {
 };
 
 /** Détail d'un pays affiché par-dessus la carte, sans quitter la vue. */
-export function CountryPanel({ catalog, owned, country, tier, onClose, locked = false, style, onHeight }: Props) {
+export function CountryPanel({
+  catalog,
+  owned,
+  country,
+  tier,
+  onClose,
+  locked = false,
+  style,
+  onHeight,
+}: Props) {
   const router = useRouter();
   const progress = countryProgress(catalog, owned, country.iso_code);
   const discovered = progress.owned > 0;
@@ -123,6 +132,8 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
     gap: spacing.sm,
     boxShadow: '0 12px 32px rgba(0, 0, 0, 0.45)',
+    // Sous la barre de tirage / reprendre (zIndex 30 sur world).
+    zIndex: 10,
   },
   discovered: { borderColor: colors.turquoise },
   header: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.sm },

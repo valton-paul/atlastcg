@@ -31,6 +31,9 @@ export function PlayerHeader({ title, subtitle, fragments, packCount }: Props) {
         <View style={styles.resource} accessible accessibilityLabel={`${fragments} fragments`}>
           <Icon name="fragment" size={16} color={colors.gold} />
           <Text variant="caption">{fragments}</Text>
+          <Text variant="overline" color={colors.textMuted} style={styles.resourceLabel}>
+            Fragments
+          </Text>
         </View>
       ) : null}
       {packCount !== undefined ? (
@@ -67,4 +70,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
   },
+  resourceLabel: { fontSize: 9, letterSpacing: 0.6, textTransform: 'uppercase' },
 });

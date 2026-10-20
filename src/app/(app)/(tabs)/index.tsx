@@ -8,7 +8,6 @@ import {
   RefreshControl,
   ScrollView,
   StyleSheet,
-  useWindowDimensions,
   View,
 } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
@@ -23,6 +22,7 @@ import {
   spacing,
   Surface,
   Text,
+  useAppContentWidth,
 } from '@/design-system';
 import type { PackDefinition } from '@/features/catalog/types';
 import { type TimedPacks, useInterruptedOpenings, useTimedPacks } from '@/features/packs/api';
@@ -48,7 +48,7 @@ export default function HomeScreen() {
   const data = useAtlasData();
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { width: screenWidth } = useWindowDimensions();
+  const screenWidth = useAppContentWidth();
   const userId = data.status === 'ready' ? data.player.profile.id : null;
   const timed = useTimedPacks(data.status === 'ready', userId);
   const interrupted = useInterruptedOpenings(data.status === 'ready');
@@ -94,7 +94,7 @@ export default function HomeScreen() {
   if (data.status === 'loading') return <LoadingState />;
   if (data.status === 'error') return <ErrorState message={errorMessage(data.error)} onRetry={data.retry} />;
 
-  const { player } = data;
+  const { player, catalog } = data;
   const group = groups[selectedIndex] ?? groups[0];
   const total = player.packs.length;
 
@@ -140,6 +140,29 @@ export default function HomeScreen() {
             </Text>
           </Surface>
         ) : null}
+
+        {(() => {
+          const active = [...player.expeditions.values()].find((e) => e.status === 'in_progress');
+          if (!active) return null;
+          const def = catalog.expeditions.find((e) => e.id === active.expedition_id);
+          if (!def) return null;
+          const country = catalog.countriesByIso.get(def.country_code);
+          return (
+            <Surface
+              tone="explore"
+              onPress={() => router.push(`/expedition/${def.slug}`)}
+              testID="home-resume-expedition"
+            >
+              <Text variant="overline" color={colors.turquoise}>
+                Expédition en cours
+              </Text>
+              <Text variant="bodyStrong">Reprendre : {country?.name ?? def.title}</Text>
+              <Text variant="caption" color={colors.textMuted}>
+                Vous avez quitté l’aventure — touchez pour continuer là où vous en étiez.
+              </Text>
+            </Surface>
+          );
+        })()}
 
         <View style={styles.hero}>
           <Text variant="hero" align="center" accessibilityRole="header">

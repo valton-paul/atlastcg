@@ -46,4 +46,20 @@ describe('détail d’un pays sur la carte', () => {
     expect(screen.queryByText(/Capitale/)).toBeNull();
     expect(screen.getByText(/Obtenez une carte de ce pays/)).toBeOnTheScreen();
   });
+
+  it('verrouille le panneau sans bouton fermer pendant une expédition', async () => {
+    await render(
+      <CountryPanel
+        catalog={catalog}
+        owned={ownedMap(owned(cards.frCountry.id))}
+        country={france}
+        tier="exploring"
+        locked
+        onClose={jest.fn()}
+      />,
+    );
+
+    expect(screen.queryByRole('button', { name: 'Fermer le panneau' })).toBeNull();
+    expect(screen.queryByRole('button', { name: /reprendre/i })).toBeNull();
+  });
 });
