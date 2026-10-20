@@ -52,10 +52,32 @@ function questionScore(steps: ExpeditionStep[], progress: Map<string, StepProgre
 }
 
 function heritageIllustration(
-  cards: { category: string; country_code: string | null; illustration_path: string | null }[],
+  cards: {
+    title: string;
+    category: string;
+    country_code: string | null;
+    illustration_path: string | null;
+  }[],
   countryCode: string,
+  /** Titre d’étape (ex. « Découvrir : Machu Picchu ») pour coller la bonne photo. */
+  hint?: string,
 ): string | null {
   const ofCountry = cards.filter((c) => c.country_code === countryCode && c.illustration_path);
+  if (hint) {
+    const needle = hint
+      .replace(/^découvrir\s*:\s*/i, '')
+      .trim()
+      .toLowerCase();
+    if (needle) {
+      const match = ofCountry.find(
+        (c) =>
+          c.title.toLowerCase() === needle ||
+          needle.includes(c.title.toLowerCase()) ||
+          c.title.toLowerCase().includes(needle),
+      );
+      if (match?.illustration_path) return match.illustration_path;
+    }
+  }
   const preferred = ofCountry.find((c) => !['country', 'capital'].includes(c.category));
   return (preferred ?? ofCountry[0])?.illustration_path ?? null;
 }
@@ -240,7 +262,13 @@ export default function ExpeditionScreen() {
         <StepCard
           key={currentStep.id}
           step={currentStep}
-          heroUri={currentStep.kind === 'discover' ? heroUri : null}
+          heroUri={
+            currentStep.kind === 'discover'
+              ? illustrationUrl(
+                  heritageIllustration(catalog.cards, expedition.country_code, currentStep.title) ?? heroPath,
+                )
+              : null
+          }
           stepXp={expedition.step_xp}
         />
       ) : (
@@ -408,7 +436,7 @@ function StepCard({
       <Text variant="heading">{step.title}</Text>
       {heroUri && step.kind === 'discover' ? (
         <View style={styles.stepHero}>
-          <Image source={{ uri: heroUri }} style={styles.stepHeroImage} contentFit="cover" transition={200} />
+          <Image source={{ uri: heroUri }} style={styles.stepHeroImage} contentFit="contain" transition={200} />
         </View>
       ) : null}
       <Text>{step.prompt}</Text>
@@ -509,10 +537,12 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   stepHero: {
-    height: 160,
+    width: '100%',
+    // Plus grand qu’une bandelette : photo lisible sans crop agressif.
+    aspectRatio: 4 / 3,
     borderRadius: radius.md,
     overflow: 'hidden',
-    backgroundColor: colors.ink,
+    backgroundColor: colors.nightDeep,
   },
   stepHeroImage: { width: '100%', height: '100%' },
   choices: { gap: spacing.sm },
