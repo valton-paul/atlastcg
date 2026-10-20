@@ -125,6 +125,7 @@ export default function HomeScreen() {
         title={player.profile.display_name}
         fragments={player.fragments}
         packCount={total}
+        explorationXp={player.explorationXp}
       />
       <ScrollView
         contentContainerStyle={styles.content}

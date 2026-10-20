@@ -296,7 +296,12 @@ export default function CollectionScreen() {
 
   return (
     <View style={styles.root}>
-      <PlayerHeader title="Collection" fragments={player.fragments} packCount={player.packs.length} />
+      <PlayerHeader
+        title="Collection"
+        fragments={player.fragments}
+        packCount={player.packs.length}
+        explorationXp={player.explorationXp}
+      />
       {view === 'cards' ? (
         <FlatList
           key={columns}

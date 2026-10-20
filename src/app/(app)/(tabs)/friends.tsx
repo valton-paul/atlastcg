@@ -61,7 +61,12 @@ export default function FriendsScreen() {
 
   return (
     <View style={styles.root}>
-      <PlayerHeader title="Amis" fragments={player.fragments} packCount={player.packs.length} />
+      <PlayerHeader
+        title="Amis"
+        fragments={player.fragments}
+        packCount={player.packs.length}
+        explorationXp={player.explorationXp}
+      />
       <ScrollView
         contentContainerStyle={styles.content}
         keyboardShouldPersistTaps="handled"

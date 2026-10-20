@@ -246,7 +246,12 @@ export default function WorldScreen() {
   if (mode === 'map') {
     return (
       <View style={styles.root}>
-        <PlayerHeader title="Carte du monde" fragments={player.fragments} packCount={player.packs.length} />
+        <PlayerHeader
+          title="Carte du monde"
+          fragments={player.fragments}
+          packCount={player.packs.length}
+          explorationXp={player.explorationXp}
+        />
         <View style={styles.mapToolbar}>{toolbar}</View>
         <View
           style={styles.mapArea}
@@ -384,7 +389,12 @@ export default function WorldScreen() {
 
   return (
     <View style={styles.root}>
-      <PlayerHeader title="Carte du monde" fragments={player.fragments} packCount={player.packs.length} />
+      <PlayerHeader
+        title="Carte du monde"
+        fragments={player.fragments}
+        packCount={player.packs.length}
+        explorationXp={player.explorationXp}
+      />
       <ScrollView contentContainerStyle={styles.content}>
         {toolbar}
         {CONTINENT_ORDER.map((continent) => {
