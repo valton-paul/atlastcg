@@ -70,7 +70,16 @@
     "stepXp": 5
   },
   "settings": {
-    "starter_reward": { "value": { "pack_slug": "classique", "quantity": 2 }, "description": "Paquets offerts à la création du compte." },
+    "starter_reward": {
+      "value": {
+        "packs": [
+          { "pack_slug": "classique", "quantity": 14 },
+          { "pack_slug": "premium", "quantity": 1 },
+          { "pack_slug": "legendaire", "quantity": 1 }
+        ]
+      },
+      "description": "Paquets offerts à la création du compte : 14 classiques, 1 premium, 1 légendaire."
+    },
     "timed_packs": { "value": { "pack_slug": "classique", "interval_seconds": 600, "max_stored": 15 }, "description": "Paquets régénérés : au plus un paquet classique par synchronisation (toutes les 10 min), tant que la réserve est sous le plafond. Pas de rattrapage en rafale." },
     "expedition_charges": { "value": { "interval_seconds": 1800, "max_stored": 10 }, "description": "Réserve d’expéditions : +1 toutes les 30 min, jusqu’à 10. Une charge est consommée au démarrage (tirage ou fiche pays)." },
     "fragment_shop": {

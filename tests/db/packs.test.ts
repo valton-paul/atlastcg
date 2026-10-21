@@ -373,7 +373,8 @@ describe('fragments', () => {
     });
     expect(first).toMatchObject({ packs_granted: 1, fragments_balance: 50, pack_slug: 'premium' });
     expect(again).toMatchObject({ replayed: true, packs_granted: 0 });
-    expect(await availablePacks(db, user, 'premium')).toHaveLength(1);
+    // 1 starter + 1 échange.
+    expect(await availablePacks(db, user, 'premium')).toHaveLength(2);
   });
 
   it('ne laisse jamais le solde devenir négatif lors d’échanges concurrents', async () => {
@@ -386,7 +387,8 @@ describe('fragments', () => {
     );
     expect(results.filter((r) => r.status === 'fulfilled')).toHaveLength(2);
     expect(await scalar<number>(db, 'select fragments from public.player_wallets where user_id = $1', [user])).toBe(50);
-    expect(await availablePacks(db, user, 'premium')).toHaveLength(2);
+    // 1 starter + 2 échanges.
+    expect(await availablePacks(db, user, 'premium')).toHaveLength(3);
   });
 });
 
@@ -415,15 +417,33 @@ describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
     );
   }
 
-  it('démarre le minuteur à la première synchronisation, sans paquet immédiat', async () => {
+  /** Lot de départ = 16 paquets (> plafond minuteur 15) : on libère de la place pour tester le timer. */
+  async function freeTimerSlots(user: string, keepAvailable = 2) {
+    await db.admin.query(
+      `with doomed as (
+         select id from public.user_packs
+          where user_id = $1 and status = 'available'
+          order by created_at
+          offset $2
+       )
+       update public.user_packs set status = 'opened', opened_at = now()
+        where id in (select id from doomed)`,
+      [user, keepAvailable],
+    );
+  }
+
+  it('démarre le minuteur dès qu’il y a de la place (lot de départ déjà au-dessus du plafond)', async () => {
     const user = await createUser(db);
+    expect(await sync(user)).toMatchObject({ available: 16, max_stored: 15, interval_seconds: 600, granted: 0, next_at: null });
+    await freeTimerSlots(user, 2);
     const state = await sync(user);
-    expect(state).toMatchObject({ available: 2, max_stored: 15, interval_seconds: 600, granted: 0 });
+    expect(state).toMatchObject({ available: 2, max_stored: 15, granted: 0 });
     expect(secondsUntilNext(state)).toBeCloseTo(600, -1);
   });
 
   it('rattrape tous les intervalles écoulés hors ligne (ex. 20 min → 2 paquets)', async () => {
     const user = await createUser(db);
+    await freeTimerSlots(user, 2);
     await sync(user);
     await rewindTimer(user, 20);
     const state = await sync(user);
@@ -436,6 +456,7 @@ describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
 
   it('sérialise les syncs concurrentes sans double attribution', async () => {
     const user = await createUser(db);
+    await freeTimerSlots(user, 2);
     await sync(user);
     await rewindTimer(user, 12);
     const results = await Promise.all(Array.from({ length: 5 }, () => sync(user)));
@@ -445,9 +466,10 @@ describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
 
   it('plafonne la réserve à 15 paquets même après une longue absence', async () => {
     const user = await createUser(db);
+    await freeTimerSlots(user, 2);
     await sync(user);
-    // 14 × 10 min pour atteindre le plafond (starter = 2).
-    await rewindTimer(user, 10 * 14);
+    // 13 × 10 min pour atteindre le plafond (base = 2).
+    await rewindTimer(user, 10 * 13);
     const filled = await sync(user);
     expect(filled).toMatchObject({ available: 15, granted: 13, next_at: null });
     await rewindTimer(user, 60);
@@ -456,6 +478,7 @@ describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
 
   it('le temps passé réserve pleine ne produit pas de paquet : ouvrir un paquet relance le minuteur', async () => {
     const user = await createUser(db);
+    await freeTimerSlots(user, 2);
     await sync(user);
     await rewindTimer(user, 10 * 20);
     await sync(user);
@@ -469,6 +492,7 @@ describe('paquets régénérés (1 toutes les 10 min, réserve de 15)', () => {
 
   it('n’empêche jamais les autres récompenses de dépasser le plafond', async () => {
     const user = await createUser(db);
+    await freeTimerSlots(user, 2);
     await sync(user);
     await rewindTimer(user, 10 * 20);
     await sync(user);

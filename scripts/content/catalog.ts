@@ -372,15 +372,36 @@ export function parseCatalog(
     }
   });
 
-  for (const key of ['starter_reward', 'timed_packs']) {
-    const setting = game.settings[key];
-    if (!setting) {
-      issues.push({ path: `game.settings.${key}`, message: 'réglage obligatoire manquant' });
-      continue;
+  const starter = game.settings.starter_reward;
+  if (!starter) {
+    issues.push({ path: 'game.settings.starter_reward', message: 'réglage obligatoire manquant' });
+  } else {
+    const packs = starter.value.packs;
+    if (!Array.isArray(packs) || packs.length < 1) {
+      issues.push({ path: 'game.settings.starter_reward', message: 'packs doit être un tableau non vide' });
+    } else {
+      for (const [i, entry] of packs.entries()) {
+        const path = `game.settings.starter_reward.packs.${i}`;
+        if (!entry || typeof entry !== 'object') {
+          issues.push({ path, message: 'entrée invalide' });
+          continue;
+        }
+        const packSlug = (entry as { pack_slug?: unknown }).pack_slug;
+        const quantity = (entry as { quantity?: unknown }).quantity;
+        if (typeof packSlug !== 'string' || !packSlugs.has(packSlug))
+          issues.push({ path, message: 'paquet inconnu' });
+        if (typeof quantity !== 'number' || !Number.isInteger(quantity) || quantity < 1 || quantity > 50)
+          issues.push({ path, message: 'quantity doit être un entier entre 1 et 50' });
+      }
     }
-    const packSlug = setting.value.pack_slug;
+  }
+  const timedSetting = game.settings.timed_packs;
+  if (!timedSetting) {
+    issues.push({ path: 'game.settings.timed_packs', message: 'réglage obligatoire manquant' });
+  } else {
+    const packSlug = timedSetting.value.pack_slug;
     if (typeof packSlug !== 'string' || !packSlugs.has(packSlug))
-      issues.push({ path: `game.settings.${key}`, message: 'paquet inconnu' });
+      issues.push({ path: 'game.settings.timed_packs', message: 'paquet inconnu' });
   }
   const timed = game.settings.timed_packs?.value;
   if (timed) {

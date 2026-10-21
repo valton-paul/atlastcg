@@ -30,7 +30,11 @@ describe('parcours principal', () => {
           )
         ).rows,
     );
-    expect(packs.map((p) => p.slug)).toEqual(['classique', 'classique']);
+    const bySlug = packs.reduce<Record<string, number>>((acc, p) => {
+      acc[p.slug] = (acc[p.slug] ?? 0) + 1;
+      return acc;
+    }, {});
+    expect(bySlug).toEqual({ classique: 14, premium: 1, legendaire: 1 });
 
     // 3. Ouverture.
     const opening = await rpc<{ cards: { card_id: string; country_code: string }[] }>(db, user, 'open_pack', {
@@ -96,7 +100,7 @@ describe('parcours principal', () => {
       return { cards, remaining, progress };
     });
     expect(afterRestart.cards).toBe(collection.length);
-    expect(afterRestart.remaining).toBe(1);
+    expect(afterRestart.remaining).toBe(15);
     expect(afterRestart.progress).toEqual([{ status: 'in_progress', done: 1 }]);
   });
 });

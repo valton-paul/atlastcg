@@ -3307,7 +3307,7 @@ end;
 $$;
 
 insert into public.economy_settings (key, value, description) values
-  ('starter_reward', '{"pack_slug":"classique","quantity":2}'::jsonb, 'Paquets offerts à la création du compte.'),
+  ('starter_reward', '{"packs":[{"pack_slug":"classique","quantity":14},{"pack_slug":"premium","quantity":1},{"pack_slug":"legendaire","quantity":1}]}'::jsonb, 'Paquets offerts à la création du compte : 14 classiques, 1 premium, 1 légendaire.'),
   ('timed_packs', '{"pack_slug":"classique","interval_seconds":600,"max_stored":15}'::jsonb, 'Paquets régénérés : au plus un paquet classique par synchronisation (toutes les 10 min), tant que la réserve est sous le plafond. Pas de rattrapage en rafale.'),
   ('expedition_charges', '{"interval_seconds":1800,"max_stored":10}'::jsonb, 'Réserve d’expéditions : +1 toutes les 30 min, jusqu’à 10. Une charge est consommée au démarrage (tirage ou fiche pays).'),
   ('fragment_shop', '{"offers":[{"pack_slug":"premium","cost":100},{"pack_slug":"legendaire","cost":280}]}'::jsonb, 'Boutique de paquets contre fragments. Coûts calibrés pour qu’un Premium coûte environ un paquet classique de doublons, et un Légendaire environ trois.')
