@@ -33,8 +33,11 @@ Sans configuration Supabase, l'application démarre sur un écran expliquant quo
    npm run db:push       # applique les migrations manquantes puis le seed
    ```
    La CLI mémorise les migrations déjà jouées : relancer `db:push` n'applique que les nouvelles.
-2. Dans Authentification → URL Configuration, autoriser : `atlas://auth/callback`, `atlas://reset-password` (et `exp://**` en développement avec Expo Go).
-3. Les illustrations se déposent dans le bucket public `card-illustrations` (créé par la migration `storage`) :
+2. Dans Authentification → URL Configuration :
+   - **Site URL** : `https://atlastcg-five.vercel.app` (prod web)
+   - **Redirect URLs** : `https://atlastcg-five.vercel.app/**`, `atlas://auth/callback`, `atlas://reset-password` (et `exp://**` en dev Expo Go).
+3. Déploiement web (Vercel) : le fichier `vercel.json` exporte Expo (`expo export -p web`) vers `dist`. Renseigner `SUPABASE_URL` et `SUPABASE_PUBLIC_KEY` dans les variables d’environnement Vercel.
+4. Les illustrations se déposent dans le bucket public `card-illustrations` (créé par la migration `storage`) :
    ```bash
    npm run illustrations:monuments   # Wikidata/Commons → content/illustrations + crédits
    npm run illustrations:upload      # envoi vers le bucket (SUPABASE_SECRET_KEY)

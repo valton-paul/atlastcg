@@ -15,8 +15,16 @@ enabled = true
 
 [auth]
 enabled = true
-site_url = "atlas://"
-additional_redirect_urls = ["atlas://auth/callback", "atlas://reset-password", "exp://**"]
+# Site web (Vercel) ; mobile via schéma atlas://.
+site_url = "https://atlastcg-five.vercel.app"
+additional_redirect_urls = [
+  "https://atlastcg-five.vercel.app/**",
+  "https://atlastcg-five.vercel.app/auth/callback",
+  "https://atlastcg-five.vercel.app/reset-password",
+  "atlas://auth/callback",
+  "atlas://reset-password",
+  "exp://**",
+]
 minimum_password_length = 8
 
 [auth.email]
