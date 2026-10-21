@@ -1,6 +1,7 @@
 export type PublicRuntimeConfig = {
   supabaseUrl: string | null;
   supabaseKey: string | null;
+  appUrl: string | null;
 };
 
 export function isSecretKey(key: string): boolean;

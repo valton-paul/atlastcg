@@ -2,7 +2,7 @@ import Constants from 'expo-constants';
 
 export type SupabaseConfig = { url: string; key: string };
 
-type Extra = { supabaseUrl?: unknown; supabaseKey?: unknown };
+type Extra = { supabaseUrl?: unknown; supabaseKey?: unknown; appUrl?: unknown };
 
 function readString(value: unknown): string | null {
   return typeof value === 'string' && value.trim().length > 0 ? value.trim() : null;
@@ -21,4 +21,18 @@ export function getSupabaseConfig(): SupabaseConfig | null {
     readString(process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY);
   if (!url || !key) return null;
   return { url, key };
+}
+
+/**
+ * Origine publique de l’app pour les liens d’e-mail (confirmation, reset).
+ * Évite d’envoyer `localhost` dans les mails ouverts sur un autre appareil.
+ */
+export function getAppOrigin(): string | null {
+  const extra = (Constants.expoConfig?.extra ?? {}) as Extra;
+  const raw =
+    readString(extra.appUrl) ??
+    readString(process.env.EXPO_PUBLIC_APP_URL) ??
+    readString(process.env.APP_URL);
+  if (!raw) return null;
+  return raw.replace(/\/$/, '');
 }

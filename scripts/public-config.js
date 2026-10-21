@@ -35,12 +35,13 @@ function publicRuntimeConfig(env) {
     'SUPABASE_PUBLISHABLE_KEY',
     'SUPABASE_ANON_KEY',
   ]);
+  const appUrl = firstDefined(env, ['EXPO_PUBLIC_APP_URL', 'APP_URL']);
   if (supabaseKey && isSecretKey(supabaseKey)) {
     throw new Error(
       'La clé Supabase fournie à l’application est une clé secrète. Utilisez la clé publishable (ou anon).',
     );
   }
-  return { supabaseUrl, supabaseKey };
+  return { supabaseUrl, supabaseKey, appUrl };
 }
 
 module.exports = { isSecretKey, publicRuntimeConfig };

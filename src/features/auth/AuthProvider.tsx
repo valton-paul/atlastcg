@@ -7,12 +7,16 @@ import { AppError, toAppError } from '@/lib/errors';
 import { logger } from '@/lib/logger';
 import { getSupabase, isSupabaseConfigured } from '@/lib/supabase';
 
+import { authRedirectUrl } from './redirectUrl';
 import { normalizeDisplayName } from './validation';
 
 /** `unverified` : session ouverte mais adresse e-mail pas encore confirmée. */
 export type AuthStatus = 'loading' | 'signed-out' | 'signed-in' | 'unverified' | 'unconfigured';
 
 type SignUpResult = { needsEmailConfirmation: boolean };
+
+/** Résultat d’une connexion réussie (mot de passe accepté). */
+export type SignInResult = 'signed-in' | 'unverified';
 
 /**
  * Issue d'un lien d'authentification : `session` (session ouverte sur cet appareil),
@@ -32,7 +36,7 @@ type AuthContextValue = {
   userId: string | null;
   /** Vrai lorsque l'utilisateur arrive depuis un lien de réinitialisation. */
   passwordRecovery: boolean;
-  signIn: (email: string, password: string) => Promise<void>;
+  signIn: (email: string, password: string) => Promise<SignInResult>;
   signUp: (email: string, password: string, displayName: string) => Promise<SignUpResult>;
   signOut: () => Promise<void>;
   resendConfirmation: (email: string) => Promise<void>;
@@ -85,9 +89,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
   }, [configured, queryClient]);
 
-  const signIn = useCallback(async (email: string, password: string) => {
-    const { error } = await getSupabase().auth.signInWithPassword({ email: email.trim(), password });
+  const signIn = useCallback(async (email: string, password: string): Promise<SignInResult> => {
+    const { data, error } = await getSupabase().auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    });
     if (error) throw toAppError(error);
+    const next = statusFor(data.session);
+    setSession(data.session);
+    setStatus(next);
+    if (next === 'unverified') return 'unverified';
+    if (next === 'signed-in') return 'signed-in';
+    throw new AppError('UNKNOWN');
   }, []);
 
   const signUp = useCallback(async (email: string, password: string, displayName: string) => {
@@ -96,11 +109,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       password,
       options: {
         data: { display_name: normalizeDisplayName(displayName) },
-        emailRedirectTo: Linking.createURL(AUTH_CALLBACK_PATH),
+        emailRedirectTo: authRedirectUrl(AUTH_CALLBACK_PATH),
       },
     });
     if (error) throw toAppError(error);
-    return { needsEmailConfirmation: !data.session };
+    const next = statusFor(data.session);
+    setSession(data.session);
+    setStatus(next === 'signed-out' ? 'signed-out' : next);
+    return { needsEmailConfirmation: !data.session || next === 'unverified' };
   }, []);
 
   const signOut = useCallback(async () => {
@@ -112,7 +128,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { error } = await getSupabase().auth.resend({
       type: 'signup',
       email: email.trim(),
-      options: { emailRedirectTo: Linking.createURL(AUTH_CALLBACK_PATH) },
+      options: { emailRedirectTo: authRedirectUrl(AUTH_CALLBACK_PATH) },
     });
     if (error) throw toAppError(error);
   }, []);
@@ -120,12 +136,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const refreshVerification = useCallback(async () => {
     const { data, error } = await getSupabase().auth.refreshSession();
     if (error) throw toAppError(error);
-    return !!data.session?.user.email_confirmed_at;
+    const next = statusFor(data.session);
+    setSession(data.session);
+    setStatus(next);
+    return next === 'signed-in';
   }, []);
 
   const requestPasswordReset = useCallback(async (email: string) => {
     const { error } = await getSupabase().auth.resetPasswordForEmail(email.trim(), {
-      redirectTo: Linking.createURL(RESET_PASSWORD_PATH),
+      redirectTo: authRedirectUrl(RESET_PASSWORD_PATH),
     });
     if (error) throw toAppError(error);
   }, []);

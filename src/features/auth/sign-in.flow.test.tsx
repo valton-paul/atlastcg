@@ -27,7 +27,7 @@ describe('connexion', () => {
   });
 
   it('connecte puis redirige vers l’accueil', async () => {
-    mockSignIn.mockResolvedValue(undefined);
+    mockSignIn.mockResolvedValue('signed-in');
     await render(<SignInScreen />);
     await fireEvent.changeText(screen.getByTestId('sign-in-email'), 'paul@exemple.fr');
     await fireEvent.changeText(screen.getByTestId('sign-in-password'), 'atlas2026');
@@ -36,7 +36,21 @@ describe('connexion', () => {
     expect(mockSignIn).toHaveBeenCalledWith('paul@exemple.fr', 'atlas2026');
   });
 
-  it('redirige vers la validation d’adresse si l’e-mail n’est pas confirmé', async () => {
+  it('redirige vers la validation d’adresse si la session n’est pas encore confirmée', async () => {
+    mockSignIn.mockResolvedValue('unverified');
+    await render(<SignInScreen />);
+    await fireEvent.changeText(screen.getByTestId('sign-in-email'), 'paul@exemple.fr');
+    await fireEvent.changeText(screen.getByTestId('sign-in-password'), 'atlas2026');
+    await fireEvent.press(screen.getByTestId('sign-in-submit'));
+    await waitFor(() =>
+      expect(mockRouter.replace).toHaveBeenCalledWith({
+        pathname: '/verify-email',
+        params: { email: 'paul@exemple.fr' },
+      }),
+    );
+  });
+
+  it('redirige vers la validation d’adresse si Supabase refuse la connexion non confirmée', async () => {
     mockSignIn.mockRejectedValue(new AppError('EMAIL_NOT_CONFIRMED'));
     await render(<SignInScreen />);
     await fireEvent.changeText(screen.getByTestId('sign-in-email'), ' paul@exemple.fr ');

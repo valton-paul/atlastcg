@@ -27,9 +27,15 @@ export default function SignInScreen() {
     if (validateEmail(email) || !password) return;
     setLoading(true);
     try {
-      await signIn(email, password);
+      const result = await signIn(email, password);
+      // Session ouverte mais e-mail non confirmé : rester connecté sur l’écran de validation.
+      if (result === 'unverified') {
+        router.replace({ pathname: '/verify-email', params: { email: email.trim() } });
+        return;
+      }
       router.replace('/');
     } catch (e) {
+      // Supabase refuse parfois la session tant que l’e-mail n’est pas confirmé.
       if (toAppError(e).code === 'EMAIL_NOT_CONFIRMED') {
         router.replace({ pathname: '/verify-email', params: { email: email.trim() } });
         return;
